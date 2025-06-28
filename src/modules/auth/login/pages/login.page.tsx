@@ -19,12 +19,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { loginMutation } from "@/api/mutations/login.mutation";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { loginMutationFn } from "@/api/mutations";
 
-export function LoginPage({
+export default function LoginPage({
   className,
   ...props
 }: React.ComponentProps<"div">) {
@@ -39,7 +39,7 @@ export function LoginPage({
   });
 
   const { mutate, isPending } = useMutation({
-    mutationFn: loginMutation,
+    mutationFn: loginMutationFn,
     onSuccess: () => {
       toast.success("Tizimga muvaffaqiyatli kirildi");
       navigate("/dashboard");

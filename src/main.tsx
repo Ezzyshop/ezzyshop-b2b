@@ -1,20 +1,16 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { ReactQueryLayout } from "./layouts/react-query.layout.tsx";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { LoginPage } from "./modules/auth/login/pages/login.page.tsx";
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import { Toaster } from "sonner";
-import { DashboardRoutes } from "./routes/dashboard.routes.tsx";
+import { IndexRoutes } from "./routes/index.routes.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ReactQueryLayout>
       <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/dashboard/*" element={<DashboardRoutes />} />
-        </Routes>
+        <IndexRoutes />
       </BrowserRouter>
       <Toaster
         position="top-center"
