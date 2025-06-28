@@ -6,7 +6,7 @@ import path from "path";
 // https://vite.dev/config/
 export default defineConfig({
   server: {
-    port: 3000,
+    port: 5000,
     proxy: {
       "/api": {
         target: "http://localhost:9100/api/v1",
