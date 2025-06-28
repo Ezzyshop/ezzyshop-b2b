@@ -1,13 +1,18 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { IShop, shopTypesTranslations } from "../utils";
+import { IShop, shopTypesTranslations } from "../../utils";
 import dayjs from "dayjs";
 import { Button } from "@/components/ui/button";
-import { EditIcon } from "lucide-react";
+import { BotIcon, CreditCardIcon, EditIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 export const shopColumns: ColumnDef<IShop>[] = [
+  {
+    accessorKey: "owner.full_name",
+    size: 120,
+    header: "Biznes egasi",
+  },
   {
     accessorKey: "name",
     header: "Biznes nomi",
@@ -37,11 +42,7 @@ export const shopColumns: ColumnDef<IShop>[] = [
       return <div>{shopTypesTranslations[row.original.status]}</div>;
     },
   },
-  {
-    accessorKey: "owner.full_name",
-    size: 120,
-    header: "Egasi",
-  },
+
   {
     accessorKey: "plan.name",
     size: 70,
@@ -100,16 +101,28 @@ export const shopColumns: ColumnDef<IShop>[] = [
     },
   },
   {
-    size: 60,
+    size: 120,
     accessorKey: "actions",
     header: "Amallar",
     cell: ({ row }) => {
       return (
-        <Button asChild variant="outline" size="icon">
-          <NavLink to={`/dashboard/shops/${row.original._id}/edit`}>
-            <EditIcon className="w-4 h-4" />
-          </NavLink>
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button asChild variant="outline" size="icon">
+            <NavLink to={`/dashboard/shops/${row.original._id}/edit`}>
+              <EditIcon className="w-4 h-4" />
+            </NavLink>
+          </Button>
+          <Button asChild variant="outline" size="icon">
+            <NavLink to={`/dashboard/shops/${row.original._id}/telegram`}>
+              <BotIcon className="w-4 h-4" />
+            </NavLink>
+          </Button>
+          <Button asChild variant="outline" size="icon">
+            <NavLink to={`/dashboard/shops/${row.original._id}/plan`}>
+              <CreditCardIcon className="w-4 h-4" />
+            </NavLink>
+          </Button>
+        </div>
       );
     },
   },

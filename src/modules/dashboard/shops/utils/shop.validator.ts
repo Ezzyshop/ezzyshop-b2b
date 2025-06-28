@@ -101,3 +101,7 @@ export const shopUpdateSchema = Joi.object({
 export const shopUpdatePlanSchema = Joi.object({
   plan: shopFields.plan,
 });
+
+export const telegramSchema = Joi.object({
+  telegram: shopFields.telegram,
+});

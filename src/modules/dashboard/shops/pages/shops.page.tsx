@@ -1,10 +1,10 @@
 import { getAllShopsQueryFn } from "@/api/queries/shops.query";
 import { useQuery } from "@tanstack/react-query";
-import { ShopsTable } from "../components/shops-table";
-import { shopColumns } from "../components/shops-table-columns";
+import { ShopsTable } from "../components/shop-table/shops-table";
+import { shopColumns } from "../components/shop-table/shops-table-columns";
 import { Button } from "@/components/ui/button";
 import { NavLink } from "react-router-dom";
-import { ShopTableFilters } from "../components/shop-table-filters";
+import { ShopTableFilters } from "../components/shop-table/shop-table-filters";
 import { useQueryParams } from "@/hooks";
 
 export const ShopsPage = () => {

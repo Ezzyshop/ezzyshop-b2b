@@ -1,4 +1,8 @@
-import { IShop, IShopForm } from "@/modules/dashboard/shops/utils";
+import {
+  IShop,
+  IShopForm,
+  IShopUpdateForm,
+} from "@/modules/dashboard/shops/utils";
 import { api } from "../axios";
 
 export const createShopMutationFn = (data: IShopForm) => {
@@ -9,3 +13,14 @@ export const updateShopMutationFn = (
   id: string,
   data: IShopForm
 ): Promise<IShop> => api.put(`/shops/${id}`, data).then((res) => res.data);
+
+export const updateShopTelegramMutationFn = (
+  id: string,
+  data: IShopUpdateForm["telegram"]
+): Promise<IShop> =>
+  api.put(`/shops/${id}/telegram`, data).then((res) => res.data);
+
+export const updateShopPlanMutationFn = (
+  id: string,
+  data: { plan: IShopForm["plan"] }
+): Promise<IShop> => api.put(`/shops/${id}/plan`, data).then((res) => res.data);

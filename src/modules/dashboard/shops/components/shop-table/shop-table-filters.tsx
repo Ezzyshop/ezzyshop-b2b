@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/select";
 
 import { useQueries } from "@tanstack/react-query";
-import { BusinessType, ShopPlatform, shopTypesTranslations } from "../utils";
+import { BusinessType, ShopPlatform, shopTypesTranslations } from "../../utils";
 import { TObject } from "@/hooks";
 import { debounce } from "lodash";
 

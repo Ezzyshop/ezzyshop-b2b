@@ -17,6 +17,7 @@ export interface IShop {
   logo: string | null;
   description: string | null;
   telegram: {
+    _id: string;
     token: string | null;
     menu_text: string | null;
     menu_url: string | null;

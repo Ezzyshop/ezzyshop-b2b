@@ -43,7 +43,11 @@ export const ShopEditPage = () => {
     plan: shop.plan._id,
     logo: shop.logo,
     description: shop.description,
-    telegram: shop.telegram,
+    telegram: {
+      token: shop.telegram.token,
+      menu_text: shop.telegram.menu_text,
+      menu_url: shop.telegram.menu_url,
+    },
     social_links: shop.social_links,
     currency: shop.currency._id,
     address: {
