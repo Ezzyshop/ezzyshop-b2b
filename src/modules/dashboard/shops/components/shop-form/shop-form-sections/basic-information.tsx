@@ -9,7 +9,7 @@ import {
 import { Input } from "@/components/ui/input";
 import {
   BusinessType,
-  enumTranslate,
+  shopTypesTranslations,
   IShopForm,
   ShopPlatform,
 } from "../../../utils";
@@ -114,7 +114,7 @@ export const ShopFormBasicInformation = ({ form }: IProps) => {
                 <SelectContent>
                   {Object.values(BusinessType).map((type) => (
                     <SelectItem key={type} value={type}>
-                      {enumTranslate[type]}
+                      {shopTypesTranslations[type]}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -139,7 +139,7 @@ export const ShopFormBasicInformation = ({ form }: IProps) => {
                 <SelectContent>
                   {Object.values(ShopPlatform).map((platform) => (
                     <SelectItem key={platform} value={platform}>
-                      {enumTranslate[platform]}
+                      {shopTypesTranslations[platform]}
                     </SelectItem>
                   ))}
                 </SelectContent>

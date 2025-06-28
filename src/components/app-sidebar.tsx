@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/sidebar";
 import { NavLink } from "react-router-dom";
 import { LogOutIcon } from "lucide-react";
-import { sidebarData } from "@/lib";
+import { cn, sidebarData } from "@/lib";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useUserContext } from "@/contexts/user-context/user.context";
 import { UserRoles, userRolesTranslations } from "@/lib/enums";
@@ -34,7 +34,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           {sidebarData.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild>
-                <NavLink to={item.url}>
+                <NavLink
+                  to={item.url}
+                  className={({ isActive }) =>
+                    cn("flex items-center gap-2", isActive && "bg-primary")
+                  }
+                >
                   {<item.icon />}
                   {item.title}
                 </NavLink>

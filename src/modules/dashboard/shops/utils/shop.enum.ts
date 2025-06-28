@@ -11,7 +11,7 @@ export enum ShopStatus {
   Inactive = "INACTIVE",
 }
 
-export const enumTranslate: Record<
+export const shopTypesTranslations: Record<
   ShopPlatform | ShopStatus | BusinessType,
   string
 > = {

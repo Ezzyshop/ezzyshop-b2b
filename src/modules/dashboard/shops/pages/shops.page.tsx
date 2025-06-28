@@ -4,27 +4,43 @@ import { ShopsTable } from "../components/shops-table";
 import { shopColumns } from "../components/shops-table-columns";
 import { Button } from "@/components/ui/button";
 import { NavLink } from "react-router-dom";
+import { ShopTableFilters } from "../components/shop-table-filters";
+import { useQueryParams } from "@/hooks";
 
 export const ShopsPage = () => {
+  const { getQueryParams, setQueryParams } = useQueryParams();
+
+  const { page, limit } = getQueryParams();
+
+  const filter = {
+    page: page ?? 1,
+    limit: limit ?? 10,
+    ...getQueryParams(),
+  };
+
   const { data, isLoading } = useQuery({
-    queryKey: ["shops"],
-    queryFn: () => getAllShopsQueryFn(),
+    queryKey: ["shops", filter],
+    queryFn: () => getAllShopsQueryFn(filter),
   });
 
   return (
-    <div>
+    <div className="space-y-4">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Mijozlar</h1>
         <Button asChild>
           <NavLink to="/dashboard/shops/create">Mijoz qo'shish</NavLink>
         </Button>
       </div>
-      <div className="mt-4">
-        {isLoading ? (
-          <div>Loading...</div>
-        ) : (
-          <ShopsTable columns={shopColumns} data={data?.data ?? []} />
-        )}
+      <ShopTableFilters
+        setQueryParams={setQueryParams}
+        getQueryParams={getQueryParams}
+      />
+      <div>
+        <ShopsTable
+          columns={shopColumns}
+          data={data?.data ?? []}
+          isLoading={isLoading}
+        />
       </div>
     </div>
   );

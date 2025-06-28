@@ -40,7 +40,7 @@ function TelegramTokenInput({
     if (data?.isValid) {
       props.onChange?.({
         target: {
-          value: data.botInfo?.username || "",
+          value: debouncedValue || "",
         },
       } as React.ChangeEvent<HTMLInputElement>);
     }
