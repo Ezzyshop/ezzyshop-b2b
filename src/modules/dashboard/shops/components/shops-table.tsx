@@ -15,6 +15,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { TableLoader } from "@/components/loaders/global-loader";
 
 interface IProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -66,7 +67,7 @@ export function ShopsTable<TData, TValue>({
           <TableBody>
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                Loading...
+                <TableLoader />
               </TableCell>
             </TableRow>
           </TableBody>
@@ -79,13 +80,7 @@ export function ShopsTable<TData, TValue>({
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell
-                      key={cell.id}
-                      style={{
-                        minWidth: `${cell.column.getSize()}px`,
-                        maxWidth: `${cell.column.getSize()}px`,
-                      }}
-                    >
+                    <TableCell key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()

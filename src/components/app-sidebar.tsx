@@ -4,6 +4,7 @@ import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -23,17 +24,20 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
       <SidebarContent>
-        <div className="flex items-center justify-center p-4">
+        <SidebarHeader className="flex items-center justify-center p-4">
           <img
             src="/icons/logo.svg"
             alt="logo"
             className="w-[50%] aspect-[32/9]"
           />
-        </div>
+        </SidebarHeader>
         <SidebarMenu className="p-2">
           {sidebarData.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild>
+              <SidebarMenuButton
+                asChild
+                isActive={item.url === location.pathname}
+              >
                 <NavLink
                   to={item.url}
                   className={({ isActive }) =>

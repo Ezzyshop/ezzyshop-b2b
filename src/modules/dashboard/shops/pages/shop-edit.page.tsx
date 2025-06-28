@@ -5,6 +5,7 @@ import { ShopForm } from "../components/shop-form/shop-form";
 import { IShopForm } from "../utils";
 import { updateShopMutationFn } from "@/api/mutations";
 import { toast } from "sonner";
+import { LayoutLoader } from "@/components/loaders/global-loader";
 
 export const ShopEditPage = () => {
   const { id } = useParams();
@@ -26,7 +27,7 @@ export const ShopEditPage = () => {
   const shop = data?.data;
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LayoutLoader />;
   }
 
   if (!shop) {
