@@ -10,7 +10,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { loginSchema, type ILoginForm } from "../utils";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
@@ -23,6 +22,7 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { loginMutationFn } from "@/api/mutations";
+import { joiResolver } from "@hookform/resolvers/joi";
 
 export default function LoginPage({
   className,
@@ -35,7 +35,7 @@ export default function LoginPage({
       password: "",
     },
     mode: "onChange",
-    resolver: zodResolver(loginSchema),
+    resolver: joiResolver(loginSchema),
   });
 
   const { mutate, isPending } = useMutation({
