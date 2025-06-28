@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/select";
 import { useQueries } from "@tanstack/react-query";
 import { getCurrencies, getPlans } from "@/api/queries";
+import { UserSelectField } from "@/components/user-select-field";
 
 interface IProps {
   form: UseFormReturn<IShopForm>;
@@ -45,6 +46,20 @@ export const ShopFormBasicInformation = ({ form }: IProps) => {
   return (
     <Card className="p-4 grid grid-cols-2 gap-4">
       <h3 className="text-lg font-medium col-span-2">Asosiy ma'lumotlar</h3>
+
+      <FormField
+        control={form.control}
+        name="owner"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel isRequired>Foydalanuvchini tanlang</FormLabel>
+            <FormControl>
+              <UserSelectField value={field.value} onChange={field.onChange} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
 
       <FormField
         control={form.control}

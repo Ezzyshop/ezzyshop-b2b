@@ -3,35 +3,39 @@ import { BusinessType, ShopPlatform } from "./shop.enum";
 import { IShop } from "./shop.interface";
 
 export const shopFields: Record<
-  keyof Omit<IShop, "owner" | "createdAt" | "updatedAt" | "status">,
+  keyof Omit<IShop, "createdAt" | "updatedAt" | "status">,
   Joi.Schema
 > = {
+  owner: Joi.string().required().messages({
+    "string.empty": "Foydalanuvchini tanlash shart",
+    "any.required": "Foydalanuvchini tanlash shart",
+  }),
   name: Joi.string().required().min(3).max(255).messages({
-    "string.min": "Name must be at least 3 characters long",
-    "string.max": "Name must be less than 255 characters long",
-    "string.empty": "Name is required",
+    "string.min": "Nomi kamida 3 ta belgidan iborat bo'lishi kerak",
+    "string.max": "Nomi 255 ta belgidan kam bo'lishi kerak",
+    "string.empty": "Nomi kiritilishi shart",
   }),
   business_type: Joi.string()
     .valid(...Object.values(BusinessType))
     .required()
     .messages({
-      "string.empty": "Business type is required",
-      "any.only": "Invalid business type",
+      "string.empty": "Biznes turi kiritilishi shart",
+      "any.only": "Noto'g'ri biznes turi",
     }),
   platform: Joi.string()
     .valid(...Object.values(ShopPlatform))
     .required()
     .messages({
-      "string.empty": "Platform is required",
+      "string.empty": "Platforma kiritilishi shart",
     }),
   plan: Joi.string().required().messages({
-    "string.empty": "Plan is required",
+    "string.empty": "Reja kiritilishi shart",
   }),
   logo: Joi.string().uri().allow(null).allow("").optional().messages({
-    "string.uri": "Logo must be a valid URL",
+    "string.uri": "Logo to'g'ri URL bo'lishi kerak",
   }),
   description: Joi.string().max(500).allow(null).allow("").optional().messages({
-    "string.max": "Description must be less than 500 characters long",
+    "string.max": "Tavsif 500 ta belgidan kam bo'lishi kerak",
   }),
   telegram: Joi.object({
     token: Joi.string().allow(null).allow("").optional(),
@@ -46,7 +50,7 @@ export const shopFields: Record<
     youtube: Joi.string().uri().allow(null).allow("").optional(),
   }),
   currency: Joi.string().required().messages({
-    "string.empty": "Currency is required",
+    "string.empty": "Valyuta kiritilishi shart",
   }),
   address: Joi.object({
     address: Joi.string().max(255).allow(null).allow("").optional(),
@@ -58,6 +62,7 @@ export const shopFields: Record<
 };
 
 export const shopCreateSchema = Joi.object({
+  owner: shopFields.owner,
   name: shopFields.name,
   business_type: shopFields.business_type,
   platform: shopFields.platform,
