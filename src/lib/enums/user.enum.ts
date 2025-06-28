@@ -4,3 +4,10 @@ export enum UserRoles {
   Staff = "STAFF",
   Basic = "BASIC",
 }
+
+export const userRolesTranslations = {
+  [UserRoles.SuperAdmin]: "Super Admin",
+  [UserRoles.Admin]: "Admin",
+  [UserRoles.Staff]: "Staff",
+  [UserRoles.Basic]: "Basic",
+};

@@ -2,7 +2,7 @@ import { IUser } from "@/lib/interfaces";
 import { createContext, useContext } from "react";
 
 interface IUserContext {
-  user: IUser | null;
+  user: IUser;
 }
 
 export const UserContext = createContext<IUserContext | null>(null);
