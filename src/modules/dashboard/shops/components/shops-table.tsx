@@ -15,7 +15,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { TableLoader } from "@/components/loaders/global-loader";
 
 interface IProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -67,7 +66,7 @@ export function ShopsTable<TData, TValue>({
           <TableBody>
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                <TableLoader />
+                <p>Yuklanmoqda...</p>
               </TableCell>
             </TableRow>
           </TableBody>
