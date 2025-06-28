@@ -6,7 +6,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Input, TelegramTokenInput } from "@/components/ui/input";
 import { IShopForm } from "../../../utils";
 import { UseFormReturn } from "react-hook-form";
 
@@ -26,7 +26,7 @@ export const ShopFormTelegramConfiguration = ({ form }: IProps) => {
           <FormItem className="">
             <FormLabel>Telegram Bot Token</FormLabel>
             <FormControl>
-              <Input
+              <TelegramTokenInput
                 placeholder="Telegram bot tokenini kiriting"
                 {...field}
                 value={field.value || ""}
@@ -66,7 +66,7 @@ export const ShopFormTelegramConfiguration = ({ form }: IProps) => {
                 type="url"
                 placeholder="https://example.com/menu"
                 {...field}
-                value={field.value || ""}
+                value={field.value || undefined}
               />
             </FormControl>
             <FormMessage />

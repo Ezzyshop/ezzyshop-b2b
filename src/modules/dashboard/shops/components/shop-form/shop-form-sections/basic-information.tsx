@@ -7,7 +7,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { BusinessType, IShopForm, ShopPlatform } from "../../../utils";
+import {
+  BusinessType,
+  enumTranslate,
+  IShopForm,
+  ShopPlatform,
+} from "../../../utils";
 import { UseFormReturn } from "react-hook-form";
 import {
   Select,
@@ -94,7 +99,7 @@ export const ShopFormBasicInformation = ({ form }: IProps) => {
                 <SelectContent>
                   {Object.values(BusinessType).map((type) => (
                     <SelectItem key={type} value={type}>
-                      {type.replace("_", " ")}
+                      {enumTranslate[type]}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -119,7 +124,7 @@ export const ShopFormBasicInformation = ({ form }: IProps) => {
                 <SelectContent>
                   {Object.values(ShopPlatform).map((platform) => (
                     <SelectItem key={platform} value={platform}>
-                      {platform.replace("_", " ")}
+                      {enumTranslate[platform]}
                     </SelectItem>
                   ))}
                 </SelectContent>

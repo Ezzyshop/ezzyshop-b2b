@@ -27,31 +27,31 @@ export const shopFields: Record<
   plan: Joi.string().required().messages({
     "string.empty": "Plan is required",
   }),
-  logo: Joi.string().uri().allow(null).optional().messages({
+  logo: Joi.string().uri().allow(null).allow("").optional().messages({
     "string.uri": "Logo must be a valid URL",
   }),
-  description: Joi.string().max(500).allow(null).optional().messages({
+  description: Joi.string().max(500).allow(null).allow("").optional().messages({
     "string.max": "Description must be less than 500 characters long",
   }),
   telegram: Joi.object({
-    token: Joi.string().allow(null).optional(),
-    menu_text: Joi.string().max(255).allow(null).optional(),
-    menu_url: Joi.string().uri().allow(null).optional(),
+    token: Joi.string().allow(null).allow("").optional(),
+    menu_text: Joi.string().max(255).allow(null).allow("").optional(),
+    menu_url: Joi.string().uri().allow(null).allow("").optional(),
   }),
   social_links: Joi.object({
-    telegram: Joi.string().uri().allow(null).optional(),
-    instagram: Joi.string().uri().allow(null).optional(),
-    facebook: Joi.string().uri().allow(null).optional(),
-    twitter: Joi.string().uri().allow(null).optional(),
-    youtube: Joi.string().uri().allow(null).optional(),
+    telegram: Joi.string().uri().allow(null).allow("").optional(),
+    instagram: Joi.string().uri().allow(null).allow("").optional(),
+    facebook: Joi.string().uri().allow(null).allow("").optional(),
+    twitter: Joi.string().uri().allow(null).allow("").optional(),
+    youtube: Joi.string().uri().allow(null).allow("").optional(),
   }),
   currency: Joi.string().required().messages({
     "string.empty": "Currency is required",
   }),
   address: Joi.object({
-    address: Joi.string().max(255).allow(null).optional(),
-    long: Joi.number().min(-180).max(180).allow(null).optional(),
-    lat: Joi.number().min(-90).max(90).allow(null).optional(),
+    address: Joi.string().max(255).allow(null).allow("").optional(),
+    long: Joi.number().min(-180).max(180).allow(null).allow("").optional(),
+    lat: Joi.number().min(-90).max(90).allow(null).allow("").optional(),
   }),
   plan_start_date: Joi.date().optional(),
   plan_end_date: Joi.date().optional(),
