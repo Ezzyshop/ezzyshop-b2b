@@ -17,6 +17,10 @@ api.interceptors.response.use(
 
     const code = error.response?.data?.message as ErrorMessages;
     toast.error(ErrorMessagesMap[code]);
+
+    if (code === ErrorMessages.UnauthorizedError) {
+      window.location.href = "/login";
+    }
     return Promise.reject(error);
   }
 );
