@@ -27,9 +27,10 @@ import { UserSelectField } from "@/components/user-select-field";
 
 interface IProps {
   form: UseFormReturn<IShopForm>;
+  isEdit?: boolean;
 }
 
-export const ShopFormBasicInformation = ({ form }: IProps) => {
+export const ShopFormBasicInformation = ({ form, isEdit }: IProps) => {
   const [plans, currencies] = useQueries({
     queries: [
       {
@@ -54,7 +55,11 @@ export const ShopFormBasicInformation = ({ form }: IProps) => {
           <FormItem>
             <FormLabel isRequired>Foydalanuvchini tanlang</FormLabel>
             <FormControl>
-              <UserSelectField value={field.value} onChange={field.onChange} />
+              <UserSelectField
+                disabled={isEdit}
+                value={field.value}
+                onChange={field.onChange}
+              />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -107,7 +112,11 @@ export const ShopFormBasicInformation = ({ form }: IProps) => {
           <FormItem>
             <FormLabel isRequired>Biznes turi</FormLabel>
             <FormControl>
-              <Select {...field} onValueChange={field.onChange}>
+              <Select
+                disabled={isEdit}
+                {...field}
+                onValueChange={field.onChange}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Biznes turini tanlang" />
                 </SelectTrigger>
@@ -132,7 +141,11 @@ export const ShopFormBasicInformation = ({ form }: IProps) => {
           <FormItem>
             <FormLabel isRequired>Platforma</FormLabel>
             <FormControl>
-              <Select {...field} onValueChange={field.onChange}>
+              <Select
+                disabled={isEdit}
+                {...field}
+                onValueChange={field.onChange}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Platformani tanlang" />
                 </SelectTrigger>

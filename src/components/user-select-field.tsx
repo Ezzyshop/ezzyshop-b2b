@@ -8,9 +8,10 @@ import { debounce } from "lodash";
 interface IProps {
   value: string | undefined;
   onChange: (value: string | undefined) => void;
+  disabled?: boolean;
 }
 
-export const UserSelectField = ({ value, onChange }: IProps) => {
+export const UserSelectField = ({ value, onChange, disabled }: IProps) => {
   const { getQueryParams, setQueryParams } = useQueryParams();
 
   const { limit = 10, page = 1, ...queries } = getQueryParams();
@@ -42,6 +43,7 @@ export const UserSelectField = ({ value, onChange }: IProps) => {
 
   return (
     <InputSelect
+      disabled={disabled}
       options={options ?? []}
       value={value ?? ""}
       onChange={onChange}

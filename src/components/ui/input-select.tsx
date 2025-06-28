@@ -27,6 +27,7 @@ interface IProps {
   onInputChange?: (value: string) => void;
   inputValue?: string;
   isLoading?: boolean;
+  disabled?: boolean;
 }
 
 export function InputSelect({
@@ -36,6 +37,7 @@ export function InputSelect({
   onInputChange,
   inputValue,
   isLoading = false,
+  disabled = false,
 }: IProps) {
   const [open, setOpen] = React.useState(false);
 
@@ -46,6 +48,7 @@ export function InputSelect({
           variant="outline"
           role="combobox"
           aria-expanded={open}
+          disabled={disabled}
           className="w-full justify-between"
         >
           {value

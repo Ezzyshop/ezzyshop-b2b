@@ -14,6 +14,10 @@ const ShopCreatePage = lazy(
   () => import("@/modules/dashboard/shops/pages/shop-create.page.tsx")
 );
 
+const ShopEditPage = lazy(
+  () => import("@/modules/dashboard/shops/pages/shop-edit.page.tsx")
+);
+
 export const DashboardRoutes = () => {
   return (
     <DashboardLayout>
@@ -22,6 +26,7 @@ export const DashboardRoutes = () => {
         <Route path="/shops/">
           <Route index element={<ShopsPage />} />
           <Route path="create" element={<ShopCreatePage />} />
+          <Route path=":id/edit" element={<ShopEditPage />} />
         </Route>
       </Routes>
     </DashboardLayout>

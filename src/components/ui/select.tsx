@@ -48,7 +48,10 @@ const SelectTrigger = React.forwardRef<
   >
     <SelectPrimitive.Trigger
       ref={ref}
-      className={cn("w-full text-left pl-3 pr-10 py-2 truncate")}
+      className={cn(
+        "w-full text-left pl-3 pr-10 py-2 truncate",
+        "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:shadow-none"
+      )}
       {...props}
     >
       <span className="w-full pr-2 truncate">{children}</span>

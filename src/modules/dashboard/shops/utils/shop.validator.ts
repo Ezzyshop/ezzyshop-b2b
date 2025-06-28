@@ -1,9 +1,9 @@
 import Joi from "joi";
-import { BusinessType, ShopPlatform } from "./shop.enum";
+import { BusinessType, ShopPlatform, ShopStatus } from "./shop.enum";
 import { IShop } from "./shop.interface";
 
 export const shopFields: Record<
-  keyof Omit<IShop, "createdAt" | "updatedAt" | "status">,
+  keyof Omit<IShop, "createdAt" | "updatedAt" | "_id">,
   Joi.Schema
 > = {
   owner: Joi.string().required().messages({
@@ -59,6 +59,9 @@ export const shopFields: Record<
   }),
   plan_start_date: Joi.date().optional(),
   plan_end_date: Joi.date().optional(),
+  status: Joi.string()
+    .valid(...Object.values(ShopStatus))
+    .optional(),
 };
 
 export const shopCreateSchema = Joi.object({
@@ -73,6 +76,7 @@ export const shopCreateSchema = Joi.object({
   social_links: shopFields.social_links,
   currency: shopFields.currency,
   address: shopFields.address,
+  status: shopFields.status,
 });
 
 export const shopUpdateSchema = Joi.object({

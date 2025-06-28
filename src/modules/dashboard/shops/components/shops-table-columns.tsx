@@ -3,6 +3,9 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { IShop, shopTypesTranslations } from "../utils";
 import dayjs from "dayjs";
+import { Button } from "@/components/ui/button";
+import { EditIcon } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 export const shopColumns: ColumnDef<IShop>[] = [
   {
@@ -87,12 +90,26 @@ export const shopColumns: ColumnDef<IShop>[] = [
   },
 
   {
-    size: 120,
+    size: 140,
     accessorKey: "updatedAt",
     header: "Yangilangan sana",
     cell: ({ row }) => {
       return (
         <div>{dayjs(row.original.updatedAt).format("DD.MM.YYYY HH:mm")}</div>
+      );
+    },
+  },
+  {
+    size: 60,
+    accessorKey: "actions",
+    header: "Amallar",
+    cell: ({ row }) => {
+      return (
+        <Button asChild variant="outline" size="icon">
+          <NavLink to={`/dashboard/shops/${row.original._id}/edit`}>
+            <EditIcon className="w-4 h-4" />
+          </NavLink>
+        </Button>
       );
     },
   },

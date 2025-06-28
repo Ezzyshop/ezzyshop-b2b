@@ -1,6 +1,7 @@
 import { BusinessType, ShopPlatform, ShopStatus } from "./shop.enum";
 
 export interface IShop {
+  _id: string;
   name: string;
   business_type: BusinessType;
   platform: ShopPlatform;
@@ -49,6 +50,30 @@ export interface IShopForm {
   status: ShopStatus;
   owner: string;
   plan: string;
+  logo: string | null;
+  description: string | null;
+  telegram: {
+    token: string | null;
+    menu_text: string | null;
+    menu_url: string | null;
+  };
+  social_links: {
+    telegram: string | null;
+    instagram: string | null;
+    facebook: string | null;
+    twitter: string | null;
+    youtube: string | null;
+  };
+  currency: string;
+  address: {
+    address: string | null;
+    long: number | null;
+    lat: number | null;
+  };
+}
+
+export interface IShopUpdateForm {
+  name: string;
   logo: string | null;
   description: string | null;
   telegram: {
