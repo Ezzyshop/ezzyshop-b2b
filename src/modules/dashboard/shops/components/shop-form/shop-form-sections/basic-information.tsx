@@ -88,7 +88,7 @@ export const ShopFormBasicInformation = ({ form, isEdit }: IProps) => {
             <FormLabel isRequired>Tariff</FormLabel>
             <FormControl>
               <Select {...field} onValueChange={field.onChange}>
-                <SelectTrigger className="w-full">
+                <SelectTrigger disabled={isEdit} className="w-full">
                   <SelectValue placeholder="Tariffni tanlang" />
                 </SelectTrigger>
                 <SelectContent>

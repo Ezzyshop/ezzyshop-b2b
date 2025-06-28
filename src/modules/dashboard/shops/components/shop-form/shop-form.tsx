@@ -24,17 +24,17 @@ interface IProps {
 export const ShopForm = ({ initialValue, onSubmit, isLoading }: IProps) => {
   const form = useForm({
     defaultValues: initialValue || {
-      name: "",
+      name: undefined,
       business_type: BusinessType.OnlineStore,
       platform: ShopPlatform.Telegram,
-      plan: "",
+      plan: undefined,
       logo: null,
       status: ShopStatus.Active,
       description: null,
       telegram: {
-        token: null,
-        menu_text: null,
-        menu_url: null,
+        token: undefined,
+        menu_text: undefined,
+        menu_url: undefined,
       },
       social_links: {
         telegram: null,
@@ -54,7 +54,6 @@ export const ShopForm = ({ initialValue, onSubmit, isLoading }: IProps) => {
   });
 
   const onSubmitHandler = (data: IShopForm) => {
-    console.log(data);
     onSubmit(data);
   };
 
@@ -66,7 +65,7 @@ export const ShopForm = ({ initialValue, onSubmit, isLoading }: IProps) => {
       >
         <ShopFormBasicInformation form={form} isEdit={!!initialValue} />
 
-        <ShopFormTelegramConfiguration form={form} />
+        <ShopFormTelegramConfiguration form={form} isEdit={!!initialValue} />
 
         <ShopFormSocialLinks form={form} />
 

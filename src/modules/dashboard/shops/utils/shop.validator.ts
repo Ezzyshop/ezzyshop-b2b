@@ -38,9 +38,18 @@ export const shopFields: Record<
     "string.max": "Tavsif 500 ta belgidan kam bo'lishi kerak",
   }),
   telegram: Joi.object({
-    token: Joi.string().allow(null).allow("").optional(),
-    menu_text: Joi.string().max(255).allow(null).allow("").optional(),
-    menu_url: Joi.string().uri().allow(null).allow("").optional(),
+    token: Joi.string().required().messages({
+      "any.required": "Telegram bot tokeni kiritilishi shart",
+      "string.empty": "Telegram bot tokeni kiritilishi shart",
+    }),
+    menu_text: Joi.string().max(255).required().messages({
+      "string.empty": "Menu nomi kiritilishi shart",
+      "any.required": "Menu nomi kiritilishi shart",
+    }),
+    menu_url: Joi.string().uri().required().messages({
+      "string.empty": "Menu manzili kiritilishi shart",
+      "any.required": "Menu nomi kiritilishi shart",
+    }),
   }),
   social_links: Joi.object({
     telegram: Joi.string().uri().allow(null).allow("").optional(),

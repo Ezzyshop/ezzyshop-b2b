@@ -54,7 +54,7 @@ function TelegramTokenInput({
       onChange={(e) => setValue(e.target.value)}
       aria-invalid={data && !data.isValid}
       data-success={data && data.isValid}
-      disabled={isLoading}
+      disabled={isLoading || props.disabled}
     />
   );
 }

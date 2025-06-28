@@ -12,9 +12,13 @@ import { UseFormReturn } from "react-hook-form";
 
 interface IProps {
   form: UseFormReturn<IShopForm>;
+  isEdit?: boolean;
 }
 
-export const ShopFormTelegramConfiguration = ({ form }: IProps) => {
+export const ShopFormTelegramConfiguration = ({
+  form,
+  isEdit = false,
+}: IProps) => {
   return (
     <Card className="p-4 grid grid-cols-3 gap-4">
       <h3 className="text-lg font-medium col-span-3">Telegram Sozlamalari</h3>
@@ -24,9 +28,10 @@ export const ShopFormTelegramConfiguration = ({ form }: IProps) => {
         name="telegram.token"
         render={({ field }) => (
           <FormItem className="">
-            <FormLabel>Telegram Bot Token</FormLabel>
+            <FormLabel isRequired>Telegram Bot Token</FormLabel>
             <FormControl>
               <TelegramTokenInput
+                disabled={isEdit}
                 placeholder="Telegram bot tokenini kiriting"
                 {...field}
                 value={field.value || ""}
@@ -42,9 +47,10 @@ export const ShopFormTelegramConfiguration = ({ form }: IProps) => {
         name="telegram.menu_text"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Menu nomi</FormLabel>
+            <FormLabel isRequired>Menu nomi</FormLabel>
             <FormControl>
               <Input
+                disabled={isEdit}
                 placeholder="Menu nomini kiriting"
                 {...field}
                 value={field.value || ""}
@@ -60,9 +66,10 @@ export const ShopFormTelegramConfiguration = ({ form }: IProps) => {
         name="telegram.menu_url"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Menu manzili</FormLabel>
+            <FormLabel isRequired>Menu manzili</FormLabel>
             <FormControl>
               <Input
+                disabled={isEdit}
                 type="url"
                 placeholder="https://example.com/menu"
                 {...field}
