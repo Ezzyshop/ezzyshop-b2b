@@ -3,7 +3,7 @@ import { PlanStatus } from "./plan.enum";
 import { IPlan } from "./plan.interface";
 
 export const planFields: Record<
-  keyof Omit<IPlan, "createdAt" | "updatedAt" | "_id">,
+  keyof Omit<IPlan, "createdAt" | "updatedAt" | "_id" | "__v">,
   Joi.Schema
 > = {
   name: Joi.string().required().max(255).messages({

@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { IPlan } from "../utils/plan.interface";
+import { IPlanForm } from "../utils/plan.interface";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { createPlanMutationFn } from "@/api/mutations";
@@ -9,14 +9,14 @@ export const PlanCreatePage = () => {
   const navigate = useNavigate();
 
   const { mutate, isPending } = useMutation({
-    mutationFn: (data: IPlan) => createPlanMutationFn(data),
+    mutationFn: (data: IPlanForm) => createPlanMutationFn(data),
     onSuccess: () => {
       toast.success("Tarif muvaffaqiyatli yaratildi");
       navigate("/dashboard/plans");
     },
   });
 
-  const handleSubmit = (data: IPlan) => {
+  const handleSubmit = (data: IPlanForm) => {
     mutate(data);
   };
 

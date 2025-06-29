@@ -34,6 +34,10 @@ const PlanCreatePage = lazy(
   () => import("@/modules/dashboard/plans/pages/plan-create.page.tsx")
 );
 
+const PlanEditPage = lazy(
+  () => import("@/modules/dashboard/plans/pages/plan-edit.page.tsx")
+);
+
 export const DashboardRoutes = () => {
   return (
     <DashboardLayout>
@@ -49,6 +53,7 @@ export const DashboardRoutes = () => {
         <Route path="/plans/">
           <Route index element={<PlansPage />} />
           <Route path="create" element={<PlanCreatePage />} />
+          <Route path=":id/edit" element={<PlanEditPage />} />
         </Route>
       </Routes>
     </DashboardLayout>

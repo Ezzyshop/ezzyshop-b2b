@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { IPlan } from "../../utils/plan.interface";
+import { IPlanForm } from "../../utils/plan.interface";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { createPlanValidator } from "../../utils/plan.validator";
 import { PlanStatus } from "../../utils/plan.enum";
@@ -23,13 +23,13 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface IProps {
-  initialValues?: IPlan;
-  onSubmit: (data: IPlan) => void;
+  initialValues?: IPlanForm;
+  onSubmit: (data: IPlanForm) => void;
   isLoading: boolean;
 }
 
 export const PlanForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
-  const form = useForm<IPlan>({
+  const form = useForm<IPlanForm>({
     resolver: joiResolver(createPlanValidator),
     defaultValues: initialValues ?? {
       name: "",
@@ -42,7 +42,7 @@ export const PlanForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
     },
   });
 
-  const handleSubmit = (data: IPlan) => {
+  const handleSubmit = (data: IPlanForm) => {
     onSubmit(data);
   };
 

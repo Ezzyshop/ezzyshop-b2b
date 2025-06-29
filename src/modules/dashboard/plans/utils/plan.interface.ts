@@ -17,4 +17,7 @@ export interface IPlan {
   status: PlanStatus;
   createdAt: Date;
   updatedAt: Date;
+  __v: number;
 }
+
+export type IPlanForm = Omit<IPlan, "createdAt" | "updatedAt" | "_id" | "__v">;
