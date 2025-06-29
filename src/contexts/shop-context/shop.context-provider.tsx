@@ -16,12 +16,12 @@ export const ShopContextProvider = ({ children }: PropsWithChildren) => {
   );
 
   const shop = useQuery({
-    queryKey: ["shop", activeShop._id],
-    queryFn: () => getByShopByIdQueryFn(activeShop._id),
-    enabled: Boolean(activeShop._id),
+    queryKey: ["shop", activeShop?._id],
+    queryFn: () => getByShopByIdQueryFn(activeShop!._id),
+    enabled: Boolean(activeShop?._id),
   });
 
-  if (!hasUserShop) {
+  if (!hasUserShop || !activeShop) {
     return <Navigate to="/register" />;
   }
 

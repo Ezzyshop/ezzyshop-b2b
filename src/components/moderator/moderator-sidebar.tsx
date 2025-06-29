@@ -23,7 +23,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const location = useLocation();
 
   return (
-    <Sidebar {...props}>
+    <Sidebar variant="floating" collapsible="icon" {...props}>
       <SidebarContent>
         <SidebarHeader className="flex items-center justify-center p-4">
           <img
