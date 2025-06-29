@@ -1,6 +1,6 @@
 import { IUser } from "@/lib/interfaces/user.interface";
 import { api } from "../axios";
-import { IPaginatedResponse } from "../utils/axios.interface";
+import { IPaginatedResponse, IResponse } from "../utils/axios.interface";
 import { TObject } from "@/hooks";
 
 export const getCurrentUser = () =>
@@ -10,3 +10,6 @@ export const getUsersQueryFn = (
   filter: TObject
 ): Promise<IPaginatedResponse<IUser>> =>
   api.get("/users/all", { params: filter }).then((res) => res.data);
+
+export const getUserByIdQueryFn = (id: string): Promise<IResponse<IUser>> =>
+  api.get(`/users/${id}`).then((res) => res.data);

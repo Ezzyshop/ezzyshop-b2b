@@ -21,5 +21,5 @@ export interface IUser {
 
 export type IUserForm = Omit<
   IUser,
-  "createdAt" | "updatedAt" | "_id" | "__v"
+  "createdAt" | "updatedAt" | "_id" | "__v" | "shops"
 > & { confirm_password: string };

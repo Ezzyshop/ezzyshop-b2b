@@ -17,16 +17,16 @@ export const userFields = {
     "string.base": "Phone must be a string",
     "string.max": "Phone must be at most 15 characters long",
   }),
-  password: Joi.string().min(8).max(32).required().messages({
+  password: Joi.string().allow("").min(8).max(32).messages({
     "any.required": "Password is required",
     "string.pattern.base": "Password must be at least 8 characters long",
     "string.min": "Password must be at least 8 characters long",
     "string.max": "Password must be at most 32 characters long",
   }),
   confirm_password: Joi.string()
+    .allow("")
     .min(8)
     .max(32)
-    .required()
     .valid(Joi.ref("password"))
     .messages({
       "any.required": "Confirm password is required",
