@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { InputSelect } from "../ui/input-select";
+import { InputSelect } from "../../ui/input-select";
 import { getUsersQueryFn } from "@/api/queries";
 import { useQueryParams } from "@/hooks";
 import { useMemo } from "react";

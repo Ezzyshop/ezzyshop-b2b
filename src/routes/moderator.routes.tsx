@@ -62,7 +62,7 @@ const CurrencyEditPage = lazy(
   () => import("@/modules/moderator/currencies/pages/currency-edit.page")
 );
 
-export const DashboardRoutes = () => {
+export const ModeratorRoutes = () => {
   return (
     <ModeratorLayout>
       <Routes>

@@ -42,7 +42,7 @@ export default function LoginPage({
     mutationFn: loginMutationFn,
     onSuccess: () => {
       toast.success("Tizimga muvaffaqiyatli kirildi");
-      navigate("/moderator");
+      navigate("/dashboard");
     },
     onError: () => {
       form.resetField("password");

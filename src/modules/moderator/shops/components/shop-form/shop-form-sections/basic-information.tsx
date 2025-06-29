@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/select";
 import { useQueries } from "@tanstack/react-query";
 import { getCurrenciesQueryFn, getPlansQueryFn } from "@/api/queries";
-import { UserSelectField } from "@/components/moderator/user-select-field";
+import { UserSelectField } from "@/components/moderator/forms/user-select-field";
 import { PlanStatus } from "@/modules/moderator/plans/utils/plan.enum";
 
 interface IProps {
