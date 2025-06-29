@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  BadgeCheck,
-  Bell,
-  BotIcon,
-  ChevronsUpDown,
-  CreditCard,
-  LogOut,
-  Sparkles,
-} from "lucide-react";
+import { BotIcon, ChevronsUpDown, LogOut } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -28,10 +20,8 @@ import {
 } from "@/components/ui/sidebar";
 import { useUserContext } from "@/contexts/user-context/user.context";
 import { Link } from "react-router-dom";
-import { cn } from "@/lib";
-import { UserRoles } from "@/lib/enums";
 
-export function NavUser() {
+export const ModeratorSidebarUser = () => {
   const { isMobile } = useSidebar();
   const { user } = useUserContext();
 
@@ -78,49 +68,23 @@ export function NavUser() {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuGroup
-              className={cn(
-                !user.roles.includes(UserRoles.SuperAdmin) && "hidden"
-              )}
-            >
+            <DropdownMenuGroup>
               <DropdownMenuItem asChild>
-                <Link to="/moderator">
+                <Link to="/dashboard">
                   <BotIcon />
-                  Moderator Dashboard
+                  Dashboard
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link to="/logout" className="w-full">
+                  <LogOut />
+                  Log out
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Sparkles />
-                Upgrade to Pro
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <BadgeCheck />
-                Account
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <CreditCard />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Bell />
-                Notifications
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem asChild>
-              <Link to="/logout" className="w-full">
-                <LogOut />
-                Log out
-              </Link>
-            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>
   );
-}
+};
