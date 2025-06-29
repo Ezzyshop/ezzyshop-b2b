@@ -15,3 +15,11 @@ export const LayoutLoader = () => {
     </div>
   );
 };
+
+export const LoaderWithOverlay = () => {
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-background/70 z-50">
+      <Loader2 className="w-10 h-10 animate-spin text-primary" />
+    </div>
+  );
+};

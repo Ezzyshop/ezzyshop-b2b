@@ -10,3 +10,6 @@ export const getAllShopsQueryFn = (
 
 export const getShopQueryFn = (id: string): Promise<IResponse<IShop>> =>
   api.get(`/shops/${id}`).then((res) => res.data);
+
+export const getByShopByIdQueryFn = (id: string): Promise<IResponse<IShop>> =>
+  api.get(`/shops/me/${id}`);

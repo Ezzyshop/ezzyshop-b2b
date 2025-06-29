@@ -12,6 +12,7 @@ export interface IUser {
     {
       _id: string;
       name: string;
+      logo: string | null;
     }
   ];
   createdAt: string;
