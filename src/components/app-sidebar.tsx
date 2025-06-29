@@ -10,9 +10,9 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { LogOutIcon } from "lucide-react";
-import { cn, sidebarData } from "@/lib";
+import { sidebarData } from "@/lib";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useUserContext } from "@/contexts/user-context/user.context";
 import { UserRoles, userRolesTranslations } from "@/lib/enums";
@@ -20,6 +20,7 @@ import { Button } from "./ui/button";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { user } = useUserContext();
+  const location = useLocation();
 
   return (
     <Sidebar {...props}>
@@ -36,14 +37,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton
                 asChild
-                isActive={item.url === location.pathname}
+                isActive={location.pathname.includes(item.url)}
+                className=""
               >
-                <NavLink
-                  to={item.url}
-                  className={({ isActive }) =>
-                    cn("flex items-center gap-2", isActive && "bg-primary")
-                  }
-                >
+                <NavLink to={item.url}>
                   {<item.icon />}
                   {item.title}
                 </NavLink>
