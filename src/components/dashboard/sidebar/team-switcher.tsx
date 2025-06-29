@@ -1,5 +1,3 @@
-"use client";
-
 import { ChevronsUpDown, Plus } from "lucide-react";
 
 import {
@@ -8,7 +6,6 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -44,7 +41,7 @@ export function TeamSwitcher() {
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">{activeShop.name}</span>
-                {/* <span className="truncate text-xs">{activeShop.plan.name}</span> */}
+                <span className="truncate text-xs">{activeShop.plan.name}</span>
               </div>
               <ChevronsUpDown className="ml-auto" />
             </SidebarMenuButton>
@@ -60,7 +57,7 @@ export function TeamSwitcher() {
             </DropdownMenuLabel>
             {user.shops
               .filter((shop) => shop._id !== activeShop._id)
-              .map((shop, index) => (
+              .map((shop) => (
                 <DropdownMenuItem
                   key={shop.name}
                   onClick={() => setActiveShop(shop)}
@@ -75,7 +72,6 @@ export function TeamSwitcher() {
                     </Avatar>
                   </div>
                   {shop.name}
-                  <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
                 </DropdownMenuItem>
               ))}
             <DropdownMenuSeparator />
