@@ -2,6 +2,9 @@ import { ColumnDef } from "@tanstack/react-table";
 import { IUser } from "@/lib/interfaces/user.interface";
 import dayjs from "dayjs";
 import { userRolesTranslations } from "@/lib/enums";
+import { Button } from "@/components/ui/button";
+import { EditIcon } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 export const userColumns: ColumnDef<IUser>[] = [
   {
@@ -57,5 +60,16 @@ export const userColumns: ColumnDef<IUser>[] = [
   {
     header: "Amallar",
     accessorKey: "actions",
+    cell: ({ row }) => {
+      return (
+        <div>
+          <Button variant="outline" size="icon" asChild>
+            <NavLink to={`/dashboard/users/${row.original._id}/edit`}>
+              <EditIcon className="w-4 h-4" />
+            </NavLink>
+          </Button>
+        </div>
+      );
+    },
   },
 ];

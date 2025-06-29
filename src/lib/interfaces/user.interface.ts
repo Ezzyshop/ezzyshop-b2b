@@ -16,4 +16,10 @@ export interface IUser {
   ];
   createdAt: string;
   updatedAt: string;
+  __v: number;
 }
+
+export type IUserForm = Omit<
+  IUser,
+  "createdAt" | "updatedAt" | "_id" | "__v"
+> & { confirm_password: string };
