@@ -9,5 +9,5 @@ export const userRolesTranslations = {
   [UserRoles.SuperAdmin]: "Super Admin",
   [UserRoles.Admin]: "Admin",
   [UserRoles.Staff]: "Staff",
-  [UserRoles.Basic]: "Basic",
+  [UserRoles.Basic]: "Foydalanuvchi",
 };

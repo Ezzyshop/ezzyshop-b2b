@@ -6,6 +6,10 @@ const StatisticsPage = lazy(
   () => import("@/modules/dashboard/statistics/pages/statistics.page.tsx")
 );
 
+const UsersPage = lazy(
+  () => import("@/modules/dashboard/users/pages/users.page.tsx")
+);
+
 const ShopsPage = lazy(
   () => import("@/modules/dashboard/shops/pages/shops.page.tsx")
 );
@@ -55,6 +59,11 @@ export const DashboardRoutes = () => {
     <DashboardLayout>
       <Routes>
         <Route path="/statistics" element={<StatisticsPage />} />
+        <Route path="/users">
+          <Route index element={<UsersPage />} />
+          {/* <Route path="create" element={<UserCreatePage />} /> */}
+          {/* <Route path=":id/edit" element={<UserEditPage />} /> */}
+        </Route>
         <Route path="/shops/">
           <Route index element={<ShopsPage />} />
           <Route path="create" element={<ShopCreatePage />} />

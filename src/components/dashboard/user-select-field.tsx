@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { InputSelect } from "../ui/input-select";
-import { getUsers } from "@/api/queries";
+import { getUsersQueryFn } from "@/api/queries";
 import { useQueryParams } from "@/hooks";
 import { useMemo } from "react";
 import { debounce } from "lodash";
@@ -24,7 +24,7 @@ export const UserSelectField = ({ value, onChange, disabled }: IProps) => {
 
   const { data, isLoading, isFetching } = useQuery({
     queryKey: ["users", filter],
-    queryFn: () => getUsers(filter),
+    queryFn: () => getUsersQueryFn(filter),
   });
 
   const onInputChange = (value: string) => {

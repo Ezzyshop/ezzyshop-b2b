@@ -1,10 +1,20 @@
-import { CreditCardIcon, DollarSignIcon, UsersIcon } from "lucide-react";
+import {
+  BotIcon,
+  CreditCardIcon,
+  DollarSignIcon,
+  UsersIcon,
+} from "lucide-react";
 
 export const sidebarData = [
   {
+    title: "Foydalanuvchilar",
+    url: "/dashboard/users",
+    icon: UsersIcon,
+  },
+  {
     title: "Bizneslar",
     url: "/dashboard/shops",
-    icon: UsersIcon,
+    icon: BotIcon,
   },
   {
     title: "Tariflar",
