@@ -6,30 +6,30 @@ import {
   UsersIcon,
 } from "lucide-react";
 
-export const sidebarData = [
+export const moderatorSidebarData = [
   {
     title: "Asosiy",
-    url: "/dashboard/statistics",
+    url: "/moderator/statistics",
     icon: ChartBarIcon,
   },
   {
     title: "Foydalanuvchilar",
-    url: "/dashboard/users",
+    url: "/moderator/users",
     icon: UsersIcon,
   },
   {
     title: "Bizneslar",
-    url: "/dashboard/shops",
+    url: "/moderator/shops",
     icon: BotIcon,
   },
   {
     title: "Tariflar",
-    url: "/dashboard/plans",
+    url: "/moderator/plans",
     icon: CreditCardIcon,
   },
   {
     title: "Valyutalar",
-    url: "/dashboard/currencies",
+    url: "/moderator/currencies",
     icon: DollarSignIcon,
   },
 ];

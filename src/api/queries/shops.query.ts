@@ -1,5 +1,5 @@
 import { api } from "../axios";
-import { IShop } from "@/modules/dashboard/shops/utils";
+import { IShop } from "@/modules/moderator/shops/utils";
 import { IPaginatedResponse, IResponse } from "../utils/axios.interface";
 import { TObject } from "@/hooks";
 

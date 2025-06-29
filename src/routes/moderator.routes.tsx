@@ -1,0 +1,95 @@
+import { ModeratorLayout } from "@/layouts/moderator.layout";
+import { lazy } from "react";
+import { Route, Routes } from "react-router-dom";
+
+const StatisticsPage = lazy(
+  () => import("@/modules/moderator/statistics/pages/statistics.page")
+);
+
+const UsersPage = lazy(
+  () => import("@/modules/moderator/users/pages/users.page")
+);
+
+const UserCreatePage = lazy(
+  () => import("@/modules/moderator/users/pages/user-create.page")
+);
+
+const UserEditPage = lazy(
+  () => import("@/modules/moderator/users/pages/user-edit.page")
+);
+
+const ShopsPage = lazy(
+  () => import("@/modules/moderator/shops/pages/shops.page")
+);
+
+const ShopCreatePage = lazy(
+  () => import("@/modules/moderator/shops/pages/shop-create.page")
+);
+
+const ShopEditPage = lazy(
+  () => import("@/modules/moderator/shops/pages/shop-edit.page")
+);
+
+const ShopTelegramEditPage = lazy(
+  () => import("@/modules/moderator/shops/pages/shop-telegram-edit.page")
+);
+
+const ShopPlanChangePage = lazy(
+  () => import("@/modules/moderator/shops/pages/shop-plan-change")
+);
+
+const PlansPage = lazy(
+  () => import("@/modules/moderator/plans/pages/plans.page")
+);
+
+const PlanCreatePage = lazy(
+  () => import("@/modules/moderator/plans/pages/plan-create.page")
+);
+
+const PlanEditPage = lazy(
+  () => import("@/modules/moderator/plans/pages/plan-edit.page")
+);
+
+const CurrenciesPage = lazy(
+  () => import("@/modules/moderator/currencies/pages/currencies.page")
+);
+
+const CurrencyCreatePage = lazy(
+  () => import("@/modules/moderator/currencies/pages/currency-create.page")
+);
+
+const CurrencyEditPage = lazy(
+  () => import("@/modules/moderator/currencies/pages/currency-edit.page")
+);
+
+export const DashboardRoutes = () => {
+  return (
+    <ModeratorLayout>
+      <Routes>
+        <Route path="/statistics" element={<StatisticsPage />} />
+        <Route path="/users">
+          <Route index element={<UsersPage />} />
+          <Route path="create" element={<UserCreatePage />} />
+          <Route path=":id/edit" element={<UserEditPage />} />
+        </Route>
+        <Route path="/shops/">
+          <Route index element={<ShopsPage />} />
+          <Route path="create" element={<ShopCreatePage />} />
+          <Route path=":id/edit" element={<ShopEditPage />} />
+          <Route path=":id/telegram" element={<ShopTelegramEditPage />} />
+          <Route path=":id/plan" element={<ShopPlanChangePage />} />
+        </Route>
+        <Route path="/plans/">
+          <Route index element={<PlansPage />} />
+          <Route path="create" element={<PlanCreatePage />} />
+          <Route path=":id/edit" element={<PlanEditPage />} />
+        </Route>
+        <Route path="/currencies">
+          <Route index element={<CurrenciesPage />} />
+          <Route path="create" element={<CurrencyCreatePage />} />
+          <Route path=":id/edit" element={<CurrencyEditPage />} />
+        </Route>
+      </Routes>
+    </ModeratorLayout>
+  );
+};

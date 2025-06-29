@@ -1,4 +1,4 @@
-import { ICreateCurrencyForm } from "@/modules/dashboard/currencies/utils/currency.interface";
+import { ICreateCurrencyForm } from "@/modules/moderator/currencies/utils/currency.interface";
 import { api } from "../axios";
 
 export const createCurrencyMutationFn = (data: ICreateCurrencyForm) =>
