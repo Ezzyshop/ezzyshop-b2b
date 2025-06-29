@@ -1,11 +1,11 @@
 import { getAllShopsQueryFn } from "@/api/queries/shops.query";
 import { useQuery } from "@tanstack/react-query";
-import { ShopsTable } from "../components/shop-table/shops-table";
 import { shopColumns } from "../components/shop-table/shops-table-columns";
 import { Button } from "@/components/ui/button";
 import { NavLink } from "react-router-dom";
 import { ShopTableFilters } from "../components/shop-table/shop-table-filters";
 import { useQueryParams } from "@/hooks";
+import { DataTable } from "@/components/data-table";
 
 export const ShopsPage = () => {
   const { getQueryParams, setQueryParams } = useQueryParams();
@@ -36,7 +36,7 @@ export const ShopsPage = () => {
         getQueryParams={getQueryParams}
       />
       <div>
-        <ShopsTable
+        <DataTable
           columns={shopColumns}
           data={data?.data ?? []}
           isLoading={isLoading}

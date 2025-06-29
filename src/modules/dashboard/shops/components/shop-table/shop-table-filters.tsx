@@ -1,4 +1,4 @@
-import { getCurrencies, getPlans } from "@/api/queries";
+import { getCurrencies, getPlansQueryFn } from "@/api/queries";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -33,7 +33,7 @@ export const ShopTableFilters = ({
       },
       {
         queryKey: ["plans"],
-        queryFn: () => getPlans(),
+        queryFn: () => getPlansQueryFn(),
       },
     ],
   });

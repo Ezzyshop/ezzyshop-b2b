@@ -26,6 +26,10 @@ const ShopPlanChangePage = lazy(
   () => import("@/modules/dashboard/shops/pages/shop-plan-change.tsx")
 );
 
+const PlansPage = lazy(
+  () => import("@/modules/dashboard/plans/pages/plans.page.tsx")
+);
+
 export const DashboardRoutes = () => {
   return (
     <DashboardLayout>
@@ -37,6 +41,9 @@ export const DashboardRoutes = () => {
           <Route path=":id/edit" element={<ShopEditPage />} />
           <Route path=":id/telegram" element={<ShopTelegramEditPage />} />
           <Route path=":id/plan" element={<ShopPlanChangePage />} />
+        </Route>
+        <Route path="/plans/">
+          <Route index element={<PlansPage />} />
         </Route>
       </Routes>
     </DashboardLayout>

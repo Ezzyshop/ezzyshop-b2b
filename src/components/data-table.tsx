@@ -22,11 +22,11 @@ interface IProps<TData, TValue> {
   isLoading?: boolean;
 }
 
-export function ShopsTable<TData, TValue>({
+export const DataTable = <TData, TValue>({
   columns,
   data,
   isLoading = false,
-}: IProps<TData, TValue>) {
+}: IProps<TData, TValue>) => {
   const table = useReactTable({
     data,
     columns,
@@ -103,4 +103,4 @@ export function ShopsTable<TData, TValue>({
       </Table>
     </div>
   );
-}
+};

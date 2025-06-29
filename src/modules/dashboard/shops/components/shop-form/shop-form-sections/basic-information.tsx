@@ -22,7 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useQueries } from "@tanstack/react-query";
-import { getCurrencies, getPlans } from "@/api/queries";
+import { getCurrencies, getPlansQueryFn } from "@/api/queries";
 import { UserSelectField } from "@/components/user-select-field";
 
 interface IProps {
@@ -35,7 +35,7 @@ export const ShopFormBasicInformation = ({ form, isEdit }: IProps) => {
     queries: [
       {
         queryKey: ["plans"],
-        queryFn: () => getPlans(),
+        queryFn: () => getPlansQueryFn(),
       },
       {
         queryKey: ["currencies"],

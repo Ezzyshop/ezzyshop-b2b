@@ -1,4 +1,4 @@
-import { getPlans, getShopQueryFn } from "@/api/queries";
+import { getPlansQueryFn, getShopQueryFn } from "@/api/queries";
 import { LayoutLoader } from "@/components/loaders/global-loader";
 import { useMutation, useQueries } from "@tanstack/react-query";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
@@ -19,7 +19,7 @@ export const ShopPlanChangePage = () => {
       },
       {
         queryKey: ["plans"],
-        queryFn: () => getPlans(),
+        queryFn: () => getPlansQueryFn(),
       },
     ],
   });
