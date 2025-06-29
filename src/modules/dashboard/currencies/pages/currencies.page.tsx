@@ -16,7 +16,7 @@ export const CurrenciesPage = () => {
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Valyutalar</h1>
         <Button asChild>
-          <NavLink to="/dashboard/shops/create">Valyuta qo'shish</NavLink>
+          <NavLink to="/dashboard/currencies/create">Valyuta qo'shish</NavLink>
         </Button>
       </div>
 

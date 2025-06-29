@@ -7,4 +7,10 @@ export interface ICurrency {
   status: CurrencyStatus;
   createdAt: Date;
   updatedAt: Date;
+  __v: number;
 }
+
+export type ICreateCurrencyForm = Omit<
+  ICurrency,
+  "_id" | "createdAt" | "updatedAt" | "__v"
+>;
