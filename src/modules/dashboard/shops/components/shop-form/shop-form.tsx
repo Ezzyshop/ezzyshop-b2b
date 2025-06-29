@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { ShopFormBasicInformation } from "./shop-form-sections/basic-information";
 import { ShopFormTelegramConfiguration } from "./shop-form-sections/telegram-configuration";
 import { ShopFormAddress } from "./shop-form-sections/address";
-import { ShopFormSocialLinks } from "./shop-form-sections/social-links copy";
+import { ShopFormSocialLinks } from "./shop-form-sections/social-links";
 import { cn } from "@/lib";
 
 interface IProps {

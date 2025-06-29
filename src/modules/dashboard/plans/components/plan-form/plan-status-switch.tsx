@@ -22,7 +22,7 @@ export const PlanStatusSwitch = ({ id, status }: IProps) => {
 
   return (
     <Switch
-      className="cursor-pointer data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-red-500"
+      className="cursor-pointer data-[state=checked]:bg-primary data-[state=unchecked]:bg-red-500"
       checked={status === PlanStatus.Active}
       disabled={isPending}
       onCheckedChange={() =>

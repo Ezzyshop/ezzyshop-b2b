@@ -6,6 +6,7 @@ import { ShopPlanForm } from "../components/shop-plan-form/shop-plan-form";
 import { IShopForm } from "../utils";
 import { updateShopPlanMutationFn } from "@/api/mutations";
 import { toast } from "sonner";
+import { PlanStatus } from "../../plans/utils/plan.enum";
 
 export const ShopPlanChangePage = () => {
   const { id } = useParams();
@@ -19,7 +20,7 @@ export const ShopPlanChangePage = () => {
       },
       {
         queryKey: ["plans"],
-        queryFn: () => getPlansQueryFn(),
+        queryFn: () => getPlansQueryFn({ status: PlanStatus.Active }),
       },
     ],
   });

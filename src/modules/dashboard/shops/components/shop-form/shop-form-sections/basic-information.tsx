@@ -24,6 +24,7 @@ import {
 import { useQueries } from "@tanstack/react-query";
 import { getCurrencies, getPlansQueryFn } from "@/api/queries";
 import { UserSelectField } from "@/components/user-select-field";
+import { PlanStatus } from "@/modules/dashboard/plans/utils/plan.enum";
 
 interface IProps {
   form: UseFormReturn<IShopForm>;
@@ -35,7 +36,7 @@ export const ShopFormBasicInformation = ({ form, isEdit }: IProps) => {
     queries: [
       {
         queryKey: ["plans"],
-        queryFn: () => getPlansQueryFn(),
+        queryFn: () => getPlansQueryFn({ status: PlanStatus.Active }),
       },
       {
         queryKey: ["currencies"],
