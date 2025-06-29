@@ -19,7 +19,7 @@ export const plansTableColumns: ColumnDef<IPlan>[] = [
     accessorKey: "price",
     header: "Narxi",
     cell: ({ row }) => {
-      return <div>{row.original.price} so'm</div>;
+      return <div>{row.original.price.toLocaleString()} so'm</div>;
     },
   },
   {
