@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { NavLink } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getPlansQueryFn } from "@/api/queries";
-import { plansTableColumns } from "../components/plans-table/plans-table-column";
+import { plansTableColumns } from "../components/plan-table/plans-table-column";
 import { DataTable } from "@/components/data-table";
 import { IPlan } from "../utils/plan.interface";
 
@@ -16,7 +16,7 @@ export const PlansPage = () => {
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Tariflar</h1>
         <Button asChild>
-          <NavLink to="/dashboard/shops/create">Tarif qo'shish</NavLink>
+          <NavLink to="/dashboard/plans/create">Tarif qo'shish</NavLink>
         </Button>
       </div>
       <div>
