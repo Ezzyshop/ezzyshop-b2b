@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { Button } from "@/components/ui/button";
 import { EditIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { PlanStatusSwitch } from "../plan-form/plan-status-switch";
+import { StatusChangeSwitch } from "@/components/dashboard/forms/change-status-switch";
 
 export const plansTableColumns: ColumnDef<IPlan>[] = [
   {
@@ -67,7 +67,11 @@ export const plansTableColumns: ColumnDef<IPlan>[] = [
     header: "Holati",
     cell: ({ row }) => {
       return (
-        <PlanStatusSwitch id={row.original._id} status={row.original.status} />
+        <StatusChangeSwitch
+          status={row.original.status}
+          url={`/plans/${row.original._id}/status`}
+          invalidateQueryKey={["plans"]}
+        />
       );
     },
   },

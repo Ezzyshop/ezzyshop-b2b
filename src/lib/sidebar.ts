@@ -1,8 +1,8 @@
-import { CreditCardIcon, UsersIcon } from "lucide-react";
+import { CreditCardIcon, DollarSignIcon, UsersIcon } from "lucide-react";
 
 export const sidebarData = [
   {
-    title: "Mijozlar",
+    title: "Bizneslar",
     url: "/dashboard/shops",
     icon: UsersIcon,
   },
@@ -10,5 +10,10 @@ export const sidebarData = [
     title: "Tariflar",
     url: "/dashboard/plans",
     icon: CreditCardIcon,
+  },
+  {
+    title: "Valyutalar",
+    url: "/dashboard/currencies",
+    icon: DollarSignIcon,
   },
 ];

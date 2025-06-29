@@ -13,10 +13,10 @@ import {
 import { NavLink, useLocation } from "react-router-dom";
 import { LogOutIcon } from "lucide-react";
 import { sidebarData } from "@/lib";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useUserContext } from "@/contexts/user-context/user.context";
 import { UserRoles, userRolesTranslations } from "@/lib/enums";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { user } = useUserContext();

@@ -1,4 +1,4 @@
-import { AppSidebar } from "@/components/app-sidebar";
+import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { UserContextProvider } from "@/contexts/user-context/user.context-provider";
 import { PropsWithChildren } from "react";

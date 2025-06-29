@@ -38,6 +38,18 @@ const PlanEditPage = lazy(
   () => import("@/modules/dashboard/plans/pages/plan-edit.page.tsx")
 );
 
+const CurrenciesPage = lazy(
+  () => import("@/modules/dashboard/currencies/pages/currencies.page.tsx")
+);
+
+const CurrencyCreatePage = lazy(
+  () => import("@/modules/dashboard/currencies/pages/currency-create.page.tsx")
+);
+
+const CurrencyEditPage = lazy(
+  () => import("@/modules/dashboard/currencies/pages/currency-edit.page.tsx")
+);
+
 export const DashboardRoutes = () => {
   return (
     <DashboardLayout>
@@ -54,6 +66,11 @@ export const DashboardRoutes = () => {
           <Route index element={<PlansPage />} />
           <Route path="create" element={<PlanCreatePage />} />
           <Route path=":id/edit" element={<PlanEditPage />} />
+        </Route>
+        <Route path="/currencies">
+          <Route index element={<CurrenciesPage />} />
+          <Route path="create" element={<CurrencyCreatePage />} />
+          <Route path=":id/edit" element={<CurrencyEditPage />} />
         </Route>
       </Routes>
     </DashboardLayout>

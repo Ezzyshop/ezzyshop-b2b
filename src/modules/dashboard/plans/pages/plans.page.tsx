@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getPlansQueryFn } from "@/api/queries";
 import { plansTableColumns } from "../components/plan-table/plans-table-column";
-import { DataTable } from "@/components/data-table";
+import { DataTable } from "@/components/dashboard/data-table";
 import { IPlan } from "../utils/plan.interface";
 
 export const PlansPage = () => {
