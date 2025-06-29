@@ -1,11 +1,17 @@
 import {
   BotIcon,
+  ChartBarIcon,
   CreditCardIcon,
   DollarSignIcon,
   UsersIcon,
 } from "lucide-react";
 
 export const sidebarData = [
+  {
+    title: "Asosiy",
+    url: "/dashboard/statistics",
+    icon: ChartBarIcon,
+  },
   {
     title: "Foydalanuvchilar",
     url: "/dashboard/users",
