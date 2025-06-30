@@ -21,6 +21,10 @@ api.interceptors.response.use(
     if (code === ErrorMessages.UnauthorizedError) {
       window.location.href = "/login";
     }
+
+    if (code === ErrorMessages.TokenExpired) {
+      window.location.href = "/logout";
+    }
     return Promise.reject(error);
   }
 );

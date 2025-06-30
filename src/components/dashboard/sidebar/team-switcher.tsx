@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/sidebar";
 import { useShopContext, useUserContext } from "@/contexts";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { Link } from "react-router-dom";
 
 export function TeamSwitcher() {
   const { isMobile } = useSidebar();
@@ -75,11 +76,15 @@ export function TeamSwitcher() {
                 </DropdownMenuItem>
               ))}
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="gap-2 p-2">
-              <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
-                <Plus className="size-4" />
-              </div>
-              <div className="text-muted-foreground font-medium">Add team</div>
+            <DropdownMenuItem className="gap-2 p-2" asChild>
+              <Link to="/register/create-bot">
+                <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
+                  <Plus className="size-4" />
+                </div>
+                <div className="text-muted-foreground font-medium">
+                  Biznes qo'shish
+                </div>
+              </Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { ModeratorRoutes } from "./moderator.routes";
 import { DashboardRoutes } from "./dashboard.routes";
 import { StaticRoutes } from "./static.routes";
+import { RegisterRoutes } from "./register.routes";
 
 const LoginPage = lazy(() => import("@/modules/auth/login/pages/login.page"));
 const LogoutPage = lazy(
@@ -17,6 +18,7 @@ export const IndexRoutes = () => {
       <Route path="/logout" element={<LogoutPage />} />
       <Route path="/moderator/*" element={<ModeratorRoutes />} />
       <Route path="/dashboard/*" element={<DashboardRoutes />} />
+      <Route path="/register/*" element={<RegisterRoutes />} />
       <Route path="*" element={<StaticRoutes />} />
     </Routes>
   );

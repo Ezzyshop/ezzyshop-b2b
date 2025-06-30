@@ -6,10 +6,7 @@ export const shopFields: Record<
   keyof Omit<IShop, "createdAt" | "updatedAt" | "_id">,
   Joi.Schema
 > = {
-  owner: Joi.string().required().messages({
-    "string.empty": "Foydalanuvchini tanlash shart",
-    "any.required": "Foydalanuvchini tanlash shart",
-  }),
+  owner: Joi.string().optional().allow(null),
   name: Joi.string().required().min(3).max(255).messages({
     "string.min": "Nomi kamida 3 ta belgidan iborat bo'lishi kerak",
     "string.max": "Nomi 255 ta belgidan kam bo'lishi kerak",
@@ -28,9 +25,7 @@ export const shopFields: Record<
     .messages({
       "string.empty": "Platforma kiritilishi shart",
     }),
-  plan: Joi.string().required().messages({
-    "string.empty": "Reja kiritilishi shart",
-  }),
+  plan: Joi.string().optional(),
   logo: Joi.string().uri().allow(null).allow("").optional().messages({
     "string.uri": "Logo to'g'ri URL bo'lishi kerak",
   }),
@@ -46,10 +41,7 @@ export const shopFields: Record<
       "string.empty": "Menu nomi kiritilishi shart",
       "any.required": "Menu nomi kiritilishi shart",
     }),
-    menu_url: Joi.string().uri().required().messages({
-      "string.empty": "Menu manzili kiritilishi shart",
-      "any.required": "Menu nomi kiritilishi shart",
-    }),
+    menu_url: Joi.string().uri().optional().allow(null).allow(""),
   }),
   social_links: Joi.object({
     telegram: Joi.string().uri().allow(null).allow("").optional(),
