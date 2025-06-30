@@ -1,39 +1,60 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
-import { BotIcon, Building, PencilIcon } from "lucide-react";
-import { PropsWithChildren, useMemo } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { Building, List, Package, PartyPopper } from "lucide-react";
+import { PropsWithChildren, useMemo, useEffect, useState } from "react";
+import { Navigate, NavLink, useLocation } from "react-router-dom";
 
 const registerSteps = [
   {
     path: "/register/create-shop",
-    title: "Biznes qo'shish",
     icon: <Building className="w-4 h-4 " />,
     progress: 0,
   },
   {
-    path: "/register/create-bot",
-    title: "Bot qo'shish",
-    icon: <BotIcon className="w-4 h-4 " />,
-    progress: 50,
+    path: "/register/create-category",
+    icon: <List className="w-4 h-4 " />,
+    progress: 33,
   },
   {
-    path: "/register/edit-shop",
-    title: "Biznesni tahrirlash",
-    icon: <PencilIcon className="w-4 h-4 " />,
+    path: "/register/create-product",
+    icon: <Package className="w-4 h-4 " />,
+    progress: 66,
+  },
+  {
+    path: "/register/finish",
+    icon: <PartyPopper className="w-4 h-4 " />,
     progress: 100,
   },
 ];
 
 export const RegisterLayout = ({ children }: PropsWithChildren) => {
   const location = useLocation();
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [previousStepIndex, setPreviousStepIndex] = useState(-1);
 
   const activeStepIndex = useMemo(
     () =>
       registerSteps.findIndex((step) => location.pathname.includes(step.path)),
     [location]
   );
+
+  const isMovingForward = activeStepIndex > previousStepIndex;
+
+  useEffect(() => {
+    if (previousStepIndex !== -1 && previousStepIndex !== activeStepIndex) {
+      setIsTransitioning(true);
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+    setPreviousStepIndex(activeStepIndex);
+  }, [activeStepIndex, previousStepIndex]);
+
+  if (activeStepIndex === -1) {
+    return <Navigate to={registerSteps[0].path} />;
+  }
 
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-background">
@@ -67,7 +88,23 @@ export const RegisterLayout = ({ children }: PropsWithChildren) => {
             })}
           </div>
         </CardHeader>
-        <CardContent>{children}</CardContent>
+        <CardContent className="relative overflow-hidden">
+          <div
+            key={location.pathname}
+            className={cn(
+              "transition-all duration-100 ease-in-out",
+              isTransitioning &&
+                isMovingForward &&
+                "translate-x-full opacity-0",
+              isTransitioning &&
+                !isMovingForward &&
+                "-translate-x-full opacity-0",
+              !isTransitioning && "translate-x-0 opacity-100"
+            )}
+          >
+            {children}
+          </div>
+        </CardContent>
       </Card>
     </div>
   );

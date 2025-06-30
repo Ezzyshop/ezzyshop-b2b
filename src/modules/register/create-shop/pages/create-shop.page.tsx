@@ -11,7 +11,7 @@ export const CreateShopPage = () => {
   const { mutateAsync, isPending } = useMutation({
     mutationFn: (data: IShopForm) => createShopMutationFn(data),
     onSuccess: () => {
-      navigate("/register/create-bot");
+      navigate("/register/create-category");
     },
   });
 
