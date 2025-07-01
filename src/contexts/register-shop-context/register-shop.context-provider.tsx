@@ -1,8 +1,9 @@
-import { PropsWithChildren, useCallback, useMemo } from "react";
+import { PropsWithChildren, useCallback, useMemo, useState } from "react";
 import { RegisterShopContext } from "./register-shop.context";
 import { useForm } from "react-hook-form";
 import {
   BusinessType,
+  IShop,
   IShopForm,
   shopCreateSchema,
   ShopPlatform,
@@ -13,11 +14,13 @@ import { useMutation } from "@tanstack/react-query";
 import { createShopMutationFn } from "@/api/mutations";
 import { useNavigate } from "react-router-dom";
 import { RegisterShopLayout } from "@/layouts/register-shop.layout";
+import Confetti from "react-confetti";
 
 export const RegisterShopContextProvider = ({
   children,
 }: PropsWithChildren) => {
   const navigate = useNavigate();
+  const [createdShop, setCreatedShop] = useState<IShop | null>(null);
 
   const form = useForm<IShopForm>({
     defaultValues: {
@@ -42,8 +45,9 @@ export const RegisterShopContextProvider = ({
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: (data: IShopForm) => createShopMutationFn(data),
-    onSuccess: () => {
-      navigate("/register/create-category");
+    onSuccess: (data) => {
+      setCreatedShop(data.data.data as unknown as IShop);
+      navigate("/register/finish");
     },
   });
 
@@ -67,13 +71,21 @@ export const RegisterShopContextProvider = ({
       form,
       handleSubmitForm,
       isPending,
+      createdShop,
     }),
-    [form, handleSubmitForm, isPending]
+    [form, handleSubmitForm, isPending, createdShop]
   );
 
   return (
     <RegisterShopContext.Provider value={value}>
       <RegisterShopLayout>{children}</RegisterShopLayout>
+      {createdShop && (
+        <Confetti
+          className="fixed w-screen h-screen top-0 left-0"
+          width={window.innerWidth}
+          height={window.innerHeight}
+        />
+      )}
     </RegisterShopContext.Provider>
   );
 };

@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
-import { BotIcon, Building, List, Package, PartyPopper } from "lucide-react";
+import { BotIcon, Building, PartyPopper } from "lucide-react";
 import { PropsWithChildren, useMemo, useEffect, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 
@@ -14,17 +14,7 @@ const registerSteps = [
   {
     path: "/register/create-shop",
     icon: <Building className="w-4 h-4 " />,
-    progress: 25,
-  },
-  {
-    path: "/register/create-category",
-    icon: <List className="w-4 h-4 " />,
     progress: 50,
-  },
-  {
-    path: "/register/create-product",
-    icon: <Package className="w-4 h-4 " />,
-    progress: 75,
   },
   {
     path: "/register/finish",

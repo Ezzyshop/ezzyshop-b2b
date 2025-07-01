@@ -1,4 +1,4 @@
-import { IShopForm } from "@/modules/moderator/shops/utils";
+import { IShop, IShopForm } from "@/modules/moderator/shops/utils";
 import { createContext, useContext } from "react";
 import { UseFormReturn } from "react-hook-form";
 
@@ -6,6 +6,7 @@ interface IRegisterShopContext {
   form: UseFormReturn<IShopForm>;
   handleSubmitForm: (data: IShopForm) => void;
   isPending: boolean;
+  createdShop: IShop | null;
 }
 
 export const RegisterShopContext = createContext<IRegisterShopContext | null>(

@@ -77,7 +77,7 @@ export function TeamSwitcher() {
               ))}
             <DropdownMenuSeparator />
             <DropdownMenuItem className="gap-2 p-2" asChild>
-              <Link to="/register/create-shop">
+              <Link to="/register/create-bot">
                 <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
                   <Plus className="size-4" />
                 </div>
