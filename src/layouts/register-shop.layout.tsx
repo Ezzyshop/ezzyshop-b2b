@@ -1,25 +1,30 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
-import { Building, List, Package, PartyPopper } from "lucide-react";
+import { BotIcon, Building, List, Package, PartyPopper } from "lucide-react";
 import { PropsWithChildren, useMemo, useEffect, useState } from "react";
-import { Navigate, NavLink, useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const registerSteps = [
   {
+    path: "/register/create-telegram",
+    icon: <BotIcon className="w-4 h-4 " />,
+    progress: 0,
+  },
+  {
     path: "/register/create-shop",
     icon: <Building className="w-4 h-4 " />,
-    progress: 0,
+    progress: 25,
   },
   {
     path: "/register/create-category",
     icon: <List className="w-4 h-4 " />,
-    progress: 33,
+    progress: 50,
   },
   {
     path: "/register/create-product",
     icon: <Package className="w-4 h-4 " />,
-    progress: 66,
+    progress: 75,
   },
   {
     path: "/register/finish",
@@ -28,7 +33,7 @@ const registerSteps = [
   },
 ];
 
-export const RegisterLayout = ({ children }: PropsWithChildren) => {
+export const RegisterShopLayout = ({ children }: PropsWithChildren) => {
   const location = useLocation();
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [previousStepIndex, setPreviousStepIndex] = useState(-1);
@@ -57,8 +62,8 @@ export const RegisterLayout = ({ children }: PropsWithChildren) => {
   }
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-background">
-      <Card className="max-w-3xl w-full rounded-lg  p-4">
+    <div className="flex h-screen w-screen items-center justify-center bg-background px-5">
+      <Card className="max-w-3xl w-full rounded-lg p-4">
         <CardHeader>
           <div className="flex justify-between items-center gap-2 relative">
             <Progress
@@ -72,8 +77,7 @@ export const RegisterLayout = ({ children }: PropsWithChildren) => {
                   key={step.path}
                   className="relative bg-background rounded-full"
                 >
-                  <NavLink
-                    to={step.path}
+                  <p
                     className={cn(
                       "flex flex-col items-center gap-2 rounded-full p-3 border transition-all duration-300 text-muted-foreground bg-card",
                       isActive && "text-primary border-primary bg-primary/10 ",
@@ -82,16 +86,17 @@ export const RegisterLayout = ({ children }: PropsWithChildren) => {
                     )}
                   >
                     {step.icon}
-                  </NavLink>
+                  </p>
                 </div>
               );
             })}
           </div>
         </CardHeader>
-        <CardContent className="relative overflow-hidden">
+        <CardContent className="relative px-2 overflow-scroll">
           <div
             key={location.pathname}
             className={cn(
+              "max-h-[80vh]",
               "transition-all duration-100 ease-in-out",
               isTransitioning &&
                 isMovingForward &&

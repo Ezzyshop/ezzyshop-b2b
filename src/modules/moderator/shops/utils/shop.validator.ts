@@ -95,5 +95,12 @@ export const shopUpdatePlanSchema = Joi.object({
 });
 
 export const telegramSchema = Joi.object({
-  telegram: shopFields.telegram,
+  token: Joi.string().required().messages({
+    "any.required": "Telegram bot tokeni kiritilishi shart",
+    "string.empty": "Telegram bot tokeni kiritilishi shart",
+  }),
+  menu_text: Joi.string().max(255).required().messages({
+    "string.empty": "Menu nomi kiritilishi shart",
+    "any.required": "Menu nomi kiritilishi shart",
+  }),
 });

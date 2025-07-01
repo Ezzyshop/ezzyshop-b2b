@@ -4,6 +4,7 @@ import { ModeratorRoutes } from "./moderator.routes";
 import { DashboardRoutes } from "./dashboard.routes";
 import { StaticRoutes } from "./static.routes";
 import { RegisterRoutes } from "./register.routes";
+import { YMaps } from "@pbe/react-yandex-maps";
 
 const LoginPage = lazy(() => import("@/modules/auth/login/pages/login.page"));
 const LogoutPage = lazy(
@@ -12,14 +13,23 @@ const LogoutPage = lazy(
 
 export const IndexRoutes = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Navigate to="/dashboard" />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/logout" element={<LogoutPage />} />
-      <Route path="/moderator/*" element={<ModeratorRoutes />} />
-      <Route path="/dashboard/*" element={<DashboardRoutes />} />
-      <Route path="/register/*" element={<RegisterRoutes />} />
-      <Route path="*" element={<StaticRoutes />} />
-    </Routes>
+    <YMaps
+      query={{
+        apikey: import.meta.env.VITE_YANDEX_MAPS_API_KEY,
+        lang: "ru_RU",
+        ns: "use-load-option",
+        load: "Map,Placemark,map.addon.balloon",
+      }}
+    >
+      <Routes>
+        <Route path="/" element={<Navigate to="/dashboard" />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/logout" element={<LogoutPage />} />
+        <Route path="/moderator/*" element={<ModeratorRoutes />} />
+        <Route path="/dashboard/*" element={<DashboardRoutes />} />
+        <Route path="/register/*" element={<RegisterRoutes />} />
+        <Route path="*" element={<StaticRoutes />} />
+      </Routes>
+    </YMaps>
   );
 };

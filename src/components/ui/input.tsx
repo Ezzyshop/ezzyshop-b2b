@@ -52,7 +52,7 @@ function TelegramTokenInput({
       {...props}
       value={value}
       onChange={(e) => setValue(e.target.value)}
-      aria-invalid={data && !data.isValid}
+      aria-invalid={(data && !data.isValid) || props["aria-invalid"]}
       data-success={data && data.isValid}
       disabled={isLoading || props.disabled}
     />
