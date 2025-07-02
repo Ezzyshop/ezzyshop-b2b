@@ -27,7 +27,6 @@ export const ShopForm = ({ initialValue, onSubmit, isLoading }: IProps) => {
       name: undefined,
       business_type: BusinessType.OnlineStore,
       platform: ShopPlatform.Telegram,
-      plan: undefined,
       logo: null,
       status: ShopStatus.Active,
       description: null,

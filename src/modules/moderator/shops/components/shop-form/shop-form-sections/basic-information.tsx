@@ -22,9 +22,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useQueries } from "@tanstack/react-query";
-import { getCurrenciesQueryFn, getPlansQueryFn } from "@/api/queries";
+import { getCurrenciesQueryFn } from "@/api/queries";
 import { UserSelectField } from "@/components/moderator/forms/user-select-field";
-import { PlanStatus } from "@/modules/moderator/plans/utils/plan.enum";
 
 interface IProps {
   form: UseFormReturn<IShopForm>;
@@ -32,12 +31,8 @@ interface IProps {
 }
 
 export const ShopFormBasicInformation = ({ form, isEdit }: IProps) => {
-  const [plans, currencies] = useQueries({
+  const [currencies] = useQueries({
     queries: [
-      {
-        queryKey: ["plans"],
-        queryFn: () => getPlansQueryFn({ status: PlanStatus.Active }),
-      },
       {
         queryKey: ["currencies"],
         queryFn: () => getCurrenciesQueryFn(),
@@ -75,31 +70,6 @@ export const ShopFormBasicInformation = ({ form, isEdit }: IProps) => {
             <FormLabel isRequired>Biznes nomi</FormLabel>
             <FormControl>
               <Input placeholder="Biznes nomini kiriting" {...field} />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-
-      <FormField
-        control={form.control}
-        name="plan"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel isRequired>Tariff</FormLabel>
-            <FormControl>
-              <Select {...field} onValueChange={field.onChange}>
-                <SelectTrigger disabled={isEdit} className="w-full">
-                  <SelectValue placeholder="Tariffni tanlang" />
-                </SelectTrigger>
-                <SelectContent>
-                  {plans.data?.data.map((plan) => (
-                    <SelectItem key={plan._id} value={plan._id}>
-                      {plan.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
             </FormControl>
             <FormMessage />
           </FormItem>

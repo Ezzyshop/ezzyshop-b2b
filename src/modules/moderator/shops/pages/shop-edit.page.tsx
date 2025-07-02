@@ -1,5 +1,5 @@
 import { getShopQueryFn } from "@/api/queries";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { ShopForm } from "../components/shop-form/shop-form";
 import { IShopForm } from "../utils";
@@ -10,6 +10,7 @@ import { LayoutLoader } from "@/components/loaders/global-loader";
 export const ShopEditPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const { data, isLoading } = useQuery({
     queryKey: ["shop", id],
@@ -21,6 +22,7 @@ export const ShopEditPage = () => {
     onSuccess: () => {
       toast.success("Biznes yangilandi");
       navigate("/moderator/shops");
+      queryClient.invalidateQueries({ queryKey: ["shop", id] });
     },
   });
 
@@ -40,7 +42,6 @@ export const ShopEditPage = () => {
     platform: shop.platform,
     owner: shop.owner._id,
     status: shop.status,
-    plan: shop.plan._id,
     logo: shop.logo,
     description: shop.description,
     telegram: {

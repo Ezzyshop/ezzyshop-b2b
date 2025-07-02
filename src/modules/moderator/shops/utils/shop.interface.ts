@@ -50,7 +50,6 @@ export interface IShopForm {
   platform: ShopPlatform;
   status: ShopStatus;
   owner: string;
-  plan: string;
   logo: string | null;
   description: string | null;
   telegram: {

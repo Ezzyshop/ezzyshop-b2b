@@ -70,7 +70,6 @@ export const shopCreateSchema = Joi.object({
   name: shopFields.name,
   business_type: shopFields.business_type,
   platform: shopFields.platform,
-  plan: shopFields.plan,
   logo: shopFields.logo,
   description: shopFields.description,
   telegram: shopFields.telegram,
