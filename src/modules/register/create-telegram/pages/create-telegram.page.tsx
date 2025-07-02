@@ -1,3 +1,4 @@
+import HtmlTranslation from "@/components/ui/html-translation";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -12,12 +13,14 @@ import { IShopForm, telegramSchema } from "@/modules/moderator/shops/utils";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { Info } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 export const CreateTelegramPage = () => {
   const { form: shopForm } = useRegisterShopContext();
   const navigate = useNavigate();
   const initialValue = shopForm.getValues("telegram");
+  const { t } = useTranslation();
 
   const form = useForm<IShopForm["telegram"]>({
     defaultValues: initialValue ?? {
@@ -43,10 +46,14 @@ export const CreateTelegramPage = () => {
           name="token"
           render={({ field }) => (
             <FormItem>
-              <FormLabel isRequired>Telegram Bot Token</FormLabel>
+              <FormLabel isRequired>
+                {t("register.create_telegram.telegram_bot_token")}
+              </FormLabel>
               <FormControl>
                 <TelegramTokenInput
-                  placeholder="Telegram bot tokenini kiriting"
+                  placeholder={t(
+                    "register.create_telegram.telegram_bot_token_placeholder"
+                  )}
                   {...field}
                   value={field.value || ""}
                 />
@@ -60,10 +67,14 @@ export const CreateTelegramPage = () => {
           name="menu_text"
           render={({ field }) => (
             <FormItem>
-              <FormLabel isRequired>Menu nomi</FormLabel>
+              <FormLabel isRequired>
+                {t("register.create_telegram.menu_name")}
+              </FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Menu nomini kiriting"
+                  placeholder={t(
+                    "register.create_telegram.menu_name_placeholder"
+                  )}
                   {...field}
                   value={field.value || ""}
                 />
@@ -75,49 +86,28 @@ export const CreateTelegramPage = () => {
         <div className="col-span-1 md:col-span-2">
           <div className="bg-muted text-muted-foreground text-sm p-4 pl-12 rounded-md relative">
             <Info className="absolute top-4 left-4" />
-            <p className="font-bold">Telegram token olish uchun yo‘riqnoma</p>
+            <p className="font-bold"> {t("register.create_telegram.tips")}</p>
             <p className="grid grid-cols-1">
               <span>
-                1. Telegram qidiruv bo‘limiga{" "}
-                <a
-                  href="https://t.me/botfather"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline"
-                >
-                  @BotFather
-                </a>{" "}
-                deb yozing
+                1.{" "}
+                <HtmlTranslation translationKey="register.create_telegram.tip_1" />
               </span>
               <span>
-                2. <span className="font-bold">/newbot</span> buyrug'i yordamida
-                yangi bot yarating
-              </span>
-              <span>3. Bot nomi va usernameni kiriting</span>
-              <span>
-                4. Javob sifatida{" "}
-                <a
-                  href="https://t.me/botfather"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline"
-                >
-                  @BotFather
-                </a>{" "}
-                sizga token yuboradi:
-              </span>
-              <span className="font-bold">
-                238279964:AAFE6-1ZuCAcEOUPa63XlLxxq9qYU1iYdbs
+                2.{" "}
+                <HtmlTranslation translationKey="register.create_telegram.tip_2" />
               </span>
               <span>
-                5. Tokendan nusxa oling va uni{" "}
-                <span
-                  onClick={() => form.setFocus("token")}
-                  className="text-blue-500 cursor-pointer hover:underline"
-                >
-                  yuqoridagi
-                </span>{" "}
-                maydonga joylashtiring
+                3.{" "}
+                <HtmlTranslation translationKey="register.create_telegram.tip_3" />
+              </span>
+              <span>
+                4.{" "}
+                <HtmlTranslation translationKey="register.create_telegram.tip_4" />
+              </span>
+
+              <span>
+                6.{" "}
+                <HtmlTranslation translationKey="register.create_telegram.tip_5" />
               </span>
             </p>
           </div>
@@ -125,7 +115,7 @@ export const CreateTelegramPage = () => {
 
         <div className="col-span-1 md:col-span-2 flex justify-end">
           <Button type="submit" className="cursor-pointer">
-            Keyingi
+            {t("common.next")}
           </Button>
         </div>
       </form>

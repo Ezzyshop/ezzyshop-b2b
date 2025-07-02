@@ -10,17 +10,21 @@ import { Input } from "@/components/ui/input";
 import { YandexMap } from "@/components/yandex-map/yandex-map";
 import { IShopForm } from "@/modules/moderator/shops/utils";
 import { UseFormReturn } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   form: UseFormReturn<IShopForm>;
 }
 
 export const AddressForm = ({ form }: IProps) => {
+  const { t } = useTranslation();
   return (
     <div className="space-y-2">
-      <h3 className="text-lg font-medium">Manzil</h3>
+      <h3 className="text-lg font-medium">
+        {t("register.create_shop.shop_address")}
+      </h3>
       <p className="text-sm text-muted-foreground">
-        Manzilni kiriting yoki xaritadan tanlang
+        {t("register.create_shop.shop_address_description")}
       </p>
       <Form {...form}>
         <FormField
@@ -28,10 +32,12 @@ export const AddressForm = ({ form }: IProps) => {
           name="address.address"
           render={({ field }) => (
             <FormItem className="col-span-2 mb-4">
-              <FormLabel>To'liq manzil</FormLabel>
+              <FormLabel>{t("register.create_shop.shop_address")}</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Enter address"
+                  placeholder={t(
+                    "register.create_shop.shop_address_placeholder"
+                  )}
                   {...field}
                   value={field.value || ""}
                 />

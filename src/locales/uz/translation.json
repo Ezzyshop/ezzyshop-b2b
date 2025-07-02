@@ -1,0 +1,73 @@
+{
+  "common": {
+    "loading": "Yuklanmoqda...",
+    "error": "Xatolik",
+    "success": "Muvaffaqiyatli",
+    "cancel": "Bekor qilish",
+    "save": "Saqlash",
+    "edit": "Tahrirlash",
+    "delete": "O'chirish",
+    "add": "Qo'shish",
+    "create": "Yaratish",
+    "update": "Yangilash",
+    "search": "Qidirish",
+    "filter": "Filtr",
+    "clear": "Tozalash",
+    "back": "Orqaga",
+    "next": "Keyingi",
+    "previous": "Oldingi",
+    "submit": "Yuborish",
+    "close": "Yopish",
+    "open": "Ochish",
+    "view": "Ko'rish",
+    "download": "Yuklab olish",
+    "upload": "Yuklash",
+    "yes": "Ha",
+    "no": "Yo'q",
+    "confirm": "Tasdiqlash",
+    "welcome": "Xush kelibsiz"
+  },
+  "register": {
+    "create_telegram": {
+      "title": "Telegram bot yaratish",
+      "telegram_bot_token": "Telegram bot token",
+      "telegram_bot_token_placeholder": "Telegram bot tokenni kiriting",
+      "menu_name": "Menu nomi",
+      "menu_name_placeholder": "Menu nomini kiriting",
+      "tips": "Telegram token olish uchun yo'riqnoma",
+      "tip_1": "Telegram qidiruv bo'limiga <a href=\"https://t.me/BotFather\" target=\"_blank\" class=\"text-blue-500 cursor-pointer hover:underline\">@BotFather</a> deb yozing",
+      "tip_2": "<span class=\"font-bold\">/newbot</span> buyrug'i yordamida yangi bot yarating",
+      "tip_3": "Bot nomi va usernameni kiriting",
+      "tip_4": "Javob sifatida <a href=\"https://t.me/BotFather\" class=\"text-blue-500 cursor-pointer hover:underline\" target=\"_blank\">@BotFather</a> sizga token yuboradi: <span class=\"font-bold\">238279964:AAFE6-1ZuCAcEOUPa63XlLxxq9qYU1iYdbs</span>",
+      "tip_5": "Tokendan nusxa oling va uni <span class=\"text-blue-500 cursor-pointer hover:underline\">yuqoridagi</span> maydonga joylashtiring"
+    },
+    "create_shop": {
+      "create_shop": "Kompaniya yaratish",
+      "create_shop_description": "Kompaniya yaratish uchun ma'lumotlarni kiriting",
+      "shop_name": "Kompaniya nomi",
+      "shop_name_placeholder": "Kompaniya nomini kiriting",
+      "shop_description": "Kompaniya haqida",
+      "shop_description_placeholder": "Kompaniya tavsifini kiriting",
+      "shop_address": "Kompaniya manzili",
+      "shop_address_description": "Kompaniya manzilini kiriting yoki xaritadan tanlang",
+      "shop_address_placeholder": "Manzilni kiriting",
+      "currency": "Valyuta",
+      "currency_placeholder": "Valyuta tanlang"
+    },
+    "create_success": {
+      "title": "Kompaniya muvaffaqiyatli yaratildi! 🎉",
+      "description": "Kompaniya muvaffaqiyatli yaratildi va sotuvga tayyor!",
+      "button_text": "Sotuvga o'tish",
+      "about_shop": "Kompaniya haqida",
+      "shop_name": "Kompaniya nomi",
+      "shop_id": "Kompaniya ID",
+      "tips_title": "Maslahatlar",
+      "tips": {
+        "tip_1": "Mahsulot qo'shing",
+        "tip_2": "To'lov usullarini o'rnating",
+        "tip_3": "Yetkazib berish usullarini o'rnating",
+        "tip_4": "Buyurtmalarni qabul qiling"
+      }
+    }
+  }
+}

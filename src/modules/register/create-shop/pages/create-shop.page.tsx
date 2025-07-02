@@ -21,10 +21,12 @@ import { useRegisterShopContext } from "@/contexts";
 import { useQuery } from "@tanstack/react-query";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AddressForm } from "../components/address-form";
+import { useTranslation } from "react-i18next";
 
 export const CreateShopPage = () => {
   const { form, handleSubmitForm, isPending } = useRegisterShopContext();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const currency = useQuery({
     queryKey: ["currency"],
     queryFn: () => getCurrenciesQueryFn(),
@@ -39,9 +41,11 @@ export const CreateShopPage = () => {
 
   return (
     <div className="space-y-2">
-      <h2 className="text-2xl font-bold">Kompaniya yaratish</h2>
+      <h2 className="text-2xl font-bold">
+        {t("register.create_shop.create_shop")}
+      </h2>
       <p className="text-sm text-muted-foreground mb-4">
-        Kompaniya yaratish uchun ma'lumotlarni kiriting
+        {t("register.create_shop.create_shop_description")}
       </p>
       <Form {...form}>
         <form
@@ -53,9 +57,16 @@ export const CreateShopPage = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel isRequired>Kompaniyangiz nomi</FormLabel>
+                <FormLabel isRequired>
+                  {t("register.create_shop.shop_name")}
+                </FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Kompaniya nomini kiriting" />
+                  <Input
+                    {...field}
+                    placeholder={t(
+                      "register.create_shop.shop_name_placeholder"
+                    )}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -67,12 +78,16 @@ export const CreateShopPage = () => {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Kompaniyangiz haqida</FormLabel>
+                <FormLabel>
+                  {t("register.create_shop.shop_description")}
+                </FormLabel>
                 <FormControl>
                   <Textarea
                     {...field}
                     value={field.value || ""}
-                    placeholder="Kompaniya haqida kiriting"
+                    placeholder={t(
+                      "register.create_shop.shop_description_placeholder"
+                    )}
                     rows={4}
                   />
                 </FormControl>
@@ -85,7 +100,9 @@ export const CreateShopPage = () => {
             name="currency"
             render={({ field }) => (
               <FormItem>
-                <FormLabel isRequired>Valyuta</FormLabel>
+                <FormLabel isRequired>
+                  {t("register.create_shop.currency")}
+                </FormLabel>
                 <FormControl>
                   <Select
                     {...field}
@@ -94,7 +111,11 @@ export const CreateShopPage = () => {
                     }}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Valyuta tanlang" />
+                      <SelectValue
+                        placeholder={t(
+                          "register.create_shop.currency_placeholder"
+                        )}
+                      />
                     </SelectTrigger>
                     <SelectContent>
                       {currency?.data?.data?.map((currency) => (
@@ -122,14 +143,14 @@ export const CreateShopPage = () => {
               className="cursor-pointer"
               onClick={() => navigate("/register/create-telegram")}
             >
-              Orqaga
+              {t("common.back")}
             </Button>
             <Button
               type="submit"
               className="cursor-pointer"
               disabled={isPending}
             >
-              Kompaniya yaratish
+              {t("common.create")}
             </Button>
           </div>
         </form>

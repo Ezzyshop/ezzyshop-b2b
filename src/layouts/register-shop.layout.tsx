@@ -1,3 +1,4 @@
+import LanguageSwitcher from "@/components/language-switcher";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
@@ -55,7 +56,10 @@ export const RegisterShopLayout = ({ children }: PropsWithChildren) => {
     <div className="flex h-screen w-screen items-center justify-center bg-background px-5">
       <Card className="max-w-3xl w-full rounded-lg p-4">
         <CardHeader>
-          <div className="flex justify-between items-center gap-2 relative">
+          <div className="flex justify-end">
+            <LanguageSwitcher />
+          </div>
+          <div className="flex flex-grow justify-between items-center gap-2 relative">
             <Progress
               value={registerSteps[activeStepIndex].progress}
               className="w-full absolute left-0 top-1/2 -translate-y-1/2 h-px"
