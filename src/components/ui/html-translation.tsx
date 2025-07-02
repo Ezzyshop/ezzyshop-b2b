@@ -18,7 +18,7 @@ const HtmlTranslation: React.FC<HtmlTranslationProps> = ({
   const translatedText = t(translationKey, values);
 
   return (
-    <p
+    <span
       className={className}
       dangerouslySetInnerHTML={{ __html: translatedText }}
     />

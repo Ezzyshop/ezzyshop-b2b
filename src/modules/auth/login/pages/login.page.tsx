@@ -23,6 +23,7 @@ import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { loginMutationFn } from "@/api/mutations";
 import { joiResolver } from "@hookform/resolvers/joi";
+import { PhoneInput } from "@/components/ui/phone-number-input";
 
 export default function LoginPage({
   className,
@@ -78,10 +79,12 @@ export default function LoginPage({
                   <FormItem>
                     <FormLabel htmlFor="phone">Telefon raqamingiz</FormLabel>
                     <FormControl>
-                      <Input
+                      <PhoneInput
                         id="phone"
                         type="text"
-                        placeholder="09123456789"
+                        defaultCountry="UZ"
+                        countries={["UZ"]}
+                        placeholder="+998 (XX) XXX-XX-XX"
                         {...field}
                       />
                     </FormControl>
