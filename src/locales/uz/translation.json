@@ -80,7 +80,12 @@
   },
   "dashboard": {
     "categories": {
-      "create": "Kategoriya qo'shish"
+      "create": "Kategoriya qo'shish",
+      "created": "Kategoriya muvaffaqiyatli yaratildi",
+      "name": "Kategoriya nomi",
+      "enter_name": "Kategoriya nomini kiriting",
+      "image": "Kategoriya rasmi",
+      "enter_image": "Kategoriya rasmini kiriting"
     }
   },
   "table": {

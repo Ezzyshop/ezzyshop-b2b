@@ -71,9 +71,12 @@ export const CategoryTableFilters = ({
           <SelectValue placeholder={t("table.filters.is_popular")} />
         </SelectTrigger>
         <SelectContent>
-          {Object.values(["true", "false"]).map((status) => (
-            <SelectItem key={status} value={status}>
-              {status
+          {Object.values([true, false]).map((is_popular) => (
+            <SelectItem
+              key={is_popular.toString()}
+              value={is_popular.toString()}
+            >
+              {is_popular
                 ? t("table.columns.popular")
                 : t("table.columns.not_popular")}
             </SelectItem>

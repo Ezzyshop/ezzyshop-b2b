@@ -9,10 +9,20 @@ export interface ICategory {
     en: string;
   };
   image: string;
-  parent: string;
   shop: Pick<IShop, "_id" | "name">;
   status: CategoryStatus;
   is_popular: boolean;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface ICategoryForm {
+  name: {
+    uz: string;
+    ru?: string;
+    en?: string;
+  };
+  image?: string;
+  status?: CategoryStatus;
+  is_popular?: boolean;
 }

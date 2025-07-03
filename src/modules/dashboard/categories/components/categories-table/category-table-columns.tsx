@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { EditIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ChangePopularStatus } from "../category-form/change-popular-status";
 
 export const categoryTableColumns: ColumnDef<ICategory>[] = [
   {
@@ -48,11 +49,11 @@ export const categoryTableColumns: ColumnDef<ICategory>[] = [
     size: 20,
     cell: ({ row }) => {
       return (
-        <div>
-          {row.original.is_popular
-            ? "table.columns.popular"
-            : "table.columns.not_popular"}
-        </div>
+        <ChangePopularStatus
+          is_popular={row.original.is_popular}
+          url={`/categories/${row.original.shop._id}/${row.original._id}/popular`}
+          invalidateQueryKey={["categories"]}
+        />
       );
     },
   },
