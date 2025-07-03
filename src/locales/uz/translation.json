@@ -25,7 +25,9 @@
     "yes": "Ha",
     "no": "Yo'q",
     "confirm": "Tasdiqlash",
-    "welcome": "Xush kelibsiz"
+    "welcome": "Xush kelibsiz",
+    "back_to_site": "Saytga qaytish",
+    "not_found": "Siz noma'lum raqamli dunyoga kirganga o'xshaysiz."
   },
   "register": {
     "create_telegram": {
@@ -68,6 +70,11 @@
         "tip_3": "Yetkazib berish usullarini o'rnating",
         "tip_4": "Buyurtmalarni qabul qiling"
       }
+    }
+  },
+  "sidebar": {
+    "dashboard": {
+      "main_page": "Bosh sahifa"
     }
   }
 }

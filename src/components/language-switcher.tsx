@@ -6,16 +6,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { Globe, ChevronDown } from "lucide-react";
+import { Globe } from "lucide-react";
 import { useLanguage } from "../hooks/use-language";
 import { Language } from "../lib/types/language.types";
 
 const LanguageSwitcher: React.FC = () => {
   const { currentLanguage, changeLanguage, languages } = useLanguage();
-
-  const currentLangInfo = languages.find(
-    (lang) => lang.code === currentLanguage
-  );
 
   const handleLanguageChange = (language: Language) => {
     changeLanguage(language);
@@ -26,10 +22,6 @@ const LanguageSwitcher: React.FC = () => {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm" className="gap-2">
           <Globe className="h-4 w-4" />
-          <span className="hidden sm:inline-block">
-            {currentLangInfo?.nativeName}
-          </span>
-          <ChevronDown className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[120px]">

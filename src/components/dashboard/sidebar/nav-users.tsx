@@ -30,6 +30,7 @@ import { useUserContext } from "@/contexts/user-context/user.context";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib";
 import { UserRoles } from "@/lib/enums";
+import LanguageSwitcher from "@/components/language-switcher";
 
 export function NavUser() {
   const { isMobile } = useSidebar();
@@ -75,6 +76,7 @@ export function NavUser() {
                     {user.phone ?? user.email}
                   </span>
                 </div>
+                <LanguageSwitcher />
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />

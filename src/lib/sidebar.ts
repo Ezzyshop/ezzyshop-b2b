@@ -3,6 +3,7 @@ import {
   ChartBarIcon,
   CreditCardIcon,
   DollarSignIcon,
+  HomeIcon,
   UsersIcon,
 } from "lucide-react";
 
@@ -31,5 +32,13 @@ export const moderatorSidebarData = [
     title: "Valyutalar",
     url: "/moderator/currencies",
     icon: DollarSignIcon,
+  },
+];
+
+export const dashboardSidebarData = [
+  {
+    icon: HomeIcon,
+    title: "sidebar.dashboard.main_page",
+    url: "/dashboard/main",
   },
 ];

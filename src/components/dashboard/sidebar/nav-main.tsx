@@ -5,36 +5,20 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { BookOpen, Bot, Settings2 } from "lucide-react";
-
-const sidebarItems = [
-  {
-    icon: BookOpen,
-    title: "History",
-    url: "#",
-  },
-  {
-    icon: Bot,
-    title: "Starred",
-    url: "#",
-  },
-  {
-    icon: Settings2,
-    title: "Settings",
-    url: "#",
-  },
-];
+import { dashboardSidebarData } from "@/lib";
+import { useTranslation } from "react-i18next";
 
 export function NavMain() {
+  const { t } = useTranslation();
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
       <SidebarMenu>
-        {sidebarItems.map((item) => (
+        {dashboardSidebarData.map((item) => (
           <SidebarMenuItem>
             <SidebarMenuButton tooltip={item.title}>
               {item.icon && <item.icon />}
-              <span>{item.title}</span>
+              <span>{t(item.title)}</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         ))}
