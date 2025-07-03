@@ -22,13 +22,19 @@ import {
 import { CategoryStatus } from "../utils/category.enum";
 
 interface IProps {
+  initialValues?: ICategoryForm;
   onSubmit: (data: ICategoryForm) => void;
+  isLoading: boolean;
 }
 
-export const CategoryForm = ({ onSubmit }: IProps) => {
+export const CategoryForm = ({
+  onSubmit,
+  initialValues,
+  isLoading,
+}: IProps) => {
   const { t } = useTranslation();
   const form = useForm<ICategoryForm>({
-    defaultValues: {
+    defaultValues: initialValues ?? {
       name: {
         uz: "",
       },
@@ -148,7 +154,9 @@ export const CategoryForm = ({ onSubmit }: IProps) => {
         </div>
 
         <div className="flex flex-col gap-2 col-span-2">
-          <Button type="submit">{t("common.save")}</Button>
+          <Button type="submit" disabled={isLoading}>
+            {t("common.save")}
+          </Button>
           <DrawerClose asChild>
             <Button type="button" variant="outline">
               {t("common.cancel")}

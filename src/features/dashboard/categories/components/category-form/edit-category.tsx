@@ -9,54 +9,66 @@ import {
 } from "@/components/ui/drawer";
 import { useTranslation } from "react-i18next";
 import { CategoryForm } from "./category-form";
-import { createCategoryMutationFn } from "@/api/mutations";
+import { updateCategoryMutationFn } from "@/api/mutations";
 import { useShopContext } from "@/contexts";
-import { ICategoryForm } from "../utils/category.interface";
+import { ICategory, ICategoryForm } from "../utils/category.interface";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useState } from "react";
-import { PlusCircle } from "lucide-react";
+import { EditIcon } from "lucide-react";
 
-export const AddCategory = () => {
+interface IProps {
+  category: ICategory;
+}
+
+export const EditCategory = ({ category }: IProps) => {
   const { t } = useTranslation();
   const { shop } = useShopContext();
   const queryClient = useQueryClient();
   const [isOpen, setIsOpen] = useState(false);
 
-  const createCategoryMutation = useMutation({
+  const updateCategoryMutation = useMutation({
     mutationFn: (data: ICategoryForm) =>
-      createCategoryMutationFn(data, shop._id),
+      updateCategoryMutationFn(category._id, data, shop._id),
     onSuccess: () => {
-      toast.success(t("dashboard.categories.created"));
+      toast.success(t("dashboard.categories.updated"));
       queryClient.invalidateQueries({ queryKey: ["categories", shop._id] });
       setIsOpen(false);
     },
   });
 
   const onSubmit = (data: ICategoryForm) => {
-    createCategoryMutation.mutate(data);
+    updateCategoryMutation.mutate(data);
+  };
+
+  const initialValues: ICategoryForm = {
+    name: {
+      uz: category.name.uz,
+      ru: category.name.ru,
+      en: category.name.en,
+    },
+    image: category.image,
+    is_popular: category.is_popular,
   };
 
   return (
     <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
       <DrawerTrigger>
-        <Button className="cursor-pointer">
-          <PlusCircle />{" "}
-          <span className="hidden md:block">
-            {t("dashboard.categories.create")}
-          </span>
+        <Button variant="outline" size="icon">
+          <EditIcon />
         </Button>
       </DrawerTrigger>
       <DrawerContent className="w-full  md:max-w-lg">
         <DrawerHeader>
-          <DrawerTitle>{t("dashboard.categories.create")}</DrawerTitle>
+          <DrawerTitle>{t("dashboard.categories.edit")}</DrawerTitle>
           <DrawerDescription>
-            {t("dashboard.categories.create_description")}
+            {t("dashboard.categories.edit_description")}
           </DrawerDescription>
         </DrawerHeader>
         <CategoryForm
           onSubmit={onSubmit}
-          isLoading={createCategoryMutation.isPending}
+          isLoading={updateCategoryMutation.isPending}
+          initialValues={initialValues}
         />
       </DrawerContent>
     </Drawer>

@@ -1,11 +1,9 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { ICategory } from "../utils/category.interface";
 import { StatusChangeSwitch } from "@/components/moderator/forms/change-status-switch";
-import { Button } from "@/components/ui/button";
-import { EditIcon } from "lucide-react";
-import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ChangePopularStatus } from "../category-form/change-popular-status";
+import { EditCategory } from "../category-form/edit-category";
 
 export const categoryTableColumns: ColumnDef<ICategory>[] = [
   {
@@ -64,11 +62,7 @@ export const categoryTableColumns: ColumnDef<ICategory>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex gap-2 justify-end">
-          <Button asChild variant="outline" size="icon">
-            <Link to={`/categories/${row.original._id}/edit`}>
-              <EditIcon />
-            </Link>
-          </Button>
+          <EditCategory category={row.original} />
         </div>
       );
     },

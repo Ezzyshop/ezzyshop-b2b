@@ -8,3 +8,12 @@ export const createCategoryMutationFn = async (
   const response = await api.post(`/categories/${shopId}`, data);
   return response.data;
 };
+
+export const updateCategoryMutationFn = async (
+  categoryId: string,
+  data: ICategoryForm,
+  shopId: string
+) => {
+  const response = await api.put(`/categories/${shopId}/${categoryId}`, data);
+  return response.data;
+};
