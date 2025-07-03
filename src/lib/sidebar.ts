@@ -4,6 +4,7 @@ import {
   CreditCardIcon,
   DollarSignIcon,
   HomeIcon,
+  ListIcon,
   UsersIcon,
 } from "lucide-react";
 
@@ -40,5 +41,10 @@ export const dashboardSidebarData = [
     icon: HomeIcon,
     title: "sidebar.dashboard.main_page",
     url: "/dashboard/main",
+  },
+  {
+    icon: ListIcon,
+    title: "sidebar.dashboard.categories",
+    url: "/dashboard/categories",
   },
 ];

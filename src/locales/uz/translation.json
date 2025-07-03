@@ -74,7 +74,8 @@
   },
   "sidebar": {
     "dashboard": {
-      "main_page": "Bosh sahifa"
+      "main_page": "Bosh sahifa",
+      "categories": "Kategoriyalar"
     }
   }
 }

@@ -24,6 +24,7 @@ import { useNavigate } from "react-router-dom";
 import { loginMutationFn } from "@/api/mutations";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { PhoneInput } from "@/components/ui/phone-number-input";
+import { dashboardSidebarData } from "@/lib";
 
 export default function LoginPage({
   className,
@@ -43,7 +44,7 @@ export default function LoginPage({
     mutationFn: loginMutationFn,
     onSuccess: () => {
       toast.success("Tizimga muvaffaqiyatli kirildi");
-      navigate("/dashboard");
+      navigate(dashboardSidebarData[0].url);
     },
     onError: () => {
       form.resetField("password");
