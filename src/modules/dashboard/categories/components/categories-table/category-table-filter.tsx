@@ -25,10 +25,10 @@ export const CategoryTableFilters = ({
   const { is_popular, status, search } = getQueryParams();
 
   return (
-    <div className="w-full grid grid-cols-6 gap-2 ">
+    <div className="w-full grid grid-cols-1 md:grid-cols-6 gap-2 ">
       <Input
         placeholder={t("table.filters.search")}
-        className="max-w-[200px]"
+        className="md:max-w-[200px]"
         defaultValue={search as string}
         onChange={debounce(
           ({ target: { value } }) =>

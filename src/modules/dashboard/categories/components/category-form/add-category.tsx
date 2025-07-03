@@ -15,6 +15,7 @@ import { ICategoryForm } from "../utils/category.interface";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useState } from "react";
+import { PlusCircle } from "lucide-react";
 
 export const AddCategory = () => {
   const { t } = useTranslation();
@@ -40,7 +41,10 @@ export const AddCategory = () => {
     <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
       <DrawerTrigger>
         <Button className="cursor-pointer">
-          {t("dashboard.categories.create")}
+          <PlusCircle />{" "}
+          <span className="hidden md:block">
+            {t("dashboard.categories.create")}
+          </span>
         </Button>
       </DrawerTrigger>
       <DrawerContent className="w-full  md:max-w-lg">
