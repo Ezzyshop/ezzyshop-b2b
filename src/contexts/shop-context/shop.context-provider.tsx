@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getByShopByIdQueryFn } from "@/api/queries";
 import { LoaderWithOverlay } from "@/components/loaders/global-loader";
 import { ShopContext } from "./shop.context";
-import { IShop } from "@/modules/moderator/shops/utils";
+import { IShop } from "@/features/moderator/shops/utils";
 import { IUser } from "@/lib/interfaces";
 
 export const ShopContextProvider = ({ children }: PropsWithChildren) => {

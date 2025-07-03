@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { YandexMap } from "@/components/yandex-map/yandex-map";
-import { IShopForm } from "@/modules/moderator/shops/utils";
+import { IShopForm } from "@/features/moderator/shops/utils";
 import { UseFormReturn } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 

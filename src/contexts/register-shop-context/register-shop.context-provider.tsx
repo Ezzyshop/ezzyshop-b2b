@@ -7,7 +7,7 @@ import {
   IShopForm,
   shopCreateSchema,
   ShopPlatform,
-} from "@/modules/moderator/shops/utils";
+} from "@/features/moderator/shops/utils";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";

@@ -2,7 +2,7 @@ import {
   IShop,
   IShopForm,
   IShopUpdateForm,
-} from "@/modules/moderator/shops/utils";
+} from "@/features/moderator/shops/utils";
 import { api } from "../axios";
 
 export const createShopMutationFn = (data: IShopForm) => {

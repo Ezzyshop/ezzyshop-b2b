@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { IShopForm, shopUpdatePlanSchema } from "../../utils";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { IPlan } from "@/modules/moderator/plans/utils/plan.interface";
+import { IPlan } from "@/features/moderator/plans/utils/plan.interface";
 import {
   Form,
   FormControl,

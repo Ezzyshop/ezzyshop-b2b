@@ -5,63 +5,63 @@ import { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 const StatisticsPage = lazy(
-  () => import("@/modules/moderator/statistics/pages/statistics.page")
+  () => import("@/features/moderator/statistics/pages/statistics.page")
 );
 
 const UsersPage = lazy(
-  () => import("@/modules/moderator/users/pages/users.page")
+  () => import("@/features/moderator/users/pages/users.page")
 );
 
 const UserCreatePage = lazy(
-  () => import("@/modules/moderator/users/pages/user-create.page")
+  () => import("@/features/moderator/users/pages/user-create.page")
 );
 
 const UserEditPage = lazy(
-  () => import("@/modules/moderator/users/pages/user-edit.page")
+  () => import("@/features/moderator/users/pages/user-edit.page")
 );
 
 const ShopsPage = lazy(
-  () => import("@/modules/moderator/shops/pages/shops.page")
+  () => import("@/features/moderator/shops/pages/shops.page")
 );
 
 const ShopCreatePage = lazy(
-  () => import("@/modules/moderator/shops/pages/shop-create.page")
+  () => import("@/features/moderator/shops/pages/shop-create.page")
 );
 
 const ShopEditPage = lazy(
-  () => import("@/modules/moderator/shops/pages/shop-edit.page")
+  () => import("@/features/moderator/shops/pages/shop-edit.page")
 );
 
 const ShopTelegramEditPage = lazy(
-  () => import("@/modules/moderator/shops/pages/shop-telegram-edit.page")
+  () => import("@/features/moderator/shops/pages/shop-telegram-edit.page")
 );
 
 const ShopPlanChangePage = lazy(
-  () => import("@/modules/moderator/shops/pages/shop-plan-change")
+  () => import("@/features/moderator/shops/pages/shop-plan-change")
 );
 
 const PlansPage = lazy(
-  () => import("@/modules/moderator/plans/pages/plans.page")
+  () => import("@/features/moderator/plans/pages/plans.page")
 );
 
 const PlanCreatePage = lazy(
-  () => import("@/modules/moderator/plans/pages/plan-create.page")
+  () => import("@/features/moderator/plans/pages/plan-create.page")
 );
 
 const PlanEditPage = lazy(
-  () => import("@/modules/moderator/plans/pages/plan-edit.page")
+  () => import("@/features/moderator/plans/pages/plan-edit.page")
 );
 
 const CurrenciesPage = lazy(
-  () => import("@/modules/moderator/currencies/pages/currencies.page")
+  () => import("@/features/moderator/currencies/pages/currencies.page")
 );
 
 const CurrencyCreatePage = lazy(
-  () => import("@/modules/moderator/currencies/pages/currency-create.page")
+  () => import("@/features/moderator/currencies/pages/currency-create.page")
 );
 
 const CurrencyEditPage = lazy(
-  () => import("@/modules/moderator/currencies/pages/currency-edit.page")
+  () => import("@/features/moderator/currencies/pages/currency-edit.page")
 );
 
 export const ModeratorRoutes = () => {

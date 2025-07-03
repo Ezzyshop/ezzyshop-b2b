@@ -1,4 +1,4 @@
-import { ICategoryForm } from "@/modules/dashboard/categories/components/utils/category.interface";
+import { ICategoryForm } from "@/features/dashboard/categories/components/utils/category.interface";
 import { api } from "../axios";
 
 export const createCategoryMutationFn = async (

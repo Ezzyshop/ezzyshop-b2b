@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/form";
 import { Input, TelegramTokenInput } from "@/components/ui/input";
 import { useRegisterShopContext } from "@/contexts";
-import { IShopForm, telegramSchema } from "@/modules/moderator/shops/utils";
+import { IShopForm, telegramSchema } from "@/features/moderator/shops/utils";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { Info } from "lucide-react";
 import { useForm } from "react-hook-form";

@@ -1,4 +1,4 @@
-import { ICurrency } from "@/modules/moderator/currencies/utils/currency.interface";
+import { ICurrency } from "@/features/moderator/currencies/utils/currency.interface";
 import { api } from "../axios";
 import { IResponse } from "../utils/axios.interface";
 

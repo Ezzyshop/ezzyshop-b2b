@@ -1,4 +1,4 @@
-import { IShop } from "@/modules/moderator/shops/utils";
+import { IShop } from "@/features/moderator/shops/utils";
 import { CategoryStatus } from "./category.enum";
 
 export interface ICategory {

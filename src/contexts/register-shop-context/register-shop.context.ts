@@ -1,4 +1,4 @@
-import { IShop, IShopForm } from "@/modules/moderator/shops/utils";
+import { IShop, IShopForm } from "@/features/moderator/shops/utils";
 import { createContext, useContext } from "react";
 import { UseFormReturn } from "react-hook-form";
 

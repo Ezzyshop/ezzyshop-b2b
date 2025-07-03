@@ -6,9 +6,9 @@ import { StaticRoutes } from "./static.routes";
 import { RegisterRoutes } from "./register.routes";
 import { YMaps } from "@pbe/react-yandex-maps";
 
-const LoginPage = lazy(() => import("@/modules/auth/login/pages/login.page"));
+const LoginPage = lazy(() => import("@/features/auth/login/pages/login.page"));
 const LogoutPage = lazy(
-  () => import("@/modules/auth/logout/pages/logout.page")
+  () => import("@/features/auth/logout/pages/logout.page")
 );
 
 export const IndexRoutes = () => {

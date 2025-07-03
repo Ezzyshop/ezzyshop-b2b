@@ -1,6 +1,6 @@
-import { IPlanForm } from "@/modules/moderator/plans/utils/plan.interface";
+import { IPlanForm } from "@/features/moderator/plans/utils/plan.interface";
 import { api } from "../axios";
-import { PlanStatus } from "@/modules/moderator/plans/utils/plan.enum";
+import { PlanStatus } from "@/features/moderator/plans/utils/plan.enum";
 
 export const createPlanMutationFn = async (data: IPlanForm) =>
   await api.post("/plans", data).then((res) => res.data);

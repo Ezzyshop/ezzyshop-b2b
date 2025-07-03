@@ -1,4 +1,4 @@
-import { IPlan } from "@/modules/moderator/plans/utils/plan.interface";
+import { IPlan } from "@/features/moderator/plans/utils/plan.interface";
 import { api } from "../axios";
 import { IPaginatedResponse, IResponse } from "../utils/axios.interface";
 import { TObject } from "@/hooks";

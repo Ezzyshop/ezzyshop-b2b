@@ -3,15 +3,15 @@ import { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 const CreateShopPage = lazy(
-  () => import("@/modules/register/create-shop/pages/create-shop.page")
+  () => import("@/features/register/create-shop/pages/create-shop.page")
 );
 
 const CreateTelegramPage = lazy(
-  () => import("@/modules/register/create-telegram/pages/create-telegram.page")
+  () => import("@/features/register/create-telegram/pages/create-telegram.page")
 );
 
 const CreateSuccessPage = lazy(
-  () => import("@/modules/register/create-success/pages/create-success.page")
+  () => import("@/features/register/create-success/pages/create-success.page")
 );
 
 export const RegisterRoutes = () => {

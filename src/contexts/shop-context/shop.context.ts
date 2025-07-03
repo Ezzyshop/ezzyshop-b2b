@@ -1,5 +1,5 @@
 import { IUser } from "@/lib/interfaces";
-import { IShop } from "@/modules/moderator/shops/utils";
+import { IShop } from "@/features/moderator/shops/utils";
 import { createContext, useContext } from "react";
 
 interface IShopContext {

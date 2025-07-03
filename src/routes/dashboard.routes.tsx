@@ -1,10 +1,10 @@
 import { DashboardLayout } from "@/layouts/dashboard.layout";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { lazy } from "react";
-import CategoriesPage from "@/modules/dashboard/categories/pages/categories.page";
+import CategoriesPage from "@/features/dashboard/categories/pages/categories.page";
 
 const DashboardMainPage = lazy(
-  () => import("@/modules/dashboard/main/pages/main.page")
+  () => import("@/features/dashboard/main/pages/main.page")
 );
 
 export const DashboardRoutes = () => {

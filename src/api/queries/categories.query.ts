@@ -1,4 +1,4 @@
-import { ICategory } from "@/modules/dashboard/categories/components/utils/category.interface";
+import { ICategory } from "@/features/dashboard/categories/components/utils/category.interface";
 import { api } from "../axios";
 import { IPaginatedResponse } from "../utils/axios.interface";
 import { TObject } from "@/hooks";
