@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/sidebar";
 import { useUserContext } from "@/contexts/user-context/user.context";
 import { Link } from "react-router-dom";
+import { dashboardSidebarData } from "@/lib";
 
 export const ModeratorSidebarUser = () => {
   const { isMobile } = useSidebar();
@@ -70,7 +71,7 @@ export const ModeratorSidebarUser = () => {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem asChild>
-                <Link to="/dashboard">
+                <Link to={dashboardSidebarData[0].url}>
                   <BotIcon />
                   Dashboard
                 </Link>
