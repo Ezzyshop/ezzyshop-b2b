@@ -39,8 +39,8 @@ export const AddCategory = () => {
 
   return (
     <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
-      <DrawerTrigger>
-        <Button className="cursor-pointer">
+      <DrawerTrigger asChild className="cursor-pointer">
+        <Button>
           <PlusCircle />{" "}
           <span className="hidden md:block">
             {t("dashboard.categories.create")}

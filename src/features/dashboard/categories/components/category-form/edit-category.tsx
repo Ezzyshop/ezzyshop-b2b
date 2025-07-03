@@ -53,7 +53,7 @@ export const EditCategory = ({ category }: IProps) => {
 
   return (
     <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
-      <DrawerTrigger>
+      <DrawerTrigger asChild>
         <Button variant="outline" size="icon">
           <EditIcon />
         </Button>

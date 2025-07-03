@@ -28,6 +28,9 @@ export enum ErrorMessages {
   FailedToChangeMenuTextAndUrl = "FAILED_TO_CHANGE_MENU_TEXT_AND_URL",
   FailedToGetMenuTextAndUrl = "FAILED_TO_GET_MENU_TEXT_AND_URL",
   TokenExpired = "TOKEN_EXPIRED",
+
+  CategoryLimitReached = "CATEGORY_LIMIT_REACHED",
+  CategoryNotFound = "CATEGORY_NOT_FOUND",
 }
 
 export const ErrorMessagesMap: Record<ErrorMessages, string> = {
@@ -65,4 +68,7 @@ export const ErrorMessagesMap: Record<ErrorMessages, string> = {
   [ErrorMessages.FailedToGetMenuTextAndUrl]:
     "Menyu matni va URL-ni olishda xatolik",
   [ErrorMessages.TokenExpired]: "Token amal qilish muddati tugagan",
+  [ErrorMessages.CategoryLimitReached]:
+    "Limitingiz tugadi. Iltimos tarifni o'zgartiring",
+  [ErrorMessages.CategoryNotFound]: "Kategoriya topilmadi",
 };
