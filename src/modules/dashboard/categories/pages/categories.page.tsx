@@ -35,7 +35,7 @@ export function CategoriesPage() {
         </h1>
         <Button asChild>
           <NavLink to="/moderator/categories/create">
-            Kategoriya qo'shish
+            {t("dashboard.categories.create")}
           </NavLink>
         </Button>
       </div>

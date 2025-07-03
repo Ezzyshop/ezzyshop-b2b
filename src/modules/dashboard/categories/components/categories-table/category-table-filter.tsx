@@ -10,6 +10,7 @@ import {
 import { TObject } from "@/hooks";
 import { debounce } from "lodash";
 import { CategoryStatus } from "../utils/category.enum";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   setQueryParams: (params: TObject) => void;
@@ -20,12 +21,13 @@ export const CategoryTableFilters = ({
   setQueryParams,
   getQueryParams,
 }: IProps) => {
+  const { t } = useTranslation();
   const { is_popular, status, search } = getQueryParams();
 
   return (
     <div className="w-full grid grid-cols-6 gap-2 ">
       <Input
-        placeholder="Qidirish"
+        placeholder={t("table.filters.search")}
         className="max-w-[200px]"
         defaultValue={search as string}
         onChange={debounce(
@@ -44,7 +46,7 @@ export const CategoryTableFilters = ({
           value={status as string}
           onReset={() => setQueryParams({ ...getQueryParams(), status: "" })}
         >
-          <SelectValue placeholder="Status" />
+          <SelectValue placeholder={t("table.filters.status")} />
         </SelectTrigger>
         <SelectContent>
           {Object.values(CategoryStatus).map((status) => (
@@ -66,12 +68,14 @@ export const CategoryTableFilters = ({
             setQueryParams({ ...getQueryParams(), is_popular: "" })
           }
         >
-          <SelectValue placeholder="Mashxurmi" />
+          <SelectValue placeholder={t("table.filters.is_popular")} />
         </SelectTrigger>
         <SelectContent>
           {Object.values(["true", "false"]).map((status) => (
             <SelectItem key={status} value={status}>
-              {status}
+              {status
+                ? t("table.columns.popular")
+                : t("table.columns.not_popular")}
             </SelectItem>
           ))}
         </SelectContent>

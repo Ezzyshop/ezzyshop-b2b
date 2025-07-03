@@ -25,75 +25,9 @@
     "yes": "Yes",
     "no": "No",
     "confirm": "Confirm",
-    "welcome": "Welcome"
-  },
-  "navigation": {
-    "home": "Home",
-    "products": "Products",
-    "categories": "Categories",
-    "orders": "Orders",
-    "customers": "Customers",
-    "suppliers": "Suppliers",
-    "profile": "Profile",
-    "settings": "Settings",
-    "logout": "Logout",
-    "dashboard": "Dashboard"
-  },
-  "auth": {
-    "login": "Login",
-    "register": "Register",
-    "email": "Email",
-    "password": "Password",
-    "confirmPassword": "Confirm Password",
-    "forgotPassword": "Forgot Password?",
-    "rememberMe": "Remember Me",
-    "signIn": "Sign In",
-    "signUp": "Sign Up",
-    "signOut": "Sign Out",
-    "firstName": "First Name",
-    "lastName": "Last Name",
-    "phone": "Phone Number"
-  },
-  "product": {
-    "title": "Product Title",
-    "description": "Description",
-    "price": "Price",
-    "quantity": "Quantity",
-    "category": "Category",
-    "brand": "Brand",
-    "sku": "SKU",
-    "inStock": "In Stock",
-    "outOfStock": "Out of Stock",
-    "addToCart": "Add to Cart",
-    "buyNow": "Buy Now",
-    "productDetails": "Product Details",
-    "specifications": "Specifications",
-    "reviews": "Reviews",
-    "rating": "Rating"
-  },
-  "order": {
-    "orderNumber": "Order Number",
-    "orderDate": "Order Date",
-    "status": "Status",
-    "total": "Total",
-    "shipping": "Shipping",
-    "billing": "Billing",
-    "pending": "Pending",
-    "processing": "Processing",
-    "shipped": "Shipped",
-    "delivered": "Delivered",
-    "cancelled": "Cancelled",
-    "trackOrder": "Track Order",
-    "orderHistory": "Order History"
-  },
-  "messages": {
-    "loginSuccess": "Login successful",
-    "loginError": "Login failed",
-    "dataUpdated": "Data updated successfully",
-    "dataDeleted": "Data deleted successfully",
-    "invalidCredentials": "Invalid credentials",
-    "networkError": "Network error occurred",
-    "fillRequiredFields": "Please fill all required fields"
+    "welcome": "Welcome",
+    "back_to_site": "Back to Site",
+    "not_found": "You seem to have entered an unknown digital world."
   },
   "register": {
     "create_telegram": {
@@ -102,12 +36,12 @@
       "telegram_bot_token_placeholder": "Enter Telegram bot token",
       "menu_name": "Menu Name",
       "menu_name_placeholder": "Enter menu name",
-      "tips": "Instructions for getting Telegram token",
+      "tips": "Guide to get Telegram token",
       "tip_1": "Type <a href=\"https://t.me/BotFather\" target=\"_blank\" class=\"text-blue-500 cursor-pointer hover:underline\">@BotFather</a> in Telegram search",
-      "tip_2": "Create a new bot using the <span class=\"font-bold\">/newbot</span> command",
+      "tip_2": "Create a new bot using <span class=\"font-bold\">/newbot</span> command",
       "tip_3": "Enter bot name and username",
       "tip_4": "As a response, <a href=\"https://t.me/BotFather\" class=\"text-blue-500 cursor-pointer hover:underline\" target=\"_blank\">@BotFather</a> will send you a token: <span class=\"font-bold\">238279964:AAFE6-1ZuCAcEOUPa63XlLxxq9qYU1iYdbs</span>",
-      "tip_5": "Copy the token and paste it in the <span class=\"text-blue-500 cursor-pointer hover:underline\">field above</span>"
+      "tip_5": "Copy the token and paste it into the <span class=\"text-blue-500 cursor-pointer hover:underline\">field above</span>"
     },
     "create_shop": {
       "create_shop": "Create Company",
@@ -136,6 +70,33 @@
         "tip_3": "Set up delivery methods",
         "tip_4": "Accept orders"
       }
+    }
+  },
+  "sidebar": {
+    "dashboard": {
+      "main_page": "Dashboard",
+      "categories": "Categories"
+    }
+  },
+  "dashboard": {
+    "categories": {
+      "create": "Add Category"
+    }
+  },
+  "table": {
+    "columns": {
+      "image": "Image",
+      "name": "Name",
+      "status": "Status",
+      "is_popular": "Popular",
+      "actions": "Actions",
+      "popular": "Popular",
+      "not_popular": "Not Popular"
+    },
+    "filters": {
+      "search": "Search",
+      "status": "Status",
+      "is_popular": "Popular"
     }
   }
 }

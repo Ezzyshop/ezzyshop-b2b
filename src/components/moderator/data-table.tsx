@@ -15,6 +15,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useTranslation } from "react-i18next";
 
 interface IProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -27,6 +28,7 @@ export const DataTable = <TData, TValue>({
   data,
   isLoading = false,
 }: IProps<TData, TValue>) => {
+  const { t } = useTranslation();
   const table = useReactTable({
     data,
     columns,
@@ -53,7 +55,7 @@ export const DataTable = <TData, TValue>({
                     {header.isPlaceholder
                       ? null
                       : flexRender(
-                          header.column.columnDef.header,
+                          t(header.column.columnDef.header as string),
                           header.getContext()
                         )}
                   </TableHead>

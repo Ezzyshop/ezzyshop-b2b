@@ -8,9 +8,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const categoryTableColumns: ColumnDef<ICategory>[] = [
   {
-    header: "Rasm",
+    header: "table.columns.image",
     accessorKey: "image",
-    size: 10,
+    size: 80,
     cell: ({ row }) => {
       return (
         <Avatar>
@@ -21,7 +21,7 @@ export const categoryTableColumns: ColumnDef<ICategory>[] = [
     },
   },
   {
-    header: "Nomi",
+    header: "table.columns.name",
     accessorKey: "name",
     size: 400,
     cell: ({ row }) => {
@@ -29,7 +29,7 @@ export const categoryTableColumns: ColumnDef<ICategory>[] = [
     },
   },
   {
-    header: "Status",
+    header: "table.columns.status",
     accessorKey: "isActive",
     size: 70,
     cell: ({ row }) => {
@@ -43,15 +43,21 @@ export const categoryTableColumns: ColumnDef<ICategory>[] = [
     },
   },
   {
-    header: "Mashxurmi",
+    header: "table.columns.is_popular",
     accessorKey: "isPopular",
     size: 20,
     cell: ({ row }) => {
-      return <div>{row.original.is_popular ? "Mashxur" : "Mashxur emas"}</div>;
+      return (
+        <div>
+          {row.original.is_popular
+            ? "table.columns.popular"
+            : "table.columns.not_popular"}
+        </div>
+      );
     },
   },
   {
-    header: "Amallar",
+    header: "table.columns.actions",
     accessorKey: "actions",
     size: 70,
     cell: ({ row }) => {

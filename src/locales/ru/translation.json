@@ -19,98 +19,32 @@
     "submit": "Отправить",
     "close": "Закрыть",
     "open": "Открыть",
-    "view": "Просмотр",
+    "view": "Посмотреть",
     "download": "Скачать",
     "upload": "Загрузить",
     "yes": "Да",
     "no": "Нет",
     "confirm": "Подтвердить",
-    "welcome": "Добро пожаловать"
-  },
-  "navigation": {
-    "home": "Главная",
-    "products": "Товары",
-    "categories": "Категории",
-    "orders": "Заказы",
-    "customers": "Клиенты",
-    "suppliers": "Поставщики",
-    "profile": "Профиль",
-    "settings": "Настройки",
-    "logout": "Выйти",
-    "dashboard": "Панель управления"
-  },
-  "auth": {
-    "login": "Войти",
-    "register": "Регистрация",
-    "email": "Электронная почта",
-    "password": "Пароль",
-    "confirmPassword": "Подтвердите пароль",
-    "forgotPassword": "Забыли пароль?",
-    "rememberMe": "Запомнить меня",
-    "signIn": "Войти",
-    "signUp": "Зарегистрироваться",
-    "signOut": "Выйти",
-    "firstName": "Имя",
-    "lastName": "Фамилия",
-    "phone": "Номер телефона"
-  },
-  "product": {
-    "title": "Название товара",
-    "description": "Описание",
-    "price": "Цена",
-    "quantity": "Количество",
-    "category": "Категория",
-    "brand": "Бренд",
-    "sku": "Артикул",
-    "inStock": "В наличии",
-    "outOfStock": "Нет в наличии",
-    "addToCart": "Добавить в корзину",
-    "buyNow": "Купить сейчас",
-    "productDetails": "Детали товара",
-    "specifications": "Характеристики",
-    "reviews": "Отзывы",
-    "rating": "Рейтинг"
-  },
-  "order": {
-    "orderNumber": "Номер заказа",
-    "orderDate": "Дата заказа",
-    "status": "Статус",
-    "total": "Итого",
-    "shipping": "Доставка",
-    "billing": "Биллинг",
-    "pending": "Ожидает",
-    "processing": "Обрабатывается",
-    "shipped": "Отправлен",
-    "delivered": "Доставлен",
-    "cancelled": "Отменен",
-    "trackOrder": "Отследить заказ",
-    "orderHistory": "История заказов"
-  },
-  "messages": {
-    "loginSuccess": "Успешный вход",
-    "loginError": "Ошибка входа",
-    "dataUpdated": "Данные успешно обновлены",
-    "dataDeleted": "Данные успешно удалены",
-    "invalidCredentials": "Неверные учетные данные",
-    "networkError": "Произошла ошибка сети",
-    "fillRequiredFields": "Пожалуйста, заполните все обязательные поля"
+    "welcome": "Добро пожаловать",
+    "back_to_site": "Вернуться на сайт",
+    "not_found": "Кажется, вы попали в неизвестный цифровой мир."
   },
   "register": {
     "create_telegram": {
       "title": "Создание Telegram бота",
-      "telegram_bot_token": "Токен Telegram бота",
+      "telegram_bot_token": "Telegram Bot Token",
       "telegram_bot_token_placeholder": "Введите токен Telegram бота",
       "menu_name": "Название меню",
       "menu_name_placeholder": "Введите название меню",
-      "tips": "Инструкция по получению токена Telegram",
+      "tips": "Руководство по получению токена Telegram",
       "tip_1": "Напишите <a href=\"https://t.me/BotFather\" target=\"_blank\" class=\"text-blue-500 cursor-pointer hover:underline\">@BotFather</a> в поиске Telegram",
       "tip_2": "Создайте нового бота с помощью команды <span class=\"font-bold\">/newbot</span>",
       "tip_3": "Введите имя бота и имя пользователя",
-      "tip_4": "В качестве ответа <a href=\"https://t.me/BotFather\" class=\"text-blue-500 cursor-pointer hover:underline\" target=\"_blank\">@BotFather</a> отправит вам токен: <span class=\"font-bold\">238279964:AAFE6-1ZuCAcEOUPa63XlLxxq9qYU1iYdbs</span>",
+      "tip_4": "В ответ <a href=\"https://t.me/BotFather\" class=\"text-blue-500 cursor-pointer hover:underline\" target=\"_blank\">@BotFather</a> отправит вам токен: <span class=\"font-bold\">238279964:AAFE6-1ZuCAcEOUPa63XlLxxq9qYU1iYdbs</span>",
       "tip_5": "Скопируйте токен и вставьте его в <span class=\"text-blue-500 cursor-pointer hover:underline\">поле выше</span>"
     },
     "create_shop": {
-      "create_shop": "Создание компании",
+      "create_shop": "Создать компанию",
       "create_shop_description": "Введите информацию для создания компании",
       "shop_name": "Название компании",
       "shop_name_placeholder": "Введите название компании",
@@ -124,7 +58,7 @@
     },
     "create_success": {
       "title": "Компания успешно создана! 🎉",
-      "description": "Компания успешно создана и готова к продажам!",
+      "description": "Компания была успешно создана и готова к продажам!",
       "button_text": "Перейти к продажам",
       "about_shop": "О компании",
       "shop_name": "Название компании",
@@ -136,6 +70,33 @@
         "tip_3": "Настройте способы доставки",
         "tip_4": "Принимайте заказы"
       }
+    }
+  },
+  "sidebar": {
+    "dashboard": {
+      "main_page": "Главная страница",
+      "categories": "Категории"
+    }
+  },
+  "dashboard": {
+    "categories": {
+      "create": "Добавить категорию"
+    }
+  },
+  "table": {
+    "columns": {
+      "image": "Изображение",
+      "name": "Название",
+      "status": "Статус",
+      "is_popular": "Популярный",
+      "actions": "Действия",
+      "popular": "Популярный",
+      "not_popular": "Не популярный"
+    },
+    "filters": {
+      "search": "Поиск",
+      "status": "Статус",
+      "is_popular": "Популярный"
     }
   }
 }

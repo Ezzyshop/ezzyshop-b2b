@@ -77,5 +77,26 @@
       "main_page": "Bosh sahifa",
       "categories": "Kategoriyalar"
     }
+  },
+  "dashboard": {
+    "categories": {
+      "create": "Kategoriya qo'shish"
+    }
+  },
+  "table": {
+    "columns": {
+      "image": "Rasm",
+      "name": "Nomi",
+      "status": "Status",
+      "is_popular": "Mashxurmi",
+      "actions": "Amallar",
+      "popular": "Mashxur",
+      "not_popular": "Mashxur emas"
+    },
+    "filters": {
+      "search": "Qidirish",
+      "status": "Status",
+      "is_popular": "Mashxurmi"
+    }
   }
 }
