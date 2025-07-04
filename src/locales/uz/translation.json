@@ -29,7 +29,8 @@
     "back_to_site": "Saytga qaytish",
     "not_found": "Siz noma'lum raqamli dunyoga kirganga o'xshaysiz.",
     "active": "Aktiv",
-    "inactive": "Aktiv emas"
+    "inactive": "Aktiv emas",
+    "server_error": "Server xatosi. Biz bu muammoni hal qilish ustida ishlayapmiz"
   },
   "register": {
     "create_telegram": {
