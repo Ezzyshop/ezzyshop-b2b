@@ -1,6 +1,7 @@
 import { ThemeProviderProps } from "next-themes";
 import { useEffect, useState } from "react";
 import { Theme, ThemeProviderContext } from "./theme.context";
+import { useLocalStorage } from "@/hooks/react-use";
 
 export function ThemeContextProvider({
   children,
@@ -11,6 +12,8 @@ export function ThemeContextProvider({
   const [theme, setTheme] = useState<Theme>(
     () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
   );
+
+  const [themePreset] = useLocalStorage("theme-preset", "default");
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -29,6 +32,10 @@ export function ThemeContextProvider({
 
     root.classList.add(theme);
   }, [theme]);
+
+  useEffect(() => {
+    document.body.dataset.themePreset = themePreset;
+  }, [themePreset]);
 
   const value = {
     theme,

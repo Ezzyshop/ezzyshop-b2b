@@ -1,4 +1,7 @@
 {
+  "theme": {
+    "colors": "Mavzular"
+  },
   "common": {
     "loading": "Yuklanmoqda...",
     "error": "Xatolik",
