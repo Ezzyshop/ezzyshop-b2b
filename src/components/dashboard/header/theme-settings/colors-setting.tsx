@@ -42,21 +42,25 @@ export const ColorsSetting = () => {
   };
 
   return (
-    <>
+    <div>
       <DropdownMenuLabel className="text-sm">
         {t("theme.colors")}
       </DropdownMenuLabel>
       <Select onValueChange={handleChangeTheme} defaultValue={theme}>
         <SelectTrigger className="mt-2">
           <span
-            style={{ background: document.body.dataset.themePreset }}
+            style={{ background: themes.find((t) => t.value === theme)?.color }}
             className="w-2 h-2 rounded-full mr-1"
           />
           <SelectValue placeholder={t("theme.colors")} />
         </SelectTrigger>
         <SelectContent>
           {themes.map((theme) => (
-            <SelectItem key={theme.value} value={theme.value}>
+            <SelectItem
+              key={theme.value}
+              value={theme.value}
+              className="text-sm"
+            >
               <span
                 style={{ background: theme.color }}
                 className="w-2 h-2 rounded-full mr-1"
@@ -66,6 +70,6 @@ export const ColorsSetting = () => {
           ))}
         </SelectContent>
       </Select>
-    </>
+    </div>
   );
 };

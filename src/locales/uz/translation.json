@@ -1,6 +1,7 @@
 {
   "theme": {
-    "colors": "Mavzular"
+    "colors": "Mavzular",
+    "radius": "Radius"
   },
   "common": {
     "loading": "Yuklanmoqda...",

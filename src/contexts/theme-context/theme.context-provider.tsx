@@ -14,6 +14,7 @@ export function ThemeContextProvider({
   );
 
   const [themePreset] = useLocalStorage("theme-preset", "default");
+  const [radius] = useLocalStorage("radius", "0.5rem");
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -36,6 +37,10 @@ export function ThemeContextProvider({
   useEffect(() => {
     document.body.dataset.themePreset = themePreset;
   }, [themePreset]);
+
+  useEffect(() => {
+    document.body.style.setProperty("--radius", radius);
+  }, [radius]);
 
   const value = {
     theme,
