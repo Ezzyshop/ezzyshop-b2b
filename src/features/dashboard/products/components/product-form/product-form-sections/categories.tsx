@@ -1,40 +1,40 @@
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { IProductForm } from "../../../utils/product.interface";
 import { UseFormReturn } from "react-hook-form";
-import { Plus, Trash2 } from "lucide-react";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { useQuery } from "@tanstack/react-query";
+import { getCategoriesQueryFn } from "@/api/queries";
+import { useShopContext } from "@/contexts";
+import { MultiSelect } from "@/components/ui/multi-select";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   form: UseFormReturn<IProductForm, unknown, IProductForm>;
 }
 
 export const ProductFormCategories = ({ form }: IProps) => {
-  const [newCategoryId, setNewCategoryId] = useState("");
+  const { shop } = useShopContext();
+  const { i18n } = useTranslation();
 
-  const categories = form.watch("categories") ?? [];
+  const { data, isLoading } = useQuery({
+    queryKey: ["categories", shop?._id],
+    queryFn: () => getCategoriesQueryFn(shop?._id),
+    enabled: !!shop?._id,
+  });
 
-  const addCategory = () => {
-    if (newCategoryId.trim()) {
-      const currentCategories = form.getValues("categories") || [];
-      if (!currentCategories.includes(newCategoryId.trim())) {
-        form.setValue("categories", [
-          ...currentCategories,
-          newCategoryId.trim(),
-        ]);
-        setNewCategoryId("");
-      }
-    }
+  const addCategory = (values: string[]) => {
+    form.setValue("categories", values);
   };
 
-  const removeCategory = (index: number) => {
-    const currentCategories = form.getValues("categories") || [];
-    form.setValue(
-      "categories",
-      currentCategories.filter((_, i) => i !== index)
-    );
-  };
+  if (isLoading || !data?.data) {
+    return null;
+  }
+
+  const categoriesOptions = data?.data.map((category) => ({
+    label: category.name[i18n.language as keyof typeof category.name],
+    value: category._id,
+  }));
+
+  const categories = form.watch("categories");
 
   return (
     <Card className="p-3 gap-2">
@@ -42,43 +42,12 @@ export const ProductFormCategories = ({ form }: IProps) => {
 
       <div className="space-y-4">
         <div className="flex gap-2">
-          <Input
-            value={newCategoryId}
-            onChange={(e) => setNewCategoryId(e.target.value)}
-            placeholder="Enter category ID (24 characters)"
-            maxLength={24}
-            className="flex-1"
+          <MultiSelect
+            options={categoriesOptions ?? []}
+            onValueChange={addCategory}
+            defaultValue={categories}
           />
-          <Button
-            type="button"
-            onClick={addCategory}
-            disabled={!newCategoryId.trim() || newCategoryId.length !== 24}
-          >
-            <Plus className="w-4 h-4 mr-2" />
-            Add Category
-          </Button>
         </div>
-
-        {categories.length > 0 && (
-          <div className="space-y-2">
-            {categories.map((categoryId, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-2 p-2 border rounded"
-              >
-                <span className="flex-1 text-sm font-mono">{categoryId}</span>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  onClick={() => removeCategory(index)}
-                >
-                  <Trash2 className="w-4 h-4" />
-                </Button>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </Card>
   );
