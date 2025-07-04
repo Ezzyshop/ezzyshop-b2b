@@ -32,7 +32,8 @@
     "inactive": "Aktiv emas",
     "server_error": "Server xatosi. Biz bu muammoni hal qilish ustida ishlayapmiz",
     "select_all": "Barchasini tanlash",
-    "no_results_found": "Natijalar topilmadi"
+    "no_results_found": "Natijalar topilmadi",
+    "quantity_suffix": "ta"
   },
   "register": {
     "create_telegram": {
@@ -128,7 +129,8 @@
       "popular": "Mashxur",
       "not_popular": "Mashxur emas",
       "price": "Narxi",
-      "created_at": "Yaratilgan vaqt"
+      "created_at": "Yaratilgan vaqt",
+      "product_count": "Mahsulot soni"
     },
     "filters": {
       "search": "Qidirish",

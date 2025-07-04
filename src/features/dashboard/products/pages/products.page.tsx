@@ -38,7 +38,7 @@ export const ProductsPage = () => {
           getQueryParams={getQueryParams}
         />
         <DataTable
-          columns={productTableColumns}
+          columns={productTableColumns(shop)}
           data={data?.data || []}
           isLoading={isLoading}
         />

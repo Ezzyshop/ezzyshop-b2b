@@ -40,7 +40,7 @@ export function CategoriesPage() {
           getQueryParams={getQueryParams}
         />
         <DataTable
-          columns={categoryTableColumns}
+          columns={categoryTableColumns(t)}
           data={data?.data || []}
           isLoading={isLoading}
         />

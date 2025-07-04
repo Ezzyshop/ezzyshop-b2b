@@ -3,8 +3,9 @@ import { IProduct } from "../../utils/product.interface";
 import { StatusChangeSwitch } from "@/components/moderator/forms/change-status-switch";
 import dayjs from "dayjs";
 import { EditProductButton } from "../product-form/edit-product";
+import { IShop } from "@/features/moderator/shops/utils";
 
-export const productTableColumns: ColumnDef<IProduct>[] = [
+export const productTableColumns = (shop: IShop): ColumnDef<IProduct>[] => [
   {
     header: "table.columns.image",
     cell: ({ row }) => {
@@ -26,7 +27,11 @@ export const productTableColumns: ColumnDef<IProduct>[] = [
   {
     header: "table.columns.price",
     cell: ({ row }) => {
-      return <div>{row.original.price.toLocaleString()}</div>;
+      return (
+        <div>
+          {row.original.price.toLocaleString()} {shop.currency.symbol}
+        </div>
+      );
     },
     accessorKey: "price",
   },

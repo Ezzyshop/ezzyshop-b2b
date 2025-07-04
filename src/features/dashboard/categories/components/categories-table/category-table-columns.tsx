@@ -4,12 +4,12 @@ import { StatusChangeSwitch } from "@/components/moderator/forms/change-status-s
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ChangePopularStatus } from "../category-form/change-popular-status";
 import { EditCategory } from "../category-form/edit-category";
+import { TFunction } from "i18next";
 
-export const categoryTableColumns: ColumnDef<ICategory>[] = [
+export const categoryTableColumns = (t: TFunction): ColumnDef<ICategory>[] => [
   {
     header: "table.columns.image",
     accessorKey: "image",
-    size: 80,
     cell: ({ row }) => {
       return (
         <Avatar>
@@ -22,15 +22,24 @@ export const categoryTableColumns: ColumnDef<ICategory>[] = [
   {
     header: "table.columns.name",
     accessorKey: "name",
-    size: 400,
     cell: ({ row }) => {
       return <div>{row.original.name.uz}</div>;
     },
   },
   {
+    header: "table.columns.product_count",
+    accessorKey: "product_count",
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.product_count} {t("common.quantity_suffix")}
+        </div>
+      );
+    },
+  },
+  {
     header: "table.columns.status",
     accessorKey: "isActive",
-    size: 70,
     cell: ({ row }) => {
       return (
         <StatusChangeSwitch
@@ -44,7 +53,6 @@ export const categoryTableColumns: ColumnDef<ICategory>[] = [
   {
     header: "table.columns.is_popular",
     accessorKey: "isPopular",
-    size: 20,
     cell: ({ row }) => {
       return (
         <ChangePopularStatus
@@ -58,13 +66,8 @@ export const categoryTableColumns: ColumnDef<ICategory>[] = [
   {
     header: "table.columns.actions",
     accessorKey: "actions",
-    size: 70,
     cell: ({ row }) => {
-      return (
-        <div className="flex gap-2 justify-end">
-          <EditCategory category={row.original} />
-        </div>
-      );
+      return <EditCategory category={row.original} />;
     },
   },
 ];
