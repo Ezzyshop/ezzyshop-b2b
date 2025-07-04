@@ -1,3 +1,4 @@
+import { Header } from "@/components/dashboard/header/header";
 import { DashboardSidebar } from "@/components/dashboard/sidebar/dashboard-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { ShopContextProvider } from "@/contexts";
@@ -10,7 +11,10 @@ export const DashboardLayout = ({ children }: PropsWithChildren) => {
       <ShopContextProvider>
         <SidebarProvider>
           <DashboardSidebar />
-          <div className="flex-1 p-4 md:w-[80vw]">{children}</div>
+          <div className="flex flex-col flex-1">
+            <Header />
+            <div className="flex-1 p-4 md:w-[82vw]">{children}</div>
+          </div>
         </SidebarProvider>
       </ShopContextProvider>
     </UserContextProvider>

@@ -1,16 +1,15 @@
-import React from "react";
-import { Button } from "./ui/button";
+import { Globe } from "lucide-react";
+import { useLanguage } from "@/hooks/use-language";
+import { Language } from "@/lib/types/language.types";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
-import { Globe } from "lucide-react";
-import { useLanguage } from "../hooks/use-language";
-import { Language } from "../lib/types/language.types";
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
-const LanguageSwitcher: React.FC = () => {
+export const LanguageSwitcher: React.FC = () => {
   const { currentLanguage, changeLanguage, languages } = useLanguage();
 
   const handleLanguageChange = (language: Language) => {
@@ -20,7 +19,7 @@ const LanguageSwitcher: React.FC = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="gap-2">
+        <Button variant="outline" size="icon" className=" cursor-pointer">
           <Globe className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
@@ -47,5 +46,3 @@ const LanguageSwitcher: React.FC = () => {
     </DropdownMenu>
   );
 };
-
-export default LanguageSwitcher;

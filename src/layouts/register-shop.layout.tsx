@@ -1,4 +1,4 @@
-import LanguageSwitcher from "@/components/language-switcher";
+import { LanguageSwitcher } from "@/components/dashboard/header/language-switcher";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
