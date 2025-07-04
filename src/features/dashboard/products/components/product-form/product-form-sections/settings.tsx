@@ -9,6 +9,7 @@ import {
 import { UseFormReturn } from "react-hook-form";
 import { IProductForm } from "../../../utils/product.interface";
 import { Switch } from "@/components/ui/switch";
+import { ProductStatus } from "../../../utils/product.enum";
 
 interface IProps {
   form: UseFormReturn<IProductForm, unknown, IProductForm>;
@@ -21,7 +22,7 @@ export const ProductFormSettings = ({ form }: IProps) => {
 
       <FormField
         control={form.control}
-        name="isActive"
+        name="status"
         render={({ field }) => (
           <FormItem className="flex items-center justify-between">
             <div className="space-y-0.5">
@@ -31,7 +32,14 @@ export const ProductFormSettings = ({ form }: IProps) => {
               </div>
             </div>
             <FormControl>
-              <Switch checked={field.value} onCheckedChange={field.onChange} />
+              <Switch
+                checked={field.value === ProductStatus.ACTIVE}
+                onCheckedChange={(checked) =>
+                  field.onChange(
+                    checked ? ProductStatus.ACTIVE : ProductStatus.INACTIVE
+                  )
+                }
+              />
             </FormControl>
             <FormMessage />
           </FormItem>

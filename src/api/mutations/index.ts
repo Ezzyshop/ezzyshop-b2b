@@ -4,3 +4,4 @@ export * from "./plans.mutation";
 export * from "./users.mutation";
 export * from "./currencies.mutation";
 export * from "./categories.mutation";
+export * from "./products.mutation";

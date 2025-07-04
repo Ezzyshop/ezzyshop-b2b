@@ -1,3 +1,5 @@
+import { ProductStatus } from "./product.enum";
+
 export interface IProductForm {
   name: {
     uz: string;
@@ -16,5 +18,33 @@ export interface IProductForm {
     quantity: number;
     image?: string;
   }[];
-  isActive: boolean;
+  status: ProductStatus;
+}
+
+export interface IProduct {
+  _id: string;
+  name: {
+    uz: string;
+    en?: string;
+    ru?: string;
+  };
+  description?: string;
+  price: number;
+  compare_at_price?: number | null;
+  images?: string[];
+  categories?: string[];
+  variants?: {
+    sku: string;
+    attributes: Record<string, string>;
+    price: number;
+    quantity: number;
+    image?: string;
+  }[];
+  status: ProductStatus;
+  shop: {
+    _id: string;
+    name: string;
+  };
+  createdAt: string;
+  updatedAt: string;
 }

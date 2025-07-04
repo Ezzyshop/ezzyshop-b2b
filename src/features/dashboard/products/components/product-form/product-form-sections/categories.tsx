@@ -1,10 +1,10 @@
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Button } from "@pbe/react-yandex-maps";
 import { IProductForm } from "../../../utils/product.interface";
 import { UseFormReturn } from "react-hook-form";
 import { Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 interface IProps {
   form: UseFormReturn<IProductForm, unknown, IProductForm>;
