@@ -1,4 +1,5 @@
 import Joi from "joi";
+import { ProductStatus } from "./product.enum";
 
 export const createProductSchema = Joi.object({
   // 🔤 Localized name
@@ -30,6 +31,7 @@ export const createProductSchema = Joi.object({
   variants: Joi.array()
     .items(
       Joi.object({
+        _id: Joi.string().optional(),
         sku: Joi.string().max(64).required(),
         attributes: Joi.object()
           .pattern(Joi.string(), Joi.string().max(50))
@@ -41,5 +43,5 @@ export const createProductSchema = Joi.object({
     )
     .optional(),
 
-  isActive: Joi.boolean().default(true),
+  status: Joi.string().valid(ProductStatus.ACTIVE, ProductStatus.INACTIVE),
 });

@@ -10,15 +10,19 @@ import { UseFormReturn } from "react-hook-form";
 import { IProductForm } from "../../../utils/product.interface";
 import { Switch } from "@/components/ui/switch";
 import { ProductStatus } from "../../../utils/product.enum";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   form: UseFormReturn<IProductForm, unknown, IProductForm>;
 }
 
 export const ProductFormSettings = ({ form }: IProps) => {
+  const { t } = useTranslation();
   return (
     <Card className="p-3 gap-2">
-      <h3 className="text-lg font-semibold mb-2">Settings</h3>
+      <h3 className="text-lg font-semibold mb-2">
+        {t("dashboard.products.settings")}
+      </h3>
 
       <FormField
         control={form.control}
@@ -26,9 +30,9 @@ export const ProductFormSettings = ({ form }: IProps) => {
         render={({ field }) => (
           <FormItem className="flex items-center justify-between">
             <div className="space-y-0.5">
-              <FormLabel>Product Status</FormLabel>
+              <FormLabel>{t("dashboard.products.status")}</FormLabel>
               <div className="text-sm text-muted-foreground">
-                Enable or disable this product
+                {t("dashboard.products.status_description")}
               </div>
             </div>
             <FormControl>

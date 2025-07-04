@@ -6,7 +6,7 @@ import { EditProductButton } from "../product-form/edit-product";
 
 export const productTableColumns: ColumnDef<IProduct>[] = [
   {
-    header: "Rasm",
+    header: "table.columns.image",
     cell: ({ row }) => {
       return (
         <img
@@ -18,20 +18,20 @@ export const productTableColumns: ColumnDef<IProduct>[] = [
     },
   },
   {
-    header: "Nomi",
+    header: "table.columns.name",
     cell: ({ row }) => {
       return <div>{row.original.name.uz}</div>;
     },
   },
   {
-    header: "Narxi",
+    header: "table.columns.price",
     cell: ({ row }) => {
       return <div>{row.original.price.toLocaleString()}</div>;
     },
     accessorKey: "price",
   },
   {
-    header: "Status",
+    header: "table.columns.status",
     cell: ({ row }) => {
       return (
         <StatusChangeSwitch
@@ -43,13 +43,13 @@ export const productTableColumns: ColumnDef<IProduct>[] = [
     },
   },
   {
-    header: "Yaratilingan vaqt",
+    header: "table.columns.created_at",
     cell: ({ row }) => {
       return <div>{dayjs(row.original.createdAt).format("DD.MM.YYYY")}</div>;
     },
   },
   {
-    header: "Amallar",
+    header: "table.columns.actions",
     cell: ({ row }) => {
       return <EditProductButton productId={row.original._id} />;
     },

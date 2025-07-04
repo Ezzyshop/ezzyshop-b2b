@@ -9,15 +9,19 @@ import {
 import { Input } from "@/components/ui/input";
 import { IProductForm } from "../../../utils/product.interface";
 import { UseFormReturn } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   form: UseFormReturn<IProductForm, unknown, IProductForm>;
 }
 
 export const ProductFormPricingInformation = ({ form }: IProps) => {
+  const { t } = useTranslation();
   return (
     <Card className="p-3 gap-2">
-      <h3 className="text-lg font-semibold mb-2">Pricing</h3>
+      <h3 className="text-lg font-semibold mb-2">
+        {t("dashboard.products.pricing")}
+      </h3>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <FormField
@@ -25,7 +29,9 @@ export const ProductFormPricingInformation = ({ form }: IProps) => {
           name="price"
           render={({ field }) => (
             <FormItem>
-              <FormLabel isRequired>Price</FormLabel>
+              <FormLabel isRequired>
+                {t("dashboard.products.price")}
+              </FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -48,7 +54,7 @@ export const ProductFormPricingInformation = ({ form }: IProps) => {
           name="compare_at_price"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Compare At Price</FormLabel>
+              <FormLabel>{t("dashboard.products.compare_at_price")}</FormLabel>
               <FormControl>
                 <Input
                   {...field}

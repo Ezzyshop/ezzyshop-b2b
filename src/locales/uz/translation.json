@@ -27,7 +27,9 @@
     "confirm": "Tasdiqlash",
     "welcome": "Xush kelibsiz",
     "back_to_site": "Saytga qaytish",
-    "not_found": "Siz noma'lum raqamli dunyoga kirganga o'xshaysiz."
+    "not_found": "Siz noma'lum raqamli dunyoga kirganga o'xshaysiz.",
+    "active": "Aktiv",
+    "inactive": "Aktiv emas"
   },
   "register": {
     "create_telegram": {
@@ -98,7 +100,19 @@
       "updated": "Mahsulot muvaffaqiyatli yangilandi",
       "create_description": "Yangi mahsulot yaratish uchun quyidagi formadan foydalaning",
       "edit": "Mahsulot tahrirlash",
-      "edit_description": "Mahsulot ma'lumotlarini o'zgartirish uchun quyidagi formadan foydalaning"
+      "edit_description": "Mahsulot ma'lumotlarini o'zgartirish uchun quyidagi formadan foydalaning",
+      "basic_information": "Asosiy ma'lumotlar",
+      "name": "Mahsulot nomi",
+      "enter_name": "Mahsulot nomini kiriting",
+      "description": "Mahsulot tavsifi",
+      "enter_description": "Mahsulot tavsifini kiriting",
+      "price": "Mahsulot narxi",
+      "enter_price": "Mahsulot narxi kiriting",
+      "compare_at_price": "Mahsulot narxi",
+      "images": "Rasm",
+      "settings": "Sozlamalar",
+      "status": "Mahsulot statusi",
+      "status_description": "Mahsulot statusini o'zgartirish"
     }
   },
   "table": {
@@ -109,7 +123,9 @@
       "is_popular": "Mashxurmi",
       "actions": "Amallar",
       "popular": "Mashxur",
-      "not_popular": "Mashxur emas"
+      "not_popular": "Mashxur emas",
+      "price": "Narxi",
+      "created_at": "Yaratilgan vaqt"
     },
     "filters": {
       "search": "Qidirish",

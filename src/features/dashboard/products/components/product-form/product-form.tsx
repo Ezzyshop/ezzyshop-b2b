@@ -10,6 +10,7 @@ import { ProductFormCategories } from "./product-form-sections/categories";
 import { createProductSchema } from "../../utils/product.validator";
 import { ProductFormVariants } from "./product-form-sections/variants/variants";
 import { ProductFormSettings } from "./product-form-sections/settings";
+import { ProductStatus } from "../../utils/product.enum";
 
 interface IProps {
   onSubmit: (data: IProductForm) => void;
@@ -32,7 +33,7 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
       images: [],
       categories: [],
       variants: [],
-      isActive: true,
+      status: ProductStatus.ACTIVE,
     },
   });
 
@@ -53,6 +54,8 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
 
     onSubmit(cleanData);
   };
+
+  console.log(form.formState.errors);
 
   return (
     <Form {...form}>

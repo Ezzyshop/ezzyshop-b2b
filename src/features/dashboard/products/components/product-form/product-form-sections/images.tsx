@@ -5,6 +5,7 @@ import { IProductForm } from "../../../utils/product.interface";
 import { UseFormReturn } from "react-hook-form";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   form: UseFormReturn<IProductForm, unknown, IProductForm>;
@@ -12,6 +13,7 @@ interface IProps {
 
 export const ProductFormImages = ({ form }: IProps) => {
   const [newImageUrl, setNewImageUrl] = useState("");
+  const { t } = useTranslation();
 
   const addImage = () => {
     if (newImageUrl.trim()) {
@@ -35,7 +37,9 @@ export const ProductFormImages = ({ form }: IProps) => {
 
   return (
     <Card className="p-3 gap-2">
-      <h3 className="text-lg font-semibold mb-2">Images (Max 10)</h3>
+      <h3 className="text-lg font-semibold mb-2">
+        {t("dashboard.products.images")}
+      </h3>
 
       <div className="space-y-4">
         <div className="flex gap-2">

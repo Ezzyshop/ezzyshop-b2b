@@ -10,15 +10,19 @@ import { Input } from "@/components/ui/input";
 import { UseFormReturn } from "react-hook-form";
 import { Textarea } from "@/components/ui/textarea";
 import { IProductForm } from "../../../utils/product.interface";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   form: UseFormReturn<IProductForm, unknown, IProductForm>;
 }
 
 export const ProductFormBasicInformation = ({ form }: IProps) => {
+  const { t } = useTranslation();
   return (
     <Card className="p-3 gap-2">
-      <h3 className="text-lg font-semibold mb-2">Basic Information</h3>
+      <h3 className="text-lg font-semibold mb-2">
+        {t("dashboard.products.basic_information")}
+      </h3>
 
       {/* Product Name - Localized */}
       <div className="space-y-4">
@@ -28,9 +32,14 @@ export const ProductFormBasicInformation = ({ form }: IProps) => {
             name="name.uz"
             render={({ field }) => (
               <FormItem>
-                <FormLabel isRequired>Product Name (UZ)</FormLabel>
+                <FormLabel isRequired>
+                  {t("dashboard.products.name")} (UZ)
+                </FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter product name in Uzbek" />
+                  <Input
+                    {...field}
+                    placeholder={t("dashboard.products.enter_name")}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -42,11 +51,11 @@ export const ProductFormBasicInformation = ({ form }: IProps) => {
             name="name.en"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Product Name (EN)</FormLabel>
+                <FormLabel>{t("dashboard.products.name")} (EN)</FormLabel>
                 <FormControl>
                   <Input
                     {...field}
-                    placeholder="Enter product name in English"
+                    placeholder={t("dashboard.products.enter_name")}
                   />
                 </FormControl>
                 <FormMessage />
@@ -59,11 +68,11 @@ export const ProductFormBasicInformation = ({ form }: IProps) => {
             name="name.ru"
             render={({ field }) => (
               <FormItem className="md:col-span-2">
-                <FormLabel>Product Name (RU)</FormLabel>
+                <FormLabel>{t("dashboard.products.name")} (RU)</FormLabel>
                 <FormControl>
                   <Input
                     {...field}
-                    placeholder="Enter product name in Russian"
+                    placeholder={t("dashboard.products.enter_name")}
                   />
                 </FormControl>
                 <FormMessage />
@@ -78,7 +87,7 @@ export const ProductFormBasicInformation = ({ form }: IProps) => {
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Description</FormLabel>
+              <FormLabel>{t("dashboard.products.description")}</FormLabel>
               <FormControl>
                 <Textarea
                   {...field}

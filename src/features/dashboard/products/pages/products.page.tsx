@@ -5,14 +5,22 @@ import { useShopContext } from "@/contexts";
 import { DataTable } from "@/components/moderator/data-table";
 import { productTableColumns } from "../components/products-table/product-table-column";
 import { useQuery } from "@tanstack/react-query";
+import { useQueryParams } from "@/hooks";
+import { ProductTableFilters } from "../components/products-table/product-table-filter";
 
 export const ProductsPage = () => {
   const { t } = useTranslation();
   const { shop } = useShopContext();
+  const { getQueryParams, setQueryParams } = useQueryParams();
+  const filters = {
+    page: 1,
+    limit: 10,
+    ...getQueryParams(),
+  };
 
   const { data, isLoading } = useQuery({
-    queryKey: ["products", shop?._id],
-    queryFn: () => getProductsQueryFn(shop?._id),
+    queryKey: ["products", shop?._id, filters],
+    queryFn: () => getProductsQueryFn(shop?._id, filters),
     enabled: !!shop?._id,
   });
 
@@ -25,10 +33,10 @@ export const ProductsPage = () => {
         <AddProductButton />
       </div>
       <div className="space-y-4 md:space-y-6">
-        {/* <CategoryTableFilters
+        <ProductTableFilters
           setQueryParams={setQueryParams}
           getQueryParams={getQueryParams}
-        /> */}
+        />
         <DataTable
           columns={productTableColumns}
           data={data?.data || []}
