@@ -75,7 +75,8 @@
   "sidebar": {
     "dashboard": {
       "main_page": "Bosh sahifa",
-      "categories": "Kategoriyalar"
+      "categories": "Kategoriyalar",
+      "products": "Mahsulotlar"
     }
   },
   "dashboard": {
@@ -90,6 +91,14 @@
       "enter_name": "Kategoriya nomini kiriting",
       "image": "Kategoriya rasmi",
       "enter_image": "Kategoriya rasmini kiriting"
+    },
+    "products": {
+      "create": "Mahsulot qo'shish",
+      "created": "Mahsulot muvaffaqiyatli yaratildi",
+      "updated": "Mahsulot muvaffaqiyatli yangilandi",
+      "create_description": "Yangi mahsulot yaratish uchun quyidagi formadan foydalaning",
+      "edit": "Mahsulot tahrirlash",
+      "edit_description": "Mahsulot ma'lumotlarini o'zgartirish uchun quyidagi formadan foydalaning"
     }
   },
   "table": {

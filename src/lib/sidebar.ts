@@ -5,6 +5,7 @@ import {
   DollarSignIcon,
   HomeIcon,
   ListIcon,
+  PackageIcon,
   UsersIcon,
 } from "lucide-react";
 
@@ -46,5 +47,10 @@ export const dashboardSidebarData = [
     icon: ListIcon,
     title: "sidebar.dashboard.categories",
     url: "/dashboard/categories",
+  },
+  {
+    icon: PackageIcon,
+    title: "sidebar.dashboard.products",
+    url: "/dashboard/products",
   },
 ];
