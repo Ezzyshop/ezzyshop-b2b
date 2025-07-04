@@ -8,7 +8,7 @@ export const ModeratorLayout = ({ children }: PropsWithChildren) => {
     <UserContextProvider>
       <SidebarProvider>
         <AppSidebar />
-        <div className="flex-1 p-4">{children}</div>
+        <div className="flex-1 p-4 md:w-[80vw]">{children}</div>
       </SidebarProvider>
     </UserContextProvider>
   );

@@ -10,7 +10,7 @@ export const DashboardLayout = ({ children }: PropsWithChildren) => {
       <ShopContextProvider>
         <SidebarProvider>
           <DashboardSidebar />
-          <div className="flex-1 p-4">{children}</div>
+          <div className="flex-1 p-4 md:w-[80vw]">{children}</div>
         </SidebarProvider>
       </ShopContextProvider>
     </UserContextProvider>
