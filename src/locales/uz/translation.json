@@ -1,7 +1,10 @@
 {
   "theme": {
     "colors": "Mavzular",
-    "radius": "Radius"
+    "radius": "Radius",
+    "default": "Asosiy",
+    "rose-garden": "Atirgul bog'i",
+    "underground": "Underground"
   },
   "common": {
     "loading": "Yuklanmoqda...",

@@ -17,17 +17,17 @@ interface ITheme {
 const themes: ITheme[] = [
   {
     value: "default",
-    label: "Default",
+    label: "theme.default",
     color: "oklch(27.4% 0.008 286.03)",
   },
   {
     value: "rose-garden",
-    label: "Rose Garden",
+    label: "theme.rose-garden",
     color: "oklch(58.27% 0.2418 12.23)",
   },
   {
     value: "underground",
-    label: "Underground",
+    label: "theme.underground",
     color: "oklch(53.15% 0.0694 156.19)",
   },
 ];
@@ -65,7 +65,7 @@ export const ColorsSetting = () => {
                 style={{ background: theme.color }}
                 className="w-2 h-2 rounded-full mr-1"
               />
-              {theme.label}
+              {t(theme.label)}
             </SelectItem>
           ))}
         </SelectContent>
