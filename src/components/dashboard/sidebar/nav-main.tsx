@@ -20,7 +20,7 @@ export function NavMain() {
         {dashboardSidebarData.map((item) => (
           <SidebarMenuItem key={item.url}>
             <SidebarMenuButton
-              tooltip={item.title}
+              tooltip={t(item.title)}
               asChild
               isActive={pathname.pathname === item.url}
             >

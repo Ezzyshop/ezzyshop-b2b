@@ -23,7 +23,7 @@ export function DashboardSidebar({
       <SidebarContent>
         <NavMain />
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className="overflow-hidden">
         <UpgradePlan />
         <NavUser />
       </SidebarFooter>
