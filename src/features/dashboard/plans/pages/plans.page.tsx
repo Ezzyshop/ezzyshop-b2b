@@ -8,10 +8,12 @@ import { PlansType } from "../utils/plans.enum";
 import { PlanTypeSwitch } from "../components/plan-type-switch";
 import { WhyUsItem } from "../components/why-us-item";
 import { whyUsItems } from "../utils/plans.static";
+import { useShopContext } from "@/contexts";
 
 export const PlansPage = () => {
   const { t } = useTranslation();
-  const [type, setType] = useState<PlansType>(PlansType.Monthly);
+  const { shop } = useShopContext();
+  const [type, setType] = useState<PlansType>(shop.subscription_info.plan_type);
   const { data: plans, isLoading } = useQuery({
     queryKey: ["plans"],
     queryFn: () => getPlansQueryFn(),
