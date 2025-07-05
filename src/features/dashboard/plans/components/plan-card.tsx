@@ -35,7 +35,7 @@ export const PlanCard = ({ plan, type }: IProps) => {
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span className="md:text-2xl font-semibold">{plan.name}</span>
-          {plan.price > 0 && (
+          {plan.price > 0 && type === PlansType.Annual && (
             <Badge variant="default">-{gapBetweenPricesInPercent}%</Badge>
           )}
         </CardTitle>
