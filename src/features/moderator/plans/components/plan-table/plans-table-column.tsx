@@ -16,6 +16,10 @@ export const plansTableColumns: ColumnDef<IPlan>[] = [
     header: "Tavsifi",
   },
   {
+    accessorKey: "order",
+    header: "Tartib raqami",
+  },
+  {
     accessorKey: "price",
     header: "Narxi",
     cell: ({ row }) => {

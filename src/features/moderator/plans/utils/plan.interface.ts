@@ -15,6 +15,7 @@ export interface IPlan {
     max: number;
   };
   status: PlanStatus;
+  order: number;
   createdAt: Date;
   updatedAt: Date;
   __v: number;

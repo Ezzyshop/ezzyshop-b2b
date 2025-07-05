@@ -34,6 +34,10 @@ export const planFields: Record<
       "string.empty": "Status is required",
       "any.only": "Status must be either Active or Inactive",
     }),
+  order: Joi.number().required().min(0).messages({
+    "number.empty": "Order is required",
+    "number.min": "Order must be greater than 0",
+  }),
 };
 
 export const createPlanValidator = Joi.object(planFields);
