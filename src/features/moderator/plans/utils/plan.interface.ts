@@ -16,6 +16,7 @@ export interface IPlan {
   };
   status: PlanStatus;
   order: number;
+  annual_price: number;
   createdAt: Date;
   updatedAt: Date;
   __v: number;

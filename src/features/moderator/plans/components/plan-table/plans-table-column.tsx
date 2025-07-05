@@ -27,6 +27,13 @@ export const plansTableColumns: ColumnDef<IPlan>[] = [
     },
   },
   {
+    accessorKey: "annual_price",
+    header: "Yillik narxi",
+    cell: ({ row }) => {
+      return <div>{row.original.annual_price.toLocaleString()} so'm</div>;
+    },
+  },
+  {
     accessorKey: "products.max",
     header: "Maximal productlar",
     size: 200,

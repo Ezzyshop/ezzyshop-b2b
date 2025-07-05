@@ -39,6 +39,7 @@ export const PlanForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
       categories: { max: 0 },
       orders: { max: 0 },
       order: 0,
+      annual_price: 0,
       status: PlanStatus.Inactive,
     },
   });
@@ -50,7 +51,7 @@ export const PlanForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FormField
             control={form.control}
             name="name"
@@ -64,7 +65,27 @@ export const PlanForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
               </FormItem>
             )}
           />
+          <FormField
+            control={form.control}
+            name="order"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel isRequired>Tartib raqami</FormLabel>
+                <FormControl>
+                  <Input
+                    type="number"
+                    placeholder="0"
+                    {...field}
+                    onChange={(e) => field.onChange(Number(e.target.value))}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FormField
             control={form.control}
             name="price"
@@ -83,17 +104,16 @@ export const PlanForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
               </FormItem>
             )}
           />
-
           <FormField
             control={form.control}
-            name="order"
+            name="annual_price"
             render={({ field }) => (
               <FormItem>
-                <FormLabel isRequired>Tartib raqami</FormLabel>
+                <FormLabel isRequired>Yillik narxi</FormLabel>
                 <FormControl>
                   <Input
                     type="number"
-                    placeholder="0"
+                    placeholder="0.00"
                     {...field}
                     onChange={(e) => field.onChange(Number(e.target.value))}
                   />

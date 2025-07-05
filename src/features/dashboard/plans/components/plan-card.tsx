@@ -1,0 +1,125 @@
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { IPlan } from "@/features/moderator/plans/utils/plan.interface";
+import { useTranslation } from "react-i18next";
+import { PlansType } from "../utils/plans.enum";
+import { CheckIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useShopContext } from "@/contexts";
+import { Badge } from "@/components/ui/badge";
+
+interface IProps {
+  plan: IPlan;
+  type: PlansType;
+}
+
+export const PlanCard = ({ plan, type }: IProps) => {
+  const { t } = useTranslation();
+  const { shop } = useShopContext();
+  const isCurrentPlan = shop?.plan._id === plan._id;
+  const gapBetweenPricesInPercent =
+    100 - (plan.annual_price / plan.price) * 100;
+
+  const isProductsLimitInfinity = plan.products.max === -1;
+  const isCategoriesLimitInfinity = plan.categories.max === -1;
+  const isOrdersLimitInfinity = plan.orders.max === -1;
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="flex items-center justify-between">
+          <span className="md:text-2xl font-semibold">{plan.name}</span>
+          {plan.price > 0 && (
+            <Badge variant="default">-{gapBetweenPricesInPercent}%</Badge>
+          )}
+        </CardTitle>
+        <p className="text-sm text-muted-foreground">{plan.description}</p>
+      </CardHeader>
+      <CardContent>
+        <PlanCardPrice plan={plan} type={type} />
+        <div className="mt-4 space-y-2">
+          <PlanCardAdvantages
+            title={t("dashboard.plans.advantages.telegram_bot")}
+          />
+          <PlanCardAdvantages
+            title={
+              isProductsLimitInfinity
+                ? t("dashboard.plans.advantages.product_count_infinity")
+                : t("dashboard.plans.advantages.product_count", {
+                    count: plan.products.max,
+                  })
+            }
+          />
+          <PlanCardAdvantages
+            title={
+              isCategoriesLimitInfinity
+                ? t("dashboard.plans.advantages.category_count_infinity")
+                : t("dashboard.plans.advantages.category_count", {
+                    count: plan.categories.max,
+                  })
+            }
+          />
+          <PlanCardAdvantages
+            title={
+              isOrdersLimitInfinity
+                ? t("dashboard.plans.advantages.order_count_infinity")
+                : t("dashboard.plans.advantages.order_count", {
+                    count: plan.orders.max,
+                  })
+            }
+          />
+        </div>
+      </CardContent>
+      <CardFooter>
+        {isCurrentPlan ? (
+          <Button variant="outline" className="w-full cursor-pointer">
+            {t("dashboard.plans.current_plan")}
+          </Button>
+        ) : (
+          <Button className="w-full cursor-pointer">
+            {t("dashboard.plans.buy")}
+          </Button>
+        )}
+      </CardFooter>
+    </Card>
+  );
+};
+
+export const PlanCardAdvantages = ({ title }: { title: string }) => {
+  return (
+    <div className="flex items-center gap-2">
+      <CheckIcon className="w-4 h-4 text-primary" />
+      <p className="text-sm text-muted-foreground">{title}</p>
+    </div>
+  );
+};
+
+export const PlanCardPrice = ({ plan, type }: IProps) => {
+  const { t } = useTranslation();
+
+  const isFree = plan.price === 0;
+  const price =
+    type === PlansType.Annual
+      ? plan.annual_price.toLocaleString()
+      : plan.price.toLocaleString();
+  return (
+    <div>
+      {isFree ? (
+        <span className="text-2xl font-bold">{t("dashboard.plans.free")}</span>
+      ) : (
+        <>
+          <span className="text-2xl font-bold">{price} UZS</span>
+          <span className="text-sm text-muted-foreground">
+            {" "}
+            / {t("dashboard.plans.type.monthly")}
+          </span>
+        </>
+      )}
+    </div>
+  );
+};

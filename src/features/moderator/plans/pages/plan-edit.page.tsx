@@ -41,6 +41,8 @@ export const PlanEditPage = () => {
       categories: data.data.categories,
       orders: data.data.orders,
       status: data.data.status,
+      order: data.data.order,
+      annual_price: data.data.annual_price,
     };
   }, [data]);
 

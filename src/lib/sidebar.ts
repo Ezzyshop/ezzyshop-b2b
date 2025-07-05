@@ -53,4 +53,9 @@ export const dashboardSidebarData = [
     title: "sidebar.dashboard.products",
     url: "/dashboard/products",
   },
+  {
+    icon: CreditCardIcon,
+    title: "sidebar.dashboard.plans",
+    url: "/dashboard/plans",
+  },
 ];

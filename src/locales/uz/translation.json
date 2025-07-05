@@ -90,6 +90,7 @@
       "main_page": "Bosh sahifa",
       "categories": "Kategoriyalar",
       "products": "Mahsulotlar",
+      "plans": "Tariflar",
       "upgrade_plan": {
         "title": "{{ plan }} tarifiga ga o'ting",
         "description": "{{ plan }} tarifini tanlab ko'proq imkoniyatlarga ega bo'ling.",
@@ -129,6 +130,42 @@
       "settings": "Sozlamalar",
       "status": "Mahsulot statusi",
       "status_description": "Mahsulot statusini o'zgartirish"
+    },
+    "plans": {
+      "title": "O'zingizga mos tarifni tanlang",
+      "buy": "Tanlash",
+      "current_plan": "Joriy tarif",
+      "free": "Bepul",
+      "type": {
+        "monthly": "Oylik",
+        "annual": "Yillik"
+      },
+      "advantages": {
+        "telegram_bot": "Telegram bot",
+        "product_count": "{{ count }} mahsulot qo'shish",
+        "product_count_infinity": "Cheklanmagan mahsulot qo'shish",
+        "category_count": "{{ count }} kategoriya qo'shish",
+        "category_count_infinity": "Cheklanmagan kategoriya qo'shish",
+        "order_count": "{{ count }} buyurtma qabul qilish",
+        "order_count_infinity": "Cheklanmagan buyurtma qabul qilish"
+      },
+      "why_us": {
+        "title": "Nega bizni tanlash kerak?",
+        "items": {
+          "item_1": {
+            "title": "Tez va oson savdo",
+            "description": "Telegram orqali atigi bir necha bosishda do‘koningizni ishga tushiring. Murakkab sozlamalarsiz, siz mahsulot qo‘shasiz — mijozlar esa bevosita bot orqali xarid qiladi."
+          },
+          "item_2": {
+            "title": "Shaxsiy Telegram bot orqali savdo",
+            "description": "Har bir sotuvchiga o‘zining shaxsiy Telegram boti yaratiladi. Mijozlaringiz sizni bevosita bot orqali tanib, ishonch bilan xarid qilishadi."
+          },
+          "item_3": {
+            "title": "Bepul veb-sayt va mini ilova",
+            "description": "Biz sizga avtomatik tarzda mini ilova va tayyor do‘kon sahifasi yaratamiz. Uni mijozlaringizga ulashing — ular mobil qurilmada ilova sifatida ishlatishadi."
+          }
+        }
+      }
     }
   },
   "table": {

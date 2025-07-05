@@ -38,6 +38,10 @@ export const planFields: Record<
     "number.empty": "Order is required",
     "number.min": "Order must be greater than 0",
   }),
+  annual_price: Joi.number().required().min(0).messages({
+    "number.empty": "Annual price is required",
+    "number.min": "Annual price must be greater than 0",
+  }),
 };
 
 export const createPlanValidator = Joi.object(planFields);
