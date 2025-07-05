@@ -18,7 +18,10 @@ export interface IShop {
   };
   logo: string | null;
   description: string | null;
-  telegram: string;
+  telegram: {
+    _id: string;
+    menu_text: string | null;
+  };
   social_links: {
     telegram: string | null;
     instagram: string | null;
@@ -94,5 +97,11 @@ export interface IShopUpdateForm {
     address: string | null;
     long: number | null;
     lat: number | null;
+  };
+}
+
+export interface IMyShopUpdateForm extends Omit<IShopUpdateForm, "telegram"> {
+  telegram: {
+    menu_text: string | null;
   };
 }

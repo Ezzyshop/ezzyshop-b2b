@@ -91,6 +91,10 @@
       "categories": "Kategoriyalar",
       "products": "Mahsulotlar",
       "plans": "Tariflar",
+      "orders": "Buyurtmalar",
+      "delivery-methods": "Yetkazib berish usullari",
+      "payment-methods": "To'lov usullari",
+      "settings": "Sozlamalar",
       "upgrade_plan": {
         "title": "{{ plan }} tarifiga ga o'ting",
         "description": "{{ plan }} tarifini tanlab ko'proq imkoniyatlarga ega bo'ling.",
@@ -165,6 +169,44 @@
             "description": "Biz sizga avtomatik tarzda mini ilova va tayyor do‘kon sahifasi yaratamiz. Uni mijozlaringizga ulashing — ular mobil qurilmada ilova sifatida ishlatishadi."
           }
         }
+      }
+    },
+    "settings": {
+      "basic_information": {
+        "title": "Asosiy ma'lumotlar",
+        "name": "Biznes nomi",
+        "enter_name": "Biznes nomini kiriting",
+        "logo": "Biznes logotipi",
+        "enter_logo": "Biznes logotipini kiriting",
+        "description": "Biznes tavsifi",
+        "enter_description": "Biznes tavsifini kiriting",
+        "currency": "Valyuta",
+        "enter_currency": "Valyuta tanlang"
+      },
+      "telegram_configuration": {
+        "title": "Telegram konfiguratsiyasi",
+        "menu_name": "Menu nomi",
+        "enter_menu_name": "Menu nomini kiriting"
+      },
+      "social_links": {
+        "title": "Ijtimoiy tarmoqlar",
+        "telegram": "Telegram",
+        "enter_telegram": "Telegram linkini kiriting",
+        "instagram": "Instagram",
+        "enter_instagram": "Instagram linkini kiriting",
+        "facebook": "Facebook",
+        "enter_facebook": "Facebook linkini kiriting",
+        "twitter": "Twitter",
+        "enter_twitter": "Twitter linkini kiriting",
+        "youtube": "YouTube",
+        "enter_youtube": "YouTube linkini kiriting"
+      },
+      "address": {
+        "title": "Manzil ma'lumotlari",
+        "address": "Manzil",
+        "enter_address": "Manzilni kiriting",
+        "latitude": "Kenglik",
+        "longitude": "Uzunlik"
       }
     }
   },

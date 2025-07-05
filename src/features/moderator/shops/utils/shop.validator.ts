@@ -112,3 +112,15 @@ export const telegramSchema = Joi.object({
     "any.required": "Menu nomi kiritilishi shart",
   }),
 });
+
+export const updateMyShopSchema = Joi.object({
+  name: shopFields.name,
+  logo: shopFields.logo,
+  description: shopFields.description,
+  telegram: {
+    menu_text: Joi.string().max(255).required(),
+  },
+  social_links: shopFields.social_links,
+  currency: shopFields.currency,
+  address: shopFields.address,
+});

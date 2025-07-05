@@ -1,0 +1,60 @@
+import { Form } from "@/components/ui/form";
+import {
+  IMyShopUpdateForm,
+  IShopUpdateForm,
+  updateMyShopSchema,
+} from "@/features/moderator/shops/utils";
+import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+import { joiResolver } from "@hookform/resolvers/joi";
+import { Button } from "@/components/ui/button";
+
+import { cn } from "@/lib";
+import { SettingFormBasicInformation } from "./setting-form-sections/basic-information";
+import { SettingFormTelegramConfiguration } from "./setting-form-sections/telegram-configuration";
+import { SettingFormSocialLinks } from "./setting-form-sections/social-links";
+import { SettingFormAddressSection } from "./setting-form-sections/address-section";
+
+interface IProps {
+  shop: IMyShopUpdateForm;
+  onSubmit: (data: IMyShopUpdateForm) => void;
+  isLoading: boolean;
+}
+
+export const SettingsForm = ({ shop, onSubmit, isLoading }: IProps) => {
+  const { t } = useTranslation();
+
+  const form = useForm<IShopUpdateForm>({
+    defaultValues: shop,
+    resolver: joiResolver(updateMyShopSchema),
+  });
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <SettingFormBasicInformation form={form} />
+
+        <SettingFormTelegramConfiguration form={form} />
+
+        <SettingFormSocialLinks form={form} />
+
+        <SettingFormAddressSection form={form} />
+
+        <div className={cn("grid grid-cols-2 gap-4")}>
+          <Button
+            type="button"
+            variant="outline"
+            disabled={isLoading}
+            onClick={() => form.reset()}
+          >
+            {t("common.clear")}
+          </Button>
+
+          <Button type="submit" disabled={isLoading || !form.formState.isDirty}>
+            {t("common.save")}
+          </Button>
+        </div>
+      </form>
+    </Form>
+  );
+};

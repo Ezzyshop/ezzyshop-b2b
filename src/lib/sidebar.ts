@@ -5,7 +5,11 @@ import {
   DollarSignIcon,
   HomeIcon,
   ListIcon,
+  Package2,
   PackageIcon,
+  SettingsIcon,
+  SwitchCameraIcon,
+  TruckIcon,
   UsersIcon,
 } from "lucide-react";
 
@@ -54,8 +58,28 @@ export const dashboardSidebarData = [
     url: "/dashboard/products",
   },
   {
+    icon: Package2,
+    title: "sidebar.dashboard.orders",
+    url: "/dashboard/orders",
+  },
+  {
+    icon: TruckIcon,
+    title: "sidebar.dashboard.delivery-methods",
+    url: "/dashboard/delivery-methods",
+  },
+  {
     icon: CreditCardIcon,
+    title: "sidebar.dashboard.payment-methods",
+    url: "/dashboard/payment-methods",
+  },
+  {
+    icon: SwitchCameraIcon,
     title: "sidebar.dashboard.plans",
     url: "/dashboard/plans",
+  },
+  {
+    icon: SettingsIcon,
+    title: "sidebar.dashboard.settings",
+    url: "/dashboard/settings",
   },
 ];
