@@ -10,6 +10,7 @@ import {
 import { TeamSwitcher } from "./team-switcher";
 import { NavMain } from "./nav-main";
 import { NavUser } from "./nav-users";
+import { UpgradePlan } from "./upgrade-plan";
 
 export function DashboardSidebar({
   ...props
@@ -23,6 +24,7 @@ export function DashboardSidebar({
         <NavMain />
       </SidebarContent>
       <SidebarFooter>
+        <UpgradePlan />
         <NavUser />
       </SidebarFooter>
       <SidebarRail />

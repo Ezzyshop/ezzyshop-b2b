@@ -89,7 +89,12 @@
     "dashboard": {
       "main_page": "Bosh sahifa",
       "categories": "Kategoriyalar",
-      "products": "Mahsulotlar"
+      "products": "Mahsulotlar",
+      "upgrade_plan": {
+        "title": "{{ plan }} tarifiga ga o'ting",
+        "description": "{{ plan }} tarifini tanlab ko'proq imkoniyatlarga ega bo'ling.",
+        "button_text": "Tarifni o'zgartirish"
+      }
     }
   },
   "dashboard": {

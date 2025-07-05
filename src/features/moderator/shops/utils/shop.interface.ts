@@ -13,6 +13,7 @@ export interface IShop {
   plan: {
     _id: string;
     name: string;
+    order: number;
   };
   logo: string | null;
   description: string | null;
