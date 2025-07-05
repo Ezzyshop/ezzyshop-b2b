@@ -21,7 +21,8 @@ interface IProps {
 export const PlanCard = ({ plan, type }: IProps) => {
   const { t } = useTranslation();
   const { shop } = useShopContext();
-  const isCurrentPlan = shop?.plan._id === plan._id;
+  const isCurrentPlan =
+    shop?.plan._id === plan._id && shop.subscription_info.plan_type === type;
   const gapBetweenPricesInPercent =
     100 - (plan.annual_price / plan.price) * 100;
 
@@ -92,7 +93,7 @@ export const PlanCard = ({ plan, type }: IProps) => {
 
 export const PlanCardAdvantages = ({ title }: { title: string }) => {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-start gap-2">
       <CheckIcon className="w-4 h-4 text-primary" />
       <p className="text-sm text-muted-foreground">{title}</p>
     </div>

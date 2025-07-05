@@ -10,18 +10,26 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useRegisterShopContext } from "@/contexts";
+import { useRegisterShopContext, useUserContext } from "@/contexts";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { dashboardSidebarData } from "@/lib";
 
 export const CreateSuccessPage = () => {
   const { createdShop } = useRegisterShopContext();
+  const { refetch } = useUserContext();
+
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   if (!createdShop) {
     return <Navigate to="/register/create-shop" />;
   }
+
+  const handleGoDashboard = async () => {
+    await refetch();
+    navigate(dashboardSidebarData[0].url);
+  };
 
   return (
     <Card className="w-full border-0 shadow-none h-fit md:gap-2">
@@ -67,12 +75,7 @@ export const CreateSuccessPage = () => {
 
         {/* Additional Actions */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Button
-            className="cursor-pointer w-full"
-            onClick={() => {
-              navigate("/dashboard");
-            }}
-          >
+          <Button className="cursor-pointer w-full" onClick={handleGoDashboard}>
             {t("register.create_success.button_text")}
           </Button>
         </div>

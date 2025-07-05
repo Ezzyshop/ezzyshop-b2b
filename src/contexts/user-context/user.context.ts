@@ -3,6 +3,7 @@ import { createContext, useContext } from "react";
 
 interface IUserContext {
   user: IUser;
+  refetch: () => Promise<void>;
 }
 
 export const UserContext = createContext<IUserContext | null>(null);

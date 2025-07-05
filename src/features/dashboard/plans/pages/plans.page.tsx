@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getPlansQueryFn } from "@/api/queries";
-import { LayoutLoader } from "@/components/loaders/global-loader";
+import { DashboardLayoutLoader } from "@/components/loaders/global-loader";
 import { PlanCard } from "../components/plan-card";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
@@ -18,7 +18,7 @@ export const PlansPage = () => {
   });
 
   if (isLoading) {
-    return <LayoutLoader />;
+    return <DashboardLayoutLoader />;
   }
 
   return (

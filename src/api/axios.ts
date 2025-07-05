@@ -14,7 +14,6 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     const code = error.response?.data?.message as ErrorMessages;
-    const status = error.response?.status;
     toast.error(ErrorMessagesMap[code]);
 
     if (code === ErrorMessages.UnauthorizedError) {
@@ -25,9 +24,6 @@ api.interceptors.response.use(
       window.location.href = "/logout";
     }
 
-    if (status === 500) {
-      window.location.href = "/server-error";
-    }
     return Promise.reject(error);
   }
 );

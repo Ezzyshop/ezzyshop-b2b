@@ -1,4 +1,4 @@
-import { RegisterShopContextProvider } from "@/contexts";
+import { RegisterShopContextProvider, UserContextProvider } from "@/contexts";
 import { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -16,13 +16,18 @@ const CreateSuccessPage = lazy(
 
 export const RegisterRoutes = () => {
   return (
-    <RegisterShopContextProvider>
-      <Routes>
-        <Route path="/create-telegram" element={<CreateTelegramPage />} />
-        <Route path="/create-shop" element={<CreateShopPage />} />
-        <Route path="/finish" element={<CreateSuccessPage />} />
-        <Route path="*" element={<Navigate to="/register/create-telegram" />} />
-      </Routes>
-    </RegisterShopContextProvider>
+    <UserContextProvider>
+      <RegisterShopContextProvider>
+        <Routes>
+          <Route path="/create-telegram" element={<CreateTelegramPage />} />
+          <Route path="/create-shop" element={<CreateShopPage />} />
+          <Route path="/finish" element={<CreateSuccessPage />} />
+          <Route
+            path="*"
+            element={<Navigate to="/register/create-telegram" />}
+          />
+        </Routes>
+      </RegisterShopContextProvider>
+    </UserContextProvider>
   );
 };

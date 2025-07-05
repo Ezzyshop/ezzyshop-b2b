@@ -5,12 +5,15 @@ import { UserContext } from "./user.context";
 import { GlobalLoader } from "@/components/loaders/global-loader";
 
 export const UserContextProvider = ({ children }: PropsWithChildren) => {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, refetch } = useQuery({
     queryKey: ["user"],
     queryFn: () => getCurrentUser(),
   });
 
-  const value = useMemo(() => ({ user: data?.data ?? null }), [data]);
+  const value = useMemo(
+    () => ({ user: data?.data ?? null, refetch }),
+    [data, refetch]
+  );
 
   if (isLoading) {
     return <GlobalLoader />;

@@ -1,3 +1,4 @@
+import { PlansType } from "@/features/dashboard/plans/utils/plans.enum";
 import { BusinessType, ShopPlatform, ShopStatus } from "./shop.enum";
 
 export interface IShop {
@@ -34,8 +35,11 @@ export interface IShop {
     long: number | null;
     lat: number | null;
   };
-  plan_start_date: Date | null;
-  plan_end_date: Date | null;
+  subscription_info: {
+    plan_type: PlansType;
+    plan_start_date: Date | null;
+    plan_end_date: Date | null;
+  };
   createdAt: Date;
   updatedAt: Date;
 }
@@ -48,6 +52,7 @@ export interface IShopForm {
   owner: string;
   logo: string | null;
   description: string | null;
+  plan: string;
   telegram: {
     token: string | null;
     menu_text: string | null;

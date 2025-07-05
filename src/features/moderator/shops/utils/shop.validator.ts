@@ -1,6 +1,7 @@
 import Joi from "joi";
 import { BusinessType, ShopPlatform, ShopStatus } from "./shop.enum";
 import { IShop } from "./shop.interface";
+import { PlansType } from "@/features/dashboard/plans/utils/plans.enum";
 
 export const shopFields: Record<
   keyof Omit<IShop, "createdAt" | "updatedAt" | "_id">,
@@ -58,8 +59,13 @@ export const shopFields: Record<
     long: Joi.number().min(-180).max(180).allow(null).allow("").optional(),
     lat: Joi.number().min(-90).max(90).allow(null).allow("").optional(),
   }),
-  plan_start_date: Joi.date().optional(),
-  plan_end_date: Joi.date().optional(),
+  subscription_info: Joi.object({
+    plan_type: Joi.string()
+      .valid(...Object.values(PlansType))
+      .optional(),
+    plan_start_date: Joi.date().optional(),
+    plan_end_date: Joi.date().optional(),
+  }),
   status: Joi.string()
     .valid(...Object.values(ShopStatus))
     .optional(),
@@ -91,6 +97,9 @@ export const shopUpdateSchema = Joi.object({
 
 export const shopUpdatePlanSchema = Joi.object({
   plan: shopFields.plan,
+  type: Joi.string()
+    .valid(...Object.values(PlansType))
+    .optional(),
 });
 
 export const telegramSchema = Joi.object({

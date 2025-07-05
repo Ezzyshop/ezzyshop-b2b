@@ -7,6 +7,7 @@ import { IShopForm } from "../utils";
 import { updateShopPlanMutationFn } from "@/api/mutations";
 import { toast } from "sonner";
 import { PlanStatus } from "../../plans/utils/plan.enum";
+import { PlansType } from "@/features/dashboard/plans/utils/plans.enum";
 
 export const ShopPlanChangePage = () => {
   const { id } = useParams();
@@ -45,8 +46,9 @@ export const ShopPlanChangePage = () => {
     return <Navigate to="/moderator/shops" />;
   }
 
-  const initialValues: { plan: IShopForm["plan"] } = {
+  const initialValues: { plan: IShopForm["plan"]; type: PlansType } = {
     plan: shop.plan._id,
+    type: shop.subscription_info.plan_type,
   };
 
   const handleSubmit = (data: { plan: IShopForm["plan"] }) => {

@@ -1,11 +1,12 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { IShop, shopTypesTranslations } from "../../utils";
+import { IShop, ShopStatus, shopTypesTranslations } from "../../utils";
 import dayjs from "dayjs";
 import { Button } from "@/components/ui/button";
 import { BotIcon, CreditCardIcon, EditIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
 
 export const shopColumns: ColumnDef<IShop>[] = [
   {
@@ -39,7 +40,15 @@ export const shopColumns: ColumnDef<IShop>[] = [
     header: "Status",
     size: 120,
     cell: ({ row }) => {
-      return <div>{shopTypesTranslations[row.original.status]}</div>;
+      return (
+        <Badge
+          variant={
+            row.original.status === ShopStatus.Active ? "default" : "outline"
+          }
+        >
+          {shopTypesTranslations[row.original.status]}
+        </Badge>
+      );
     },
   },
 
@@ -49,7 +58,7 @@ export const shopColumns: ColumnDef<IShop>[] = [
     header: "Tarif",
   },
   {
-    accessorKey: "currency.name",
+    accessorKey: "currency.symbol",
     size: 120,
     header: "Valyuta",
   },
@@ -61,7 +70,9 @@ export const shopColumns: ColumnDef<IShop>[] = [
     cell: ({ row }) => {
       return (
         <div>
-          {dayjs(row.original.plan_start_date).format("DD.MM.YYYY HH:mm")}
+          {dayjs(row.original.subscription_info.plan_start_date).format(
+            "DD.MM.YYYY HH:mm"
+          )}
         </div>
       );
     },
@@ -73,7 +84,9 @@ export const shopColumns: ColumnDef<IShop>[] = [
     cell: ({ row }) => {
       return (
         <div>
-          {dayjs(row.original.plan_end_date).format("DD.MM.YYYY HH:mm")}
+          {dayjs(row.original.subscription_info.plan_end_date).format(
+            "DD.MM.YYYY HH:mm"
+          )}
         </div>
       );
     },
