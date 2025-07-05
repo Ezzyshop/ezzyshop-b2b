@@ -12,7 +12,7 @@ export const plansTableColumns: ColumnDef<IPlan>[] = [
     header: "Nomi",
   },
   {
-    accessorKey: "description",
+    accessorKey: "description.uz",
     header: "Tavsifi",
   },
   {

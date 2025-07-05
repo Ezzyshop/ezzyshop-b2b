@@ -10,9 +10,17 @@ export const planFields: Record<
     "string.empty": "Name is required",
     "string.max": "Name must be less than 255 characters long",
   }),
-  description: Joi.string().required().max(500).messages({
-    "string.empty": "Description is required",
-    "string.max": "Description must be less than 500 characters long",
+  description: Joi.object({
+    uz: Joi.string().required().max(500).messages({
+      "string.empty": "Description is required",
+      "string.max": "Description must be less than 500 characters long",
+    }),
+    ru: Joi.string().optional().max(500).messages({
+      "string.max": "Description must be less than 500 characters long",
+    }),
+    en: Joi.string().optional().max(500).messages({
+      "string.max": "Description must be less than 500 characters long",
+    }),
   }),
   price: Joi.number().required().min(0).messages({
     "number.empty": "Price is required",

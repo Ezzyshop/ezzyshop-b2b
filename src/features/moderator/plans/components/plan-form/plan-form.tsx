@@ -33,7 +33,11 @@ export const PlanForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
     resolver: joiResolver(createPlanValidator),
     defaultValues: initialValues ?? {
       name: "",
-      description: "",
+      description: {
+        uz: "",
+        ru: "",
+        en: "",
+      },
       price: 0,
       products: { max: 0 },
       categories: { max: 0 },
@@ -124,25 +128,65 @@ export const PlanForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
           />
         </div>
 
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel isRequired>Tavsifi</FormLabel>
-              <FormControl>
-                <textarea
-                  className={cn(
-                    "flex min-h-[80px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  )}
-                  placeholder="Tarif tavsifini kiriting"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <FormField
+            control={form.control}
+            name="description.uz"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel isRequired>Tavsifi (UZ)</FormLabel>
+                <FormControl>
+                  <textarea
+                    className={cn(
+                      "flex min-h-[80px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    )}
+                    placeholder="Tarif tavsifini kiriting"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="description.ru"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Tavsifi (RU)</FormLabel>
+                <FormControl>
+                  <textarea
+                    className={cn(
+                      "flex min-h-[80px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    )}
+                    placeholder="Tarif tavsifini kiriting"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="description.en"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Tavsifi (EN)</FormLabel>
+                <FormControl>
+                  <textarea
+                    className={cn(
+                      "flex min-h-[80px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    )}
+                    placeholder="Tarif tavsifini kiriting"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
         <div className="space-y-4">
           <h3 className="text-lg font-medium">Limitlar</h3>

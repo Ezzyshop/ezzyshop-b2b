@@ -3,7 +3,11 @@ import { PlanStatus } from "./plan.enum";
 export interface IPlan {
   _id: string;
   name: string;
-  description: string;
+  description: {
+    uz: string;
+    ru: string;
+    en: string;
+  };
   price: number;
   products: {
     max: number;

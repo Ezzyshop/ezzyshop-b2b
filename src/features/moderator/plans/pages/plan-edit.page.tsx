@@ -1,5 +1,5 @@
 import { getPlanQueryFn } from "@/api/queries";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { IPlanForm } from "../utils/plan.interface";
 import { LayoutLoader } from "@/components/loaders/global-loader";
@@ -11,6 +11,7 @@ import { useMemo } from "react";
 export const PlanEditPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const { data, isLoading } = useQuery({
     queryKey: ["plan", id],
@@ -22,6 +23,7 @@ export const PlanEditPage = () => {
     mutationFn: (data: IPlanForm) => updatePlanMutationFn(id!, data),
     onSuccess: () => {
       toast.success("Tarif muvaffaqiyatli yanginaldi");
+      queryClient.invalidateQueries({ queryKey: ["plan", id] });
       navigate("/moderator/plans");
     },
   });

@@ -19,7 +19,7 @@ interface IProps {
 }
 
 export const PlanCard = ({ plan, type }: IProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { shop } = useShopContext();
   const isCurrentPlan =
     shop.plan._id === plan._id && shop.subscription_info.plan_type === type;
@@ -39,7 +39,9 @@ export const PlanCard = ({ plan, type }: IProps) => {
             <Badge variant="default">-{gapBetweenPricesInPercent}%</Badge>
           )}
         </CardTitle>
-        <p className="text-sm text-muted-foreground">{plan.description}</p>
+        <p className="text-sm text-muted-foreground">
+          {plan.description[i18n.language as keyof typeof plan.description]}
+        </p>
       </CardHeader>
       <CardContent>
         <PlanCardPrice plan={plan} type={type} />
