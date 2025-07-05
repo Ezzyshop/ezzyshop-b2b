@@ -10,9 +10,9 @@ export const UpgradePlan = () => {
   const { t } = useTranslation();
 
   const { data: plans, isLoading } = useQuery({
-    queryKey: ["plans", shop?._id],
+    queryKey: ["plans", shop._id],
     queryFn: () => getPlansQueryFn({ order: shop.plan.order + 1 }),
-    enabled: Boolean(shop?.plan.order),
+    enabled: Boolean(shop.plan.order),
   });
 
   if (isLoading || !plans?.data.length) {

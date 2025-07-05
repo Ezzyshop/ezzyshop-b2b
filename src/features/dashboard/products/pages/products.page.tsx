@@ -19,9 +19,9 @@ export const ProductsPage = () => {
   };
 
   const { data, isLoading } = useQuery({
-    queryKey: ["products", shop?._id, filters],
-    queryFn: () => getProductsQueryFn(shop?._id, filters),
-    enabled: !!shop?._id,
+    queryKey: ["products", shop._id, filters],
+    queryFn: () => getProductsQueryFn(shop._id, filters),
+    enabled: Boolean(shop._id),
   });
 
   return (

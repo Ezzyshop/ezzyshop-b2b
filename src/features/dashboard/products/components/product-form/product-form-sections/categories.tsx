@@ -16,9 +16,9 @@ export const ProductFormCategories = ({ form }: IProps) => {
   const { i18n } = useTranslation();
 
   const { data, isLoading } = useQuery({
-    queryKey: ["categories", shop?._id],
-    queryFn: () => getCategoriesQueryFn(shop?._id),
-    enabled: !!shop?._id,
+    queryKey: ["categories", shop._id],
+    queryFn: () => getCategoriesQueryFn(shop._id),
+    enabled: Boolean(shop._id),
   });
 
   const addCategory = (values: string[]) => {

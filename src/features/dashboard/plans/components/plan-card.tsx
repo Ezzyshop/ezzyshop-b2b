@@ -22,7 +22,7 @@ export const PlanCard = ({ plan, type }: IProps) => {
   const { t } = useTranslation();
   const { shop } = useShopContext();
   const isCurrentPlan =
-    shop?.plan._id === plan._id && shop.subscription_info.plan_type === type;
+    shop.plan._id === plan._id && shop.subscription_info.plan_type === type;
   const gapBetweenPricesInPercent =
     100 - (plan.annual_price / plan.price) * 100;
 

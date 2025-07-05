@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 import { getByShopByIdQueryFn } from "@/api/queries";
 import { LoaderWithOverlay } from "@/components/loaders/global-loader";
 import { ShopContext } from "./shop.context";
-import { IShop } from "@/features/moderator/shops/utils";
 import { IUser } from "@/lib/interfaces";
 
 export const ShopContextProvider = ({ children }: PropsWithChildren) => {
@@ -25,12 +24,20 @@ export const ShopContextProvider = ({ children }: PropsWithChildren) => {
     return <Navigate to="/register" />;
   }
 
+  if (!shop.isLoading && !shop.data?.data) {
+    return <Navigate to="/register" />;
+  }
+
+  if (!shop.data?.data) {
+    return <LoaderWithOverlay />;
+  }
+
   return (
     <ShopContext.Provider
       value={{
         activeShop,
         setActiveShop,
-        shop: shop.data?.data as IShop,
+        shop: shop.data.data,
       }}
     >
       {children}

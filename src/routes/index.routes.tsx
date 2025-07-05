@@ -5,6 +5,7 @@ import { DashboardRoutes } from "./dashboard.routes";
 import { StaticRoutes } from "./static.routes";
 import { RegisterRoutes } from "./register.routes";
 import { YMaps } from "@pbe/react-yandex-maps";
+import { dashboardSidebarData } from "@/lib";
 
 const LoginPage = lazy(() => import("@/features/auth/login/pages/login.page"));
 const LogoutPage = lazy(
@@ -22,7 +23,10 @@ export const IndexRoutes = () => {
       }}
     >
       <Routes>
-        <Route path="/" element={<Navigate to="/dashboard" />} />
+        <Route
+          path="/"
+          element={<Navigate to={dashboardSidebarData[0].url} />}
+        />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/logout" element={<LogoutPage />} />
         <Route path="/moderator/*" element={<ModeratorRoutes />} />

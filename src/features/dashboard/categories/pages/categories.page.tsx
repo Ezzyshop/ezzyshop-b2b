@@ -21,9 +21,9 @@ export function CategoriesPage() {
   };
 
   const { data, isLoading } = useQuery({
-    queryKey: ["categories", shop?._id, filter],
-    queryFn: () => getCategoriesQueryFn(shop._id!, filter),
-    enabled: Boolean(shop?._id),
+    queryKey: ["categories", shop._id, filter],
+    queryFn: () => getCategoriesQueryFn(shop._id, filter),
+    enabled: Boolean(shop._id),
   });
 
   return (
