@@ -19,6 +19,11 @@ const PlansPage = lazy(
   () => import("@/features/dashboard/plans/pages/plans.page")
 );
 
+const DeliveryMethodsPage = lazy(
+  () =>
+    import("@/features/dashboard/delivery-methods/pages/delivery-methods.page")
+);
+
 const SettingsPage = lazy(
   () => import("@/features/dashboard/settings/pages/settings.page")
 );
@@ -31,6 +36,7 @@ export const DashboardRoutes = () => {
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/plans" element={<PlansPage />} />
+        <Route path="/delivery-methods" element={<DeliveryMethodsPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="*" element={<NotFoundPage isDashboard />} />
       </Routes>

@@ -5,3 +5,4 @@ export * from "./shops.query";
 export * from "./telegram.query";
 export * from "./categories.query";
 export * from "./products.query";
+export * from "./delivery-methods.query";

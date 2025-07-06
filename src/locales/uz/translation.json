@@ -171,6 +171,26 @@
         }
       }
     },
+    "delivery-methods": {
+      "create": "Yetkazib berish usuli qo'shish",
+      "created": "Yetkazib berish usuli muvaffaqiyatli yaratildi",
+      "updated": "Yetkazib berish usuli muvaffaqiyatli yangilandi",
+      "create_description": "Yangi yetkazib berish usuli yaratish uchun quyidagi formadan foydalaning",
+      "edit": "Yetkazib berish usuli tahrirlash",
+      "name": "Yetkazib berish usuli",
+      "name_placeholder": "Yetkazib berish usulini kiriting",
+      "price": "Yetkazib berish narxi",
+      "enter_price": "Yetkazib berish narxi kiriting",
+      "currency": "Valyuta",
+      "enter_currency": "Valyuta tanlang",
+      "estimated_days": "Yetkazib berish vaqti",
+      "enter_estimated_days": "Yetkazib berish vaqtini kiriting",
+      "pickup_location": "Olib ketish manzili",
+      "pickup_location_placeholder": "Olib ketish manzilini kiriting",
+      "status": "Yetkazib berish usuli statusi",
+      "enter_status": "Yetkazib berish usuli statusini kiriting",
+      "pickup_location_not_set": "Olib ketish manzili belgilanmagan"
+    },
     "settings": {
       "basic_information": {
         "title": "Asosiy ma'lumotlar",

@@ -34,7 +34,10 @@ export function TeamSwitcher() {
             >
               <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                 <Avatar>
-                  <AvatarImage src={activeShop.logo ? activeShop.logo : ""} />
+                  <AvatarImage
+                    src={activeShop.logo ? activeShop.logo : ""}
+                    className="rounded-full"
+                  />
                   <AvatarFallback>
                     {activeShop.name.charAt(0).toUpperCase()}
                   </AvatarFallback>
