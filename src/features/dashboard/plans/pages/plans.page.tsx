@@ -25,8 +25,10 @@ export const PlansPage = () => {
 
   return (
     <div className="">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">{t("dashboard.plans.title")}</h1>
+      <div className="flex items-end gap-2 md:items-center flex-col md:flex-row justify-between">
+        <h1 className="text-2xl font-bold w-full text-start">
+          {t("dashboard.plans.title")}
+        </h1>
         <PlanTypeSwitch type={type} setType={setType} />
       </div>
 
