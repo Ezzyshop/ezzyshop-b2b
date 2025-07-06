@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getPlansQueryFn } from "@/api/queries";
 import { plansTableColumns } from "../components/plan-table/plans-table-column";
-import { DataTable } from "@/components/moderator/data-table";
+import { DataTable } from "@/components/data-table/data-table";
 import { IPlan } from "../utils/plan.interface";
 
 export const PlansPage = () => {
@@ -24,6 +24,7 @@ export const PlansPage = () => {
           columns={plansTableColumns}
           data={data?.data ?? []}
           isLoading={isLoading}
+          paginationInfo={data?.paginationInfo}
         />
       </div>
     </div>

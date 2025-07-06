@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { AddProductButton } from "../components/product-form/add-product";
 import { getProductsQueryFn } from "@/api/queries";
 import { useShopContext } from "@/contexts";
-import { DataTable } from "@/components/moderator/data-table";
+import { DataTable } from "@/components/data-table/data-table";
 import { productTableColumns } from "../components/products-table/product-table-column";
 import { useQuery } from "@tanstack/react-query";
 import { useQueryParams } from "@/hooks";
@@ -41,6 +41,7 @@ export const ProductsPage = () => {
           columns={productTableColumns(shop)}
           data={data?.data || []}
           isLoading={isLoading}
+          paginationInfo={data?.paginationInfo}
         />
       </div>
     </div>

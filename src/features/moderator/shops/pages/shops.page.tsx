@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { NavLink } from "react-router-dom";
 import { ShopTableFilters } from "../components/shop-table/shop-table-filters";
 import { useQueryParams } from "@/hooks";
-import { DataTable } from "@/components/moderator/data-table";
+import { DataTable } from "@/components/data-table/data-table";
 
 export const ShopsPage = () => {
   const { getQueryParams, setQueryParams } = useQueryParams();
@@ -40,6 +40,7 @@ export const ShopsPage = () => {
           columns={shopColumns}
           data={data?.data ?? []}
           isLoading={isLoading}
+          paginationInfo={data?.paginationInfo}
         />
       </div>
     </div>

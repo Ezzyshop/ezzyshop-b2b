@@ -1,5 +1,5 @@
 import { getCategoriesQueryFn } from "@/api/queries/categories.query";
-import { DataTable } from "@/components/moderator/data-table";
+import { DataTable } from "@/components/data-table/data-table";
 import { useShopContext } from "@/contexts";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
@@ -43,6 +43,7 @@ export function CategoriesPage() {
           columns={categoryTableColumns(t)}
           data={data?.data || []}
           isLoading={isLoading}
+          paginationInfo={data?.paginationInfo}
         />
       </div>
     </div>

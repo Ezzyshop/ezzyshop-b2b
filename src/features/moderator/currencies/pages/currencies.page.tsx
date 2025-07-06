@@ -1,5 +1,5 @@
 import { getCurrenciesQueryFn } from "@/api/queries";
-import { DataTable } from "@/components/moderator/data-table";
+import { DataTable } from "@/components/data-table/data-table";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
 import { NavLink } from "react-router-dom";

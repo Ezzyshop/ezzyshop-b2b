@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { NavLink } from "react-router-dom";
 import { useQueryParams } from "@/hooks";
-import { DataTable } from "@/components/moderator/data-table";
+import { DataTable } from "@/components/data-table/data-table";
 import { getUsersQueryFn } from "@/api/queries";
 import { userColumns } from "../components/user-table/user-table-columns";
 import { UserTableFilters } from "../components/user-table/user-table-filters";
@@ -40,6 +40,7 @@ export const UsersPage = () => {
           columns={userColumns}
           data={data?.data ?? []}
           isLoading={isLoading}
+          paginationInfo={data?.paginationInfo}
         />
       </div>
     </div>

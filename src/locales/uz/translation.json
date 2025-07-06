@@ -231,6 +231,11 @@
     }
   },
   "table": {
+    "pagination": {
+      "previous": "Oldingi",
+      "next": "Keyingi",
+      "more_pages": "Ko'proq sahifalar"
+    },
     "columns": {
       "image": "Rasm",
       "name": "Nomi",
