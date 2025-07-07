@@ -15,13 +15,18 @@ const ProductsPage = lazy(
   () => import("@/features/dashboard/products/pages/products.page")
 );
 
-const PlansPage = lazy(
-  () => import("@/features/dashboard/plans/pages/plans.page")
-);
-
 const DeliveryMethodsPage = lazy(
   () =>
     import("@/features/dashboard/delivery-methods/pages/delivery-methods.page")
+);
+
+const PaymentMethodsPage = lazy(
+  () =>
+    import("@/features/dashboard/payment-methods/pages/payment-methods.page")
+);
+
+const PlansPage = lazy(
+  () => import("@/features/dashboard/plans/pages/plans.page")
 );
 
 const SettingsPage = lazy(
@@ -35,8 +40,9 @@ export const DashboardRoutes = () => {
         <Route path="/main" element={<DashboardMainPage />} />
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/products" element={<ProductsPage />} />
-        <Route path="/plans" element={<PlansPage />} />
         <Route path="/delivery-methods" element={<DeliveryMethodsPage />} />
+        <Route path="/payment-methods" element={<PaymentMethodsPage />} />
+        <Route path="/plans" element={<PlansPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="*" element={<NotFoundPage isDashboard />} />
       </Routes>

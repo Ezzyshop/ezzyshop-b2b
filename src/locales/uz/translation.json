@@ -191,6 +191,33 @@
       "enter_status": "Yetkazib berish usuli statusini kiriting",
       "pickup_location_not_set": "Olib ketish manzili belgilanmagan"
     },
+    "payment-methods": {
+      "create": "To'lov usuli qo'shish",
+      "created": "To'lov usuli muvaffaqiyatli yaratildi",
+      "updated": "To'lov usuli muvaffaqiyatli yangilandi",
+      "create_description": "Yangi to'lov usuli yaratish uchun quyidagi formadan foydalaning",
+      "edit": "To'lov usuli tahrirlash",
+      "edit_description": "To'lov usuli ma'lumotlarini o'zgartirish uchun quyidagi formadan foydalaning",
+      "name": "To'lov usuli nomi",
+      "enter_name": "To'lov usuli nomini kiriting",
+      "instructions": "To'lov usuli tavsifi",
+      "enter_instructions": "To'lov usuli tavsifini kiriting",
+      "status": "To'lov usuli statusi",
+      "type": "To'lov usuli turi",
+      "instructions_placeholder": "To'lov usuli tavsifini kiriting",
+      "type_placeholder": "To'lov usuli turini tanlang",
+      "type_cash": "Naqd pul",
+      "type_click": "Click",
+      "waiting": "Kutilmoqda",
+      "merchant_id": "Merchant ID",
+      "merchant_id_placeholder": "Merchant ID ni kiriting",
+      "service_id": "Service ID",
+      "service_id_placeholder": "Service ID ni kiriting",
+      "merchant_user_id": "Merchant User ID",
+      "merchant_user_id_placeholder": "Merchant User ID ni kiriting",
+      "secret_key": "Secret Key",
+      "secret_key_placeholder": "Secret Key ni kiriting"
+    },
     "settings": {
       "basic_information": {
         "title": "Asosiy ma'lumotlar",
