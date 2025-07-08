@@ -21,9 +21,13 @@ export interface IPlan {
   status: PlanStatus;
   order: number;
   annual_price: number;
+  subscriptions: number;
   createdAt: Date;
   updatedAt: Date;
   __v: number;
 }
 
-export type IPlanForm = Omit<IPlan, "createdAt" | "updatedAt" | "_id" | "__v">;
+export type IPlanForm = Omit<
+  IPlan,
+  "createdAt" | "updatedAt" | "_id" | "__v" | "subscriptions"
+>;

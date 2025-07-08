@@ -20,6 +20,13 @@ export const plansTableColumns: ColumnDef<IPlan>[] = [
     header: "Tartib raqami",
   },
   {
+    accessorKey: "subscriptions",
+    header: "Mijozlar soni",
+    cell: ({ row }) => {
+      return <div>{row.original.subscriptions}</div>;
+    },
+  },
+  {
     accessorKey: "price",
     header: "Narxi",
     cell: ({ row }) => {
