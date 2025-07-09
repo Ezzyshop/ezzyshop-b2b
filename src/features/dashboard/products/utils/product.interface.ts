@@ -6,7 +6,11 @@ export interface IProductForm {
     en?: string;
     ru?: string;
   };
-  description?: string;
+  description?: {
+    uz?: string;
+    en?: string;
+    ru?: string;
+  };
   price: number;
   compare_at_price?: number | null;
   images?: string[];
@@ -28,7 +32,11 @@ export interface IProduct {
     en?: string;
     ru?: string;
   };
-  description?: string;
+  description?: {
+    uz?: string;
+    en?: string;
+    ru?: string;
+  };
   price: number;
   compare_at_price?: number | null;
   images?: string[];

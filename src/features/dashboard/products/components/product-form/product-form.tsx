@@ -11,6 +11,10 @@ import { createProductSchema } from "../../utils/product.validator";
 import { ProductFormVariants } from "./product-form-sections/variants/variants";
 import { ProductFormSettings } from "./product-form-sections/settings";
 import { ProductStatus } from "../../utils/product.enum";
+import { LanguageType } from "@/features/moderator/shops/utils";
+import { useState } from "react";
+import { useShopContext } from "@/contexts";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface IProps {
   onSubmit: (data: IProductForm) => void;
@@ -19,15 +23,33 @@ interface IProps {
 }
 
 export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
+  const { shop } = useShopContext();
+
+  const [activeLanguage, setActiveLanguage] = useState<LanguageType>(
+    shop.languages.find((lang) => lang.is_main)?.type || LanguageType.Uz
+  );
+
+  const availableLanguages = shop.languages.map((lang) => lang.type);
+
+  const languageLabels = {
+    [LanguageType.Uz]: "UZ",
+    [LanguageType.En]: "EN",
+    [LanguageType.Ru]: "RU",
+  };
+
   const form = useForm<IProductForm>({
     resolver: joiResolver(createProductSchema),
     defaultValues: initialValues || {
       name: {
-        uz: "",
-        en: "",
-        ru: "",
+        uz: undefined,
+        en: undefined,
+        ru: undefined,
       },
-      description: "",
+      description: {
+        uz: undefined,
+        en: undefined,
+        ru: undefined,
+      },
       price: 0,
       compare_at_price: null,
       images: [],
@@ -37,6 +59,8 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
     },
   });
 
+  console.log(form.formState.errors);
+
   const handleSubmit = (data: IProductForm) => {
     const cleanData = {
       ...data,
@@ -45,7 +69,13 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
         ...(data.name.en && { en: data.name.en }),
         ...(data.name.ru && { ru: data.name.ru }),
       },
-      ...(data.description && { description: data.description }),
+      ...(data.description && {
+        description: {
+          ...(data.description.uz && { uz: data.description.uz }),
+          ...(data.description.en && { en: data.description.en }),
+          ...(data.description.ru && { ru: data.description.ru }),
+        },
+      }),
       ...(data.compare_at_price && { compare_at_price: data.compare_at_price }),
       ...(data.images?.length && { images: data.images }),
       ...(data.categories?.length && { categories: data.categories }),
@@ -55,15 +85,30 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
     onSubmit(cleanData);
   };
 
-  console.log(form.formState.errors);
-
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(handleSubmit)}
         className="space-y-6 overflow-y-scroll px-2 py-4 "
       >
-        <ProductFormBasicInformation form={form} />
+        <Tabs
+          value={activeLanguage}
+          className="w-full"
+          onValueChange={(value) => setActiveLanguage(value as LanguageType)}
+        >
+          <TabsList className="w-full">
+            {availableLanguages.map((langType) => (
+              <TabsTrigger key={langType} value={langType}>
+                {languageLabels[langType]}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
+
+        <ProductFormBasicInformation
+          form={form}
+          activeLanguage={activeLanguage}
+        />
 
         <ProductFormPricingInformation form={form} />
 

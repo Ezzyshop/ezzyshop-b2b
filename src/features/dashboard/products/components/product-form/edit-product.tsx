@@ -51,7 +51,11 @@ export const EditProductButton = ({ productId }: IProps) => {
 
     return {
       name: data.data.name,
-      description: data.data.description,
+      description: data.data.description || {
+        uz: "",
+        en: "",
+        ru: "",
+      },
       price: data.data.price,
       compare_at_price: data.data.compare_at_price,
       images: data.data.images,

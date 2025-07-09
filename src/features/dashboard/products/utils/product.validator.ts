@@ -4,12 +4,17 @@ import { ProductStatus } from "./product.enum";
 export const createProductSchema = Joi.object({
   // 🔤 Localized name
   name: Joi.object({
-    uz: Joi.string().min(1).max(100).required(),
-    en: Joi.string().min(1).max(100).optional(),
-    ru: Joi.string().min(1).max(100).optional(),
+    uz: Joi.string().max(100).optional(),
+    en: Joi.string().max(100).optional(),
+    ru: Joi.string().max(100).optional(),
   }).required(),
 
-  description: Joi.string().allow("").optional(),
+  // 🔤 Localized description
+  description: Joi.object({
+    uz: Joi.string().max(500).allow("").optional(),
+    en: Joi.string().max(500).allow("").optional(),
+    ru: Joi.string().max(500).allow("").optional(),
+  }).optional(),
 
   // 💰 Base price (active selling price)
   price: Joi.number().min(0).required(),
