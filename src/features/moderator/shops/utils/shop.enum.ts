@@ -20,3 +20,9 @@ export const shopTypesTranslations: Record<
   [ShopStatus.Inactive]: "Inaktiv",
   [BusinessType.OnlineStore]: "Onlayn do'kon",
 };
+
+export enum LanguageType {
+  Uz = "uz",
+  Ru = "ru",
+  En = "en",
+}

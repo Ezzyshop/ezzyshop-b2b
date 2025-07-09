@@ -1,5 +1,10 @@
 import { PlansType } from "@/features/dashboard/plans/utils/plans.enum";
-import { BusinessType, ShopPlatform, ShopStatus } from "./shop.enum";
+import {
+  BusinessType,
+  LanguageType,
+  ShopPlatform,
+  ShopStatus,
+} from "./shop.enum";
 
 export interface IShop {
   _id: string;
@@ -45,6 +50,12 @@ export interface IShop {
   };
   createdAt: Date;
   updatedAt: Date;
+  languages: ILanguage[];
+}
+
+export interface ILanguage {
+  type: LanguageType;
+  is_main: boolean;
 }
 
 export interface IShopForm {
@@ -74,6 +85,7 @@ export interface IShopForm {
     long: number | null;
     lat: number | null;
   };
+  languages: ILanguage[];
 }
 
 export interface IShopUpdateForm {
@@ -98,6 +110,7 @@ export interface IShopUpdateForm {
     long: number | null;
     lat: number | null;
   };
+  languages: ILanguage[];
 }
 
 export interface IMyShopUpdateForm extends Omit<IShopUpdateForm, "telegram"> {

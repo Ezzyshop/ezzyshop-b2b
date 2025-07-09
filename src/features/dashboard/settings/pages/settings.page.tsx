@@ -41,6 +41,7 @@ export const SettingsPage = () => {
       name: shop.name,
       logo: shop.logo,
       description: shop.description,
+      languages: shop.languages,
     };
   }, [shop]);
 

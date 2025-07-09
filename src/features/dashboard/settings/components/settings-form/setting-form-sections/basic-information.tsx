@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { IShopUpdateForm } from "@/features/moderator/shops/utils";
+import { SelectLanguage } from "@/features/register/create-shop/components/select-language";
 import { useQuery } from "@tanstack/react-query";
 import { UseFormReturn } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -49,7 +50,9 @@ export const SettingFormBasicInformation = ({ form }: IProps) => {
               <FormControl>
                 <Input
                   {...field}
-                  placeholder={t("dashboard.settings.basic_information.enter_name")}
+                  placeholder={t(
+                    "dashboard.settings.basic_information.enter_name"
+                  )}
                 />
               </FormControl>
               <FormMessage />
@@ -69,7 +72,9 @@ export const SettingFormBasicInformation = ({ form }: IProps) => {
                 <Input
                   {...field}
                   value={field.value || ""}
-                  placeholder={t("dashboard.settings.basic_information.enter_logo")}
+                  placeholder={t(
+                    "dashboard.settings.basic_information.enter_logo"
+                  )}
                 />
               </FormControl>
               <FormMessage />
@@ -89,7 +94,9 @@ export const SettingFormBasicInformation = ({ form }: IProps) => {
                 <Textarea
                   {...field}
                   value={field.value || ""}
-                  placeholder={t("dashboard.settings.basic_information.enter_description")}
+                  placeholder={t(
+                    "dashboard.settings.basic_information.enter_description"
+                  )}
                   rows={3}
                 />
               </FormControl>
@@ -125,6 +132,22 @@ export const SettingFormBasicInformation = ({ form }: IProps) => {
                     )}
                   </SelectContent>
                 </Select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="languages"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <SelectLanguage
+                  values={field.value || []}
+                  onChange={field.onChange}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

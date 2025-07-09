@@ -1,6 +1,11 @@
 import Joi from "joi";
-import { BusinessType, ShopPlatform, ShopStatus } from "./shop.enum";
-import { IShop } from "./shop.interface";
+import {
+  BusinessType,
+  LanguageType,
+  ShopPlatform,
+  ShopStatus,
+} from "./shop.enum";
+import { IShop, ILanguage } from "./shop.interface";
 import { PlansType } from "@/features/dashboard/plans/utils/plans.enum";
 
 export const shopFields: Record<
@@ -69,6 +74,27 @@ export const shopFields: Record<
   status: Joi.string()
     .valid(...Object.values(ShopStatus))
     .optional(),
+  languages: Joi.array()
+    .items(
+      Joi.object({
+        type: Joi.string()
+          .valid(...Object.values(LanguageType))
+          .required(),
+        is_main: Joi.boolean().required(),
+      })
+    )
+    .custom((value: ILanguage[], helpers) => {
+      const mainLanguages = value.filter(
+        (lang: ILanguage) => lang.is_main === true
+      );
+      if (mainLanguages.length !== 1) {
+        return helpers.error("languages.exactly_one_main");
+      }
+      return value;
+    })
+    .messages({
+      "languages.exactly_one_main": "Kamida bitta til asosiy bo'lishi kerak",
+    }),
 };
 
 export const shopCreateSchema = Joi.object({
@@ -83,6 +109,7 @@ export const shopCreateSchema = Joi.object({
   currency: shopFields.currency,
   address: shopFields.address,
   status: shopFields.status,
+  languages: shopFields.languages,
 });
 
 export const shopUpdateSchema = Joi.object({
@@ -93,6 +120,7 @@ export const shopUpdateSchema = Joi.object({
   social_links: shopFields.social_links,
   currency: shopFields.currency,
   address: shopFields.address,
+  languages: shopFields.languages,
 });
 
 export const shopUpdatePlanSchema = Joi.object({
@@ -123,4 +151,5 @@ export const updateMyShopSchema = Joi.object({
   social_links: shopFields.social_links,
   currency: shopFields.currency,
   address: shopFields.address,
+  languages: shopFields.languages,
 });

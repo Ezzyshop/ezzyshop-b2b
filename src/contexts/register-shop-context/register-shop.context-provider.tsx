@@ -5,6 +5,7 @@ import {
   BusinessType,
   IShop,
   IShopForm,
+  LanguageType,
   shopCreateSchema,
   ShopPlatform,
 } from "@/features/moderator/shops/utils";
@@ -39,6 +40,12 @@ export const RegisterShopContextProvider = ({
         lat: 41.2995,
         long: 69.2401,
       },
+      languages: [
+        {
+          type: LanguageType.Uz,
+          is_main: true,
+        },
+      ],
     },
     resolver: joiResolver(shopCreateSchema),
   });

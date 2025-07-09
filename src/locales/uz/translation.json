@@ -67,7 +67,9 @@
       "shop_address_description": "Kompaniya manzilini kiriting yoki xaritadan tanlang",
       "shop_address_placeholder": "Manzilni kiriting",
       "currency": "Valyuta",
-      "currency_placeholder": "Valyuta tanlang"
+      "currency_placeholder": "Valyuta tanlang",
+      "languages": "Tilni tanlang",
+      "main_language": "Asosiy til"
     },
     "create_success": {
       "title": "Kompaniya muvaffaqiyatli yaratildi! 🎉",
