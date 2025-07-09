@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { PaymentMethodCard } from "../components/payment-method-card";
 import { useTranslation } from "react-i18next";
 import { AddPaymentMethod } from "../components/payment-method-form/add-payment-method";
+import { PaymentMethodEmptyState } from "../components/payment-method-empty-state";
 
 export const PaymentMethodsPage = () => {
   const { shop } = useShopContext();
@@ -17,7 +18,7 @@ export const PaymentMethodsPage = () => {
 
   const renderContent = () => {
     if (isLoading) return <DashboardLayoutLoader />;
-    if (data?.data.length === 0) return null;
+    if (data?.data.length === 0) return <PaymentMethodEmptyState />;
 
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

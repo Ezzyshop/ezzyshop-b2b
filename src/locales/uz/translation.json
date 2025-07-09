@@ -191,7 +191,11 @@
       "pickup_location_placeholder": "Olib ketish manzilini kiriting",
       "status": "Yetkazib berish usuli statusi",
       "enter_status": "Yetkazib berish usuli statusini kiriting",
-      "pickup_location_not_set": "Olib ketish manzili belgilanmagan"
+      "pickup_location_not_set": "Olib ketish manzili belgilanmagan",
+      "empty_state": {
+        "title": "Yetkazib berish usullari yo'q",
+        "description": "Hozircha hech qanday yetkazib berish usuli qo'shilmagan. Birinchi yetkazib berish usulini qo'shish uchun tugmani bosing."
+      }
     },
     "payment-methods": {
       "create": "To'lov usuli qo'shish",
@@ -218,7 +222,11 @@
       "merchant_user_id": "Merchant User ID",
       "merchant_user_id_placeholder": "Merchant User ID ni kiriting",
       "secret_key": "Secret Key",
-      "secret_key_placeholder": "Secret Key ni kiriting"
+      "secret_key_placeholder": "Secret Key ni kiriting",
+      "empty_state": {
+        "title": "To'lov usullari yo'q",
+        "description": "Hozircha hech qanday to'lov usuli qo'shilmagan. Birinchi to'lov usulini qo'shish uchun tugmani bosing."
+      }
     },
     "settings": {
       "basic_information": {

@@ -1,102 +1,294 @@
 {
+  "theme": {
+    "colors": "Mavzular",
+    "radius": "Radius",
+    "default": "Asosiy",
+    "rose-garden": "Atirgul bog'i",
+    "underground": "Underground"
+  },
   "common": {
-    "loading": "Загрузка...",
-    "error": "Ошибка",
-    "success": "Успешно",
-    "cancel": "Отмена",
-    "save": "Сохранить",
-    "edit": "Редактировать",
-    "delete": "Удалить",
-    "add": "Добавить",
-    "create": "Создать",
-    "update": "Обновить",
-    "search": "Поиск",
-    "filter": "Фильтр",
-    "clear": "Очистить",
-    "back": "Назад",
-    "next": "Далее",
-    "previous": "Предыдущий",
-    "submit": "Отправить",
-    "close": "Закрыть",
-    "open": "Открыть",
-    "view": "Посмотреть",
-    "download": "Скачать",
-    "upload": "Загрузить",
-    "yes": "Да",
-    "no": "Нет",
-    "confirm": "Подтвердить",
-    "welcome": "Добро пожаловать",
-    "back_to_site": "Вернуться на сайт",
-    "not_found": "Кажется, вы попали в неизвестный цифровой мир."
+    "loading": "Yuklanmoqda...",
+    "error": "Xatolik",
+    "success": "Muvaffaqiyatli",
+    "cancel": "Bekor qilish",
+    "save": "Saqlash",
+    "edit": "Tahrirlash",
+    "delete": "O'chirish",
+    "add": "Qo'shish",
+    "create": "Yaratish",
+    "update": "Yangilash",
+    "search": "Qidirish",
+    "filter": "Filtr",
+    "clear": "Tozalash",
+    "back": "Orqaga",
+    "next": "Keyingi",
+    "previous": "Oldingi",
+    "submit": "Yuborish",
+    "close": "Yopish",
+    "open": "Ochish",
+    "view": "Ko'rish",
+    "download": "Yuklab olish",
+    "upload": "Yuklash",
+    "yes": "Ha",
+    "no": "Yo'q",
+    "confirm": "Tasdiqlash",
+    "welcome": "Xush kelibsiz",
+    "back_to_site": "Saytga qaytish",
+    "not_found": "Siz noma'lum raqamli dunyoga kirganga o'xshaysiz.",
+    "active": "Aktiv",
+    "inactive": "Aktiv emas",
+    "server_error": "Server xatosi. Biz bu muammoni hal qilish ustida ishlayapmiz",
+    "select_all": "Barchasini tanlash",
+    "no_results_found": "Natijalar topilmadi",
+    "quantity_suffix": "ta"
   },
   "register": {
     "create_telegram": {
-      "title": "Создание Telegram бота",
-      "telegram_bot_token": "Telegram Bot Token",
-      "telegram_bot_token_placeholder": "Введите токен Telegram бота",
-      "menu_name": "Название меню",
-      "menu_name_placeholder": "Введите название меню",
-      "tips": "Руководство по получению токена Telegram",
-      "tip_1": "Напишите <a href=\"https://t.me/BotFather\" target=\"_blank\" class=\"text-blue-500 cursor-pointer hover:underline\">@BotFather</a> в поиске Telegram",
-      "tip_2": "Создайте нового бота с помощью команды <span class=\"font-bold\">/newbot</span>",
-      "tip_3": "Введите имя бота и имя пользователя",
-      "tip_4": "В ответ <a href=\"https://t.me/BotFather\" class=\"text-blue-500 cursor-pointer hover:underline\" target=\"_blank\">@BotFather</a> отправит вам токен: <span class=\"font-bold\">238279964:AAFE6-1ZuCAcEOUPa63XlLxxq9qYU1iYdbs</span>",
-      "tip_5": "Скопируйте токен и вставьте его в <span class=\"text-blue-500 cursor-pointer hover:underline\">поле выше</span>"
+      "title": "Telegram bot yaratish",
+      "telegram_bot_token": "Telegram bot token",
+      "telegram_bot_token_placeholder": "Telegram bot tokenni kiriting",
+      "menu_name": "Menu nomi",
+      "menu_name_placeholder": "Menu nomini kiriting",
+      "tips": "Telegram token olish uchun yo'riqnoma",
+      "tip_1": "Telegram qidiruv bo'limiga <a href=\"https://t.me/BotFather\" target=\"_blank\" class=\"text-blue-500 cursor-pointer hover:underline\">@BotFather</a> deb yozing",
+      "tip_2": "<span class=\"font-bold\">/newbot</span> buyrug'i yordamida yangi bot yarating",
+      "tip_3": "Bot nomi va usernameni kiriting",
+      "tip_4": "Javob sifatida <a href=\"https://t.me/BotFather\" class=\"text-blue-500 cursor-pointer hover:underline\" target=\"_blank\">@BotFather</a> sizga token yuboradi: <span class=\"font-bold\">238279964:AAFE6-1ZuCAcEOUPa63XlLxxq9qYU1iYdbs</span>",
+      "tip_5": "Tokendan nusxa oling va uni <span class=\"text-blue-500 cursor-pointer hover:underline\">yuqoridagi</span> maydonga joylashtiring"
     },
     "create_shop": {
-      "create_shop": "Создать компанию",
-      "create_shop_description": "Введите информацию для создания компании",
-      "shop_name": "Название компании",
-      "shop_name_placeholder": "Введите название компании",
-      "shop_description": "О компании",
-      "shop_description_placeholder": "Введите описание компании",
-      "shop_address": "Адрес компании",
-      "shop_address_description": "Введите адрес компании или выберите на карте",
-      "shop_address_placeholder": "Введите адрес",
-      "currency": "Валюта",
-      "currency_placeholder": "Выберите валюту"
+      "create_shop": "Kompaniya yaratish",
+      "create_shop_description": "Kompaniya yaratish uchun ma'lumotlarni kiriting",
+      "shop_name": "Kompaniya nomi",
+      "shop_name_placeholder": "Kompaniya nomini kiriting",
+      "shop_description": "Kompaniya haqida",
+      "shop_description_placeholder": "Kompaniya tavsifini kiriting",
+      "shop_address": "Kompaniya manzili",
+      "shop_address_description": "Kompaniya manzilini kiriting yoki xaritadan tanlang",
+      "shop_address_placeholder": "Manzilni kiriting",
+      "currency": "Valyuta",
+      "currency_placeholder": "Valyuta tanlang",
+      "languages": "Tilni tanlang",
+      "main_language": "Asosiy til"
     },
     "create_success": {
-      "title": "Компания успешно создана! 🎉",
-      "description": "Компания была успешно создана и готова к продажам!",
-      "button_text": "Перейти к продажам",
-      "about_shop": "О компании",
-      "shop_name": "Название компании",
-      "shop_id": "ID компании",
-      "tips_title": "Советы",
+      "title": "Kompaniya muvaffaqiyatli yaratildi! 🎉",
+      "description": "Kompaniya muvaffaqiyatli yaratildi va sotuvga tayyor!",
+      "button_text": "Sotuvga o'tish",
+      "about_shop": "Kompaniya haqida",
+      "shop_name": "Kompaniya nomi",
+      "shop_id": "Kompaniya ID",
+      "tips_title": "Maslahatlar",
       "tips": {
-        "tip_1": "Добавьте товары",
-        "tip_2": "Настройте способы оплаты",
-        "tip_3": "Настройте способы доставки",
-        "tip_4": "Принимайте заказы"
+        "tip_1": "Mahsulot qo'shing",
+        "tip_2": "To'lov usullarini o'rnating",
+        "tip_3": "Yetkazib berish usullarini o'rnating",
+        "tip_4": "Buyurtmalarni qabul qiling"
       }
     }
   },
   "sidebar": {
     "dashboard": {
-      "main_page": "Главная страница",
-      "categories": "Категории"
+      "main_page": "Bosh sahifa",
+      "categories": "Kategoriyalar",
+      "products": "Mahsulotlar",
+      "plans": "Tariflar",
+      "orders": "Buyurtmalar",
+      "delivery-methods": "Yetkazib berish usullari",
+      "payment-methods": "To'lov usullari",
+      "settings": "Sozlamalar",
+      "upgrade_plan": {
+        "title": "{{ plan }} tarifiga ga o'ting",
+        "description": "{{ plan }} tarifini tanlab ko'proq imkoniyatlarga ega bo'ling.",
+        "button_text": "Tarifni o'zgartirish"
+      }
     }
   },
   "dashboard": {
     "categories": {
-      "create": "Добавить категорию"
+      "create": "Kategoriya qo'shish",
+      "created": "Kategoriya muvaffaqiyatli yaratildi",
+      "updated": "Kategoriya muvaffaqiyatli yangilandi",
+      "create_description": "Yangi kategoriya yaratish uchun quyidagi formadan foydalaning",
+      "edit": "Kategoriya tahrirlash",
+      "edit_description": "Kategoriya ma'lumotlarini o'zgartirish uchun quyidagi formadan foydalaning",
+      "name": "Kategoriya nomi",
+      "enter_name": "Kategoriya nomini kiriting",
+      "image": "Kategoriya rasmi",
+      "enter_image": "Kategoriya rasmini kiriting"
+    },
+    "products": {
+      "create": "Mahsulot qo'shish",
+      "created": "Mahsulot muvaffaqiyatli yaratildi",
+      "updated": "Mahsulot muvaffaqiyatli yangilandi",
+      "create_description": "Yangi mahsulot yaratish uchun quyidagi formadan foydalaning",
+      "edit": "Mahsulot tahrirlash",
+      "edit_description": "Mahsulot ma'lumotlarini o'zgartirish uchun quyidagi formadan foydalaning",
+      "basic_information": "Asosiy ma'lumotlar",
+      "name": "Mahsulot nomi",
+      "enter_name": "Mahsulot nomini kiriting",
+      "description": "Mahsulot tavsifi",
+      "enter_description": "Mahsulot tavsifini kiriting",
+      "price": "Mahsulot narxi",
+      "enter_price": "Mahsulot narxi kiriting",
+      "compare_at_price": "Mahsulot narxi",
+      "images": "Rasm",
+      "settings": "Sozlamalar",
+      "status": "Mahsulot statusi",
+      "status_description": "Mahsulot statusini o'zgartirish"
+    },
+    "plans": {
+      "title": "O'zingizga mos tarifni tanlang",
+      "buy": "Tanlash",
+      "current_plan": "Joriy tarif",
+      "free": "Bepul",
+      "type": {
+        "monthly": "Oylik",
+        "annual": "Yillik"
+      },
+      "advantages": {
+        "telegram_bot": "Telegram bot",
+        "product_count": "{{ count }} mahsulot qo'shish",
+        "product_count_infinity": "Cheklanmagan mahsulot qo'shish",
+        "category_count": "{{ count }} kategoriya qo'shish",
+        "category_count_infinity": "Cheklanmagan kategoriya qo'shish",
+        "order_count": "{{ count }} buyurtma qabul qilish",
+        "order_count_infinity": "Cheklanmagan buyurtma qabul qilish"
+      },
+      "why_us": {
+        "title": "Nega bizni tanlash kerak?",
+        "items": {
+          "item_1": {
+            "title": "Tez va oson savdo",
+            "description": "Telegram orqali atigi bir necha bosishda do‘koningizni ishga tushiring. Murakkab sozlamalarsiz, siz mahsulot qo‘shasiz — mijozlar esa bevosita bot orqali xarid qiladi."
+          },
+          "item_2": {
+            "title": "Shaxsiy Telegram bot orqali savdo",
+            "description": "Har bir sotuvchiga o‘zining shaxsiy Telegram boti yaratiladi. Mijozlaringiz sizni bevosita bot orqali tanib, ishonch bilan xarid qilishadi."
+          },
+          "item_3": {
+            "title": "Bepul veb-sayt va mini ilova",
+            "description": "Biz sizga avtomatik tarzda mini ilova va tayyor do‘kon sahifasi yaratamiz. Uni mijozlaringizga ulashing — ular mobil qurilmada ilova sifatida ishlatishadi."
+          }
+        }
+      }
+    },
+    "delivery-methods": {
+      "create": "Yetkazib berish usuli qo'shish",
+      "created": "Yetkazib berish usuli muvaffaqiyatli yaratildi",
+      "updated": "Yetkazib berish usuli muvaffaqiyatli yangilandi",
+      "create_description": "Yangi yetkazib berish usuli yaratish uchun quyidagi formadan foydalaning",
+      "edit": "Yetkazib berish usuli tahrirlash",
+      "name": "Yetkazib berish usuli",
+      "name_placeholder": "Yetkazib berish usulini kiriting",
+      "price": "Yetkazib berish narxi",
+      "enter_price": "Yetkazib berish narxi kiriting",
+      "currency": "Valyuta",
+      "enter_currency": "Valyuta tanlang",
+      "estimated_days": "Yetkazib berish vaqti",
+      "enter_estimated_days": "Yetkazib berish vaqtini kiriting",
+      "pickup_location": "Olib ketish manzili",
+      "pickup_location_placeholder": "Olib ketish manzilini kiriting",
+      "status": "Yetkazib berish usuli statusi",
+      "enter_status": "Yetkazib berish usuli statusini kiriting",
+      "pickup_location_not_set": "Olib ketish manzili belgilanmagan",
+      "empty_state": {
+        "title": "Yetkazib berish usullari yo'q",
+        "description": "Hozircha hech qanday yetkazib berish usuli qo'shilmagan. Birinchi yetkazib berish usulini qo'shish uchun tugmani bosing."
+      }
+    },
+    "payment-methods": {
+      "create": "To'lov usuli qo'shish",
+      "created": "To'lov usuli muvaffaqiyatli yaratildi",
+      "updated": "To'lov usuli muvaffaqiyatli yangilandi",
+      "create_description": "Yangi to'lov usuli yaratish uchun quyidagi formadan foydalaning",
+      "edit": "To'lov usuli tahrirlash",
+      "edit_description": "To'lov usuli ma'lumotlarini o'zgartirish uchun quyidagi formadan foydalaning",
+      "name": "To'lov usuli nomi",
+      "enter_name": "To'lov usuli nomini kiriting",
+      "instructions": "To'lov usuli tavsifi",
+      "enter_instructions": "To'lov usuli tavsifini kiriting",
+      "status": "To'lov usuli statusi",
+      "type": "To'lov usuli turi",
+      "instructions_placeholder": "To'lov usuli tavsifini kiriting",
+      "type_placeholder": "To'lov usuli turini tanlang",
+      "type_cash": "Naqd pul",
+      "type_click": "Click",
+      "waiting": "Kutilmoqda",
+      "merchant_id": "Merchant ID",
+      "merchant_id_placeholder": "Merchant ID ni kiriting",
+      "service_id": "Service ID",
+      "service_id_placeholder": "Service ID ni kiriting",
+      "merchant_user_id": "Merchant User ID",
+      "merchant_user_id_placeholder": "Merchant User ID ni kiriting",
+      "secret_key": "Secret Key",
+      "secret_key_placeholder": "Secret Key ni kiriting",
+      "empty_state": {
+        "title": "To'lov usullari yo'q",
+        "description": "Hozircha hech qanday to'lov usuli qo'shilmagan. Birinchi to'lov usulini qo'shish uchun tugmani bosing."
+      }
+    },
+    "settings": {
+      "basic_information": {
+        "title": "Asosiy ma'lumotlar",
+        "name": "Biznes nomi",
+        "enter_name": "Biznes nomini kiriting",
+        "logo": "Biznes logotipi",
+        "enter_logo": "Biznes logotipini kiriting",
+        "description": "Biznes tavsifi",
+        "enter_description": "Biznes tavsifini kiriting",
+        "currency": "Valyuta",
+        "enter_currency": "Valyuta tanlang"
+      },
+      "telegram_configuration": {
+        "title": "Telegram konfiguratsiyasi",
+        "menu_name": "Menu nomi",
+        "enter_menu_name": "Menu nomini kiriting"
+      },
+      "social_links": {
+        "title": "Ijtimoiy tarmoqlar",
+        "telegram": "Telegram",
+        "enter_telegram": "Telegram linkini kiriting",
+        "instagram": "Instagram",
+        "enter_instagram": "Instagram linkini kiriting",
+        "facebook": "Facebook",
+        "enter_facebook": "Facebook linkini kiriting",
+        "twitter": "Twitter",
+        "enter_twitter": "Twitter linkini kiriting",
+        "youtube": "YouTube",
+        "enter_youtube": "YouTube linkini kiriting"
+      },
+      "address": {
+        "title": "Manzil ma'lumotlari",
+        "address": "Manzil",
+        "enter_address": "Manzilni kiriting",
+        "latitude": "Kenglik",
+        "longitude": "Uzunlik"
+      }
     }
   },
   "table": {
+    "pagination": {
+      "previous": "Oldingi",
+      "next": "Keyingi",
+      "more_pages": "Ko'proq sahifalar"
+    },
     "columns": {
-      "image": "Изображение",
-      "name": "Название",
-      "status": "Статус",
-      "is_popular": "Популярный",
-      "actions": "Действия",
-      "popular": "Популярный",
-      "not_popular": "Не популярный"
+      "image": "Rasm",
+      "name": "Nomi",
+      "status": "Status",
+      "is_popular": "Mashxurmi",
+      "actions": "Amallar",
+      "popular": "Mashxur",
+      "not_popular": "Mashxur emas",
+      "price": "Narxi",
+      "created_at": "Yaratilgan vaqt",
+      "product_count": "Mahsulot soni"
     },
     "filters": {
-      "search": "Поиск",
-      "status": "Статус",
-      "is_popular": "Популярный"
+      "search": "Qidirish",
+      "status": "Status",
+      "is_popular": "Mashxurmi"
     }
   }
 }
