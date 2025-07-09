@@ -43,7 +43,7 @@ export const PlanCard = ({ plan, type }: IProps) => {
           {plan.description[i18n.language as keyof typeof plan.description]}
         </p>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex-grow">
         <PlanCardPrice plan={plan} type={type} />
         <div className="mt-4 space-y-2">
           <PlanCardAdvantages
