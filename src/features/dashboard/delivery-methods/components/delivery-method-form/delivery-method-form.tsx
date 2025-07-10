@@ -23,10 +23,7 @@ import { LanguageSelectTab } from "@/components/form/language-select-tab";
 import { LanguageType } from "@/features/moderator/shops/utils";
 import { useState } from "react";
 import { useShopContext } from "@/contexts";
-import {
-  DeliveryMethodEstimatedDayPrefix,
-  DeliveryMethodType,
-} from "../../utils/delivery-methods.enum";
+import { DeliveryMethodType } from "../../utils/delivery-methods.enum";
 import { DeliveryTypeForm } from "./delivery-method-types/delivery-type-form";
 import { PickupTypeForm } from "./delivery-method-types/pickup-type-form";
 import { Input } from "@/components/ui/input";
@@ -57,8 +54,7 @@ export const DeliveryMethodForm = ({
         en: undefined,
       },
       price: 0,
-      currency: undefined,
-      estimated_days: 0,
+      estimated_days: undefined,
       pickup_location: undefined,
       deliveryType: undefined,
       initial_km: undefined,
@@ -66,9 +62,11 @@ export const DeliveryMethodForm = ({
       every_km_price: undefined,
       min_order_price: undefined,
       type: DeliveryMethodType.Pickup,
-      estimated_day_prefix: DeliveryMethodEstimatedDayPrefix.Day,
+      estimated_day_prefix: undefined,
     },
   });
+
+  console.log(form.formState.errors);
 
   const handleSubmit = (data: IDeliveryMethodForm) => {
     onSubmit(data);

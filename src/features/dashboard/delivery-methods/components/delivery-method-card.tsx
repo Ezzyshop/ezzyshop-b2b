@@ -7,6 +7,7 @@ import {
   DeliveryMethodDeliveryType,
   deliveryMethodDeliveryTypeLabel,
   deliveryMethodEstimatedDayPrefixLabel,
+  DeliveryMethodType,
 } from "../utils/delivery-methods.enum";
 
 interface IProps {
@@ -38,40 +39,69 @@ export const DeliveryMethodCard = ({ deliveryMethod }: IProps) => {
       <CardContent className="space-y-2">
         {deliveryMethod.deliveryType === DeliveryMethodDeliveryType.Dynamic ? (
           <p className="text-2xl font-bold">
-            {deliveryMethod.initial_km_price?.toLocaleString()}{" "}
-            {deliveryMethod.currency.symbol} / {t("common.km")}
+            {deliveryMethod.initial_km_price?.toLocaleString()} UZS /{" "}
+            {t("common.km")}
           </p>
         ) : (
           <p className="text-2xl font-bold">
-            {deliveryMethod.price?.toLocaleString()}{" "}
-            {deliveryMethod.currency.symbol}
+            {deliveryMethod.price?.toLocaleString()} UZS
           </p>
         )}
 
-        <div className="flex items-center justify-between gap-2">
-          <p className="text-muted-foreground text-sm">
-            {t("dashboard.delivery-methods.delivery_type")}:
-          </p>
-          {deliveryMethod.deliveryType && (
-            <p className="text-sm">
-              {t(deliveryMethodDeliveryTypeLabel[deliveryMethod.deliveryType])}
-            </p>
-          )}
-        </div>
+        {deliveryMethod.type === DeliveryMethodType.Delivery && (
+          <>
+            <div className="flex items-center justify-between gap-2">
+              <p className="text-muted-foreground text-sm">
+                {t("dashboard.delivery-methods.delivery_type")}:
+              </p>
+              {deliveryMethod.deliveryType && (
+                <p className="text-sm">
+                  {t(
+                    deliveryMethodDeliveryTypeLabel[deliveryMethod.deliveryType]
+                  )}
+                </p>
+              )}
+            </div>
 
-        <div className="flex items-center justify-between gap-2">
-          <p className="text-muted-foreground text-sm">
-            {t("dashboard.delivery-methods.estimated_days")}:
-          </p>
-          <p className="text-sm">
-            {deliveryMethod.estimated_days}{" "}
-            {t(
-              deliveryMethodEstimatedDayPrefixLabel[
-                deliveryMethod.estimated_day_prefix
-              ]
-            )}
-          </p>
-        </div>
+            <div className="flex items-center justify-between gap-2">
+              <p className="text-muted-foreground text-sm">
+                {t("dashboard.delivery-methods.estimated_days")}:
+              </p>
+              <p className="text-sm">
+                {deliveryMethod.estimated_days}{" "}
+                {deliveryMethod.estimated_day_prefix &&
+                  t(
+                    deliveryMethodEstimatedDayPrefixLabel[
+                      deliveryMethod.estimated_day_prefix
+                    ]
+                  )}
+              </p>
+            </div>
+          </>
+        )}
+
+        {deliveryMethod.deliveryType === DeliveryMethodDeliveryType.Dynamic && (
+          <>
+            <div className="flex items-center justify-between gap-2">
+              <p className="text-muted-foreground text-sm">
+                {deliveryMethod.initial_km}{" "}
+                {t("dashboard.delivery-methods.initial_km_price_prefix")}:
+              </p>
+              <p className="text-sm">
+                {deliveryMethod.initial_km_price?.toLocaleString()} UZS
+              </p>
+            </div>
+            <div className="flex items-center justify-between gap-2">
+              <p className="text-muted-foreground text-sm">
+                {t("dashboard.delivery-methods.every_km_price_prefix")}:
+              </p>
+              <p className="text-sm">
+                {deliveryMethod.every_km_price?.toLocaleString()} UZS
+              </p>
+            </div>
+          </>
+        )}
+
         {deliveryMethod.pickup_location && (
           <div className="flex items-center justify-between gap-2">
             <p className="text-muted-foreground text-sm">

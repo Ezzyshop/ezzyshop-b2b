@@ -23,23 +23,20 @@ export interface IDeliveryMethod {
     symbol: string;
   };
   estimated_days: number;
-  pickup_location: string | null;
-  deliveryType: DeliveryMethodDeliveryType | null;
-  initial_km: number | null;
-  initial_km_price: number | null;
-  every_km_price: number | null;
-  min_order_price: number | null;
+  pickup_location: string | undefined;
+  deliveryType: DeliveryMethodDeliveryType | undefined;
+  initial_km: number | undefined;
+  initial_km_price: number | undefined;
+  every_km_price: number | undefined;
+  min_order_price: number | undefined;
   type: DeliveryMethodType;
-  estimated_day_prefix: DeliveryMethodEstimatedDayPrefix;
+  estimated_day_prefix: DeliveryMethodEstimatedDayPrefix | undefined;
   status: DeliveryMethodStatus;
   createdAt: string;
   updatedAt: string;
 }
 
-export interface IDeliveryMethodForm
-  extends Omit<
-    IDeliveryMethod,
-    "shop" | "currency" | "createdAt" | "updatedAt" | "_id" | "status"
-  > {
-  currency: string;
-}
+export type IDeliveryMethodForm = Omit<
+  IDeliveryMethod,
+  "shop" | "currency" | "createdAt" | "updatedAt" | "_id" | "status"
+>;

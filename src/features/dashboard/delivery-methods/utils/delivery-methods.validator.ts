@@ -25,7 +25,7 @@ export const deliveryMethodFields = {
     .min(0)
     .messages({ "number.min": "Price must be greater than 0" }),
   estimated_days: Joi.number()
-    .min(1)
+    .min(0)
     .messages({ "number.min": "Estimated days must be greater than 0" }),
   pickup_location: Joi.string().optional().max(100).messages({
     "string.max": "Pickup location must be less than 100 characters",
@@ -53,12 +53,10 @@ export const deliveryMethodFields = {
     .optional()
     .min(0)
     .messages({ "number.min": "Min order price must be greater than 0" }),
-  type: Joi.string()
-    .required()
-    .valid(...Object.values(DeliveryMethodType)),
-  estimated_day_prefix: Joi.string()
-    .required()
-    .valid(...Object.values(DeliveryMethodEstimatedDayPrefix)),
+  type: Joi.string().valid(...Object.values(DeliveryMethodType)),
+  estimated_day_prefix: Joi.string().valid(
+    ...Object.values(DeliveryMethodEstimatedDayPrefix)
+  ),
 };
 
 export const deliveryMethodSchema = Joi.object({

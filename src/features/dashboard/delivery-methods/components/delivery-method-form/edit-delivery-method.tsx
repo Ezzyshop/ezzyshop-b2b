@@ -50,7 +50,6 @@ export const EditDeliveryMethod = ({ deliveryMethod }: IProps) => {
     return {
       name: deliveryMethod.name,
       price: deliveryMethod.price,
-      currency: deliveryMethod.currency._id,
       estimated_days: deliveryMethod.estimated_days,
       pickup_location: deliveryMethod.pickup_location,
       deliveryType: deliveryMethod.deliveryType,
