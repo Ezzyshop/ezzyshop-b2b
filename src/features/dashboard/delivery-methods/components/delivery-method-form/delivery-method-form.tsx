@@ -29,6 +29,7 @@ import {
 } from "../../utils/delivery-methods.enum";
 import { DeliveryTypeForm } from "./delivery-method-types/delivery-type-form";
 import { PickupTypeForm } from "./delivery-method-types/pickup-type-form";
+import { Input } from "@/components/ui/input";
 
 interface IProps {
   initialValues?: IDeliveryMethodForm;
@@ -117,8 +118,28 @@ export const DeliveryMethodForm = ({
           )}
         />
 
+        <FormField
+          control={form.control}
+          key={`name-${activeLanguage}`}
+          name={`name.${activeLanguage}`}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel isRequired>
+                {t("dashboard.delivery-methods.name")}
+              </FormLabel>
+              <FormControl>
+                <Input
+                  placeholder={t("dashboard.delivery-methods.name_placeholder")}
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         {form.watch("type") === DeliveryMethodType.Delivery ? (
-          <DeliveryTypeForm form={form} activeLanguage={activeLanguage} />
+          <DeliveryTypeForm form={form} />
         ) : (
           <PickupTypeForm form={form} />
         )}

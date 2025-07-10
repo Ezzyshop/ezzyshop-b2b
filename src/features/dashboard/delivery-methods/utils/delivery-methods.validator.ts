@@ -22,14 +22,9 @@ export const deliveryMethodFields = {
       .messages({ "string.max": "Name must be less than 100 characters" }),
   },
   price: Joi.number()
-    .required()
     .min(0)
     .messages({ "number.min": "Price must be greater than 0" }),
-  currency: Joi.string()
-    .required()
-    .messages({ "string.empty": "Currency is required" }),
   estimated_days: Joi.number()
-    .required()
     .min(1)
     .messages({ "number.min": "Estimated days must be greater than 0" }),
   pickup_location: Joi.string().optional().max(100).messages({
@@ -69,7 +64,6 @@ export const deliveryMethodFields = {
 export const deliveryMethodSchema = Joi.object({
   name: deliveryMethodFields.name,
   price: deliveryMethodFields.price,
-  currency: deliveryMethodFields.currency,
   estimated_days: deliveryMethodFields.estimated_days,
   pickup_location: deliveryMethodFields.pickup_location,
   deliveryType: deliveryMethodFields.deliveryType,

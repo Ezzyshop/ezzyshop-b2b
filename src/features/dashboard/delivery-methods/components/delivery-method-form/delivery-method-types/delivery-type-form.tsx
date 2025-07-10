@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/select";
 import { IDeliveryMethodForm } from "../../../utils/delivery-methods.interface";
 import { UseFormReturn } from "react-hook-form";
-import { LanguageType } from "@/features/moderator/shops/utils";
 import { useTranslation } from "react-i18next";
 import {
   DeliveryMethodDeliveryType,
@@ -24,10 +23,9 @@ import {
 
 interface IProps {
   form: UseFormReturn<IDeliveryMethodForm>;
-  activeLanguage: LanguageType;
 }
 
-export const DeliveryTypeForm = ({ form, activeLanguage }: IProps) => {
+export const DeliveryTypeForm = ({ form }: IProps) => {
   const { t } = useTranslation();
 
   const deliveryType = form.watch("deliveryType");
@@ -64,26 +62,6 @@ export const DeliveryTypeForm = ({ form, activeLanguage }: IProps) => {
                   </SelectItem>
                 </SelectContent>
               </Select>
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-
-      <FormField
-        control={form.control}
-        key={`name-${activeLanguage}`}
-        name={`name.${activeLanguage}`}
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel isRequired>
-              {t("dashboard.delivery-methods.name")}
-            </FormLabel>
-            <FormControl>
-              <Input
-                placeholder={t("dashboard.delivery-methods.name_placeholder")}
-                {...field}
-              />
             </FormControl>
             <FormMessage />
           </FormItem>
