@@ -223,8 +223,9 @@
       "estimated_day_prefix_hour": "Час",
       "estimated_day_prefix_minute": "Минута",
       "initial_km_prefix": "Первые",
-      "initial_km_price_prefix": "км по",
+      "initial_km_price_prefix": "по",
       "every_km_price_prefix": "За каждый следующий км",
+      "estimated_days_placeholder": "Введите время доставки",
       "empty_state": {
         "title": "Нет способов доставки",
         "description": "Пока не добавлено ни одного способа доставки. Нажмите кнопку, чтобы добавить первый способ доставки."

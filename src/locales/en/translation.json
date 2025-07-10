@@ -223,8 +223,9 @@
       "estimated_day_prefix_hour": "Hour",
       "estimated_day_prefix_minute": "Minute",
       "initial_km_prefix": "First",
-      "initial_km_price_prefix": "km",
+      "initial_km_price_prefix": "is",
       "every_km_price_prefix": "Every km",
+      "estimated_days_placeholder": "Enter delivery time",
       "empty_state": {
         "title": "No delivery methods",
         "description": "No delivery methods have been added yet. Press the button to add the first delivery method."

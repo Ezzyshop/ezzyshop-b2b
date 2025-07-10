@@ -6,7 +6,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { InputWithPrefix } from "@/components/ui/input";
 import { IProductForm } from "../../../utils/product.interface";
 import { UseFormReturn } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -29,19 +29,12 @@ export const ProductFormPricingInformation = ({ form }: IProps) => {
           name="price"
           render={({ field }) => (
             <FormItem>
-              <FormLabel isRequired>
-                {t("dashboard.products.price")}
-              </FormLabel>
+              <FormLabel isRequired>{t("dashboard.products.price")}</FormLabel>
               <FormControl>
-                <Input
+                <InputWithPrefix
                   {...field}
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  placeholder="0.00"
-                  onChange={(e) =>
-                    field.onChange(parseFloat(e.target.value) || 0)
-                  }
+                  prefix="UZS"
+                  onChange={(e) => field.onChange(e.target.value)}
                 />
               </FormControl>
               <FormMessage />
@@ -56,18 +49,11 @@ export const ProductFormPricingInformation = ({ form }: IProps) => {
             <FormItem>
               <FormLabel>{t("dashboard.products.compare_at_price")}</FormLabel>
               <FormControl>
-                <Input
+                <InputWithPrefix
                   {...field}
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  placeholder="0.00"
+                  prefix="UZS"
                   value={field.value || ""}
-                  onChange={(e) =>
-                    field.onChange(
-                      e.target.value ? parseFloat(e.target.value) : null
-                    )
-                  }
+                  onChange={(e) => field.onChange(e.target.value)}
                 />
               </FormControl>
               <FormMessage />

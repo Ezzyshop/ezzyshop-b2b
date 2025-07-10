@@ -224,8 +224,9 @@
       "estimated_day_prefix_hour": "Soat",
       "estimated_day_prefix_minute": "Daqiqa",
       "initial_km_prefix": "Birinchi",
-      "initial_km_price_prefix": "km uchun",
+      "initial_km_price_prefix": "uchun",
       "every_km_price_prefix": "Qolgan har 1 km uchun",
+      "estimated_days_placeholder": "Yetkazib berish vaqtini kiriting",
       "empty_state": {
         "title": "Yetkazib berish usullari yo'q",
         "description": "Hozircha hech qanday yetkazib berish usuli qo'shilmagan. Birinchi yetkazib berish usulini qo'shish uchun tugmani bosing."

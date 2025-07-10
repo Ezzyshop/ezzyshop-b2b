@@ -9,7 +9,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Input, InputWithPrefix } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { VariantAttributeForm } from "./variant-attribute-form";
 import { useTranslation } from "react-i18next";
@@ -102,9 +102,15 @@ export const ProductFormVariants = ({ form }: IProps) => {
               name={`variants.${variantIndex}.sku`}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel isRequired>{t("dashboard.products.sku")}</FormLabel>
+                  <FormLabel isRequired>
+                    {t("dashboard.products.sku")}
+                  </FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder={t("dashboard.products.enter_sku")} maxLength={64} />
+                    <Input
+                      {...field}
+                      placeholder={t("dashboard.products.enter_sku")}
+                      maxLength={64}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -118,7 +124,10 @@ export const ProductFormVariants = ({ form }: IProps) => {
                 <FormItem>
                   <FormLabel>{t("dashboard.products.image")}</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder={t("dashboard.products.enter_image")} />
+                    <Input
+                      {...field}
+                      placeholder={t("dashboard.products.enter_image")}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -130,17 +139,14 @@ export const ProductFormVariants = ({ form }: IProps) => {
               name={`variants.${variantIndex}.price`}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel isRequired>{t("dashboard.products.price")}</FormLabel>
+                  <FormLabel isRequired>
+                    {t("dashboard.products.price")}
+                  </FormLabel>
                   <FormControl>
-                    <Input
+                    <InputWithPrefix
                       {...field}
-                      type="number"
-                      step="0.01"
-                      min="0"
-                      placeholder={t("dashboard.products.enter_price")}
-                      onChange={(e) =>
-                        field.onChange(parseFloat(e.target.value) || 0)
-                      }
+                      prefix="UZS"
+                      onChange={(e) => field.onChange(e.target.value)}
                     />
                   </FormControl>
                   <FormMessage />
@@ -153,7 +159,9 @@ export const ProductFormVariants = ({ form }: IProps) => {
               name={`variants.${variantIndex}.quantity`}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel isRequired>{t("dashboard.products.quantity")}</FormLabel>
+                  <FormLabel isRequired>
+                    {t("dashboard.products.quantity")}
+                  </FormLabel>
                   <FormControl>
                     <Input
                       {...field}
@@ -172,7 +180,9 @@ export const ProductFormVariants = ({ form }: IProps) => {
           </div>
 
           <div className="space-y-2">
-            <h5 className="font-medium">{t("dashboard.products.attributes")}</h5>
+            <h5 className="font-medium">
+              {t("dashboard.products.attributes")}
+            </h5>
             {Object.entries(variant.attributes || {}).map(([key, value]) => (
               <div key={key} className="flex items-center gap-2">
                 <Input value={key} readOnly className="flex-1" />

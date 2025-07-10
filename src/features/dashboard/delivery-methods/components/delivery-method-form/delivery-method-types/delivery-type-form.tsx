@@ -5,7 +5,7 @@ import {
   FormControl,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Input, InputWithPrefix } from "@/components/ui/input";
 import {
   Select,
   SelectTrigger,
@@ -78,11 +78,10 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
                 {t("dashboard.delivery-methods.price")}
               </FormLabel>
               <FormControl>
-                <Input
-                  type="number"
-                  placeholder="0"
+                <InputWithPrefix
+                  prefix="UZS"
                   {...field}
-                  onChange={(e) => field.onChange(Number(e.target.value))}
+                  onChange={(e) => field.onChange(e.target.value)}
                 />
               </FormControl>
               <FormMessage />
@@ -103,7 +102,9 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="1"
+                  placeholder={t(
+                    "dashboard.delivery-methods.estimated_days_placeholder"
+                  )}
                   {...field}
                   onChange={(e) => field.onChange(Number(e.target.value))}
                 />
@@ -163,12 +164,11 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      type="number"
-                      placeholder="km"
+                    <InputWithPrefix
+                      prefix="km"
                       {...field}
-                      value={field.value || undefined}
-                      onChange={(e) => field.onChange(Number(e.target.value))}
+                      value={field.value}
+                      onChange={(e) => field.onChange(e.target.value)}
                     />
                   </FormControl>
                   <FormMessage />
@@ -186,11 +186,10 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      type="number"
-                      placeholder="0"
+                    <InputWithPrefix
+                      prefix="UZS"
                       {...field}
-                      value={field.value || undefined}
+                      value={field.value}
                       onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
@@ -209,11 +208,10 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      type="number"
-                      placeholder="0"
+                    <InputWithPrefix
+                      prefix="UZS"
                       {...field}
-                      value={field.value || undefined}
+                      value={field.value}
                       onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
