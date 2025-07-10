@@ -15,6 +15,7 @@ import { LanguageType } from "@/features/moderator/shops/utils";
 import { useState } from "react";
 import { useShopContext } from "@/contexts";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   onSubmit: (data: IProductForm) => void;
@@ -24,7 +25,7 @@ interface IProps {
 
 export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
   const { shop } = useShopContext();
-
+  const { t } = useTranslation();
   const [activeLanguage, setActiveLanguage] = useState<LanguageType>(
     shop.languages.find((lang) => lang.is_main)?.type || LanguageType.Uz
   );
@@ -122,14 +123,15 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
 
         <div className="flex flex-col gap-2">
           <Button type="submit" disabled={isLoading} className="flex-1">
-            {isLoading
-              ? "Saving..."
-              : initialValues
-              ? "Update Product"
-              : "Create Product"}
+            {t("common.save")}
           </Button>
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
-            Reset Form
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => form.reset()}
+            disabled={isLoading}
+          >
+            {t("common.form_reset")}
           </Button>
         </div>
       </form>

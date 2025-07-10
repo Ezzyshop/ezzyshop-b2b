@@ -40,7 +40,10 @@
     "server_error": "Server error. We are working to resolve this issue",
     "select_all": "Select all",
     "no_results_found": "No results found",
-    "quantity_suffix": "pcs"
+    "quantity_suffix": "pcs",
+    "form_reset": "Reset form",
+    "select_options": "Select options",
+    "search_placeholder": "Search..."
   },
   "register": {
     "create_telegram": {
@@ -135,7 +138,8 @@
       "images": "Image",
       "settings": "Settings",
       "status": "Product status",
-      "status_description": "Change product status"
+      "status_description": "Change product status",
+      "categories": "Categories"
     },
     "plans": {
       "title": "Choose the plan that suits you",

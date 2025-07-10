@@ -40,7 +40,10 @@
     "server_error": "Ошибка сервера. Мы работаем над решением этой проблемы",
     "select_all": "Выбрать все",
     "no_results_found": "Результаты не найдены",
-    "quantity_suffix": "шт"
+    "quantity_suffix": "шт",
+    "form_reset": "Сбросить форму",
+    "select_options": "Выбрать опции",
+    "search_placeholder": "Поиск..."
   },
   "register": {
     "create_telegram": {
@@ -135,7 +138,8 @@
       "images": "Изображение",
       "settings": "Настройки",
       "status": "Статус товара",
-      "status_description": "Изменить статус товара"
+      "status_description": "Изменить статус товара",
+      "categories": "Категории"
     },
     "plans": {
       "title": "Выберите подходящий вам план",

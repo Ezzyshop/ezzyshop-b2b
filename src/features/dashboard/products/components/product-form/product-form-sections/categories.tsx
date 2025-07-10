@@ -13,7 +13,7 @@ interface IProps {
 
 export const ProductFormCategories = ({ form }: IProps) => {
   const { shop } = useShopContext();
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   const { data, isLoading } = useQuery({
     queryKey: ["categories", shop._id],
@@ -38,11 +38,14 @@ export const ProductFormCategories = ({ form }: IProps) => {
 
   return (
     <Card className="p-3 gap-2">
-      <h3 className="text-lg font-semibold mb-2">Categories</h3>
+      <h3 className="text-lg font-semibold mb-2">
+        {t("dashboard.products.categories")}
+      </h3>
 
       <div className="space-y-4">
         <div className="flex gap-2">
           <MultiSelect
+            placeholder={t("common.select_options")}
             options={categoriesOptions ?? []}
             onValueChange={addCategory}
             defaultValue={categories}
