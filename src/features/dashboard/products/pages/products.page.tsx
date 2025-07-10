@@ -7,9 +7,10 @@ import { productTableColumns } from "../components/products-table/product-table-
 import { useQuery } from "@tanstack/react-query";
 import { useQueryParams } from "@/hooks";
 import { ProductTableFilters } from "../components/products-table/product-table-filter";
+import { LanguageType } from "@/features/moderator/shops/utils";
 
 export const ProductsPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { shop } = useShopContext();
   const { getQueryParams, setQueryParams } = useQueryParams();
   const filters = {
@@ -38,7 +39,7 @@ export const ProductsPage = () => {
           getQueryParams={getQueryParams}
         />
         <DataTable
-          columns={productTableColumns(shop)}
+          columns={productTableColumns(shop, i18n.language as LanguageType)}
           data={data?.data || []}
           isLoading={isLoading}
           paginationInfo={data?.paginationInfo}

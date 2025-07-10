@@ -139,7 +139,16 @@
       "settings": "Settings",
       "status": "Product status",
       "status_description": "Change product status",
-      "categories": "Categories"
+      "categories": "Categories",
+      "variants": "Variants",
+      "variant": "Variant",
+      "sku": "SKU",
+      "enter_sku": "Enter SKU",
+      "image": "Image",
+      "enter_image": "Enter image",
+      "attributes": "Attributes",
+      "attribute_name": "Attribute name",
+      "attribute_value": "Attribute value"
     },
     "plans": {
       "title": "Choose the plan that suits you",

@@ -139,7 +139,16 @@
       "settings": "Настройки",
       "status": "Статус товара",
       "status_description": "Изменить статус товара",
-      "categories": "Категории"
+      "categories": "Категории",
+      "variants": "Варианты",
+      "variant": "Вариант",
+      "sku": "SKU",
+      "enter_sku": "Введите SKU",
+      "image": "Изображение",
+      "enter_image": "Введите изображение",
+      "attributes": "Атрибуты",
+      "attribute_name": "Название атрибута",
+      "attribute_value": "Значение атрибута"
     },
     "plans": {
       "title": "Выберите подходящий вам план",

@@ -139,7 +139,16 @@
       "settings": "Sozlamalar",
       "status": "Mahsulot statusi",
       "status_description": "Mahsulot statusini o'zgartirish",
-      "categories": "Kategoriyalar"
+      "categories": "Kategoriyalar",
+      "variants": "Variantlar",
+      "variant": "Variant",
+      "sku": "SKU",
+      "enter_sku": "SKU ni kiriting",
+      "image": "Rasm",
+      "enter_image": "Rasmni kiriting",
+      "attributes": "Atributlar",
+      "attribute_name": "Atribut nomi",
+      "attribute_value": "Atribut qiymati"
     },
     "plans": {
       "title": "O'zingizga mos tarifni tanlang",

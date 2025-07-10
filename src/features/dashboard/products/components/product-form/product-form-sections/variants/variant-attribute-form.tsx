@@ -1,12 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   onAdd: (key: string, value: string) => void;
 }
 
 export const VariantAttributeForm = ({ onAdd }: IProps) => {
+  const { t } = useTranslation();
   const [key, setKey] = useState<string>("");
   const [value, setValue] = useState<string>("");
 
@@ -23,14 +25,14 @@ export const VariantAttributeForm = ({ onAdd }: IProps) => {
       <Input
         value={key}
         onChange={(e) => setKey(e.target.value)}
-        placeholder="Attribute name"
+        placeholder={t("dashboard.products.attribute_name")}
         maxLength={50}
         className="flex-1"
       />
       <Input
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder="Attribute value"
+        placeholder={t("dashboard.products.attribute_value")}
         maxLength={50}
         className="flex-1"
       />

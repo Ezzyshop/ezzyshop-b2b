@@ -4,15 +4,19 @@ import { StatusChangeSwitch } from "@/components/moderator/forms/change-status-s
 import dayjs from "dayjs";
 import { EditProductButton } from "../product-form/edit-product";
 import { IShop } from "@/features/moderator/shops/utils";
+import { LanguageType } from "@/features/moderator/shops/utils";
 
-export const productTableColumns = (shop: IShop): ColumnDef<IProduct>[] => [
+export const productTableColumns = (
+  shop: IShop,
+  lang: LanguageType
+): ColumnDef<IProduct>[] => [
   {
     header: "table.columns.image",
     cell: ({ row }) => {
       return (
         <img
           src={row.original.images?.[0]}
-          alt={row.original.name.uz}
+          alt={row.original.name[lang]}
           className="w-10 h-10 object-cover"
         />
       );
@@ -21,7 +25,7 @@ export const productTableColumns = (shop: IShop): ColumnDef<IProduct>[] => [
   {
     header: "table.columns.name",
     cell: ({ row }) => {
-      return <div>{row.original.name.uz}</div>;
+      return <div>{row.original.name[lang]}</div>;
     },
   },
   {
