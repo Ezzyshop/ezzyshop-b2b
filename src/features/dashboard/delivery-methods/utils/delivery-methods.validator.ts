@@ -1,10 +1,15 @@
 import Joi from "joi";
-import { DeliveryMethodStatus } from "./devliery-methods.enum";
+import {
+  DeliveryMethodStatus,
+  DeliveryMethodDeliveryType,
+  DeliveryMethodType,
+  DeliveryMethodEstimatedDayPrefix,
+} from "./delivery-methods.enum";
 
 export const deliveryMethodFields = {
   name: {
     uz: Joi.string()
-      .required()
+      .optional()
       .max(100)
       .messages({ "string.max": "Name must be less than 100 characters" }),
     ru: Joi.string()
@@ -34,6 +39,31 @@ export const deliveryMethodFields = {
     .required()
     .valid(DeliveryMethodStatus.Active, DeliveryMethodStatus.Inactive)
     .messages({ "string.valid": "Status must be either ACTIVE or INACTIVE" }),
+  deliveryType: Joi.string()
+    .optional()
+    .valid(...Object.values(DeliveryMethodDeliveryType)),
+  initial_km: Joi.number()
+    .optional()
+    .min(0)
+    .messages({ "number.min": "Initial km must be greater than 0" }),
+  initial_km_price: Joi.number()
+    .optional()
+    .min(0)
+    .messages({ "number.min": "Initial km price must be greater than 0" }),
+  every_km_price: Joi.number()
+    .optional()
+    .min(0)
+    .messages({ "number.min": "Every km price must be greater than 0" }),
+  min_order_price: Joi.number()
+    .optional()
+    .min(0)
+    .messages({ "number.min": "Min order price must be greater than 0" }),
+  type: Joi.string()
+    .required()
+    .valid(...Object.values(DeliveryMethodType)),
+  estimated_day_prefix: Joi.string()
+    .required()
+    .valid(...Object.values(DeliveryMethodEstimatedDayPrefix)),
 };
 
 export const deliveryMethodSchema = Joi.object({
@@ -42,6 +72,13 @@ export const deliveryMethodSchema = Joi.object({
   currency: deliveryMethodFields.currency,
   estimated_days: deliveryMethodFields.estimated_days,
   pickup_location: deliveryMethodFields.pickup_location,
+  deliveryType: deliveryMethodFields.deliveryType,
+  initial_km: deliveryMethodFields.initial_km,
+  initial_km_price: deliveryMethodFields.initial_km_price,
+  every_km_price: deliveryMethodFields.every_km_price,
+  min_order_price: deliveryMethodFields.min_order_price,
+  type: deliveryMethodFields.type,
+  estimated_day_prefix: deliveryMethodFields.estimated_day_prefix,
 });
 
 export const changeDeliveryMethodStatusValidator = Joi.object({

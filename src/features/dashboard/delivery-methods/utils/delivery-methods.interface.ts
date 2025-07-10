@@ -1,4 +1,9 @@
-import { DeliveryMethodStatus } from "./devliery-methods.enum";
+import {
+  DeliveryMethodEstimatedDayPrefix,
+  DeliveryMethodDeliveryType,
+  DeliveryMethodStatus,
+  DeliveryMethodType,
+} from "./delivery-methods.enum";
 
 export interface IDeliveryMethod {
   _id: string;
@@ -19,6 +24,13 @@ export interface IDeliveryMethod {
   };
   estimated_days: number;
   pickup_location: string | null;
+  deliveryType: DeliveryMethodDeliveryType | null;
+  initial_km: number | null;
+  initial_km_price: number | null;
+  every_km_price: number | null;
+  min_order_price: number | null;
+  type: DeliveryMethodType;
+  estimated_day_prefix: DeliveryMethodEstimatedDayPrefix;
   status: DeliveryMethodStatus;
   createdAt: string;
   updatedAt: string;

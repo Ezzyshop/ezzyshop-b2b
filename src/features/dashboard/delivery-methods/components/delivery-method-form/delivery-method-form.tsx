@@ -11,11 +11,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { useQuery } from "@tanstack/react-query";
-import { getCurrenciesQueryFn } from "@/api/queries";
 import {
   Select,
   SelectContent,
@@ -27,6 +23,12 @@ import { LanguageSelectTab } from "@/components/form/language-select-tab";
 import { LanguageType } from "@/features/moderator/shops/utils";
 import { useState } from "react";
 import { useShopContext } from "@/contexts";
+import {
+  DeliveryMethodEstimatedDayPrefix,
+  DeliveryMethodType,
+} from "../../utils/delivery-methods.enum";
+import { DeliveryTypeForm } from "./delivery-method-types/delivery-type-form";
+import { PickupTypeForm } from "./delivery-method-types/pickup-type-form";
 
 interface IProps {
   initialValues?: IDeliveryMethodForm;
@@ -44,10 +46,6 @@ export const DeliveryMethodForm = ({
   const [activeLanguage, setActiveLanguage] = useState<LanguageType>(
     shop.languages.find((lang) => lang.is_main)?.type || LanguageType.Uz
   );
-  const { data: currencies } = useQuery({
-    queryKey: ["currencies"],
-    queryFn: () => getCurrenciesQueryFn(),
-  });
 
   const form = useForm<IDeliveryMethodForm>({
     resolver: joiResolver(deliveryMethodSchema),
@@ -61,6 +59,13 @@ export const DeliveryMethodForm = ({
       currency: undefined,
       estimated_days: 0,
       pickup_location: undefined,
+      deliveryType: undefined,
+      initial_km: undefined,
+      initial_km_price: undefined,
+      every_km_price: undefined,
+      min_order_price: undefined,
+      type: DeliveryMethodType.Pickup,
+      estimated_day_prefix: DeliveryMethodEstimatedDayPrefix.Day,
     },
   });
 
@@ -78,126 +83,45 @@ export const DeliveryMethodForm = ({
           activeLanguage={activeLanguage}
           setActiveLanguage={setActiveLanguage}
         />
+
         <FormField
           control={form.control}
-          key={`name-${activeLanguage}`}
-          name={`name.${activeLanguage}`}
+          name="type"
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired>
-                {t("dashboard.delivery-methods.name")}
+                {t("dashboard.delivery-methods.type")}
               </FormLabel>
               <FormControl>
-                <Input
-                  placeholder={t("dashboard.delivery-methods.name_placeholder")}
-                  {...field}
-                />
+                <Select
+                  onValueChange={(value) => field.onChange(value)}
+                  defaultValue={field.value}
+                >
+                  <SelectTrigger>
+                    <SelectValue
+                      placeholder={t("dashboard.delivery-methods.type")}
+                    />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value={DeliveryMethodType.Pickup}>
+                      {t("dashboard.delivery-methods.pickup")}
+                    </SelectItem>
+                    <SelectItem value={DeliveryMethodType.Delivery}>
+                      {t("dashboard.delivery-methods.delivery")}
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        {/* Price and Currency */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <FormField
-            control={form.control}
-            name="price"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel isRequired>
-                  {t("dashboard.delivery-methods.price")}
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    type="number"
-                    placeholder="0"
-                    {...field}
-                    onChange={(e) => field.onChange(Number(e.target.value))}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="currency"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel isRequired>
-                  {t("dashboard.delivery-methods.currency")}
-                </FormLabel>
-                <FormControl>
-                  <Select
-                    onValueChange={(value) => field.onChange(value)}
-                    defaultValue={field.value}
-                  >
-                    <SelectTrigger>
-                      <SelectValue
-                        placeholder={t("dashboard.delivery-methods.currency")}
-                      />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {currencies?.data.map((currency) => (
-                        <SelectItem key={currency._id} value={currency._id}>
-                          {currency.symbol}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
-        {/* Estimated Days */}
-        <FormField
-          control={form.control}
-          name="estimated_days"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel isRequired>
-                {t("dashboard.delivery-methods.estimated_days")}
-              </FormLabel>
-              <FormControl>
-                <Input
-                  type="number"
-                  placeholder="1"
-                  {...field}
-                  onChange={(e) => field.onChange(Number(e.target.value))}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Pickup Location */}
-        <FormField
-          control={form.control}
-          name="pickup_location"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                {t("dashboard.delivery-methods.pickup_location")}
-              </FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder={t(
-                    "dashboard.delivery-methods.pickup_location_placeholder"
-                  )}
-                  {...field}
-                  value={field.value || ""}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        {form.watch("type") === DeliveryMethodType.Delivery ? (
+          <DeliveryTypeForm form={form} activeLanguage={activeLanguage} />
+        ) : (
+          <PickupTypeForm form={form} />
+        )}
 
         <div className="flex justify-end">
           <Button

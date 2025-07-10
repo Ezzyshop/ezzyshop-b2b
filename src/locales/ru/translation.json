@@ -43,7 +43,14 @@
     "quantity_suffix": "шт",
     "form_reset": "Сбросить форму",
     "select_options": "Выбрать опции",
-    "search_placeholder": "Поиск..."
+    "search_placeholder": "Поиск...",
+    "minute": "минута",
+    "day": "день",
+    "hour": "час",
+    "fixed": "Фиксированная",
+    "dynamic": "Динамическая",
+    "free": "Бесплатная",
+    "custom": "Настраиваемая"
   },
   "register": {
     "create_telegram": {
@@ -205,6 +212,19 @@
       "status": "Статус способа доставки",
       "enter_status": "Введите статус способа доставки",
       "pickup_location_not_set": "Адрес самовывоза не установлен",
+      "type": "Тип способа доставки",
+      "delivery": "Доставка",
+      "pickup": "Самовывоз",
+      "delivery_type": "Тип доставки",
+      "delivery_type_fixed": "Фиксированная",
+      "delivery_type_dynamic": "Динамическая",
+      "estimated_day_prefix": "Префикс времени доставки",
+      "estimated_day_prefix_day": "День",
+      "estimated_day_prefix_hour": "Час",
+      "estimated_day_prefix_minute": "Минута",
+      "initial_km_prefix": "Первые",
+      "initial_km_price_prefix": "км по",
+      "every_km_price_prefix": "За каждый следующий км",
       "empty_state": {
         "title": "Нет способов доставки",
         "description": "Пока не добавлено ни одного способа доставки. Нажмите кнопку, чтобы добавить первый способ доставки."

@@ -43,7 +43,14 @@
     "quantity_suffix": "pcs",
     "form_reset": "Reset form",
     "select_options": "Select options",
-    "search_placeholder": "Search..."
+    "search_placeholder": "Search...",
+    "minute": "minute",
+    "day": "day",
+    "hour": "hour",
+    "fixed": "Fixed",
+    "dynamic": "Dynamic",
+    "free": "Free",
+    "custom": "Custom"
   },
   "register": {
     "create_telegram": {
@@ -205,6 +212,19 @@
       "status": "Delivery method status",
       "enter_status": "Enter delivery method status",
       "pickup_location_not_set": "Pickup address not set",
+      "type": "Delivery method type",
+      "delivery": "Delivery",
+      "pickup": "Pickup",
+      "delivery_type": "Delivery type",
+      "delivery_type_fixed": "Fixed",
+      "delivery_type_dynamic": "Dynamic",
+      "estimated_day_prefix": "Delivery time prefix",
+      "estimated_day_prefix_day": "Day",
+      "estimated_day_prefix_hour": "Hour",
+      "estimated_day_prefix_minute": "Minute",
+      "initial_km_prefix": "First",
+      "initial_km_price_prefix": "km",
+      "every_km_price_prefix": "Every km",
       "empty_state": {
         "title": "No delivery methods",
         "description": "No delivery methods have been added yet. Press the button to add the first delivery method."

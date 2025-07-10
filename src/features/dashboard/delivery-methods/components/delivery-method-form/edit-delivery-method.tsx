@@ -53,6 +53,13 @@ export const EditDeliveryMethod = ({ deliveryMethod }: IProps) => {
       currency: deliveryMethod.currency._id,
       estimated_days: deliveryMethod.estimated_days,
       pickup_location: deliveryMethod.pickup_location,
+      deliveryType: deliveryMethod.deliveryType,
+      initial_km: deliveryMethod.initial_km,
+      initial_km_price: deliveryMethod.initial_km_price,
+      every_km_price: deliveryMethod.every_km_price,
+      min_order_price: deliveryMethod.min_order_price,
+      type: deliveryMethod.type,
+      estimated_day_prefix: deliveryMethod.estimated_day_prefix,
     };
   }, [deliveryMethod]);
 

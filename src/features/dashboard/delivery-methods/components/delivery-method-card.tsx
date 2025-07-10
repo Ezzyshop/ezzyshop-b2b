@@ -3,6 +3,11 @@ import { IDeliveryMethod } from "../utils/delivery-methods.interface";
 import { useTranslation } from "react-i18next";
 import { StatusChangeSwitch } from "@/components/moderator/forms/change-status-switch";
 import { EditDeliveryMethod } from "./delivery-method-form/edit-delivery-method";
+import {
+  DeliveryMethodDeliveryType,
+  deliveryMethodDeliveryTypeLabel,
+  deliveryMethodEstimatedDayPrefixLabel,
+} from "../utils/delivery-methods.enum";
 
 interface IProps {
   deliveryMethod: IDeliveryMethod;
@@ -31,22 +36,50 @@ export const DeliveryMethodCard = ({ deliveryMethod }: IProps) => {
       </CardHeader>
 
       <CardContent className="space-y-2">
-        <p className="text-2xl font-bold">
-          {deliveryMethod.price.toLocaleString()}{" "}
-          {deliveryMethod.currency.symbol}
-        </p>
+        {deliveryMethod.deliveryType === DeliveryMethodDeliveryType.Dynamic ? (
+          <p className="text-2xl font-bold">
+            {deliveryMethod.initial_km_price?.toLocaleString()}{" "}
+            {deliveryMethod.currency.symbol} / {t("common.km")}
+          </p>
+        ) : (
+          <p className="text-2xl font-bold">
+            {deliveryMethod.price?.toLocaleString()}{" "}
+            {deliveryMethod.currency.symbol}
+          </p>
+        )}
+
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-muted-foreground text-sm">
+            {t("dashboard.delivery-methods.delivery_type")}:
+          </p>
+          {deliveryMethod.deliveryType && (
+            <p className="text-sm">
+              {t(deliveryMethodDeliveryTypeLabel[deliveryMethod.deliveryType])}
+            </p>
+          )}
+        </div>
+
         <div className="flex items-center justify-between gap-2">
           <p className="text-muted-foreground text-sm">
             {t("dashboard.delivery-methods.estimated_days")}:
           </p>
-          <p className="text-sm">{deliveryMethod.estimated_days}</p>
-        </div>
-        <div className="flex items-center justify-between gap-2">
-          <p className="text-muted-foreground text-sm">
-            {t("dashboard.delivery-methods.pickup_location")}:
+          <p className="text-sm">
+            {deliveryMethod.estimated_days}{" "}
+            {t(
+              deliveryMethodEstimatedDayPrefixLabel[
+                deliveryMethod.estimated_day_prefix
+              ]
+            )}
           </p>
-          <p className="text-sm">{deliveryMethod.pickup_location ?? "-"}</p>
         </div>
+        {deliveryMethod.pickup_location && (
+          <div className="flex items-center justify-between gap-2">
+            <p className="text-muted-foreground text-sm">
+              {t("dashboard.delivery-methods.pickup_location")}:
+            </p>
+            <p className="text-sm">{deliveryMethod.pickup_location}</p>
+          </div>
+        )}
       </CardContent>
     </Card>
   );

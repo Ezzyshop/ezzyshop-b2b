@@ -1,6 +1,6 @@
 import { IDeliveryMethodForm } from "@/features/dashboard/delivery-methods/utils/delivery-methods.interface";
 import { api } from "../axios";
-import { DeliveryMethodStatus } from "@/features/dashboard/delivery-methods/utils/devliery-methods.enum";
+import { DeliveryMethodStatus } from "@/features/dashboard/delivery-methods/utils/delivery-methods.enum";
 
 export const createDeliveryMethodMutationFn = async (
   shopId: string,

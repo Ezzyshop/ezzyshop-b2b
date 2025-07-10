@@ -43,7 +43,15 @@
     "quantity_suffix": "ta",
     "form_reset": "Formani tozalash",
     "select_options": "Tanlash",
-    "search_placeholder": "Qidirish..."
+    "search_placeholder": "Qidirish...",
+    "minute": "daqiqa",
+    "day": "kun",
+    "hour": "soat",
+    "fixed": "Belgilangan narx",
+    "dynamic": "Moslashuvchan narx",
+    "free": "Bepul",
+    "custom": "Maxsus",
+    "km": "km"
   },
   "register": {
     "create_telegram": {
@@ -205,6 +213,19 @@
       "status": "Yetkazib berish usuli statusi",
       "enter_status": "Yetkazib berish usuli statusini kiriting",
       "pickup_location_not_set": "Olib ketish manzili belgilanmagan",
+      "type": "Yetkazib berish usuli turi",
+      "delivery": "Yetkazib berish",
+      "pickup": "Olib ketish",
+      "delivery_type": "Yetkazib berish turi",
+      "delivery_type_fixed": "Fixed",
+      "delivery_type_dynamic": "Dynamic",
+      "estimated_day_prefix": "Yetkazib berish vaqti prefixi",
+      "estimated_day_prefix_day": "Kun",
+      "estimated_day_prefix_hour": "Soat",
+      "estimated_day_prefix_minute": "Daqiqa",
+      "initial_km_prefix": "Birinchi",
+      "initial_km_price_prefix": "km uchun",
+      "every_km_price_prefix": "Qolgan har 1 km uchun",
       "empty_state": {
         "title": "Yetkazib berish usullari yo'q",
         "description": "Hozircha hech qanday yetkazib berish usuli qo'shilmagan. Birinchi yetkazib berish usulini qo'shish uchun tugmani bosing."
