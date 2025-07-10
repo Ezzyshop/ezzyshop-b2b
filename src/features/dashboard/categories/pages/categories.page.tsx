@@ -7,9 +7,10 @@ import { categoryTableColumns } from "../components/categories-table/category-ta
 import { useQueryParams } from "@/hooks";
 import { CategoryTableFilters } from "../components/categories-table/category-table-filter";
 import { AddCategory } from "../components/category-form/add-category";
+import { LanguageType } from "@/features/moderator/shops/utils";
 
 export function CategoriesPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { shop } = useShopContext();
   const { getQueryParams, setQueryParams } = useQueryParams();
   const { page, limit } = getQueryParams();
@@ -40,7 +41,7 @@ export function CategoriesPage() {
           getQueryParams={getQueryParams}
         />
         <DataTable
-          columns={categoryTableColumns(t)}
+          columns={categoryTableColumns(t, i18n.language as LanguageType)}
           data={data?.data || []}
           isLoading={isLoading}
           paginationInfo={data?.paginationInfo}

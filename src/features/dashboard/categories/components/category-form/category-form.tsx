@@ -20,6 +20,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { CategoryStatus } from "../utils/category.enum";
+import { languageLabels, LanguageType } from "@/features/moderator/shops/utils";
+import { useShopContext } from "@/contexts";
+import { useState } from "react";
+import { Tabs, TabsTrigger, TabsList } from "@/components/ui/tabs";
 
 interface IProps {
   initialValues?: ICategoryForm;
@@ -32,6 +36,14 @@ export const CategoryForm = ({
   initialValues,
   isLoading,
 }: IProps) => {
+  const { shop } = useShopContext();
+
+  const [activeLanguage, setActiveLanguage] = useState<LanguageType>(
+    shop.languages.find((lang) => lang.is_main)?.type || LanguageType.Uz
+  );
+
+  const availableLanguages = shop.languages.map((lang) => lang.type);
+
   const { t } = useTranslation();
   const form = useForm<ICategoryForm>({
     defaultValues: initialValues ?? {
@@ -42,67 +54,47 @@ export const CategoryForm = ({
       is_popular: false,
     },
   });
+
   return (
     <Form {...form}>
       <form
-        className="p-4 flex-grow flex flex-col"
+        className="p-4 flex-grow flex flex-col space-y-4"
         onSubmit={form.handleSubmit(onSubmit)}
       >
+        <Tabs
+          value={activeLanguage}
+          className="w-full"
+          onValueChange={(value) => setActiveLanguage(value as LanguageType)}
+        >
+          <TabsList className="w-full">
+            {availableLanguages.map((langType) => (
+              <TabsTrigger key={langType} value={langType}>
+                {languageLabels[langType]}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
+
         <div className="flex-grow space-y-4 ">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField
-              control={form.control}
-              name="name.uz"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel isRequired>
-                    {t("dashboard.categories.name")} (UZ)
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder={t("dashboard.categories.enter_name")}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="name.ru"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t("dashboard.categories.name")} (RU)</FormLabel>
-
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder={t("dashboard.categories.enter_name")}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="name.en"
-              render={({ field }) => (
-                <FormItem className="md:col-span-2">
-                  <FormLabel>{t("dashboard.categories.name")} (EN)</FormLabel>
-
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder={t("dashboard.categories.enter_name")}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
+          <FormField
+            control={form.control}
+            key={`name-${activeLanguage}`}
+            name={`name.${activeLanguage}`}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel isRequired>
+                  {t("dashboard.categories.name")}
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    placeholder={t("dashboard.categories.enter_name")}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
           <FormField
             control={form.control}

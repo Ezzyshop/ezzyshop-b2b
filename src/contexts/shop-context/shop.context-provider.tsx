@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren, useState } from "react";
 import { useUserContext } from "../user-context";
 import { Navigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
@@ -6,11 +6,9 @@ import { getByShopByIdQueryFn } from "@/api/queries";
 import { LoaderWithOverlay } from "@/components/loaders/global-loader";
 import { ShopContext } from "./shop.context";
 import { IUser } from "@/lib/interfaces";
-import { useLanguage } from "@/hooks/use-language";
 
 export const ShopContextProvider = ({ children }: PropsWithChildren) => {
   const { user } = useUserContext();
-  const { changeLanguage } = useLanguage();
 
   const hasUserShop = user.shops.length;
   const [activeShop, setActiveShop] = useState<IUser["shops"][number]>(
@@ -22,18 +20,6 @@ export const ShopContextProvider = ({ children }: PropsWithChildren) => {
     queryFn: () => getByShopByIdQueryFn(activeShop!._id),
     enabled: Boolean(activeShop?._id),
   });
-
-  useEffect(() => {
-    if (shop.data?.data?.languages) {
-      const mainLanguage = shop.data.data.languages.find(
-        (lang) => lang.is_main
-      )?.type;
-
-      if (mainLanguage) {
-        changeLanguage(mainLanguage);
-      }
-    }
-  }, [shop.data?.data?.languages]);
 
   if (!hasUserShop || !activeShop) {
     return <Navigate to="/register" />;

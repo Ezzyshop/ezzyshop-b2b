@@ -26,3 +26,9 @@ export enum LanguageType {
   Ru = "ru",
   En = "en",
 }
+
+export const languageLabels = {
+  [LanguageType.Uz]: "UZ",
+  [LanguageType.En]: "EN",
+  [LanguageType.Ru]: "RU",
+};

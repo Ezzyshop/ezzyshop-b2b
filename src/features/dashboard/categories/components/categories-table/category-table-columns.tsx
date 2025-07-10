@@ -5,8 +5,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ChangePopularStatus } from "../category-form/change-popular-status";
 import { EditCategory } from "../category-form/edit-category";
 import { TFunction } from "i18next";
+import { LanguageType } from "@/features/moderator/shops/utils";
 
-export const categoryTableColumns = (t: TFunction): ColumnDef<ICategory>[] => [
+export const categoryTableColumns = (
+  t: TFunction,
+  lang: LanguageType
+): ColumnDef<ICategory>[] => [
   {
     header: "table.columns.image",
     accessorKey: "image",
@@ -23,7 +27,7 @@ export const categoryTableColumns = (t: TFunction): ColumnDef<ICategory>[] => [
     header: "table.columns.name",
     accessorKey: "name",
     cell: ({ row }) => {
-      return <div>{row.original.name.uz}</div>;
+      return <div>{row.original.name[lang]}</div>;
     },
   },
   {
