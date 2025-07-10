@@ -14,8 +14,8 @@ import { ProductStatus } from "../../utils/product.enum";
 import { LanguageType } from "@/features/moderator/shops/utils";
 import { useState } from "react";
 import { useShopContext } from "@/contexts";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
+import { LanguageSelectTab } from "@/components/form/language-select-tab";
 
 interface IProps {
   onSubmit: (data: IProductForm) => void;
@@ -29,14 +29,6 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
   const [activeLanguage, setActiveLanguage] = useState<LanguageType>(
     shop.languages.find((lang) => lang.is_main)?.type || LanguageType.Uz
   );
-
-  const availableLanguages = shop.languages.map((lang) => lang.type);
-
-  const languageLabels = {
-    [LanguageType.Uz]: "UZ",
-    [LanguageType.En]: "EN",
-    [LanguageType.Ru]: "RU",
-  };
 
   const form = useForm<IProductForm>({
     resolver: joiResolver(createProductSchema),
@@ -59,8 +51,6 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
       status: ProductStatus.ACTIVE,
     },
   });
-
-  console.log(form.formState.errors);
 
   const handleSubmit = (data: IProductForm) => {
     const cleanData = {
@@ -92,19 +82,10 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
         onSubmit={form.handleSubmit(handleSubmit)}
         className="space-y-6 overflow-y-scroll px-2 py-4 "
       >
-        <Tabs
-          value={activeLanguage}
-          className="w-full"
-          onValueChange={(value) => setActiveLanguage(value as LanguageType)}
-        >
-          <TabsList className="w-full">
-            {availableLanguages.map((langType) => (
-              <TabsTrigger key={langType} value={langType}>
-                {languageLabels[langType]}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-        </Tabs>
+        <LanguageSelectTab
+          activeLanguage={activeLanguage}
+          setActiveLanguage={setActiveLanguage}
+        />
 
         <ProductFormBasicInformation
           form={form}

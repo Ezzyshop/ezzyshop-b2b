@@ -24,6 +24,10 @@ import {
   PaymentMethodStatus,
   PaymentMethodType,
 } from "../../utils/payment-method.enum";
+import { LanguageSelectTab } from "@/components/form/language-select-tab";
+import { LanguageType } from "@/features/moderator/shops/utils";
+import { useShopContext } from "@/contexts";
+import { useState } from "react";
 
 interface IProps {
   initialValues?: TPaymentMethodForm;
@@ -37,6 +41,10 @@ export const PaymentMethodForm = ({
   initialValues,
 }: IProps) => {
   const { t } = useTranslation();
+  const { shop } = useShopContext();
+  const [activeLanguage, setActiveLanguage] = useState<LanguageType>(
+    shop.languages.find((lang) => lang.is_main)?.type || LanguageType.Uz
+  );
 
   const form = useForm<TPaymentMethodForm>({
     resolver: joiResolver(createPaymentMethodValidator),
@@ -66,6 +74,11 @@ export const PaymentMethodForm = ({
         onSubmit={form.handleSubmit(handleSubmit)}
         className="space-y-6 p-6"
       >
+        <LanguageSelectTab
+          activeLanguage={activeLanguage}
+          setActiveLanguage={setActiveLanguage}
+        />
+
         <FormField
           control={form.control}
           name="type"
@@ -93,57 +106,15 @@ export const PaymentMethodForm = ({
             </FormItem>
           )}
         />
-        {/* Name fields */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <FormField
-            control={form.control}
-            name="name.uz"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel isRequired>
-                  {t("dashboard.delivery-methods.name")} (UZ)
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder={t(
-                      "dashboard.delivery-methods.name_placeholder"
-                    )}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="name.ru"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>
-                  {t("dashboard.delivery-methods.name")} (RU)
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder={t(
-                      "dashboard.delivery-methods.name_placeholder"
-                    )}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
         <FormField
           control={form.control}
-          name="name.en"
+          name={`name.${activeLanguage}`}
+          key={`name-${activeLanguage}`}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t("dashboard.delivery-methods.name")} (EN)</FormLabel>
+              <FormLabel isRequired>
+                {t("dashboard.delivery-methods.name")}
+              </FormLabel>
               <FormControl>
                 <Input
                   placeholder={t("dashboard.delivery-methods.name_placeholder")}
@@ -155,59 +126,14 @@ export const PaymentMethodForm = ({
           )}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <FormField
-            control={form.control}
-            name="instructions.uz"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel isRequired>
-                  {t("dashboard.payment-methods.instructions")} (UZ)
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder={t(
-                      "dashboard.payment-methods.instructions_placeholder"
-                    )}
-                    {...field}
-                    value={field.value ?? undefined}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="instructions.ru"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>
-                  {t("dashboard.payment-methods.instructions")} (RU)
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder={t(
-                      "dashboard.payment-methods.instructions_placeholder"
-                    )}
-                    {...field}
-                    value={field.value ?? undefined}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
         <FormField
           control={form.control}
-          name="instructions.en"
+          name={`instructions.${activeLanguage}`}
+          key={`instructions-${activeLanguage}`}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
-                {t("dashboard.payment-methods.instructions")} (EN)
+              <FormLabel isRequired>
+                {t("dashboard.payment-methods.instructions")}
               </FormLabel>
               <FormControl>
                 <Input

@@ -8,7 +8,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { useTranslation } from "react-i18next";
 import { ClickConfiguration } from "./payment-method-config-form/click-configuration";
-import { EditPaymentMethod } from "./payment-method-form/edit-payment-method copy";
+import { EditPaymentMethod } from "./payment-method-form/edit-payment-method";
 
 interface IProps {
   paymentMethod: IPaymentMethod;

@@ -23,6 +23,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { LanguageSelectTab } from "@/components/form/language-select-tab";
+import { LanguageType } from "@/features/moderator/shops/utils";
+import { useState } from "react";
+import { useShopContext } from "@/contexts";
 
 interface IProps {
   initialValues?: IDeliveryMethodForm;
@@ -36,7 +40,10 @@ export const DeliveryMethodForm = ({
   initialValues,
 }: IProps) => {
   const { t } = useTranslation();
-
+  const { shop } = useShopContext();
+  const [activeLanguage, setActiveLanguage] = useState<LanguageType>(
+    shop.languages.find((lang) => lang.is_main)?.type || LanguageType.Uz
+  );
   const { data: currencies } = useQuery({
     queryKey: ["currencies"],
     queryFn: () => getCurrenciesQueryFn(),
@@ -67,57 +74,19 @@ export const DeliveryMethodForm = ({
         onSubmit={form.handleSubmit(handleSubmit)}
         className="space-y-6 p-6"
       >
-        {/* Name fields */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <FormField
-            control={form.control}
-            name="name.uz"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel isRequired>
-                  {t("dashboard.delivery-methods.name")} (UZ)
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder={t(
-                      "dashboard.delivery-methods.name_placeholder"
-                    )}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="name.ru"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>
-                  {t("dashboard.delivery-methods.name")} (RU)
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder={t(
-                      "dashboard.delivery-methods.name_placeholder"
-                    )}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
+        <LanguageSelectTab
+          activeLanguage={activeLanguage}
+          setActiveLanguage={setActiveLanguage}
+        />
         <FormField
           control={form.control}
-          name="name.en"
+          key={`name-${activeLanguage}`}
+          name={`name.${activeLanguage}`}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t("dashboard.delivery-methods.name")} (EN)</FormLabel>
+              <FormLabel isRequired>
+                {t("dashboard.delivery-methods.name")}
+              </FormLabel>
               <FormControl>
                 <Input
                   placeholder={t("dashboard.delivery-methods.name_placeholder")}

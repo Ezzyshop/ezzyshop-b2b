@@ -20,10 +20,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { CategoryStatus } from "../utils/category.enum";
-import { languageLabels, LanguageType } from "@/features/moderator/shops/utils";
+import { LanguageType } from "@/features/moderator/shops/utils";
 import { useShopContext } from "@/contexts";
 import { useState } from "react";
-import { Tabs, TabsTrigger, TabsList } from "@/components/ui/tabs";
+import { LanguageSelectTab } from "@/components/form/language-select-tab";
 
 interface IProps {
   initialValues?: ICategoryForm;
@@ -42,8 +42,6 @@ export const CategoryForm = ({
     shop.languages.find((lang) => lang.is_main)?.type || LanguageType.Uz
   );
 
-  const availableLanguages = shop.languages.map((lang) => lang.type);
-
   const { t } = useTranslation();
   const form = useForm<ICategoryForm>({
     defaultValues: initialValues ?? {
@@ -61,19 +59,10 @@ export const CategoryForm = ({
         className="p-4 flex-grow flex flex-col space-y-4"
         onSubmit={form.handleSubmit(onSubmit)}
       >
-        <Tabs
-          value={activeLanguage}
-          className="w-full"
-          onValueChange={(value) => setActiveLanguage(value as LanguageType)}
-        >
-          <TabsList className="w-full">
-            {availableLanguages.map((langType) => (
-              <TabsTrigger key={langType} value={langType}>
-                {languageLabels[langType]}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-        </Tabs>
+        <LanguageSelectTab
+          activeLanguage={activeLanguage}
+          setActiveLanguage={setActiveLanguage}
+        />
 
         <div className="flex-grow space-y-4 ">
           <FormField
