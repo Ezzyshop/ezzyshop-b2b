@@ -33,7 +33,7 @@ export enum ErrorMessages {
   CategoryNotFound = "CATEGORY_NOT_FOUND",
 }
 
-export const ErrorMessagesMap: Record<ErrorMessages, string> = {
+export const errorMessagesMap: Record<ErrorMessages, string> = {
   [ErrorMessages.ServerError]: "Server xatosi",
   [ErrorMessages.ValidationError]: "Tekshirish xatosi",
   [ErrorMessages.NotFoundError]: "Topilmadi xatosi",

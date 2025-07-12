@@ -1,6 +1,6 @@
 import axios from "axios";
 import { toast } from "sonner";
-import { ErrorMessages, ErrorMessagesMap } from "./utils/error-messages.enum";
+import { ErrorMessages, errorMessagesMap } from "./utils/error-messages.enum";
 
 export const api = axios.create({
   baseURL: "/api",
@@ -21,7 +21,7 @@ api.interceptors.response.use(
       window.location.href = "/server-error";
     }
 
-    toast.error(ErrorMessagesMap[message]);
+    toast.error(errorMessagesMap[message]);
 
     if (message === ErrorMessages.UnauthorizedError) {
       window.location.href = "/login";
