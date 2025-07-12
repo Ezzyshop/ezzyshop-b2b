@@ -13,7 +13,7 @@ export const api = axios.create({
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    const code = error.response?.data?.message as ErrorMessages;
+    const message = error.response?.data?.message as ErrorMessages;
     const status = error.response?.status;
     const method = error.config?.method;
 
@@ -21,13 +21,13 @@ api.interceptors.response.use(
       window.location.href = "/server-error";
     }
 
-    toast.error(ErrorMessagesMap[code]);
+    toast.error(ErrorMessagesMap[message]);
 
-    if (code === ErrorMessages.UnauthorizedError) {
+    if (message === ErrorMessages.UnauthorizedError) {
       window.location.href = "/login";
     }
 
-    if (code === ErrorMessages.TokenExpired) {
+    if (message === ErrorMessages.TokenExpired) {
       window.location.href = "/logout";
     }
 
