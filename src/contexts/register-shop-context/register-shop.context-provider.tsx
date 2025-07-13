@@ -47,6 +47,7 @@ export const RegisterShopContextProvider = ({
         },
       ],
     },
+
     resolver: joiResolver(shopCreateSchema),
   });
 

@@ -19,7 +19,7 @@ import { SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useRegisterShopContext } from "@/contexts";
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { AddressForm } from "../components/address-form";
 import { useTranslation } from "react-i18next";
 import { SelectLanguage } from "../components/select-language";
@@ -33,12 +33,12 @@ export const CreateShopPage = () => {
     queryFn: () => getCurrenciesQueryFn(),
   });
 
-  // if (
-  //   !form.getValues("telegram.token") ||
-  //   !form.getValues("telegram.menu_text")
-  // ) {
-  //   return <Navigate to="/register/create-telegram" />;
-  // }
+  if (
+    !form.getValues("telegram.token") ||
+    !form.getValues("telegram.menu_text")
+  ) {
+    return <Navigate to="/register/create-telegram" />;
+  }
 
   return (
     <div className="space-y-2">

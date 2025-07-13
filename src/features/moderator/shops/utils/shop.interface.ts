@@ -64,26 +64,26 @@ export interface IShopForm {
   platform: ShopPlatform;
   status: ShopStatus;
   owner: string;
-  logo: string | null;
-  description: string | null;
+  logo?: string;
+  description?: string;
   plan: string;
   telegram: {
-    token: string | null;
-    menu_text: string | null;
-    menu_url: string | null;
+    token?: string;
+    menu_text?: string;
+    menu_url?: string;
   };
   social_links: {
-    telegram: string | null;
-    instagram: string | null;
-    facebook: string | null;
-    twitter: string | null;
-    youtube: string | null;
+    telegram?: string;
+    instagram?: string;
+    facebook?: string;
+    twitter?: string;
+    youtube?: string;
   };
   currency: string;
   address: {
-    address: string | null;
-    long: number | null;
-    lat: number | null;
+    address?: string;
+    long?: number;
+    lat?: number;
   };
   languages: ILanguage[];
 }

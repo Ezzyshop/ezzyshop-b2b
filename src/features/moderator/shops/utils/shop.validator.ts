@@ -32,10 +32,10 @@ export const shopFields: Record<
       "string.empty": "Platforma kiritilishi shart",
     }),
   plan: Joi.string().optional(),
-  logo: Joi.string().uri().allow(null).allow("").optional().messages({
+  logo: Joi.string().uri().optional().allow("").messages({
     "string.uri": "Logo to'g'ri URL bo'lishi kerak",
   }),
-  description: Joi.string().max(500).allow(null).allow("").optional().messages({
+  description: Joi.string().max(500).optional().messages({
     "string.max": "Tavsif 500 ta belgidan kam bo'lishi kerak",
   }),
   telegram: Joi.object({
@@ -47,22 +47,22 @@ export const shopFields: Record<
       "string.empty": "Menu nomi kiritilishi shart",
       "any.required": "Menu nomi kiritilishi shart",
     }),
-    menu_url: Joi.string().uri().optional().allow(null).allow(""),
+    menu_url: Joi.string().uri().optional(),
   }),
   social_links: Joi.object({
-    telegram: Joi.string().uri().allow(null).allow("").optional(),
-    instagram: Joi.string().uri().allow(null).allow("").optional(),
-    facebook: Joi.string().uri().allow(null).allow("").optional(),
-    twitter: Joi.string().uri().allow(null).allow("").optional(),
-    youtube: Joi.string().uri().allow(null).allow("").optional(),
+    telegram: Joi.string().uri().optional(),
+    instagram: Joi.string().uri().optional(),
+    facebook: Joi.string().uri().optional(),
+    twitter: Joi.string().uri().optional(),
+    youtube: Joi.string().uri().optional(),
   }),
   currency: Joi.string().required().messages({
     "string.empty": "Valyuta kiritilishi shart",
   }),
   address: Joi.object({
-    address: Joi.string().max(255).allow(null).allow("").optional(),
-    long: Joi.number().min(-180).max(180).allow(null).allow("").optional(),
-    lat: Joi.number().min(-90).max(90).allow(null).allow("").optional(),
+    address: Joi.string().max(255).optional(),
+    long: Joi.number().min(-180).max(180).optional(),
+    lat: Joi.number().min(-90).max(90).optional(),
   }),
   subscription_info: Joi.object({
     plan_type: Joi.string()
