@@ -37,33 +37,31 @@ export const CreateSuccessPage = () => {
         <div className="mx-auto mb-4 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
           <CheckCircle className="w-8 h-8 text-primary" />
         </div>
-        <CardTitle className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+        <CardTitle className="text-2xl md:text-3xl font-bold  mb-2">
           {t("register.create_success.title")} 🎉
         </CardTitle>
-        <CardDescription className="md:text-lg text-gray-600">
+        <CardDescription className="md:text-lg text-muted-foreground">
           {t("register.create_success.description")}
         </CardDescription>
       </CardHeader>
 
       <CardContent className="space-y-6 p-0">
-        <div className="bg-gray-50 rounded-lg p-4 border">
+        <div className="bg-background rounded-lg p-4 border">
           <div className="flex items-center gap-3 mb-3">
-            <Store className="w-5 h-5 text-gray-600" />
-            <h3 className="font-semibold text-gray-900">
+            <Store className="w-5 h-5 text-muted-foreground" />
+            <h3 className="font-semibold ">
               {t("register.create_success.about_shop")}
             </h3>
           </div>
           <div className="space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-gray-600">
+              <span className="text-muted-foreground">
                 {t("register.create_success.shop_name")}:
               </span>
-              <span className="font-medium text-gray-900">
-                {createdShop?.name}
-              </span>
+              <span className="font-medium ">{createdShop?.name}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-gray-600">
+              <span className="text-muted-foreground">
                 {t("register.create_success.shop_id")}:
               </span>
               <Badge variant="secondary" className="font-mono text-xs">
