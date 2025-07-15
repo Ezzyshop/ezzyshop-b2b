@@ -1,4 +1,4 @@
-import { useSidebar } from "@/components/ui/sidebar/sidebar";
+import { useSidebar } from "@/components/ui/sidebar";
 import { LanguageSwitcher } from "./language-switcher";
 import { Notification } from "./notification";
 import { ThemeChanger } from "./theme-changer";

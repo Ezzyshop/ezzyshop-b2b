@@ -115,6 +115,6 @@ export interface IShopUpdateForm {
 
 export interface IMyShopUpdateForm extends Omit<IShopUpdateForm, "telegram"> {
   telegram: {
-    menu_text: string | null;
+    menu_text?: string;
   };
 }

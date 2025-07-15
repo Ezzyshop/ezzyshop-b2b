@@ -16,14 +16,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { IShopUpdateForm } from "@/features/moderator/shops/utils";
+import { IMyShopUpdateForm } from "@/features/moderator/shops/utils";
 import { SelectLanguage } from "@/features/register/create-shop/components/select-language";
 import { useQuery } from "@tanstack/react-query";
 import { UseFormReturn } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 
 interface IProps {
-  form: UseFormReturn<IShopUpdateForm>;
+  form: UseFormReturn<IMyShopUpdateForm>;
 }
 
 export const SettingFormBasicInformation = ({ form }: IProps) => {

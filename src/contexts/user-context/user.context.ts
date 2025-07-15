@@ -1,9 +1,13 @@
+import { IResponse } from "@/api/utils/axios.interface";
 import { IUser } from "@/lib/interfaces";
+import { QueryObserverResult, RefetchOptions } from "@tanstack/react-query";
 import { createContext, useContext } from "react";
 
 interface IUserContext {
   user: IUser;
-  refetch: () => Promise<void>;
+  refetch: (
+    options?: RefetchOptions
+  ) => Promise<QueryObserverResult<IResponse<IUser>, Error>>;
 }
 
 export const UserContext = createContext<IUserContext | null>(null);

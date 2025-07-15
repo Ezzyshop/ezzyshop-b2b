@@ -25,7 +25,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar/sidebar";
+} from "@/components/ui/sidebar";
 import { useUserContext } from "@/contexts/user-context/user.context";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib";

@@ -1,7 +1,6 @@
 import { Form } from "@/components/ui/form/form";
 import {
   IMyShopUpdateForm,
-  IShopUpdateForm,
   updateMyShopSchema,
 } from "@/features/moderator/shops/utils";
 import { useForm } from "react-hook-form";
@@ -24,7 +23,7 @@ interface IProps {
 export const SettingsForm = ({ shop, onSubmit, isLoading }: IProps) => {
   const { t } = useTranslation();
 
-  const form = useForm<IShopUpdateForm>({
+  const form = useForm<IMyShopUpdateForm>({
     defaultValues: shop,
     resolver: joiResolver(updateMyShopSchema),
   });

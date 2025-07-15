@@ -1,5 +1,5 @@
 import { AppSidebar } from "@/components/moderator/sidebar/moderator-sidebar";
-import { SidebarProvider } from "@/components/ui/sidebar/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { UserContextProvider } from "@/contexts/user-context/user.context-provider";
 import { PropsWithChildren } from "react";
 
