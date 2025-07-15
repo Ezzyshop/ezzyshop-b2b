@@ -23,7 +23,7 @@ export interface IShop {
   };
   logo?: string;
   description?: string;
-  telegram: {
+  telegram?: {
     _id: string;
     menu_text?: string;
   };
@@ -67,11 +67,6 @@ export interface IShopForm {
   logo?: string;
   description?: string;
   plan: string;
-  telegram: {
-    token?: string;
-    menu_text?: string;
-    menu_url?: string;
-  };
   social_links: {
     telegram?: string;
     instagram?: string;
@@ -92,11 +87,6 @@ export interface IShopUpdateForm {
   name: string;
   logo?: string;
   description?: string;
-  telegram: {
-    token?: string;
-    menu_text?: string;
-    menu_url?: string;
-  };
   social_links: {
     telegram?: string;
     instagram?: string;
@@ -113,8 +103,7 @@ export interface IShopUpdateForm {
   languages: ILanguage[];
 }
 
-export interface IMyShopUpdateForm extends Omit<IShopUpdateForm, "telegram"> {
-  telegram: {
-    menu_text?: string;
-  };
+export interface IShopTelegramForm {
+  token: string;
+  menu_text: string;
 }

@@ -8,12 +8,12 @@ import {
 } from "@/components/ui/form/form";
 import { Input } from "@/components/ui/input";
 import { YandexMap } from "@/components/yandex-map/yandex-map";
-import { IMyShopUpdateForm } from "@/features/moderator/shops/utils";
+import { IShopUpdateForm } from "@/features/moderator/shops/utils";
 import { UseFormReturn } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 
 interface IProps {
-  form: UseFormReturn<IMyShopUpdateForm>;
+  form: UseFormReturn<IShopUpdateForm>;
 }
 
 export const SettingFormAddressSection = ({ form }: IProps) => {

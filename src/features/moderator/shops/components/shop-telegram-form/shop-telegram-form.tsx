@@ -1,14 +1,14 @@
 import { Form } from "@/components/ui/form/form";
 import { ShopFormTelegramConfiguration } from "../shop-form/shop-form-sections/telegram-configuration";
 import { Button } from "@/components/ui/button/button";
-import { IShopForm, IShopUpdateForm, telegramSchema } from "../../utils";
-import { useForm, UseFormReturn } from "react-hook-form";
+import { IShopTelegramForm, telegramSchema } from "../../utils";
+import { useForm } from "react-hook-form";
 import { cn } from "@/lib";
 import { joiResolver } from "@hookform/resolvers/joi";
 
 interface IProps {
-  initialValues: { telegram: IShopUpdateForm["telegram"] };
-  onSubmit: (data: { telegram: IShopUpdateForm["telegram"] }) => void;
+  initialValues: IShopTelegramForm;
+  onSubmit: (data: IShopTelegramForm) => void;
   isLoading: boolean;
 }
 
@@ -17,7 +17,7 @@ export const ShopTelegramForm = ({
   onSubmit,
   isLoading,
 }: IProps) => {
-  const form = useForm<{ telegram: IShopUpdateForm["telegram"] }>({
+  const form = useForm<IShopTelegramForm>({
     resolver: joiResolver(telegramSchema),
     defaultValues: initialValues,
   });
@@ -25,9 +25,7 @@ export const ShopTelegramForm = ({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <ShopFormTelegramConfiguration
-          form={form as unknown as UseFormReturn<IShopForm>}
-        />
+        <ShopFormTelegramConfiguration form={form} />
 
         <div className={cn("grid mt-3 grid-cols-2 gap-4")}>
           <Button

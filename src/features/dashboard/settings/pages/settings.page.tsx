@@ -1,6 +1,6 @@
 import { updateShopMutationFn } from "@/api/mutations";
 import { useShopContext } from "@/contexts";
-import { IMyShopUpdateForm, IShopForm } from "@/features/moderator/shops/utils";
+import { IShopUpdateForm, IShopForm } from "@/features/moderator/shops/utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { SettingsForm } from "../components/settings-form/settings-form";
 import { useMemo } from "react";
@@ -13,7 +13,7 @@ export const SettingsPage = () => {
   const { t } = useTranslation();
 
   const { mutate: updateShop, isPending } = useMutation({
-    mutationFn: (data: IMyShopUpdateForm) =>
+    mutationFn: (data: IShopUpdateForm) =>
       updateShopMutationFn(shop._id, data as unknown as IShopForm),
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -26,7 +26,7 @@ export const SettingsPage = () => {
     },
   });
 
-  const shopInitialValues: IMyShopUpdateForm = useMemo(() => {
+  const shopInitialValues: IShopUpdateForm = useMemo(() => {
     return {
       address: {
         address: shop.address.address,

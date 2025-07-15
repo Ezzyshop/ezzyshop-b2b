@@ -1,6 +1,6 @@
 import { Form } from "@/components/ui/form/form";
 import {
-  IMyShopUpdateForm,
+  IShopUpdateForm,
   updateMyShopSchema,
 } from "@/features/moderator/shops/utils";
 import { useForm } from "react-hook-form";
@@ -15,15 +15,15 @@ import { SettingFormSocialLinks } from "./setting-form-sections/social-links";
 import { SettingFormAddressSection } from "./setting-form-sections/address-section";
 
 interface IProps {
-  shop: IMyShopUpdateForm;
-  onSubmit: (data: IMyShopUpdateForm) => void;
+  shop: IShopUpdateForm;
+  onSubmit: (data: IShopUpdateForm) => void;
   isLoading: boolean;
 }
 
 export const SettingsForm = ({ shop, onSubmit, isLoading }: IProps) => {
   const { t } = useTranslation();
 
-  const form = useForm<IMyShopUpdateForm>({
+  const form = useForm<IShopUpdateForm>({
     defaultValues: shop,
     resolver: joiResolver(updateMyShopSchema),
   });

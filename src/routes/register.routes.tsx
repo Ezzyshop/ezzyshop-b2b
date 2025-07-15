@@ -6,8 +6,8 @@ const CreateShopPage = lazy(
   () => import("@/features/register/create-shop/pages/create-shop.page")
 );
 
-const CreateTelegramPage = lazy(
-  () => import("@/features/register/create-telegram/pages/create-telegram.page")
+const CreatePlatformPage = lazy(
+  () => import("@/features/register/create-platform/pages/create-platform.page")
 );
 
 const CreateSuccessPage = lazy(
@@ -19,13 +19,10 @@ export const RegisterRoutes = () => {
     <UserContextProvider>
       <RegisterShopContextProvider>
         <Routes>
-          <Route path="/create-telegram" element={<CreateTelegramPage />} />
+          <Route path="/create-platform" element={<CreatePlatformPage />} />
           <Route path="/create-shop" element={<CreateShopPage />} />
           <Route path="/finish" element={<CreateSuccessPage />} />
-          <Route
-            path="*"
-            element={<Navigate to="/register/create-telegram" />}
-          />
+          <Route path="*" element={<Navigate to="/register/create-shop" />} />
         </Routes>
       </RegisterShopContextProvider>
     </UserContextProvider>

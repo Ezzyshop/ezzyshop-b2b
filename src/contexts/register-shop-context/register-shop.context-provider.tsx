@@ -15,7 +15,6 @@ import { useMutation } from "@tanstack/react-query";
 import { createShopMutationFn } from "@/api/mutations";
 import { useNavigate } from "react-router-dom";
 import { RegisterShopLayout } from "@/layouts/register-shop.layout";
-import Confetti from "react-confetti";
 
 export const RegisterShopContextProvider = ({
   children,
@@ -30,13 +29,9 @@ export const RegisterShopContextProvider = ({
       currency: undefined,
       name: undefined,
       logo: undefined,
-      telegram: {
-        token: undefined,
-        menu_text: undefined,
-      },
       description: undefined,
       address: {
-        address: "",
+        address: undefined,
         lat: 41.2995,
         long: 69.2401,
       },
@@ -55,7 +50,7 @@ export const RegisterShopContextProvider = ({
     mutationFn: (data: IShopForm) => createShopMutationFn(data),
     onSuccess: (data) => {
       setCreatedShop(data.data.data as unknown as IShop);
-      navigate("/register/finish");
+      navigate("/register/create-platform");
     },
   });
 
@@ -87,13 +82,6 @@ export const RegisterShopContextProvider = ({
   return (
     <RegisterShopContext.Provider value={value}>
       <RegisterShopLayout>{children}</RegisterShopLayout>
-      {createdShop && (
-        <Confetti
-          className="fixed w-screen h-screen top-0 left-0"
-          width={window.innerWidth}
-          height={window.innerHeight}
-        />
-      )}
     </RegisterShopContext.Provider>
   );
 };

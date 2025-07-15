@@ -7,11 +7,11 @@ import {
   FormMessage,
 } from "@/components/ui/form/form";
 import { Input, TelegramTokenInput } from "@/components/ui/input";
-import { IShopForm } from "../../../utils";
+import { IShopTelegramForm } from "../../../utils";
 import { UseFormReturn } from "react-hook-form";
 
 interface IProps {
-  form: UseFormReturn<IShopForm>;
+  form: UseFormReturn<IShopTelegramForm>;
   isEdit?: boolean;
 }
 
@@ -20,12 +20,12 @@ export const ShopFormTelegramConfiguration = ({
   isEdit = false,
 }: IProps) => {
   return (
-    <Card className="p-4 grid grid-cols-3 gap-4">
+    <Card className="p-4 grid grid-cols-2 gap-4">
       <h3 className="text-lg font-medium col-span-3">Telegram Sozlamalari</h3>
 
       <FormField
         control={form.control}
-        name="telegram.token"
+        name="token"
         render={({ field }) => (
           <FormItem className="">
             <FormLabel isRequired>Telegram Bot Token</FormLabel>
@@ -44,7 +44,7 @@ export const ShopFormTelegramConfiguration = ({
 
       <FormField
         control={form.control}
-        name="telegram.menu_text"
+        name="menu_text"
         render={({ field }) => (
           <FormItem>
             <FormLabel isRequired>Menu nomi</FormLabel>
@@ -54,26 +54,6 @@ export const ShopFormTelegramConfiguration = ({
                 placeholder="Menu nomini kiriting"
                 {...field}
                 value={field.value || ""}
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-
-      <FormField
-        control={form.control}
-        name="telegram.menu_url"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel isRequired>Menu manzili</FormLabel>
-            <FormControl>
-              <Input
-                disabled={isEdit}
-                type="url"
-                placeholder="https://example.com/menu"
-                {...field}
-                value={field.value || undefined}
               />
             </FormControl>
             <FormMessage />

@@ -10,7 +10,6 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import { Form } from "@/components/ui/form/form";
 import { Button } from "@/components/ui/button/button";
 import { ShopFormBasicInformation } from "./shop-form-sections/basic-information";
-import { ShopFormTelegramConfiguration } from "./shop-form-sections/telegram-configuration";
 import { ShopFormAddress } from "./shop-form-sections/address";
 import { ShopFormSocialLinks } from "./shop-form-sections/social-links";
 import { cn } from "@/lib";
@@ -30,11 +29,6 @@ export const ShopForm = ({ initialValue, onSubmit, isLoading }: IProps) => {
       logo: undefined,
       status: ShopStatus.Active,
       description: undefined,
-      telegram: {
-        token: undefined,
-        menu_text: undefined,
-        menu_url: undefined,
-      },
       social_links: {
         telegram: undefined,
         instagram: undefined,
@@ -63,8 +57,6 @@ export const ShopForm = ({ initialValue, onSubmit, isLoading }: IProps) => {
         className="space-y-8 "
       >
         <ShopFormBasicInformation form={form} isEdit={!!initialValue} />
-
-        <ShopFormTelegramConfiguration form={form} isEdit={!!initialValue} />
 
         <ShopFormSocialLinks form={form} />
 

@@ -8,31 +8,41 @@ import {
   FormLabel,
 } from "@/components/ui/form/form";
 import { Input, TelegramTokenInput } from "@/components/ui/input";
-import { useRegisterShopContext } from "@/contexts";
-import { IShopForm, telegramSchema } from "@/features/moderator/shops/utils";
+import {
+  IShopTelegramForm,
+  telegramSchema,
+} from "@/features/moderator/shops/utils";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { Info } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { useRegisterShopContext } from "@/contexts";
+import { assignTelegramBotMutationFn } from "@/api/mutations/shops.mutation";
 
 export const CreateTelegramPage = () => {
-  const { form: shopForm } = useRegisterShopContext();
+  const { createdShop } = useRegisterShopContext();
   const navigate = useNavigate();
-  const initialValue = shopForm.getValues("telegram");
   const { t } = useTranslation();
+  const createTelegramBotMutation = useMutation({
+    mutationFn: (data: IShopTelegramForm) =>
+      assignTelegramBotMutationFn(createdShop?._id || "", data),
+    onSuccess: () => {
+      navigate("/register/finish");
+    },
+  });
 
-  const form = useForm<IShopForm["telegram"]>({
-    defaultValues: initialValue ?? {
+  const form = useForm<IShopTelegramForm>({
+    defaultValues: {
       token: "",
       menu_text: "",
     },
     resolver: joiResolver(telegramSchema),
   });
 
-  const handleSubmit = (data: IShopForm["telegram"]) => {
-    shopForm.setValue("telegram", data);
-    navigate("/register/create-shop");
+  const handleSubmit = (data: IShopTelegramForm) => {
+    createTelegramBotMutation.mutate(data);
   };
 
   return (

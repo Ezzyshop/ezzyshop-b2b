@@ -8,13 +8,13 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const registerSteps = [
   {
-    path: "/register/create-telegram",
-    icon: <BotIcon className="w-4 h-4 " />,
+    path: "/register/create-shop",
+    icon: <Building className="w-4 h-4 " />,
     progress: 0,
   },
   {
-    path: "/register/create-shop",
-    icon: <Building className="w-4 h-4 " />,
+    path: "/register/create-platform",
+    icon: <BotIcon className="w-4 h-4 " />,
     progress: 50,
   },
   {
