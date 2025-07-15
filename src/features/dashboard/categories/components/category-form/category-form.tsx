@@ -24,6 +24,8 @@ import { LanguageType } from "@/features/moderator/shops/utils";
 import { useShopContext } from "@/contexts";
 import { useState } from "react";
 import { LanguageSelectTab } from "@/components/form/language-select-tab";
+import { joiResolver } from "@hookform/resolvers/joi";
+import { categoryFormValidator } from "../utils/category.validator";
 
 interface IProps {
   initialValues?: ICategoryForm;
@@ -46,11 +48,12 @@ export const CategoryForm = ({
   const form = useForm<ICategoryForm>({
     defaultValues: initialValues ?? {
       name: {
-        uz: "",
+        uz: undefined,
       },
       status: CategoryStatus.Active,
       is_popular: false,
     },
+    resolver: joiResolver(categoryFormValidator),
   });
 
   return (
