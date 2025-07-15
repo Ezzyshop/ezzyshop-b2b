@@ -34,9 +34,6 @@ export const SettingsPage = () => {
         long: shop.address.long,
       },
       currency: shop.currency._id,
-      telegram: {
-        menu_text: shop.telegram.menu_text,
-      },
       social_links: shop.social_links,
       name: shop.name,
       logo: shop.logo,

@@ -42,6 +42,7 @@ export const ShopForm = ({ initialValue, onSubmit, isLoading }: IProps) => {
         long: undefined,
         lat: undefined,
       },
+      languages: [],
     },
     resolver: joiResolver(shopCreateSchema),
   });

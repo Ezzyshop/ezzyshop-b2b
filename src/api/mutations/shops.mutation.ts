@@ -16,7 +16,7 @@ export const updateShopMutationFn = (
 
 export const updateShopPlanMutationFn = (
   id: string,
-  data: { plan: IShopForm["plan"] }
+  data: { plan: string }
 ): Promise<IShop> => api.put(`/shops/${id}/plan`, data).then((res) => res.data);
 
 // Assign Telegram

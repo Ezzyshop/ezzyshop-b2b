@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button/button";
 
 import { cn } from "@/lib";
 import { SettingFormBasicInformation } from "./setting-form-sections/basic-information";
-import { SettingFormTelegramConfiguration } from "./setting-form-sections/telegram-configuration";
 import { SettingFormSocialLinks } from "./setting-form-sections/social-links";
 import { SettingFormAddressSection } from "./setting-form-sections/address-section";
 
@@ -32,8 +31,6 @@ export const SettingsForm = ({ shop, onSubmit, isLoading }: IProps) => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <SettingFormBasicInformation form={form} />
-
-        <SettingFormTelegramConfiguration form={form} />
 
         <SettingFormSocialLinks form={form} />
 

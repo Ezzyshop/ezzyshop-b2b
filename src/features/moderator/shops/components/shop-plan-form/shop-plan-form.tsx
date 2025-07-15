@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { IShopForm, shopUpdatePlanSchema } from "../../utils";
+import { shopUpdatePlanSchema } from "../../utils";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { IPlan } from "@/features/moderator/plans/utils/plan.interface";
 import {
@@ -25,8 +25,8 @@ import {
 } from "@/features/dashboard/plans/utils/plans.enum";
 
 interface IProps {
-  initialValue: { plan: IShopForm["plan"]; type: PlansType };
-  onSubmit: (data: { plan: IShopForm["plan"]; type: PlansType }) => void;
+  initialValue: { plan: string; type: PlansType };
+  onSubmit: (data: { plan: string; type: PlansType }) => void;
   plans: IPlan[];
   isLoading: boolean;
 }
@@ -37,7 +37,7 @@ export const ShopPlanForm = ({
   isLoading,
   plans,
 }: IProps) => {
-  const form = useForm<{ plan: IShopForm["plan"]; type: PlansType }>({
+  const form = useForm<{ plan: string; type: PlansType }>({
     resolver: joiResolver(shopUpdatePlanSchema),
     defaultValues: initialValue,
   });

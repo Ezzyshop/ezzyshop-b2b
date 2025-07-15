@@ -66,7 +66,6 @@ export interface IShopForm {
   owner: string;
   logo?: string;
   description?: string;
-  plan: string;
   social_links: {
     telegram?: string;
     instagram?: string;

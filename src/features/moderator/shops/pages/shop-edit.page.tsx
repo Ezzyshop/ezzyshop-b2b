@@ -44,11 +44,6 @@ export const ShopEditPage = () => {
     status: shop.status,
     logo: shop.logo,
     description: shop.description,
-    telegram: {
-      token: shop.telegram.token,
-      menu_text: shop.telegram.menu_text,
-      menu_url: shop.telegram.menu_url,
-    },
     social_links: shop.social_links,
     currency: shop.currency._id,
     address: {
@@ -56,6 +51,7 @@ export const ShopEditPage = () => {
       long: shop.address.long,
       lat: shop.address.lat,
     },
+    languages: shop.languages,
   };
 
   const handleSubmit = (data: IShopForm) => {

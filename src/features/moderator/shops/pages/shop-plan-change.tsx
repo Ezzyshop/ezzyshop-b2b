@@ -3,7 +3,6 @@ import { LayoutLoader } from "@/components/loaders/global-loader";
 import { useMutation, useQueries } from "@tanstack/react-query";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { ShopPlanForm } from "../components/shop-plan-form/shop-plan-form";
-import { IShopForm } from "../utils";
 import { updateShopPlanMutationFn } from "@/api/mutations";
 import { toast } from "sonner";
 import { PlanStatus } from "../../plans/utils/plan.enum";
@@ -27,8 +26,7 @@ export const ShopPlanChangePage = () => {
   });
 
   const updatePlanMutation = useMutation({
-    mutationFn: (data: { plan: IShopForm["plan"] }) =>
-      updateShopPlanMutationFn(id!, data),
+    mutationFn: (data: { plan: string }) => updateShopPlanMutationFn(id!, data),
     onSuccess: () => {
       toast.success("Tarif muvaffaqiyatli o'zgartirildi");
       navigate("/moderator/shops");
@@ -46,12 +44,12 @@ export const ShopPlanChangePage = () => {
     return <Navigate to="/moderator/shops" />;
   }
 
-  const initialValues: { plan: IShopForm["plan"]; type: PlansType } = {
+  const initialValues: { plan: string; type: PlansType } = {
     plan: shop.plan._id,
     type: shop.subscription_info.plan_type,
   };
 
-  const handleSubmit = (data: { plan: IShopForm["plan"] }) => {
+  const handleSubmit = (data: { plan: string }) => {
     updatePlanMutation.mutate(data);
   };
 
