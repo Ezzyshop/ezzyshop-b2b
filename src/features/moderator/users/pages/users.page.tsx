@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { NavLink } from "react-router-dom";
 import { useQueryParams } from "@/hooks";
 import { DataTable } from "@/components/data-table/data-table";

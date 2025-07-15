@@ -4,7 +4,7 @@ import {
   FormLabel,
   FormControl,
   FormMessage,
-} from "@/components/ui/form";
+} from "@/components/ui/form/form";
 import { Input, InputWithPrefix } from "@/components/ui/input";
 import {
   Select,

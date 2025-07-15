@@ -39,7 +39,7 @@ function Input({
     } else if (type !== "number" && value !== undefined) {
       setDisplayValue(String(value));
     }
-  }, [value, type]);
+  }, [value, type, displayValue]);
 
   // Initialize display value
   React.useEffect(() => {
@@ -48,7 +48,7 @@ function Input({
     } else if (value !== undefined) {
       setDisplayValue(String(value));
     }
-  }, []);
+  }, [type, value]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
@@ -120,7 +120,7 @@ function TelegramTokenInput({
         },
       } as React.ChangeEvent<HTMLInputElement>);
     }
-  }, [data]);
+  }, [data, props, debouncedValue]);
 
   return (
     <Input

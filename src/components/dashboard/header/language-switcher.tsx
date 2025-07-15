@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 
 export const LanguageSwitcher: React.FC = () => {
   const { currentLanguage, changeLanguage, languages } = useLanguage();

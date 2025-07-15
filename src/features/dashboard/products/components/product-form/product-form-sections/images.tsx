@@ -4,7 +4,7 @@ import { ImageIcon, Plus, Trash2 } from "lucide-react";
 import { IProductForm } from "../../../utils/product.interface";
 import { UseFormReturn } from "react-hook-form";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { useTranslation } from "react-i18next";
 
 interface IProps {

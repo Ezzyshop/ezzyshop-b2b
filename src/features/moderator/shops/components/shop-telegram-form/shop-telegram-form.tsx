@@ -1,6 +1,6 @@
-import { Form } from "@/components/ui/form";
+import { Form } from "@/components/ui/form/form";
 import { ShopFormTelegramConfiguration } from "../shop-form/shop-form-sections/telegram-configuration";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { IShopForm, IShopUpdateForm, telegramSchema } from "../../utils";
 import { useForm, UseFormReturn } from "react-hook-form";
 import { cn } from "@/lib";

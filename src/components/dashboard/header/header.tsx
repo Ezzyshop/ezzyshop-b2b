@@ -1,9 +1,9 @@
-import { useSidebar } from "@/components/ui/sidebar";
+import { useSidebar } from "@/components/ui/sidebar/sidebar";
 import { LanguageSwitcher } from "./language-switcher";
 import { Notification } from "./notification";
 import { ThemeChanger } from "./theme-changer";
 import { ThemeSettings } from "./theme-settings/theme-settings";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { PanelRightIcon } from "lucide-react";
 
 export const Header = () => {

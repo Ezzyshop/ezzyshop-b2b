@@ -1,6 +1,6 @@
 import { Header } from "@/components/dashboard/header/header";
 import { DashboardSidebar } from "@/components/dashboard/sidebar/dashboard-sidebar";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar/sidebar";
 import { ShopContextProvider } from "@/contexts";
 import { UserContextProvider } from "@/contexts/user-context/user.context-provider";
 import { PropsWithChildren } from "react";

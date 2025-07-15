@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { useTheme } from "@/contexts";
 import { MoonIcon, SunIcon } from "lucide-react";
 

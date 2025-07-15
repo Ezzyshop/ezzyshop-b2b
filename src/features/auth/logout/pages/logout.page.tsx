@@ -15,7 +15,7 @@ export const LogoutPage = () => {
 
   useEffect(() => {
     mutate();
-  }, []);
+  }, [mutate]);
 
   return null;
 };

@@ -9,9 +9,9 @@ import { IPlan } from "@/features/moderator/plans/utils/plan.interface";
 import { useTranslation } from "react-i18next";
 import { PlansType } from "../utils/plans.enum";
 import { CheckIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { useShopContext } from "@/contexts";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui/badge/badge";
 
 interface IProps {
   plan: IPlan;

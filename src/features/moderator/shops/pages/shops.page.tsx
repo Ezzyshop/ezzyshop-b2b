@@ -1,7 +1,7 @@
 import { getAllShopsQueryFn } from "@/api/queries/shops.query";
 import { useQuery } from "@tanstack/react-query";
 import { shopColumns } from "../components/shop-table/shops-table-columns";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { NavLink } from "react-router-dom";
 import { ShopTableFilters } from "../components/shop-table/shop-table-filters";
 import { useQueryParams } from "@/hooks";

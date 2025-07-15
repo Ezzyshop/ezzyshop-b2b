@@ -2,7 +2,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { IUser } from "@/lib/interfaces/user.interface";
 import dayjs from "dayjs";
 import { userRolesTranslations } from "@/lib/enums";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { EditIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
 

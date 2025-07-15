@@ -1,6 +1,6 @@
-import { FormControl, FormItem, FormMessage } from "@/components/ui/form";
+import { FormControl, FormItem, FormMessage } from "@/components/ui/form/form";
 
-import { FormField, FormLabel } from "@/components/ui/form";
+import { FormField, FormLabel } from "@/components/ui/form/form";
 import { IDeliveryMethodForm } from "../../../utils/delivery-methods.interface";
 import { UseFormReturn } from "react-hook-form";
 import { Textarea } from "@/components/ui/textarea";

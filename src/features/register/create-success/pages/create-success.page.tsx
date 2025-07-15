@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckCircle, Store } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import {
   Card,
   CardContent,
@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui/badge/badge";
 import { useRegisterShopContext, useUserContext } from "@/contexts";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";

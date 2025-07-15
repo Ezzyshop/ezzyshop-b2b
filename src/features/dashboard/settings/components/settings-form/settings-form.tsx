@@ -1,4 +1,4 @@
-import { Form } from "@/components/ui/form";
+import { Form } from "@/components/ui/form/form";
 import {
   IMyShopUpdateForm,
   IShopUpdateForm,
@@ -7,7 +7,7 @@ import {
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 
 import { cn } from "@/lib";
 import { SettingFormBasicInformation } from "./setting-form-sections/basic-information";

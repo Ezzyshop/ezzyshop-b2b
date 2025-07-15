@@ -2,7 +2,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { ICurrency } from "../../utils/currency.interface";
 import dayjs from "dayjs";
 import { StatusChangeSwitch } from "@/components/moderator/forms/change-status-switch";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { EditIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 

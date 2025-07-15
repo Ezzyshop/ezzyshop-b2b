@@ -21,32 +21,32 @@ export interface IShop {
     name: string;
     order: number;
   };
-  logo: string | null;
-  description: string | null;
+  logo?: string;
+  description?: string;
   telegram: {
     _id: string;
-    menu_text: string | null;
+    menu_text?: string;
   };
   social_links: {
-    telegram: string | null;
-    instagram: string | null;
-    facebook: string | null;
-    twitter: string | null;
-    youtube: string | null;
+    telegram?: string;
+    instagram?: string;
+    facebook?: string;
+    twitter?: string;
+    youtube?: string;
   };
   currency: {
     _id: string;
     symbol: string;
   };
   address: {
-    address: string | null;
-    long: number | null;
-    lat: number | null;
+    address?: string;
+    long?: number;
+    lat?: number;
   };
   subscription_info: {
     plan_type: PlansType;
-    plan_start_date: Date | null;
-    plan_end_date: Date | null;
+    plan_start_date?: Date;
+    plan_end_date?: Date;
   };
   createdAt: Date;
   updatedAt: Date;
@@ -90,25 +90,25 @@ export interface IShopForm {
 
 export interface IShopUpdateForm {
   name: string;
-  logo: string | null;
-  description: string | null;
+  logo?: string;
+  description?: string;
   telegram: {
-    token: string | null;
-    menu_text: string | null;
-    menu_url: string | null;
+    token?: string;
+    menu_text?: string;
+    menu_url?: string;
   };
   social_links: {
-    telegram: string | null;
-    instagram: string | null;
-    facebook: string | null;
-    twitter: string | null;
-    youtube: string | null;
+    telegram?: string;
+    instagram?: string;
+    facebook?: string;
+    twitter?: string;
+    youtube?: string;
   };
   currency: string;
   address: {
-    address: string | null;
-    long: number | null;
-    lat: number | null;
+    address?: string;
+    long?: number;
+    lat?: number;
   };
   languages: ILanguage[];
 }

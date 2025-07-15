@@ -5,7 +5,7 @@ import {
   FormItem,
   FormControl,
   FormMessage,
-} from "@/components/ui/form";
+} from "@/components/ui/form/form";
 import { Input } from "@/components/ui/input";
 import { YandexMap } from "@/components/yandex-map/yandex-map";
 import { IShopForm } from "@/features/moderator/shops/utils";

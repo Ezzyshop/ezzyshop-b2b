@@ -1,7 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { IPlan } from "../../utils/plan.interface";
 import dayjs from "dayjs";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { EditIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { StatusChangeSwitch } from "@/components/moderator/forms/change-status-switch";

@@ -5,7 +5,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "@/components/ui/form/form";
 import { UseFormReturn } from "react-hook-form";
 import { IProductForm } from "../../../utils/product.interface";
 import { Switch } from "@/components/ui/switch";

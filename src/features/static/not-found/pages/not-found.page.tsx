@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { cn, dashboardSidebarData } from "@/lib";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";

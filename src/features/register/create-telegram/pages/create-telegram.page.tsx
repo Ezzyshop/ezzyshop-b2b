@@ -1,12 +1,12 @@
 import HtmlTranslation from "@/components/ui/html-translation";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-} from "@/components/ui/form";
+} from "@/components/ui/form/form";
 import { Input, TelegramTokenInput } from "@/components/ui/input";
 import { useRegisterShopContext } from "@/contexts";
 import { IShopForm, telegramSchema } from "@/features/moderator/shops/utils";

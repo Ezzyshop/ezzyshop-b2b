@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { useLocalStorage } from "@/hooks/react-use";
 import { DropdownMenuLabel } from "@radix-ui/react-dropdown-menu";
 import { useTranslation } from "react-i18next";

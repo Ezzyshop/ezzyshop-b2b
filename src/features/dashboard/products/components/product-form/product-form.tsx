@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { Form } from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form/form";
+import { Button } from "@/components/ui/button/button";
 import { ProductFormBasicInformation } from "./product-form-sections/basic-information";
 import { IProductForm } from "../../utils/product.interface";
 import { ProductFormPricingInformation } from "./product-form-sections/pricing-information";

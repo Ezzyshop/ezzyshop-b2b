@@ -9,7 +9,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@/components/ui/sidebar";
+} from "@/components/ui/sidebar/sidebar";
 import { NavLink, useLocation } from "react-router-dom";
 import { moderatorSidebarData } from "@/lib";
 import { ModeratorSidebarUser } from "./moderator-sidebar-user";

@@ -1,7 +1,7 @@
 import { getPlansQueryFn } from "@/api/queries";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { Card } from "@/components/ui/card";
-import { useSidebar } from "@/components/ui/sidebar";
+import { useSidebar } from "@/components/ui/sidebar/sidebar";
 import { useShopContext } from "@/contexts";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";

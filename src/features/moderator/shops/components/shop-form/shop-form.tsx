@@ -7,8 +7,8 @@ import {
   ShopStatus,
 } from "../../utils";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { Form } from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form/form";
+import { Button } from "@/components/ui/button/button";
 import { ShopFormBasicInformation } from "./shop-form-sections/basic-information";
 import { ShopFormTelegramConfiguration } from "./shop-form-sections/telegram-configuration";
 import { ShopFormAddress } from "./shop-form-sections/address";

@@ -4,7 +4,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
+} from "@/components/ui/sidebar/sidebar";
 import { dashboardSidebarData } from "@/lib";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";

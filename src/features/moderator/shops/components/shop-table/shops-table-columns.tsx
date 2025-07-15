@@ -3,10 +3,10 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { IShop, ShopStatus, shopTypesTranslations } from "../../utils";
 import dayjs from "dayjs";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import { BotIcon, CreditCardIcon, EditIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui/badge/badge";
 
 export const shopColumns: ColumnDef<IShop>[] = [
   {

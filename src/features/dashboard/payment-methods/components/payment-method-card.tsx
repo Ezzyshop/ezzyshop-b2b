@@ -5,7 +5,7 @@ import {
   PaymentMethodStatus,
   paymentMethodTypeLabels,
 } from "../utils/payment-method.enum";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui/badge/badge";
 import { useTranslation } from "react-i18next";
 import { ClickConfiguration } from "./payment-method-config-form/click-configuration";
 import { EditPaymentMethod } from "./payment-method-form/edit-payment-method";

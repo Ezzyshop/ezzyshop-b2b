@@ -2,8 +2,8 @@ import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { updateUserValidator } from "../../utils/user.validator";
 import { IUserForm } from "@/lib/interfaces/user.interface";
-import { Form } from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form/form";
+import { Button } from "@/components/ui/button/button";
 
 import { cn } from "@/lib/utils";
 
