@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import { EditProductButton } from "../product-form/edit-product";
 import { IShop } from "@/features/moderator/shops/utils";
 import { LanguageType } from "@/features/moderator/shops/utils";
+import { Image } from "@/components/ui/image";
 
 export const productTableColumns = (
   shop: IShop,
@@ -12,9 +13,10 @@ export const productTableColumns = (
 ): ColumnDef<IProduct>[] => [
   {
     header: "table.columns.image",
+    size: 60,
     cell: ({ row }) => {
       return (
-        <img
+        <Image
           src={row.original.images?.[0]}
           alt={row.original.name[lang]}
           className="w-10 h-10 object-cover"

@@ -1,11 +1,11 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { ICategory } from "../utils/category.interface";
 import { StatusChangeSwitch } from "@/components/moderator/forms/change-status-switch";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ChangePopularStatus } from "../category-form/change-popular-status";
 import { EditCategory } from "../category-form/edit-category";
 import { TFunction } from "i18next";
 import { LanguageType } from "@/features/moderator/shops/utils";
+import { Image } from "@/components/ui/image";
 
 export const categoryTableColumns = (
   t: TFunction,
@@ -13,13 +13,15 @@ export const categoryTableColumns = (
 ): ColumnDef<ICategory>[] => [
   {
     header: "table.columns.image",
+    size: 60,
     accessorKey: "image",
     cell: ({ row }) => {
       return (
-        <Avatar>
-          <AvatarImage src={row.original.image} />
-          <AvatarFallback>{row.original.name.uz.charAt(0)}</AvatarFallback>
-        </Avatar>
+        <Image
+          src={row.original.image}
+          alt={row.original.name[lang]}
+          className="w-10 h-10 object-cover"
+        />
       );
     },
   },

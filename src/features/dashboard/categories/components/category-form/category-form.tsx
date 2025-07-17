@@ -19,13 +19,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CategoryStatus } from "../utils/category.enum";
 import { LanguageType } from "@/features/moderator/shops/utils";
 import { useShopContext } from "@/contexts";
 import { useState } from "react";
 import { LanguageSelectTab } from "@/components/form/language-select-tab";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { categoryFormValidator } from "../utils/category.validator";
+import { ImageUploadSingle } from "@/components/ui/image-upload";
 
 interface IProps {
   initialValues?: ICategoryForm;
@@ -50,7 +50,6 @@ export const CategoryForm = ({
       name: {
         uz: undefined,
       },
-      status: CategoryStatus.Active,
       is_popular: false,
     },
     resolver: joiResolver(categoryFormValidator),
@@ -96,9 +95,9 @@ export const CategoryForm = ({
                 <FormLabel>{t("dashboard.categories.image")}</FormLabel>
 
                 <FormControl>
-                  <Input
-                    {...field}
-                    placeholder={t("dashboard.categories.enter_image")}
+                  <ImageUploadSingle
+                    value={field.value}
+                    onChange={field.onChange}
                   />
                 </FormControl>
                 <FormMessage />

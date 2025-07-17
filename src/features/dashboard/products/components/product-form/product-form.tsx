@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button/button";
 import { ProductFormBasicInformation } from "./product-form-sections/basic-information";
 import { IProductForm } from "../../utils/product.interface";
 import { ProductFormPricingInformation } from "./product-form-sections/pricing-information";
-import { ProductFormImages } from "./product-form-sections/images";
 import { ProductFormCategories } from "./product-form-sections/categories";
 import { createProductSchema } from "../../utils/product.validator";
 import { ProductFormVariants } from "./product-form-sections/variants/variants";
@@ -16,6 +15,7 @@ import { useState } from "react";
 import { useShopContext } from "@/contexts";
 import { useTranslation } from "react-i18next";
 import { LanguageSelectTab } from "@/components/form/language-select-tab";
+import { MultipleImageUpload } from "@/components/ui/image-upload";
 
 interface IProps {
   onSubmit: (data: IProductForm) => void;
@@ -94,7 +94,10 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
 
         <ProductFormPricingInformation form={form} />
 
-        <ProductFormImages form={form} />
+        <MultipleImageUpload
+          value={form.watch("images")}
+          onChange={(value) => form.setValue("images", value)}
+        />
 
         <ProductFormCategories form={form} />
 

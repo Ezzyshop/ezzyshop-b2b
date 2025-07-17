@@ -51,7 +51,9 @@
     "dynamic": "Moslashuvchan narx",
     "free": "Bepul",
     "custom": "Maxsus",
-    "km": "km"
+    "km": "km",
+    "upload_image": "Rasm yuklash",
+    "upload_image_description": "Rasmni yuklash uchun shu yerga bosing"
   },
   "register": {
     "create_telegram": {

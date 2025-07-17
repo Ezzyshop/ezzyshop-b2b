@@ -68,7 +68,7 @@ export const EditProductButton = ({ productId }: IProps) => {
   return (
     <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
       <DrawerTrigger asChild className="cursor-pointer">
-        <Button variant="outline">
+        <Button variant="outline" size="icon">
           <Edit />
         </Button>
       </DrawerTrigger>
