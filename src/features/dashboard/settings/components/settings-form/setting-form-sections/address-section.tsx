@@ -18,7 +18,7 @@ interface IProps {
 
 export const SettingFormAddressSection = ({ form }: IProps) => {
   const { t } = useTranslation();
-  console.log(form.watch("address"));
+
   return (
     <Card className="p-6">
       <h3 className="text-lg font-semibold mb-4">
