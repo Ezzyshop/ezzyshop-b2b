@@ -105,7 +105,7 @@ export const SettingFormBasicInformation = ({ form }: IProps) => {
               <FormControl>
                 <Textarea
                   {...field}
-                  value={field.value || ""}
+                  value={field.value}
                   placeholder={t(
                     "dashboard.settings.basic_information.enter_description"
                   )}

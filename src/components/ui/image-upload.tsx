@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 
 interface ISingleImageUploadProps {
   value: string | undefined;
-  onChange: (value: string | undefined) => void;
+  onChange: (value: string) => void;
 }
 
 export const ImageUploadSingle = ({
@@ -68,7 +68,7 @@ export const ImageUploadSingle = ({
           variant="outline"
           size="icon"
           className="absolute top-0 right-0 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          onClick={() => onChange(undefined)}
+          onClick={() => onChange("")}
           type="button"
         >
           <X className="w-4 h-4" />
