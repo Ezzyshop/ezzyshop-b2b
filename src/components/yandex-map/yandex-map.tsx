@@ -36,15 +36,11 @@ export const YandexMap = ({
   height = "200px",
   width = "100%",
 }: IProps) => {
-  const [selectedCoordinates, setSelectedCoordinates] =
-    useState<Coordinates | null>(initialCoordinates);
-
   const [mapInstance, setMapInstance] = useState<YMapsApi | null>(null);
 
   const getAddress = useCallback(
     async (coordinates: [number, number]) => {
       if (!mapInstance) return;
-      setSelectedCoordinates(coordinates);
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       mapInstance.geocode(coordinates).then((res: any) => {
@@ -103,9 +99,9 @@ export const YandexMap = ({
         }}
         modules={["geolocation", "geocode"]}
       >
-        {selectedCoordinates && (
+        {initialCoordinates && (
           <Placemark
-            geometry={selectedCoordinates}
+            geometry={initialCoordinates}
             options={{
               draggable: true,
               iconColor: "var(--primary)",

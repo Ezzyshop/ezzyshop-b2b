@@ -18,6 +18,7 @@ interface IProps {
 
 export const SettingFormAddressSection = ({ form }: IProps) => {
   const { t } = useTranslation();
+  console.log(form.watch("address"));
   return (
     <Card className="p-6">
       <h3 className="text-lg font-semibold mb-4">
@@ -33,8 +34,9 @@ export const SettingFormAddressSection = ({ form }: IProps) => {
               <FormControl>
                 <Input
                   {...field}
-                  value={field.value || ""}
+                  value={form.watch("address.address")}
                   placeholder={t("dashboard.settings.address.enter_address")}
+                  disabled
                 />
               </FormControl>
               <FormMessage />
@@ -42,18 +44,27 @@ export const SettingFormAddressSection = ({ form }: IProps) => {
           )}
         />
 
-        <YandexMap
-          className="rounded-xl overflow-hidden"
-          height="400px"
-          initialCoordinates={[
-            Number(form.watch("address.lat")),
-            Number(form.watch("address.long")),
-          ]}
-          onLocationSelect={({ coordinates, address }) => {
-            form.setValue("address.lat", coordinates[0]);
-            form.setValue("address.long", coordinates[1]);
-            form.setValue("address.address", address);
-          }}
+        <FormField
+          control={form.control}
+          name="address"
+          render={({ field }) => (
+            <YandexMap
+              className="rounded-xl overflow-hidden"
+              height="400px"
+              initialCoordinates={[
+                Number(field.value.lat ?? 0),
+                Number(field.value.long ?? 0),
+              ]}
+              onLocationSelect={({ coordinates, address }) => {
+                field.onChange({
+                  ...field.value,
+                  lat: coordinates[0],
+                  long: coordinates[1],
+                  address,
+                });
+              }}
+            />
+          )}
         />
       </div>
     </Card>
