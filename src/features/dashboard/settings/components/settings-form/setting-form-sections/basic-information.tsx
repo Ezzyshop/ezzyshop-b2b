@@ -7,6 +7,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form/form";
+import { ImageUploadSingle } from "@/components/ui/image-upload";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -62,51 +63,6 @@ export const SettingFormBasicInformation = ({ form }: IProps) => {
 
         <FormField
           control={form.control}
-          name="logo"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                {t("dashboard.settings.basic_information.logo")}
-              </FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  value={field.value || ""}
-                  placeholder={t(
-                    "dashboard.settings.basic_information.enter_logo"
-                  )}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem className="md:col-span-2">
-              <FormLabel>
-                {t("dashboard.settings.basic_information.description")}
-              </FormLabel>
-              <FormControl>
-                <Textarea
-                  {...field}
-                  value={field.value || ""}
-                  placeholder={t(
-                    "dashboard.settings.basic_information.enter_description"
-                  )}
-                  rows={3}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
           name="currency"
           render={({ field }) => (
             <FormItem>
@@ -140,9 +96,55 @@ export const SettingFormBasicInformation = ({ form }: IProps) => {
 
         <FormField
           control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem className="md:col-span-2">
+              <FormLabel>
+                {t("dashboard.settings.basic_information.description")}
+              </FormLabel>
+              <FormControl>
+                <Textarea
+                  {...field}
+                  value={field.value || ""}
+                  placeholder={t(
+                    "dashboard.settings.basic_information.enter_description"
+                  )}
+                  rows={3}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="logo"
+          render={({ field }) => {
+            return (
+              <FormItem>
+                <FormLabel>
+                  {t("dashboard.settings.basic_information.logo")}
+                </FormLabel>
+                <FormControl>
+                  <ImageUploadSingle
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            );
+          }}
+        />
+
+        <FormField
+          control={form.control}
           name="languages"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="h-fit">
+              <FormLabel>
+                {t("dashboard.settings.basic_information.languages")}
+              </FormLabel>
               <FormControl>
                 <SelectLanguage
                   values={field.value || []}

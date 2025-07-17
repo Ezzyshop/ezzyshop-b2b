@@ -32,7 +32,7 @@ export const SettingFormSocialLinks = ({ form }: IProps) => {
               <FormControl>
                 <Input
                   {...field}
-                  value={field.value || ""}
+                  value={field.value}
                   placeholder={t(
                     "dashboard.settings.social_links.enter_telegram"
                   )}
@@ -54,7 +54,7 @@ export const SettingFormSocialLinks = ({ form }: IProps) => {
               <FormControl>
                 <Input
                   {...field}
-                  value={field.value || ""}
+                  value={field.value}
                   placeholder={t(
                     "dashboard.settings.social_links.enter_instagram"
                   )}
@@ -76,7 +76,7 @@ export const SettingFormSocialLinks = ({ form }: IProps) => {
               <FormControl>
                 <Input
                   {...field}
-                  value={field.value || ""}
+                  value={field.value}
                   placeholder={t(
                     "dashboard.settings.social_links.enter_facebook"
                   )}
@@ -98,7 +98,7 @@ export const SettingFormSocialLinks = ({ form }: IProps) => {
               <FormControl>
                 <Input
                   {...field}
-                  value={field.value || ""}
+                  value={field.value}
                   placeholder={t(
                     "dashboard.settings.social_links.enter_twitter"
                   )}
@@ -120,7 +120,7 @@ export const SettingFormSocialLinks = ({ form }: IProps) => {
               <FormControl>
                 <Input
                   {...field}
-                  value={field.value || ""}
+                  value={field.value}
                   placeholder={t(
                     "dashboard.settings.social_links.enter_youtube"
                   )}

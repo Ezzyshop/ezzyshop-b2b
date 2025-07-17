@@ -69,6 +69,7 @@ export const ImageUploadSingle = ({
           size="icon"
           className="absolute top-0 right-0 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           onClick={() => onChange(undefined)}
+          type="button"
         >
           <X className="w-4 h-4" />
         </Button>
@@ -162,6 +163,7 @@ export const MultipleImageUpload = ({
               size="icon"
               className="absolute top-0 right-0 w-6 h-6"
               onClick={() => handleRemoveImage(index)}
+              type="button"
             >
               <X className="w-4 h-4" />
             </Button>

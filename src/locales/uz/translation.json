@@ -275,7 +275,8 @@
         "description": "Biznes tavsifi",
         "enter_description": "Biznes tavsifini kiriting",
         "currency": "Valyuta",
-        "enter_currency": "Valyuta tanlang"
+        "enter_currency": "Valyuta tanlang",
+        "languages": "Tilni tanlang"
       },
       "telegram_configuration": {
         "title": "Telegram konfiguratsiyasi",

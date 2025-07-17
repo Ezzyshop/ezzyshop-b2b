@@ -66,16 +66,19 @@ export const SelectLanguage = ({ values, onChange }: IProps) => {
           className="gap-3"
         >
           {Object.values(LanguageType).map((type) => (
-            <button
-              type="button"
-              disabled={values.every((v) => v.type !== type)}
+            <div
+              key={type}
               className="flex items-center gap-3 disabled:opacity-50"
             >
-              <RadioGroupItem value={type} id={type} />
+              <RadioGroupItem
+                disabled={values.every((v) => v.type !== type)}
+                value={type}
+                id={type}
+              />
               <Label htmlFor={type}>
                 {t(`register.create_shop.main_language`)}
               </Label>
-            </button>
+            </div>
           ))}
         </RadioGroup>
       </div>
