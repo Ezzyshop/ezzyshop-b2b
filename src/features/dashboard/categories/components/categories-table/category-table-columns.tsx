@@ -5,7 +5,7 @@ import { ChangePopularStatus } from "../category-form/change-popular-status";
 import { EditCategory } from "../category-form/edit-category";
 import { TFunction } from "i18next";
 import { LanguageType } from "@/features/moderator/shops/utils";
-import { Image } from "@/components/ui/image";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const categoryTableColumns = (
   t: TFunction,
@@ -17,11 +17,13 @@ export const categoryTableColumns = (
     accessorKey: "image",
     cell: ({ row }) => {
       return (
-        <Image
-          src={row.original.image}
-          alt={row.original.name[lang]}
-          className="w-10 h-10 object-cover"
-        />
+        <Avatar>
+          <AvatarImage
+            src={row.original.image}
+            className="rounded-full object-cover"
+          />
+          <AvatarFallback>{row.original.name[lang].charAt(0)}</AvatarFallback>
+        </Avatar>
       );
     },
   },

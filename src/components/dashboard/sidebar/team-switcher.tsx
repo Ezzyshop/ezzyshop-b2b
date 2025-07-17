@@ -63,15 +63,18 @@ export function TeamSwitcher() {
               .filter((shop) => shop._id !== activeShop._id)
               .map((shop) => (
                 <DropdownMenuItem
-                  key={shop.name}
+                  key={shop._id}
                   onClick={() => setActiveShop(shop)}
                   className="gap-2 p-2"
                 >
                   <div className="flex size-6 items-center justify-center rounded-md border">
                     <Avatar>
-                      <AvatarImage src={shop.logo ? shop.logo : ""} />
+                      <AvatarImage
+                        src={shop.logo ?? ""}
+                        className="rounded-full object-cover"
+                      />
                       <AvatarFallback>
-                        {activeShop.name.charAt(0).toUpperCase()}
+                        {shop.name.charAt(0).toUpperCase()}
                       </AvatarFallback>
                     </Avatar>
                   </div>
