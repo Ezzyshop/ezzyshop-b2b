@@ -17,15 +17,18 @@ import {
 } from "@/components/ui/select";
 import { SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { useRegisterShopContext } from "@/contexts";
+import { useRegisterShopContext, useUserContext } from "@/contexts";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { AddressForm } from "../components/address-form";
 import { useTranslation } from "react-i18next";
 import { SelectLanguage } from "../components/select-language";
+import { ImageUploadSingle } from "@/components/ui/image-upload";
+import { dashboardSidebarData } from "@/lib";
 
 export const CreateShopPage = () => {
   const { form, handleSubmitForm, isPending } = useRegisterShopContext();
+  const { user } = useUserContext();
   const navigate = useNavigate();
   const { t } = useTranslation();
   const currency = useQuery({
@@ -65,6 +68,27 @@ export const CreateShopPage = () => {
                 <FormMessage />
               </FormItem>
             )}
+          />
+
+          <FormField
+            control={form.control}
+            name="logo"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>
+                    {t("dashboard.settings.basic_information.logo")}
+                  </FormLabel>
+                  <FormControl>
+                    <ImageUploadSingle
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
           />
 
           <FormField
@@ -147,14 +171,16 @@ export const CreateShopPage = () => {
           <AddressForm form={form} />
 
           <div className="flex flex-col md:flex-row justify-end gap-4">
-            <Button
-              type="button"
-              variant="outline"
-              className="cursor-pointer"
-              onClick={() => navigate("/register/create-telegram")}
-            >
-              {t("common.back")}
-            </Button>
+            {user.shops.length > 0 && (
+              <Button
+                type="button"
+                variant="outline"
+                className="cursor-pointer"
+                onClick={() => navigate(dashboardSidebarData[0].url)}
+              >
+                {t("common.back")}
+              </Button>
+            )}
             <Button
               type="submit"
               className="cursor-pointer"

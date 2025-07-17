@@ -85,7 +85,7 @@ export const ImageUploadSingle = ({
         type="file"
         className="hidden"
         onChange={handleFileChange}
-        accept="image/jpeg, image/jpg, image/png, image/gif, image/webp"
+        accept="image/jpeg, image/jpg, image/png, image/gif, image/webp, image/svg"
       />
     </CardContent>
   );
