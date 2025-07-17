@@ -10,7 +10,7 @@ export const Header = () => {
   const { toggleSidebar } = useSidebar();
 
   return (
-    <header className="bg-background/50 flex gap-2 items-center justify-between backdrop-blur-xl z-50 sticky top-0 px-4 py-2 drop-shadow-blue-50">
+    <header className="bg-background/50 flex gap-2 items-center justify-between backdrop-blur-xl z-10 sticky top-0 px-4 py-2 drop-shadow-blue-50">
       <Button variant="ghost" size="icon" onClick={toggleSidebar}>
         <PanelRightIcon />
       </Button>
