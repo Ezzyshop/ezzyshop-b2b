@@ -7,55 +7,36 @@ import {
   FormMessage,
 } from "@/components/ui/form/form";
 import { Input } from "@/components/ui/input";
-import { IShopForm } from "../../../utils";
+import { YandexMap } from "@/components/yandex-map/yandex-map";
+import { IShopForm } from "@/features/moderator/shops/utils";
 import { UseFormReturn } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   form: UseFormReturn<IShopForm>;
 }
 
 export const ShopFormAddress = ({ form }: IProps) => {
+  const { t } = useTranslation();
+
   return (
-    <Card className="p-4 grid grid-cols-2 gap-4">
-      <h3 className="text-lg font-medium col-span-2">Manzil</h3>
-
-      <FormField
-        control={form.control}
-        name="address.address"
-        render={({ field }) => (
-          <FormItem className="col-span-2">
-            <FormLabel>To'liq manzil</FormLabel>
-            <FormControl>
-              <Input
-                placeholder="Enter address"
-                {...field}
-                value={field.value || ""}
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-
-      <div className="grid col-span-2 grid-cols-2 gap-4">
+    <Card className="p-6">
+      <h3 className="text-lg font-semibold mb-4">
+        {t("dashboard.settings.address.title")}
+      </h3>
+      <div className="grid grid-cols-1  gap-4">
         <FormField
           control={form.control}
-          name="address.long"
+          name="address.address"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Longitude</FormLabel>
+              <FormLabel>{t("dashboard.settings.address.address")}</FormLabel>
               <FormControl>
                 <Input
-                  type="number"
-                  step="any"
-                  placeholder="Enter longitude"
                   {...field}
-                  value={field.value || ""}
-                  onChange={(e) =>
-                    field.onChange(
-                      e.target.value ? parseFloat(e.target.value) : null
-                    )
-                  }
+                  value={form.watch("address.address")}
+                  placeholder={t("dashboard.settings.address.enter_address")}
+                  disabled
                 />
               </FormControl>
               <FormMessage />
@@ -65,26 +46,24 @@ export const ShopFormAddress = ({ form }: IProps) => {
 
         <FormField
           control={form.control}
-          name="address.lat"
+          name="address"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Latitude</FormLabel>
-              <FormControl>
-                <Input
-                  type="number"
-                  step="any"
-                  placeholder="Enter latitude"
-                  {...field}
-                  value={field.value || ""}
-                  onChange={(e) =>
-                    field.onChange(
-                      e.target.value ? parseFloat(e.target.value) : null
-                    )
-                  }
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+            <YandexMap
+              className="rounded-xl overflow-hidden"
+              height="400px"
+              initialCoordinates={[
+                Number(field.value.lat ?? 0),
+                Number(field.value.long ?? 0),
+              ]}
+              onLocationSelect={({ coordinates, address }) => {
+                field.onChange({
+                  ...field.value,
+                  lat: coordinates[0],
+                  long: coordinates[1],
+                  address,
+                });
+              }}
+            />
           )}
         />
       </div>
