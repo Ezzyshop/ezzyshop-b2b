@@ -17,7 +17,7 @@ export const ProductFormCategories = ({ form }: IProps) => {
 
   const { data, isLoading } = useQuery({
     queryKey: ["categories", shop._id],
-    queryFn: () => getCategoriesQueryFn(shop._id),
+    queryFn: () => getCategoriesQueryFn(shop._id, { limit: "all" }),
     enabled: Boolean(shop._id),
   });
 
