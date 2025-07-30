@@ -46,7 +46,7 @@ export const AddProductButton = () => {
           </span>
         </Button>
       </DrawerTrigger>
-      <DrawerContent className="w-full  md:max-w-lg">
+      <DrawerContent className="w-full  md:max-w-3xl">
         <DrawerHeader>
           <DrawerTitle>{t("dashboard.products.create")}</DrawerTitle>
           <DrawerDescription>

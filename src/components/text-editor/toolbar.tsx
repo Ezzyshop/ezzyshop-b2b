@@ -31,7 +31,7 @@ export const Toolbar = () => {
   const { mutate } = useMutation({
     mutationFn: uploadImageMutationFn,
     onSuccess: (data) => {
-      editor
+      editor!
         .chain()
         .focus()
         .setImage({ src: (data as { data: { url: string } }).data.url })
