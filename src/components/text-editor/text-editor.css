@@ -71,7 +71,7 @@
   font-size: 14px;
 }
 
-* {
+.tiptap * {
   list-style-type: unset;
   text-decoration: revert;
 }
