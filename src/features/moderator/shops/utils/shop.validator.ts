@@ -95,6 +95,7 @@ export const shopFields: Record<
     .messages({
       "languages.exactly_one_main": "Kamida bitta til asosiy bo'lishi kerak",
     }),
+  brand_color: Joi.string().optional().allow(""),
 };
 
 export const shopCreateSchema = Joi.object({
@@ -152,4 +153,5 @@ export const updateMyShopSchema = Joi.object({
   currency: shopFields.currency,
   address: shopFields.address,
   languages: shopFields.languages,
+  brand_color: shopFields.brand_color,
 });

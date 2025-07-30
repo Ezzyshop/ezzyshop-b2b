@@ -51,6 +51,7 @@ export interface IShop {
   createdAt: Date;
   updatedAt: Date;
   languages: ILanguage[];
+  brand_color?: string;
 }
 
 export interface ILanguage {
@@ -80,6 +81,7 @@ export interface IShopForm {
     lat?: number;
   };
   languages: ILanguage[];
+  brand_color?: string;
 }
 
 export interface IShopUpdateForm {
@@ -100,6 +102,7 @@ export interface IShopUpdateForm {
     lat?: number;
   };
   languages: ILanguage[];
+  brand_color?: string;
 }
 
 export interface IShopTelegramForm {

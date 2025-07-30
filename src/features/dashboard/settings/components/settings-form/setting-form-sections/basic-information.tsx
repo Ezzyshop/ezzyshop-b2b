@@ -1,5 +1,6 @@
 import { getCurrenciesQueryFn } from "@/api/queries";
 import { Card } from "@/components/ui/card";
+import { GradientPicker } from "@/components/ui/color-picker";
 import {
   FormControl,
   FormField,
@@ -116,6 +117,7 @@ export const SettingFormBasicInformation = ({ form }: IProps) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="logo"
@@ -136,25 +138,45 @@ export const SettingFormBasicInformation = ({ form }: IProps) => {
             );
           }}
         />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <FormField
+            control={form.control}
+            name="languages"
+            render={({ field }) => (
+              <FormItem className="h-fit">
+                <FormLabel>
+                  {t("dashboard.settings.basic_information.languages")}
+                </FormLabel>
+                <FormControl>
+                  <SelectLanguage
+                    values={field.value || []}
+                    onChange={field.onChange}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <FormField
-          control={form.control}
-          name="languages"
-          render={({ field }) => (
-            <FormItem className="h-fit">
-              <FormLabel>
-                {t("dashboard.settings.basic_information.languages")}
-              </FormLabel>
-              <FormControl>
-                <SelectLanguage
-                  values={field.value || []}
-                  onChange={field.onChange}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+          <FormField
+            control={form.control}
+            name="brand_color"
+            render={({ field }) => (
+              <FormItem className="h-fit">
+                <FormLabel>
+                  {t("dashboard.settings.basic_information.brand_color")}
+                </FormLabel>
+                <FormControl>
+                  <GradientPicker
+                    background={field.value || ""}
+                    setBackground={field.onChange}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
       </div>
     </Card>
   );
