@@ -23,13 +23,13 @@ api.interceptors.response.use(
 
     toast.error(errorMessagesMap[message]);
 
-    if (message === ErrorMessages.UnauthorizedError) {
-      window.location.href = "/login";
-    }
+    // if (message === ErrorMessages.UnauthorizedError) {
+    //   window.location.href = "/login";
+    // }
 
-    if (message === ErrorMessages.TokenExpired) {
-      window.location.href = "/logout";
-    }
+    // if (message === ErrorMessages.TokenExpired) {
+    //   window.location.href = "/logout";
+    // }
 
     return Promise.reject(error);
   }
