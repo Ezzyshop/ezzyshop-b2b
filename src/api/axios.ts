@@ -17,7 +17,7 @@ api.interceptors.response.use(
     const status = error.response?.status;
     const method = error.config?.method;
 
-    if (status === 500 && method === "get") {
+    if (status === 500 && method === "get" && import.meta.env.PROD) {
       window.location.href = "/server-error";
     }
 

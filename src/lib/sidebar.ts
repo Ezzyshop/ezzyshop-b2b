@@ -5,6 +5,7 @@ import {
   DollarSignIcon,
   HomeIcon,
   ListIcon,
+  MapIcon,
   Package2,
   PackageIcon,
   SettingsIcon,
@@ -71,6 +72,11 @@ export const dashboardSidebarData = [
     icon: CreditCardIcon,
     title: "sidebar.dashboard.payment-methods",
     url: "/dashboard/payment-methods",
+  },
+  {
+    icon: MapIcon,
+    title: "sidebar.dashboard.branches",
+    url: "/dashboard/branches",
   },
   {
     icon: SwitchCameraIcon,

@@ -106,6 +106,7 @@
       "orders": "Orders",
       "delivery-methods": "Delivery methods",
       "payment-methods": "Payment methods",
+      "branches": "Branches",
       "settings": "Settings",
       "upgrade_plan": {
         "title": "Upgrade to {{ plan }} plan",
@@ -300,6 +301,18 @@
         "enter_address": "Enter address",
         "latitude": "Latitude",
         "longitude": "Longitude"
+      }
+    },
+    "branches": {
+      "create": "Add branch",
+      "created": "Branch created successfully",
+      "updated": "Branch updated successfully",
+      "create_description": "Use the form below to create a new branch",
+      "edit": "Edit branch",
+      "edit_description": "Use the form below to change branch information",
+      "empty_state": {
+        "title": "No branches",
+        "description": "No branches have been added yet. Press the button to add the first branch."
       }
     }
   },

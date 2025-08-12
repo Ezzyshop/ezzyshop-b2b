@@ -66,8 +66,6 @@ export const DeliveryMethodForm = ({
     },
   });
 
-  console.log(form.formState.errors);
-
   const handleSubmit = (data: IDeliveryMethodForm) => {
     onSubmit(data);
   };

@@ -6,3 +6,4 @@ export * from "./currencies.mutation";
 export * from "./categories.mutation";
 export * from "./products.mutation";
 export * from "./delivery-methods.mutation";
+export * from "./branches.mutation";
