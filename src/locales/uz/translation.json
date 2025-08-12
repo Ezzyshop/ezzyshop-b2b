@@ -321,7 +321,25 @@
       "pickup_enabled": "Buyurtmani olib ketsa bo'ladi",
       "manager": "Hodim",
       "phone": "Telefon raqami",
-      "address": "Manzil"
+      "address": "Manzil",
+      "working_hours": "Ish vaqtlarini o'zgartirish",
+      "open": "Ochish",
+      "close": "Yopish",
+      "closed": "Yopiq",
+      "pickup_enabled_description": "Shu filialdan mijozlar buyurtmani olib ketishi mumkin",
+      "delivery_enabled_description": "Shu filialdan mijozlar buyurtmani yetkazib berishi mumkin",
+      "notes": "Qo'shimcha ma'lumotlar",
+      "notes_placeholder": "Qo'shimcha ma'lumotlar",
+      "monday": "Dushanba",
+      "tuesday": "Seshanba",
+      "wednesday": "Chorshanba",
+      "thursday": "Payshanba",
+      "friday": "Juma",
+      "saturday": "Shanba",
+      "sunday": "Yakshanba",
+      "enter_name": "Filial nomini kiriting",
+      "image": "Filial rasmi",
+      "enter_image": "Filial rasmini kiriting"
     }
   },
   "table": {

@@ -81,7 +81,7 @@ export const BranchForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
                   <Input
                     {...field}
                     value={field.value || ""}
-                    placeholder={t("dashboard.products.enter_name")}
+                    placeholder={t("dashboard.branches.enter_name")}
                   />
                 </FormControl>
                 <FormMessage />
@@ -94,7 +94,7 @@ export const BranchForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
             name="image"
             render={() => (
               <FormItem>
-                <FormLabel>{t("dashboard.products.image")}</FormLabel>
+                <FormLabel>{t("dashboard.branches.image")}</FormLabel>
                 <ImageUploadSingle
                   value={form.watch("image")}
                   onChange={(val) => form.setValue("image", val)}
@@ -104,65 +104,66 @@ export const BranchForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
             )}
           />
         </div>
+        <FormField
+          control={form.control}
+          name="pickup_enabled"
+          render={({ field }) => (
+            <FormItem className="flex items-center justify-between">
+              <div className="space-y-0.5">
+                <FormLabel>{t("dashboard.branches.pickup_enabled")}</FormLabel>
+                <div className="text-sm text-muted-foreground">
+                  {t("dashboard.branches.pickup_enabled_description")}
+                </div>
+              </div>
+              <FormControl>
+                <Switch
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-        <div className=" space-y-4">
-          <h3 className="text-lg font-semibold">
-            {t("dashboard.settings.address.title")}
-          </h3>
-          <FormField
-            control={form.control}
-            name="address.address"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>{t("dashboard.settings.address.address")}</FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    value={field.value || ""}
-                    placeholder={t("dashboard.settings.address.enter_address")}
-                    disabled
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="address"
-            render={({ field }) => (
-              <YandexMap
-                className="rounded-xl overflow-hidden"
-                height="300px"
-                initialCoordinates={[
-                  Number(field.value?.lat ?? 0),
-                  Number(field.value?.lng ?? 0),
-                ]}
-                onLocationSelect={({ coordinates, address }) => {
-                  field.onChange({
-                    ...field.value,
-                    lat: coordinates[0],
-                    lng: coordinates[1],
-                    address,
-                  });
-                }}
-              />
-            )}
-          />
-        </div>
+        <FormField
+          control={form.control}
+          name="delivery_enabled"
+          render={({ field }) => (
+            <FormItem className="flex items-center justify-between">
+              <div className="space-y-0.5">
+                <FormLabel>
+                  {t("dashboard.branches.delivery_enabled")}
+                </FormLabel>
+                <div className="text-sm text-muted-foreground">
+                  {t("dashboard.branches.delivery_enabled_description")}
+                </div>
+              </div>
+              <FormControl>
+                <Switch
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Working hours</h3>
+          <h3 className="text-lg font-semibold">
+            {t("dashboard.branches.working_hours")}
+          </h3>
           <div className="grid grid-cols-1 gap-3">
             {(
               [
-                { key: "mon", label: "Monday" },
-                { key: "tue", label: "Tuesday" },
-                { key: "wed", label: "Wednesday" },
-                { key: "thu", label: "Thursday" },
-                { key: "fri", label: "Friday" },
-                { key: "sat", label: "Saturday" },
-                { key: "sun", label: "Sunday" },
+                { key: "mon", label: t("dashboard.branches.monday") },
+                { key: "tue", label: t("dashboard.branches.tuesday") },
+                { key: "wed", label: t("dashboard.branches.wednesday") },
+                { key: "thu", label: t("dashboard.branches.thursday") },
+                { key: "fri", label: t("dashboard.branches.friday") },
+                { key: "sat", label: t("dashboard.branches.saturday") },
+                { key: "sun", label: t("dashboard.branches.sunday") },
               ] as const
             ).map((day) => {
               const isClosed = form.watch(
@@ -180,7 +181,7 @@ export const BranchForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
                     name={`working_hours.${day.key}.open` as const}
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Open</FormLabel>
+                        <FormLabel>{t("dashboard.branches.open")}</FormLabel>
                         <FormControl>
                           <Input
                             type="time"
@@ -200,7 +201,7 @@ export const BranchForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
                     name={`working_hours.${day.key}.close` as const}
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Close</FormLabel>
+                        <FormLabel>{t("dashboard.branches.close")}</FormLabel>
                         <FormControl>
                           <Input
                             type="time"
@@ -221,10 +222,9 @@ export const BranchForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
                     render={({ field }) => (
                       <FormItem className="flex items-center justify-between md:justify-start md:gap-3">
                         <div className="space-y-0.5">
-                          <FormLabel>Closed</FormLabel>
-                          <div className="text-sm text-muted-foreground">
-                            Mark as closed
-                          </div>
+                          <FormLabel>
+                            {t("dashboard.branches.closed")}
+                          </FormLabel>
                         </div>
                         <FormControl>
                           <Switch
@@ -242,74 +242,71 @@ export const BranchForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
           </div>
         </div>
 
-        <div className="space-y-4">
+        <div className=" space-y-4">
+          <h3 className="text-lg font-semibold">
+            {t("dashboard.settings.address.title")}
+          </h3>
           <FormField
             control={form.control}
-            name="pickup_enabled"
-            render={({ field }) => (
-              <FormItem className="flex items-center justify-between">
-                <div className="space-y-0.5">
-                  <FormLabel>Pickup enabled</FormLabel>
-                  <div className="text-sm text-muted-foreground">
-                    Allow customers to pick up orders from this branch
-                  </div>
-                </div>
-                <FormControl>
-                  <Switch
-                    checked={!!field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="delivery_enabled"
-            render={({ field }) => (
-              <FormItem className="flex items-center justify-between">
-                <div className="space-y-0.5">
-                  <FormLabel>Delivery enabled</FormLabel>
-                  <div className="text-sm text-muted-foreground">
-                    Enable delivery from this branch
-                  </div>
-                </div>
-                <FormControl>
-                  <Switch
-                    checked={!!field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Contact</h3>
-
-          <FormField
-            control={form.control}
-            name="notes"
+            name="address.address"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Notes</FormLabel>
+                <FormLabel>{t("dashboard.settings.address.address")}</FormLabel>
                 <FormControl>
-                  <Textarea
-                    rows={3}
-                    placeholder="Additional notes"
+                  <Input
                     {...field}
-                    value={field.value || ""}
+                    value={field.value}
+                    placeholder={t("dashboard.settings.address.enter_address")}
+                    disabled
                   />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+          <FormField
+            control={form.control}
+            name="address"
+            render={({ field }) => (
+              <YandexMap
+                className="rounded-xl overflow-hidden"
+                height="300px"
+                initialCoordinates={[
+                  Number(field.value?.lat ?? 0),
+                  Number(field.value?.lng ?? 0),
+                ]}
+                onLocationSelect={({ coordinates, address }) => {
+                  form.setValue("address.address", address);
+                  field.onChange({
+                    ...field.value,
+                    lat: coordinates[0],
+                    lng: coordinates[1],
+                    address,
+                  });
+                }}
+              />
+            )}
+          />
         </div>
+
+        <FormField
+          control={form.control}
+          name="notes"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{t("dashboard.branches.notes")}</FormLabel>
+              <FormControl>
+                <Textarea
+                  rows={3}
+                  placeholder={t("dashboard.branches.notes_placeholder")}
+                  {...field}
+                  value={field.value || ""}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <div className="flex flex-col gap-2">
           <Button type="submit" disabled={isLoading} className="flex-1">

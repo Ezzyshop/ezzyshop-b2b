@@ -313,7 +313,30 @@
       "empty_state": {
         "title": "No branches",
         "description": "No branches have been added yet. Press the button to add the first branch."
-      }
+      },
+      "delivery_enabled": "Delivery",
+      "pickup_enabled": "Pickup",
+      "manager": "Manager",
+      "phone": "Phone",
+      "address": "Address",
+      "working_hours": "Working hours",
+      "open": "Open",
+      "close": "Close",
+      "closed": "Closed",
+      "pickup_enabled_description": "Customers can pick up orders from this branch",
+      "delivery_enabled_description": "Customers can receive orders from this branch",
+      "notes": "Notes",
+      "notes_placeholder": "Notes",
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "enter_name": "Enter branch name",
+      "image": "Branch image",
+      "enter_image": "Enter branch image"
     }
   },
   "table": {
