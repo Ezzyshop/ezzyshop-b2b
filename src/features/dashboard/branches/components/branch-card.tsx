@@ -43,7 +43,7 @@ export const BranchCard = ({ branch }: IProps) => {
             {branch.delivery_enabled ? t("common.yes") : t("common.no")}
           </p>
         </div>
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex items-start justify-between gap-2">
           <p className="text-muted-foreground text-sm">
             {t("dashboard.branches.address")}:
           </p>
