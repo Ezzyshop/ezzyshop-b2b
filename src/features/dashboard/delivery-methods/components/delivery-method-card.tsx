@@ -37,14 +37,23 @@ export const DeliveryMethodCard = ({ deliveryMethod }: IProps) => {
       </CardHeader>
 
       <CardContent className="space-y-2">
-        {deliveryMethod.deliveryType === DeliveryMethodDeliveryType.Dynamic ? (
-          <p className="text-2xl font-bold">
-            {deliveryMethod.initial_km_price?.toLocaleString()} UZS /{" "}
-            {t("common.km")}
-          </p>
+        {deliveryMethod.type === DeliveryMethodType.Delivery ? (
+          <>
+            {deliveryMethod.deliveryType ===
+            DeliveryMethodDeliveryType.Dynamic ? (
+              <p className="text-2xl font-bold">
+                {deliveryMethod.initial_km_price?.toLocaleString()} UZS /{" "}
+                {t("common.km")}
+              </p>
+            ) : (
+              <p className="text-2xl font-bold">
+                {deliveryMethod.price?.toLocaleString()} UZS
+              </p>
+            )}
+          </>
         ) : (
           <p className="text-2xl font-bold">
-            {deliveryMethod.price?.toLocaleString()} UZS
+            {t("dashboard.delivery-methods.pickup")}
           </p>
         )}
 
@@ -100,15 +109,6 @@ export const DeliveryMethodCard = ({ deliveryMethod }: IProps) => {
               </p>
             </div>
           </>
-        )}
-
-        {deliveryMethod.pickup_location && (
-          <div className="flex items-center justify-between gap-2">
-            <p className="text-muted-foreground text-sm">
-              {t("dashboard.delivery-methods.pickup_location")}:
-            </p>
-            <p className="text-sm">{deliveryMethod.pickup_location}</p>
-          </div>
         )}
       </CardContent>
     </Card>

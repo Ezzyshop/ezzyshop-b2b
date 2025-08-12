@@ -51,7 +51,6 @@ export const EditDeliveryMethod = ({ deliveryMethod }: IProps) => {
       name: deliveryMethod.name,
       price: deliveryMethod.price,
       estimated_days: deliveryMethod.estimated_days,
-      pickup_location: deliveryMethod.pickup_location,
       deliveryType: deliveryMethod.deliveryType,
       initial_km: deliveryMethod.initial_km,
       initial_km_price: deliveryMethod.initial_km_price,

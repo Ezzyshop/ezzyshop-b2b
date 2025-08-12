@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { IDeliveryMethodForm } from "../../utils/delivery-methods.interface";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { deliveryMethodSchema } from "../../utils/delivery-methods.validator";
+import { createDeliveryMethodValidator } from "../../utils/delivery-methods.validator";
 import {
   Form,
   FormControl,
@@ -25,7 +25,6 @@ import { useState } from "react";
 import { useShopContext } from "@/contexts";
 import { DeliveryMethodType } from "../../utils/delivery-methods.enum";
 import { DeliveryTypeForm } from "./delivery-method-types/delivery-type-form";
-import { PickupTypeForm } from "./delivery-method-types/pickup-type-form";
 import { Input } from "@/components/ui/input";
 
 interface IProps {
@@ -46,29 +45,17 @@ export const DeliveryMethodForm = ({
   );
 
   const form = useForm<IDeliveryMethodForm>({
-    resolver: joiResolver(deliveryMethodSchema),
+    resolver: joiResolver(createDeliveryMethodValidator),
     defaultValues: initialValues ?? {
-      name: {
-        uz: "",
-        ru: undefined,
-        en: undefined,
-      },
-      price: 0,
-      estimated_days: undefined,
-      pickup_location: undefined,
-      deliveryType: undefined,
-      initial_km: undefined,
-      initial_km_price: undefined,
-      every_km_price: undefined,
-      min_order_price: undefined,
       type: DeliveryMethodType.Pickup,
-      estimated_day_prefix: undefined,
     },
   });
 
   const handleSubmit = (data: IDeliveryMethodForm) => {
     onSubmit(data);
   };
+
+  const type = form.watch("type");
 
   return (
     <Form {...form}>
@@ -134,10 +121,8 @@ export const DeliveryMethodForm = ({
           )}
         />
 
-        {form.watch("type") === DeliveryMethodType.Delivery ? (
+        {type === DeliveryMethodType.Delivery && (
           <DeliveryTypeForm form={form} />
-        ) : (
-          <PickupTypeForm form={form} />
         )}
 
         <div className="flex justify-end">

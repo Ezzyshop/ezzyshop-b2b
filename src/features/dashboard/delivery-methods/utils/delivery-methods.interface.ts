@@ -17,13 +17,7 @@ export interface IDeliveryMethod {
     name: string;
   };
   price: number;
-  currency: {
-    _id: string;
-    name: string;
-    symbol: string;
-  };
   estimated_days: number;
-  pickup_location: string | undefined;
   deliveryType: DeliveryMethodDeliveryType | undefined;
   initial_km: number | undefined;
   initial_km_price: number | undefined;

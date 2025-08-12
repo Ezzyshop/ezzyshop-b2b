@@ -44,6 +44,7 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
               <Select
                 onValueChange={(value) => field.onChange(value)}
                 defaultValue={field.value || undefined}
+                value={field.value || undefined}
               >
                 <SelectTrigger>
                   <SelectValue
@@ -53,9 +54,6 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
                 <SelectContent>
                   <SelectItem value={DeliveryMethodDeliveryType.Free}>
                     {t("common.free")}
-                  </SelectItem>
-                  <SelectItem value={DeliveryMethodDeliveryType.Dynamic}>
-                    {t("common.dynamic")}
                   </SelectItem>
                   <SelectItem value={DeliveryMethodDeliveryType.Fixed}>
                     {t("common.fixed")}
