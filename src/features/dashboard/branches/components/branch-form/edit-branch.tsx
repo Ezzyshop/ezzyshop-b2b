@@ -30,7 +30,7 @@ export const EditBranch = ({ branch }: IProps) => {
     mutationFn: (data: IBranchForm) =>
       updateBranchMutationFn(branch.shop._id, branch._id, data),
     onSuccess: () => {
-      toast.success(t("dashboard.delivery-methods.updated"));
+      toast.success(t("dashboard.branches.updated"));
       queryClient.invalidateQueries({
         queryKey: ["branches", branch.shop._id],
       });
@@ -48,10 +48,7 @@ export const EditBranch = ({ branch }: IProps) => {
       address: branch.address,
       pickup_enabled: branch.pickup_enabled,
       delivery_enabled: branch.delivery_enabled,
-      service_radius_km: branch.service_radius_km,
-      image: branch.image,
       notes: branch.notes,
-      working_hours: branch.working_hours,
     };
   }, [branch]);
 

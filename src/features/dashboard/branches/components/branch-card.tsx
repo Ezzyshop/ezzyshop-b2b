@@ -3,6 +3,7 @@ import { IBranch } from "../utils/branches.interface";
 import { useTranslation } from "react-i18next";
 import { StatusChangeSwitch } from "@/components/moderator/forms/change-status-switch";
 import { EditBranch } from "./branch-form/edit-branch";
+import { DeleteBranch } from "./branch-form/delete-branch";
 
 interface IProps {
   branch: IBranch;
@@ -23,6 +24,7 @@ export const BranchCard = ({ branch }: IProps) => {
             invalidateQueryKey={["branches"]}
           />
           <EditBranch branch={branch} />
+          <DeleteBranch branch={branch} />
         </div>
       </CardHeader>
 

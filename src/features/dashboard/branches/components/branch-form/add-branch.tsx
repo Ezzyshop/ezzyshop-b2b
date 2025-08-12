@@ -27,9 +27,9 @@ export const AddBranch = () => {
   const createBranchMutation = useMutation({
     mutationFn: (data: IBranchForm) => createBranchMutationFn(shop._id, data),
     onSuccess: () => {
-      toast.success(t("dashboard.delivery-methods.created"));
+      toast.success(t("dashboard.branches.created"));
       queryClient.invalidateQueries({
-        queryKey: ["delivery-methods", shop._id],
+        queryKey: ["branches", shop._id],
       });
       setIsOpen(false);
     },

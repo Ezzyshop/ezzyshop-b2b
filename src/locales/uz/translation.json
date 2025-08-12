@@ -313,6 +313,8 @@
       "create_description": "Yangi filial yaratish uchun quyidagi formadan foydalaning",
       "edit": "Filial tahrirlash",
       "edit_description": "Filial ma'lumotlarini o'zgartirish uchun quyidagi formadan foydalaning",
+      "delete": "Filialni o'chirish",
+      "delete_description": "Siz shu filialni o'chirishni xohlaysizmi?",
       "empty_state": {
         "title": "Filial yo'q",
         "description": "Hozircha hech qanday filial qo'shilmagan. Birinchi filialni qo'shish uchun tugmani bosing."

@@ -21,12 +21,6 @@ export interface IBranch {
   status: BranchStatus;
   pickup_enabled: boolean;
   delivery_enabled?: boolean;
-  service_radius_km?: number;
-  image?: string;
-  working_hours?: Record<
-    "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun",
-    { open: string; close: string; closed?: boolean }
-  >;
   notes?: string;
   createdAt: string;
   updatedAt: string;
