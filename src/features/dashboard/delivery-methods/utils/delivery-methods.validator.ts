@@ -3,7 +3,6 @@ import {
   DeliveryMethodDeliveryType,
   DeliveryMethodEstimatedDayPrefix,
   DeliveryMethodStatus,
-  DeliveryMethodType,
 } from "./delivery-methods.enum";
 import { IDeliveryMethod } from "./delivery-methods.interface";
 
@@ -30,16 +29,18 @@ export const deliveryMethodFields: Record<
 
   price: Joi.number()
     .min(0)
+    .required()
     .messages({ "number.min": "Price must be greater than 0" }),
   estimated_days: Joi.number()
     .min(0)
+    .required()
     .messages({ "number.min": "Estimated days must be greater than 0" }),
   status: Joi.string()
     .required()
     .valid(DeliveryMethodStatus.Active, DeliveryMethodStatus.Inactive)
     .messages({ "string.valid": "Status must be either ACTIVE or INACTIVE" }),
   deliveryType: Joi.string()
-    .optional()
+    .required()
     .valid(...Object.values(DeliveryMethodDeliveryType)),
   initial_km: Joi.number()
     .optional()
@@ -57,9 +58,6 @@ export const deliveryMethodFields: Record<
     .optional()
     .min(0)
     .messages({ "number.min": "Min order price must be greater than 0" }),
-  type: Joi.string()
-    .required()
-    .valid(...Object.values(DeliveryMethodType)),
   estimated_day_prefix: Joi.string()
     .required()
     .valid(...Object.values(DeliveryMethodEstimatedDayPrefix)),
@@ -76,46 +74,16 @@ export const createDeliveryMethodValidator = Joi.object({
   initial_km_price: deliveryMethodFields.initial_km_price,
   every_km_price: deliveryMethodFields.every_km_price,
   min_order_price: deliveryMethodFields.min_order_price,
-  type: deliveryMethodFields.type,
-})
-  // If type is PICKUP: only name is required; others are optional
-  .when(Joi.object({ type: Joi.valid(DeliveryMethodType.Pickup) }).unknown(), {
+}).when(
+  Joi.object({
+    deliveryType: Joi.valid(DeliveryMethodDeliveryType.Fixed),
+  }).unknown(),
+  {
     then: Joi.object({
-      // Override presence for PICKUP
-      price: deliveryMethodFields.price.optional(),
-      estimated_days: deliveryMethodFields.estimated_days.optional(),
-      estimated_day_prefix:
-        deliveryMethodFields.estimated_day_prefix.optional(),
-      deliveryType: deliveryMethodFields.deliveryType.optional(),
-      initial_km: deliveryMethodFields.initial_km.optional(),
-      initial_km_price: deliveryMethodFields.initial_km_price.optional(),
-      every_km_price: deliveryMethodFields.every_km_price.optional(),
-      min_order_price: deliveryMethodFields.min_order_price.optional(),
+      price: deliveryMethodFields.price.required(),
     }),
-  })
-  // If type is DELIVERY: name, estimated_days, estimated_day_prefix required
-  .when(
-    Joi.object({ type: Joi.valid(DeliveryMethodType.Delivery) }).unknown(),
-    {
-      then: Joi.object({
-        estimated_days: deliveryMethodFields.estimated_days.required(),
-        estimated_day_prefix:
-          deliveryMethodFields.estimated_day_prefix.required(),
-      }),
-    }
-  )
-  // If DELIVERY and deliveryType is FIXED: price required
-  .when(
-    Joi.object({
-      type: Joi.valid(DeliveryMethodType.Delivery),
-      deliveryType: Joi.valid(DeliveryMethodDeliveryType.Fixed),
-    }).unknown(),
-    {
-      then: Joi.object({
-        price: deliveryMethodFields.price.required(),
-      }),
-    }
-  );
+  }
+);
 
 export const updateDeliveryMethodValidator = Joi.object({
   name: deliveryMethodFields.name,
@@ -128,43 +96,16 @@ export const updateDeliveryMethodValidator = Joi.object({
   initial_km_price: deliveryMethodFields.initial_km_price,
   every_km_price: deliveryMethodFields.every_km_price,
   min_order_price: deliveryMethodFields.min_order_price,
-  type: deliveryMethodFields.type,
-})
-  // Apply the same conditional rules for updates
-  .when(Joi.object({ type: Joi.valid(DeliveryMethodType.Pickup) }).unknown(), {
+}).when(
+  Joi.object({
+    deliveryType: Joi.valid(DeliveryMethodDeliveryType.Fixed),
+  }).unknown(),
+  {
     then: Joi.object({
-      price: deliveryMethodFields.price.optional(),
-      estimated_days: deliveryMethodFields.estimated_days.optional(),
-      estimated_day_prefix:
-        deliveryMethodFields.estimated_day_prefix.optional(),
-      deliveryType: deliveryMethodFields.deliveryType.optional(),
-      initial_km: deliveryMethodFields.initial_km.optional(),
-      initial_km_price: deliveryMethodFields.initial_km_price.optional(),
-      every_km_price: deliveryMethodFields.every_km_price.optional(),
-      min_order_price: deliveryMethodFields.min_order_price.optional(),
+      price: deliveryMethodFields.price.required(),
     }),
-  })
-  .when(
-    Joi.object({ type: Joi.valid(DeliveryMethodType.Delivery) }).unknown(),
-    {
-      then: Joi.object({
-        estimated_days: deliveryMethodFields.estimated_days.required(),
-        estimated_day_prefix:
-          deliveryMethodFields.estimated_day_prefix.required(),
-      }),
-    }
-  )
-  .when(
-    Joi.object({
-      type: Joi.valid(DeliveryMethodType.Delivery),
-      deliveryType: Joi.valid(DeliveryMethodDeliveryType.Fixed),
-    }).unknown(),
-    {
-      then: Joi.object({
-        price: deliveryMethodFields.price.required(),
-      }),
-    }
-  );
+  }
+);
 
 export const changeDeliveryMethodStatusValidator = Joi.object({
   status: deliveryMethodFields.status,

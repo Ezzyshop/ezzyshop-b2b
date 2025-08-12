@@ -12,20 +12,17 @@ import {
   FormMessage,
 } from "@/components/ui/form/form";
 import { Button } from "@/components/ui/button/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
 import { LanguageSelectTab } from "@/components/form/language-select-tab";
 import { LanguageType } from "@/features/moderator/shops/utils";
 import { useState } from "react";
 import { useShopContext } from "@/contexts";
-import { DeliveryMethodType } from "../../utils/delivery-methods.enum";
 import { DeliveryTypeForm } from "./delivery-method-types/delivery-type-form";
 import { Input } from "@/components/ui/input";
+import {
+  DeliveryMethodDeliveryType,
+  DeliveryMethodEstimatedDayPrefix,
+} from "../../utils/delivery-methods.enum";
 
 interface IProps {
   initialValues?: IDeliveryMethodForm;
@@ -47,15 +44,15 @@ export const DeliveryMethodForm = ({
   const form = useForm<IDeliveryMethodForm>({
     resolver: joiResolver(createDeliveryMethodValidator),
     defaultValues: initialValues ?? {
-      type: DeliveryMethodType.Pickup,
+      estimated_day_prefix: DeliveryMethodEstimatedDayPrefix.Day,
+      deliveryType: DeliveryMethodDeliveryType.Free,
+      price: 0,
     },
   });
 
   const handleSubmit = (data: IDeliveryMethodForm) => {
     onSubmit(data);
   };
-
-  const type = form.watch("type");
 
   return (
     <Form {...form}>
@@ -66,39 +63,6 @@ export const DeliveryMethodForm = ({
         <LanguageSelectTab
           activeLanguage={activeLanguage}
           setActiveLanguage={setActiveLanguage}
-        />
-
-        <FormField
-          control={form.control}
-          name="type"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel isRequired>
-                {t("dashboard.delivery-methods.type")}
-              </FormLabel>
-              <FormControl>
-                <Select
-                  onValueChange={(value) => field.onChange(value)}
-                  defaultValue={field.value}
-                >
-                  <SelectTrigger>
-                    <SelectValue
-                      placeholder={t("dashboard.delivery-methods.type")}
-                    />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value={DeliveryMethodType.Pickup}>
-                      {t("dashboard.delivery-methods.pickup")}
-                    </SelectItem>
-                    <SelectItem value={DeliveryMethodType.Delivery}>
-                      {t("dashboard.delivery-methods.delivery")}
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
         />
 
         <FormField
@@ -121,9 +85,7 @@ export const DeliveryMethodForm = ({
           )}
         />
 
-        {type === DeliveryMethodType.Delivery && (
-          <DeliveryTypeForm form={form} />
-        )}
+        <DeliveryTypeForm form={form} />
 
         <div className="flex justify-end">
           <Button

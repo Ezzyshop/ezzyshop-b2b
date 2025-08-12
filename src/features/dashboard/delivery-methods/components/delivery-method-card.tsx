@@ -7,7 +7,6 @@ import {
   DeliveryMethodDeliveryType,
   deliveryMethodDeliveryTypeLabel,
   deliveryMethodEstimatedDayPrefixLabel,
-  DeliveryMethodType,
 } from "../utils/delivery-methods.enum";
 
 interface IProps {
@@ -37,57 +36,42 @@ export const DeliveryMethodCard = ({ deliveryMethod }: IProps) => {
       </CardHeader>
 
       <CardContent className="space-y-2">
-        {deliveryMethod.type === DeliveryMethodType.Delivery ? (
-          <>
-            {deliveryMethod.deliveryType ===
-            DeliveryMethodDeliveryType.Dynamic ? (
-              <p className="text-2xl font-bold">
-                {deliveryMethod.initial_km_price?.toLocaleString()} UZS /{" "}
-                {t("common.km")}
-              </p>
-            ) : (
-              <p className="text-2xl font-bold">
-                {deliveryMethod.price?.toLocaleString()} UZS
-              </p>
-            )}
-          </>
+        {deliveryMethod.deliveryType === DeliveryMethodDeliveryType.Dynamic ? (
+          <p className="text-2xl font-bold">
+            {deliveryMethod.initial_km_price?.toLocaleString()} UZS /{" "}
+            {t("common.km")}
+          </p>
         ) : (
           <p className="text-2xl font-bold">
-            {t("dashboard.delivery-methods.pickup")}
+            {deliveryMethod.price?.toLocaleString()} UZS
           </p>
         )}
 
-        {deliveryMethod.type === DeliveryMethodType.Delivery && (
-          <>
-            <div className="flex items-center justify-between gap-2">
-              <p className="text-muted-foreground text-sm">
-                {t("dashboard.delivery-methods.delivery_type")}:
-              </p>
-              {deliveryMethod.deliveryType && (
-                <p className="text-sm">
-                  {t(
-                    deliveryMethodDeliveryTypeLabel[deliveryMethod.deliveryType]
-                  )}
-                </p>
-              )}
-            </div>
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-muted-foreground text-sm">
+            {t("dashboard.delivery-methods.delivery_type")}:
+          </p>
+          {deliveryMethod.deliveryType && (
+            <p className="text-sm">
+              {t(deliveryMethodDeliveryTypeLabel[deliveryMethod.deliveryType])}
+            </p>
+          )}
+        </div>
 
-            <div className="flex items-center justify-between gap-2">
-              <p className="text-muted-foreground text-sm">
-                {t("dashboard.delivery-methods.estimated_days")}:
-              </p>
-              <p className="text-sm">
-                {deliveryMethod.estimated_days}{" "}
-                {deliveryMethod.estimated_day_prefix &&
-                  t(
-                    deliveryMethodEstimatedDayPrefixLabel[
-                      deliveryMethod.estimated_day_prefix
-                    ]
-                  )}
-              </p>
-            </div>
-          </>
-        )}
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-muted-foreground text-sm">
+            {t("dashboard.delivery-methods.estimated_days")}:
+          </p>
+          <p className="text-sm">
+            {deliveryMethod.estimated_days}{" "}
+            {deliveryMethod.estimated_day_prefix &&
+              t(
+                deliveryMethodEstimatedDayPrefixLabel[
+                  deliveryMethod.estimated_day_prefix
+                ]
+              )}
+          </p>
+        </div>
 
         {deliveryMethod.deliveryType === DeliveryMethodDeliveryType.Dynamic && (
           <>

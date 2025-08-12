@@ -56,7 +56,6 @@ export const EditDeliveryMethod = ({ deliveryMethod }: IProps) => {
       initial_km_price: deliveryMethod.initial_km_price,
       every_km_price: deliveryMethod.every_km_price,
       min_order_price: deliveryMethod.min_order_price,
-      type: deliveryMethod.type,
       estimated_day_prefix: deliveryMethod.estimated_day_prefix,
     };
   }, [deliveryMethod]);

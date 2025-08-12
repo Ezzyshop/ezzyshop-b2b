@@ -3,7 +3,6 @@ import {
   FormItem,
   FormLabel,
   FormControl,
-  FormMessage,
 } from "@/components/ui/form/form";
 import { Input, InputWithPrefix } from "@/components/ui/input";
 import {
@@ -61,7 +60,6 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
                 </SelectContent>
               </Select>
             </FormControl>
-            <FormMessage />
           </FormItem>
         )}
       />
@@ -82,7 +80,6 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
                   onChange={(e) => field.onChange(e.target.value)}
                 />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -107,7 +104,6 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
                   onChange={(e) => field.onChange(Number(e.target.value))}
                 />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -145,7 +141,6 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
                   </SelectContent>
                 </Select>
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -169,7 +164,6 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
                       onChange={(e) => field.onChange(e.target.value)}
                     />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -191,7 +185,6 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
                       onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -213,7 +206,6 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
                       onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />

@@ -2,7 +2,6 @@ import {
   DeliveryMethodEstimatedDayPrefix,
   DeliveryMethodDeliveryType,
   DeliveryMethodStatus,
-  DeliveryMethodType,
 } from "./delivery-methods.enum";
 
 export interface IDeliveryMethod {
@@ -23,7 +22,6 @@ export interface IDeliveryMethod {
   initial_km_price: number | undefined;
   every_km_price: number | undefined;
   min_order_price: number | undefined;
-  type: DeliveryMethodType;
   estimated_day_prefix: DeliveryMethodEstimatedDayPrefix | undefined;
   status: DeliveryMethodStatus;
   createdAt: string;
