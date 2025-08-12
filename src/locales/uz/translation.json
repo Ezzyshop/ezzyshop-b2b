@@ -315,6 +315,7 @@
       "edit_description": "Filial ma'lumotlarini o'zgartirish uchun quyidagi formadan foydalaning",
       "delete": "Filialni o'chirish",
       "delete_description": "Siz shu filialni o'chirishni xohlaysizmi?",
+      "deleted": "Filial muvaffaqiyatli o'chirildi",
       "empty_state": {
         "title": "Filial yo'q",
         "description": "Hozircha hech qanday filial qo'shilmagan. Birinchi filialni qo'shish uchun tugmani bosing."
