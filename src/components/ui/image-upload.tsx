@@ -62,8 +62,12 @@ export const ImageUploadSingle = ({
     }
 
     return (
-      <div className="relative group">
-        <img src={value} alt="Image" className="object-cover w-full h-full" />
+      <div className="relative group max-h-[200px]">
+        <img
+          src={value}
+          alt="Image"
+          className="object-cover w-full max-h-[200px] h-full aspect-square"
+        />
         <Button
           variant="outline"
           size="icon"

@@ -272,7 +272,9 @@
         "description": "Business description",
         "enter_description": "Enter business description",
         "currency": "Currency",
-        "enter_currency": "Select currency"
+        "enter_currency": "Select currency",
+        "languages": "Languages",
+        "brand_color": "Brand color"
       },
       "telegram_configuration": {
         "title": "Telegram configuration",

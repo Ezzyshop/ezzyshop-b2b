@@ -272,7 +272,9 @@
         "description": "Описание бизнеса",
         "enter_description": "Введите описание бизнеса",
         "currency": "Валюта",
-        "enter_currency": "Выберите валюту"
+        "enter_currency": "Выберите валюту",
+        "languages": "Языки",
+        "brand_color": "Бренд цвет"
       },
       "telegram_configuration": {
         "title": "Настройка Telegram",

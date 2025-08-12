@@ -8,10 +8,10 @@ import {
 } from "@/components/ui/form/form";
 import { Input } from "@/components/ui/input";
 import { UseFormReturn } from "react-hook-form";
-import { Textarea } from "@/components/ui/textarea";
 import { IProductForm } from "../../../utils/product.interface";
 import { useTranslation } from "react-i18next";
 import { LanguageType } from "@/features/moderator/shops/utils";
+import { TextEditor } from "@/components/text-editor/text-editor";
 
 interface IProps {
   form: UseFormReturn<IProductForm, unknown, IProductForm>;
@@ -60,12 +60,7 @@ export const ProductFormBasicInformation = ({
             <FormItem>
               <FormLabel>{t("dashboard.products.description")}</FormLabel>
               <FormControl>
-                <Textarea
-                  {...field}
-                  value={field.value || ""}
-                  placeholder={t("dashboard.products.enter_description")}
-                  rows={4}
-                />
+                <TextEditor {...field} value={field.value || ""} />
               </FormControl>
               <FormMessage />
             </FormItem>

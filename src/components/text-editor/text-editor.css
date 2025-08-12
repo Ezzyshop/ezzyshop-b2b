@@ -1,0 +1,77 @@
+.tiptap :first-child {
+  margin-top: 0;
+}
+
+/* List styles */
+.tiptap ul,
+.tiptap ol {
+  padding: 0 1rem;
+  margin: 1.25rem 1rem 1.25rem 0.4rem;
+}
+
+.tiptap ul li p,
+.tiptap ol li p {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+.tiptap h1,
+.tiptap h2,
+.tiptap h3,
+.tiptap h4,
+.tiptap h5,
+.tiptap h6 {
+  line-height: 1.1;
+  margin-left: 0;
+  margin-right: 0;
+  display: block;
+  font-weight: bold;
+}
+
+.tiptap h1 {
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+}
+
+.tiptap h2 {
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+}
+
+.tiptap h3 {
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-size: 1.4rem;
+}
+
+.tiptap h4 {
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+}
+
+.tiptap h5 {
+  font-size: 0.83em;
+  margin-top: 1.67em;
+  margin-bottom: 1.67em;
+}
+
+.tiptap h6 {
+  font-size: 0.67em;
+  margin-top: 2.33em;
+  margin-bottom: 2.33em;
+}
+
+.tiptap code {
+  padding: 8px 6px;
+  border-radius: 4px;
+  background-color: oklch(0.129 0.042 264.695);
+  font-size: 14px;
+}
+
+.tiptap * {
+  list-style-type: unset;
+  text-decoration: revert;
+}

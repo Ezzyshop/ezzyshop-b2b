@@ -7,13 +7,16 @@ import path from "path";
 export default defineConfig({
   server: {
     port: 5000,
-    proxy: {
-      "/api": {
-        target: "http://localhost:9100/api/v1",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-      },
-    },
+    proxy:
+      process.env.NODE_ENV === "development"
+        ? {
+            "/api": {
+              target: "http://localhost:9100/api/v1",
+              changeOrigin: true,
+              rewrite: (path) => path.replace(/^\/api/, ""),
+            },
+          }
+        : undefined,
   },
   plugins: [react(), tailwindcss()],
   resolve: {
