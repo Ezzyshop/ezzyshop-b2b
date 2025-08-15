@@ -4,10 +4,9 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "@/components/ui/form/form";
 import { useForm } from "react-hook-form";
-import { ICategoryForm } from "../utils/category.interface";
+import { ICategoryForm } from "../../utils/category.interface";
 import { Input } from "@/components/ui/input";
 import { useTranslation } from "react-i18next";
 import { DrawerClose } from "@/components/ui/drawer";
@@ -24,7 +23,7 @@ import { useShopContext } from "@/contexts";
 import { useState } from "react";
 import { LanguageSelectTab } from "@/components/form/language-select-tab";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { categoryFormValidator } from "../utils/category.validator";
+import { categoryFormValidator } from "../../utils/category.validator";
 import { ImageUploadSingle } from "@/components/ui/image-upload";
 
 interface IProps {
@@ -82,7 +81,11 @@ export const CategoryForm = ({
                     placeholder={t("dashboard.categories.enter_name")}
                   />
                 </FormControl>
-                <FormMessage />
+                {form.formState.errors.name?.[activeLanguage] && (
+                  <p className="text-destructive text-xs">
+                    {t("dashboard.categories.enter_name")}
+                  </p>
+                )}
               </FormItem>
             )}
           />
@@ -100,7 +103,11 @@ export const CategoryForm = ({
                     onChange={field.onChange}
                   />
                 </FormControl>
-                <FormMessage />
+                {form.formState.errors.image && (
+                  <p className="text-destructive text-xs">
+                    {t(form.formState.errors.image.message ?? "")}
+                  </p>
+                )}
               </FormItem>
             )}
           />

@@ -9,7 +9,7 @@ import {
 
 import { TObject } from "@/hooks";
 import { debounce } from "lodash";
-import { CategoryStatus } from "../utils/category.enum";
+import { CategoryStatus } from "../../utils/category.enum";
 import { useTranslation } from "react-i18next";
 
 interface IProps {

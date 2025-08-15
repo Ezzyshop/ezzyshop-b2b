@@ -12,9 +12,13 @@ export const categoryFields: Record<
   name: Joi.object({
     ru: Joi.string().allow().optional(),
     en: Joi.string().allow().optional(),
-    uz: Joi.string().required(),
+    uz: Joi.string().required().not().empty().messages({
+      "any.required": "dashboard.categories.enter_name",
+    }),
   }),
-  image: Joi.string().uri().required(),
+  image: Joi.string().uri().required().messages({
+    "any.required": "dashboard.categories.enter_image",
+  }),
   status: Joi.string()
     .valid(...Object.values(CategoryStatus))
     .required(),

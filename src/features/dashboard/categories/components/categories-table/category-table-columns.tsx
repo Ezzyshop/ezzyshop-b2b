@@ -1,11 +1,12 @@
 import { ColumnDef } from "@tanstack/react-table";
-import { ICategory } from "../utils/category.interface";
+import { ICategory } from "../../utils/category.interface";
 import { StatusChangeSwitch } from "@/components/moderator/forms/change-status-switch";
 import { ChangePopularStatus } from "../category-form/change-popular-status";
 import { EditCategory } from "../category-form/edit-category";
 import { TFunction } from "i18next";
 import { LanguageType } from "@/features/moderator/shops/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { DeleteCategory } from "../delete-category";
 
 export const categoryTableColumns = (
   t: TFunction,
@@ -75,7 +76,12 @@ export const categoryTableColumns = (
     header: "table.columns.actions",
     accessorKey: "actions",
     cell: ({ row }) => {
-      return <EditCategory category={row.original} />;
+      return (
+        <div className="flex items-center gap-2">
+          <EditCategory category={row.original} />
+          <DeleteCategory category={row.original} />
+        </div>
+      );
     },
   },
 ];

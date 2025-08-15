@@ -1,4 +1,4 @@
-import { ICategoryForm } from "@/features/dashboard/categories/components/utils/category.interface";
+import { ICategoryForm } from "@/features/dashboard/categories/utils/category.interface";
 import { api } from "../axios";
 
 export const createCategoryMutationFn = async (
@@ -15,5 +15,13 @@ export const updateCategoryMutationFn = async (
   shopId: string
 ) => {
   const response = await api.put(`/categories/${shopId}/${categoryId}`, data);
+  return response.data;
+};
+
+export const deleteCategoryMutationFn = async (
+  shopId: string,
+  categoryId: string
+) => {
+  const response = await api.delete(`/categories/${shopId}/${categoryId}`);
   return response.data;
 };

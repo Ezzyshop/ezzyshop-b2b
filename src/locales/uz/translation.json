@@ -129,7 +129,10 @@
       "name": "Kategoriya nomi",
       "enter_name": "Kategoriya nomini kiriting",
       "image": "Kategoriya rasmi",
-      "enter_image": "Kategoriya rasmini kiriting"
+      "enter_image": "Kategoriya rasmini kiriting",
+      "delete": "Kategoriya o'chirish",
+      "delete_description": "Siz shu kategoriyani o'chirishni xohlaysizmi?",
+      "deleted": "Kategoriya muvaffaqiyatli o'chirildi"
     },
     "products": {
       "create": "Mahsulot qo'shish",

@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { CategoryForm } from "./category-form";
 import { updateCategoryMutationFn } from "@/api/mutations";
 import { useShopContext } from "@/contexts";
-import { ICategory, ICategoryForm } from "../utils/category.interface";
+import { ICategory, ICategoryForm } from "../../utils/category.interface";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useState } from "react";
