@@ -6,10 +6,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { TObject } from "@/hooks";
+import { TObject, useDebounce } from "@/hooks";
 import { UserRoles } from "@/lib/enums";
-import { debounce } from "lodash";
 import { userRolesTranslations } from "@/lib/enums";
+import { useEffect, useState } from "react";
 
 interface IProps {
   setQueryParams: (params: TObject) => void;
@@ -21,6 +21,12 @@ export const UserTableFilters = ({
   getQueryParams,
 }: IProps) => {
   const { search, roles } = getQueryParams();
+  const [value, setValue] = useState<string>(search as string);
+  const debouncedSetQueryParams = useDebounce(value, 500);
+
+  useEffect(() => {
+    setQueryParams({ ...getQueryParams(), search: debouncedSetQueryParams });
+  }, [debouncedSetQueryParams]);
 
   return (
     <div className="w-full grid grid-cols-6 gap-2 ">
@@ -28,11 +34,10 @@ export const UserTableFilters = ({
         placeholder="Qidirish"
         className="max-w-[200px]"
         defaultValue={search as string}
-        onChange={debounce(
-          ({ target: { value } }) =>
-            setQueryParams({ ...getQueryParams(), search: value }),
-          500
-        )}
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
       />
       <Select
         value={roles as string}

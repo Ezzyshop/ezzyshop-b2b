@@ -10,8 +10,8 @@ import {
 
 import { useQueries } from "@tanstack/react-query";
 import { BusinessType, ShopPlatform, shopTypesTranslations } from "../../utils";
-import { TObject } from "@/hooks";
-import { debounce } from "lodash";
+import { TObject, useDebounce } from "@/hooks";
+import { useEffect, useState } from "react";
 
 interface IProps {
   setQueryParams: (params: TObject) => void;
@@ -24,6 +24,12 @@ export const ShopTableFilters = ({
 }: IProps) => {
   const { plan, currency, businessType, platform, status, search } =
     getQueryParams();
+  const [value, setValue] = useState<string>(search as string);
+  const debouncedSetQueryParams = useDebounce(value, 500);
+
+  useEffect(() => {
+    setQueryParams({ ...getQueryParams(), search: debouncedSetQueryParams });
+  }, [debouncedSetQueryParams]);
 
   const [currencies, plans] = useQueries({
     queries: [
@@ -44,11 +50,10 @@ export const ShopTableFilters = ({
         placeholder="Qidirish"
         className="max-w-[200px]"
         defaultValue={search as string}
-        onChange={debounce(
-          ({ target: { value } }) =>
-            setQueryParams({ ...getQueryParams(), search: value }),
-          500
-        )}
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
       />
       <Select
         value={plan as string}

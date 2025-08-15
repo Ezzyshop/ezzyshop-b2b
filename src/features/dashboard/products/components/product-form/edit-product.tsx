@@ -12,29 +12,24 @@ import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ProductForm } from "./product-form";
 import { useShopContext } from "@/contexts";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { IProductForm } from "../../utils/product.interface";
+import { IProduct, IProductForm } from "../../utils/product.interface";
 import { editProductMutationFn } from "@/api/mutations";
-import { getProductQueryFn } from "@/api/queries";
 
 interface IProps {
-  productId: string;
+  product: IProduct;
 }
 
-export const EditProductButton = ({ productId }: IProps) => {
+export const EditProductButton = ({ product }: IProps) => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const { shop } = useShopContext();
   const queryClient = useQueryClient();
-  const { data } = useQuery({
-    queryKey: ["product", productId],
-    queryFn: () => getProductQueryFn(shop._id, productId),
-  });
 
   const editProductMutation = useMutation({
     mutationFn: (data: IProductForm) =>
-      editProductMutationFn(data, shop._id, productId),
+      editProductMutationFn(data, shop._id, product._id),
     onSuccess: () => {
       toast.success(t("dashboard.products.edited"));
       queryClient.invalidateQueries({ queryKey: ["products", shop._id] });
@@ -47,23 +42,23 @@ export const EditProductButton = ({ productId }: IProps) => {
   };
 
   const initialValues: IProductForm = useMemo(() => {
-    if (!data?.data) return {} as IProductForm;
+    if (!product) return {} as IProductForm;
 
     return {
-      name: data.data.name,
-      description: data.data.description || {
+      name: product.name,
+      description: product.description || {
         uz: "",
         en: "",
         ru: "",
       },
-      price: data.data.price,
-      compare_at_price: data.data.compare_at_price,
-      images: data.data.images,
-      categories: data.data.categories,
-      variants: data.data.variants,
-      status: data.data.status,
+      price: product.price,
+      compare_at_price: product.compare_at_price,
+      images: product.images,
+      categories: product.categories,
+      variants: product.variants,
+      status: product.status,
     };
-  }, [data?.data]);
+  }, [product]);
 
   return (
     <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>

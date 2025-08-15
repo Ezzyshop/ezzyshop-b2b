@@ -7,10 +7,10 @@ import {
   SelectTrigger,
 } from "@/components/ui/select";
 
-import { TObject } from "@/hooks";
-import { debounce } from "lodash";
+import { TObject, useDebounce } from "@/hooks";
 import { CategoryStatus } from "../../utils/category.enum";
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 
 interface IProps {
   setQueryParams: (params: TObject) => void;
@@ -23,18 +23,24 @@ export const CategoryTableFilters = ({
 }: IProps) => {
   const { t } = useTranslation();
   const { is_popular, status, search } = getQueryParams();
+  const [value, setValue] = useState<string>(search as string);
+  const debouncedSetQueryParams = useDebounce(value, 500);
+
+  useEffect(() => {
+    setQueryParams({ ...getQueryParams(), search: debouncedSetQueryParams });
+  }, [debouncedSetQueryParams]);
 
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-6 gap-2 ">
       <Input
         placeholder={t("table.filters.search")}
         className="md:max-w-[200px]"
+        type="text"
         defaultValue={search as string}
-        onChange={debounce(
-          ({ target: { value } }) =>
-            setQueryParams({ ...getQueryParams(), search: value }),
-          500
-        )}
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
       />
       <Select
         value={status as string}

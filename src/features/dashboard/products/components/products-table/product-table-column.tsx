@@ -67,7 +67,7 @@ export const productTableColumns = (
     cell: ({ row }) => {
       return (
         <div className="flex items-center gap-2">
-          <EditProductButton productId={row.original._id} />
+          <EditProductButton product={row.original} />
           <DeleteProduct product={row.original} />
         </div>
       );
