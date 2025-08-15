@@ -16,3 +16,9 @@ export const editProductMutationFn = (
   productId: string
 ): Promise<IProduct> =>
   api.put(`/products/${shopId}/${productId}`, data).then((res) => res.data);
+
+export const deleteProductMutationFn = (
+  shopId: string,
+  productId: string
+): Promise<void> =>
+  api.delete(`/products/${shopId}/${productId}`).then((res) => res.data);

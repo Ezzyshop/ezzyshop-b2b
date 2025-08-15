@@ -4,7 +4,6 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "@/components/ui/form/form";
 import { Input } from "@/components/ui/input";
 import { UseFormReturn } from "react-hook-form";
@@ -47,7 +46,13 @@ export const ProductFormBasicInformation = ({
                   placeholder={t("dashboard.products.enter_name")}
                 />
               </FormControl>
-              <FormMessage />
+              {form.formState.errors.name?.[activeLanguage] && (
+                <p className="text-destructive text-xs">
+                  {t(
+                    form.formState.errors.name?.[activeLanguage]?.message ?? ""
+                  )}
+                </p>
+              )}
             </FormItem>
           )}
         />
@@ -62,7 +67,14 @@ export const ProductFormBasicInformation = ({
               <FormControl>
                 <TextEditor {...field} value={field.value || ""} />
               </FormControl>
-              <FormMessage />
+              {form.formState.errors.description?.[activeLanguage] && (
+                <p className="text-destructive text-xs">
+                  {t(
+                    form.formState.errors.description?.[activeLanguage]
+                      ?.message ?? ""
+                  )}
+                </p>
+              )}
             </FormItem>
           )}
         />

@@ -4,7 +4,6 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "@/components/ui/form/form";
 import { InputWithPrefix } from "@/components/ui/input";
 import { IProductForm } from "../../../utils/product.interface";
@@ -37,7 +36,6 @@ export const ProductFormPricingInformation = ({ form }: IProps) => {
                   onChange={(e) => field.onChange(e.target.value)}
                 />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -56,7 +54,6 @@ export const ProductFormPricingInformation = ({ form }: IProps) => {
                   onChange={(e) => field.onChange(e.target.value)}
                 />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />

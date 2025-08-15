@@ -6,6 +6,7 @@ import { EditProductButton } from "../product-form/edit-product";
 import { IShop } from "@/features/moderator/shops/utils";
 import { LanguageType } from "@/features/moderator/shops/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { DeleteProduct } from "../delete-product";
 
 export const productTableColumns = (
   shop: IShop,
@@ -64,7 +65,12 @@ export const productTableColumns = (
   {
     header: "table.columns.actions",
     cell: ({ row }) => {
-      return <EditProductButton productId={row.original._id} />;
+      return (
+        <div className="flex items-center gap-2">
+          <EditProductButton productId={row.original._id} />
+          <DeleteProduct product={row.original} />
+        </div>
+      );
     },
   },
 ];

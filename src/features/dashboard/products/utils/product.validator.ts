@@ -2,48 +2,43 @@ import Joi from "joi";
 import { ProductStatus } from "./product.enum";
 
 export const createProductSchema = Joi.object({
-  // 🔤 Localized name
   name: Joi.object({
-    uz: Joi.string().max(100).optional(),
+    uz: Joi.string().max(100).required().messages({
+      "any.required": "dashboard.products.enter_name",
+      "string.empty": "dashboard.products.enter_name",
+    }),
     en: Joi.string().max(100).optional(),
     ru: Joi.string().max(100).optional(),
   }).required(),
 
-  // 🔤 Localized description
   description: Joi.object({
-    uz: Joi.string().max(500).allow("").optional(),
-    en: Joi.string().max(500).allow("").optional(),
-    ru: Joi.string().max(500).allow("").optional(),
+    uz: Joi.string().max(500).required().messages({
+      "any.required": "dashboard.products.enter_description",
+      "string.empty": "dashboard.products.enter_description",
+    }),
+    en: Joi.string().max(500).optional(),
+    ru: Joi.string().max(500).optional(),
   }).optional(),
 
-  // 💰 Base price (active selling price)
   price: Joi.number().min(0).required(),
 
-  // 💰 Optional original price before discount
-  compare_at_price: Joi.number().min(0).allow(null).optional(),
-
-  // 🖼 Images
+  compare_at_price: Joi.number().min(0).optional().allow(null).default(null),
   images: Joi.array().items(Joi.string().uri()).max(10).optional(),
-
-  // 🗂 Categories
-  categories: Joi.array()
-    .items(
-      Joi.string().length(24) // ObjectId
-    )
-    .optional(),
-
-  // 🧬 Variants
+  categories: Joi.array().items(Joi.string().length(24)).optional(),
   variants: Joi.array()
     .items(
       Joi.object({
         _id: Joi.string().optional(),
-        sku: Joi.string().max(64).required(),
+        sku: Joi.string().max(64).required().messages({
+          "any.required": "dashboard.products.enter_sku",
+          "string.empty": "dashboard.products.enter_sku",
+        }),
         attributes: Joi.object()
           .pattern(Joi.string(), Joi.string().max(50))
           .required(),
         price: Joi.number().min(0).required(),
         quantity: Joi.number().integer().min(0).required(),
-        image: Joi.string().uri().optional(),
+        image: Joi.string().uri().optional().allow(""),
       })
     )
     .optional(),

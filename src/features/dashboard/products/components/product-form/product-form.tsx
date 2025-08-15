@@ -33,21 +33,6 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
   const form = useForm<IProductForm>({
     resolver: joiResolver(createProductSchema),
     defaultValues: initialValues || {
-      name: {
-        uz: undefined,
-        en: undefined,
-        ru: undefined,
-      },
-      description: {
-        uz: undefined,
-        en: undefined,
-        ru: undefined,
-      },
-      price: 0,
-      compare_at_price: null,
-      images: [],
-      categories: [],
-      variants: [],
       status: ProductStatus.ACTIVE,
     },
   });

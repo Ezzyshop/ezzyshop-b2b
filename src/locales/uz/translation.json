@@ -148,7 +148,7 @@
       "enter_description": "Mahsulot tavsifini kiriting",
       "price": "Mahsulot narxi",
       "enter_price": "Mahsulot narxi kiriting",
-      "compare_at_price": "Mahsulot narxi",
+      "compare_at_price": "Mahsulot chegirmasiz narxi",
       "images": "Rasm",
       "settings": "Sozlamalar",
       "status": "Mahsulot statusi",
@@ -160,9 +160,15 @@
       "enter_sku": "SKU ni kiriting",
       "image": "Rasm",
       "enter_image": "Rasmni kiriting",
+      "quantity": "Miqdor",
+      "enter_quantity": "Miqdorni kiriting",
       "attributes": "Atributlar",
       "attribute_name": "Atribut nomi",
-      "attribute_value": "Atribut qiymati"
+      "attribute_value": "Atribut qiymati",
+      "pricing": "Mahsulot narxi",
+      "delete": "Mahsulotni o'chirish",
+      "delete_description": "Siz shu mahsulotni o'chirishni xohlaysizmi?",
+      "deleted": "Mahsulot muvaffaqiyatli o'chirildi"
     },
     "plans": {
       "title": "O'zingizga mos tarifni tanlang",
