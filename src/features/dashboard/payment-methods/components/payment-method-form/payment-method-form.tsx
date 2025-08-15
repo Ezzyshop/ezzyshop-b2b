@@ -49,16 +49,6 @@ export const PaymentMethodForm = ({
   const form = useForm<TPaymentMethodForm>({
     resolver: joiResolver(createPaymentMethodValidator),
     defaultValues: initialValues ?? {
-      name: {
-        uz: "",
-        ru: undefined,
-        en: undefined,
-      },
-      instructions: {
-        uz: undefined,
-        ru: undefined,
-        en: undefined,
-      },
       status: PaymentMethodStatus.Active,
       type: PaymentMethodType.Cash,
     },
@@ -67,6 +57,8 @@ export const PaymentMethodForm = ({
   const handleSubmit = (data: TPaymentMethodForm) => {
     onSubmit(data);
   };
+
+  const type = form.watch("type");
 
   return (
     <Form {...form}>
@@ -101,6 +93,9 @@ export const PaymentMethodForm = ({
                   <SelectItem value={PaymentMethodType.Click}>
                     {t("dashboard.payment-methods.type_click")}
                   </SelectItem>
+                  <SelectItem value={PaymentMethodType.CardTransfer}>
+                    {t("dashboard.payment-methods.type_card_transfer")}
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </FormItem>
@@ -133,12 +128,16 @@ export const PaymentMethodForm = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired>
-                {t("dashboard.payment-methods.instructions")}
+                {type === PaymentMethodType.CardTransfer
+                  ? t("dashboard.payment-methods.card_number")
+                  : t("dashboard.payment-methods.instructions")}
               </FormLabel>
               <FormControl>
                 <Input
                   placeholder={t(
-                    "dashboard.payment-methods.instructions_placeholder"
+                    type === PaymentMethodType.CardTransfer
+                      ? t("dashboard.payment-methods.card_number_placeholder")
+                      : t("dashboard.payment-methods.instructions_placeholder")
                   )}
                   {...field}
                   value={field.value ?? undefined}
