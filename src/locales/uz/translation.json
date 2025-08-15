@@ -53,7 +53,8 @@
     "custom": "Maxsus",
     "km": "km",
     "upload_image": "Rasm yuklash",
-    "upload_image_description": "Rasmni yuklash uchun shu yerga bosing"
+    "upload_image_description": "Rasmni yuklash uchun shu yerga bosing",
+    "details": "Batafsil"
   },
   "register": {
     "create_telegram": {
@@ -361,6 +362,24 @@
       "enter_name": "Filial nomini kiriting",
       "image": "Filial rasmi",
       "enter_image": "Filial rasmini kiriting"
+    },
+    "orders": {
+      "title": "Buyurtmalar",
+      "create": "Buyurtma qo'shish",
+      "created": "Buyurtma muvaffaqiyatli yaratildi",
+      "updated": "Buyurtma muvaffaqiyatli yangilandi",
+      "create_description": "Yangi buyurtma yaratish uchun quyidagi formadan foydalaning",
+      "status": {
+        "new": "Yangi",
+        "processing": "Jarayonda",
+        "delivering": "Yetkazib berilyapti",
+        "completed": "Yetkazib berildi",
+        "cancelled": "Bekor qilingan",
+        "pending": "Kutilmoqda",
+        "success": "Muvaffaqiyatli",
+        "refunded": "Qaytarildi",
+        "rejected": "Rad etildi"
+      }
     }
   },
   "table": {
@@ -379,12 +398,25 @@
       "not_popular": "Mashxur emas",
       "price": "Narxi",
       "created_at": "Yaratilgan vaqt",
-      "product_count": "Mahsulot soni"
+      "product_count": "Mahsulot soni",
+      "transaction_status": "To'lov holati",
+      "payment_method": "To'lov usuli",
+      "phone": "Telefon raqami",
+      "full_name": "To'liq ism",
+      "total_price": "Umumiy narx",
+      "product_quantity": "Mahsulot soni",
+      "order_status": "Buyurtma holati",
+      "type_delivery": "Yetkazib berish turi",
+      "pickup": "Olib ketish",
+      "delivery": "Yetkazib berish"
     },
     "filters": {
       "search": "Qidirish",
-      "status": "Status",
-      "is_popular": "Mashxurmi"
+      "status": "Holat",
+      "is_popular": "Mashxurmi",
+      "transaction_status": "To'lov holati",
+      "order_status": "Buyurtma holati",
+      "payment_method": "To'lov usuli"
     }
   }
 }

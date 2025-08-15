@@ -8,6 +8,7 @@ import { badgeVariants } from "./badge-variants";
 function Badge({
   className,
   variant,
+  status,
   asChild = false,
   ...props
 }: React.ComponentProps<"span"> &
@@ -17,7 +18,7 @@ function Badge({
   return (
     <Comp
       data-slot="badge"
-      className={cn(badgeVariants({ variant }), className)}
+      className={cn(badgeVariants({ variant, status }), className)}
       {...props}
     />
   );

@@ -14,9 +14,22 @@ export const badgeVariants = cva(
         outline:
           "text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
       },
+      status: {
+        PENDING: "bg-yellow-400/90 text-black",
+        SUCCESS: "bg-green-400/90 text-black",
+        REFUNDED: "bg-red-400/90 text-black",
+        CANCELLED: "bg-red-400/90 text-black",
+        VERIFIED: "bg-green-400/90 text-black",
+        REJECTED: "bg-red-400/90 text-black",
+        NEW: "bg-blue-400/90 text-black",
+        PROCESSING: "bg-yellow-400/90 text-black",
+        DELIVERING: "bg-green-400/90 text-black",
+        COMPLETED: "bg-green-400/90 text-black",
+      },
     },
     defaultVariants: {
       variant: "default",
+      status: "PENDING",
     },
   }
 );
