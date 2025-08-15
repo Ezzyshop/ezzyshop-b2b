@@ -273,6 +273,12 @@
       "merchant_user_id_placeholder": "Merchant User ID ni kiriting",
       "secret_key": "Secret Key",
       "secret_key_placeholder": "Secret Key ni kiriting",
+      "merchant_id_required": "Merchant ID majburiy",
+      "merchant_id_pattern": "Merchant ID 6 xonali raqam bo'lishi kerak",
+      "service_id_required": "Service ID majburiy",
+      "service_id_pattern": "Service ID 6 xonali raqam bo'lishi kerak",
+      "merchant_user_id_required": "Merchant User ID majburiy",
+      "secret_key_required": "Secret Key majburiy",
       "empty_state": {
         "title": "To'lov usullari yo'q",
         "description": "Hozircha hech qanday to'lov usuli qo'shilmagan. Birinchi to'lov usulini qo'shish uchun tugmani bosing."

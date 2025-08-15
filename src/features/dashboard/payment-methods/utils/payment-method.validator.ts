@@ -75,21 +75,25 @@ export const editClickPaymentMethodConfigValidator = Joi.object({
     .required()
     .pattern(/^\d{6}$/)
     .messages({
-      "string.empty": "Merchant ID is required",
-      "string.pattern.base": "Merchant ID must be 6 digits",
+      "any.required": "dashboard.payment-methods.merchant_id_required",
+      "string.empty": "dashboard.payment-methods.merchant_id_required",
+      "string.pattern.base": "dashboard.payment-methods.merchant_id_pattern",
     }),
   service_id: Joi.string()
     .required()
     .pattern(/^\d{6}$/)
     .messages({
-      "string.empty": "Service ID is required",
-      "string.pattern.base": "Service ID must be 6 digits",
+      "any.required": "dashboard.payment-methods.service_id_required",
+      "string.empty": "dashboard.payment-methods.service_id_required",
+      "string.pattern.base": "dashboard.payment-methods.service_id_pattern",
     }),
   merchant_user_id: Joi.string().required().messages({
-    "string.empty": "Merchant User ID is required",
+    "any.required": "dashboard.payment-methods.merchant_user_id_required",
+    "string.empty": "dashboard.payment-methods.merchant_user_id_required",
   }),
   secret_key: Joi.string().required().messages({
-    "string.empty": "Secret Key is required",
+    "any.required": "dashboard.payment-methods.secret_key_required",
+    "string.empty": "dashboard.payment-methods.secret_key_required",
   }),
 });
 
@@ -98,7 +102,8 @@ export const updatePaymentMethodStatusValidator = Joi.object({
     .required()
     .valid(PaymentMethodStatus.Active, PaymentMethodStatus.Inactive)
     .messages({
-      "string.empty": "Status is required",
-      "string.valid": "Invalid status",
+      "any.required": "dashboard.payment-methods.status_required",
+      "string.empty": "dashboard.payment-methods.status_required",
+      "string.valid": "dashboard.payment-methods.status_invalid",
     }),
 });

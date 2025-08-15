@@ -101,6 +101,7 @@ export const PaymentMethodForm = ({
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name={`name.${activeLanguage}`}
@@ -116,7 +117,6 @@ export const PaymentMethodForm = ({
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />

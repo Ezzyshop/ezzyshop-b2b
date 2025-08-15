@@ -7,7 +7,6 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "@/components/ui/form/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button/button";
@@ -29,12 +28,7 @@ export const PaymentMethodConfigForm = ({
 
   const form = useForm<TClickPaymentMethodConfigForm>({
     resolver: joiResolver(editClickPaymentMethodConfigValidator),
-    defaultValues: initialValues ?? {
-      merchant_id: "",
-      service_id: "",
-      merchant_user_id: undefined,
-      secret_key: "",
-    },
+    defaultValues: initialValues ?? {},
   });
 
   const handleSubmit = (data: TClickPaymentMethodConfigForm) => {
@@ -63,7 +57,11 @@ export const PaymentMethodConfigForm = ({
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
+              {form.formState.errors.merchant_id && (
+                <p className="text-destructive text-sm">
+                  {t(form.formState.errors.merchant_id.message ?? "")}
+                </p>
+              )}
             </FormItem>
           )}
         />
@@ -84,7 +82,11 @@ export const PaymentMethodConfigForm = ({
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
+              {form.formState.errors.service_id && (
+                <p className="text-destructive text-sm">
+                  {t(form.formState.errors.service_id.message ?? "")}
+                </p>
+              )}
             </FormItem>
           )}
         />
@@ -106,7 +108,11 @@ export const PaymentMethodConfigForm = ({
                   value={field.value ?? undefined}
                 />
               </FormControl>
-              <FormMessage />
+              {form.formState.errors.merchant_user_id && (
+                <p className="text-destructive text-sm">
+                  {t(form.formState.errors.merchant_user_id.message ?? "")}
+                </p>
+              )}
             </FormItem>
           )}
         />
@@ -127,7 +133,11 @@ export const PaymentMethodConfigForm = ({
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
+              {form.formState.errors.secret_key && (
+                <p className="text-destructive text-sm">
+                  {t(form.formState.errors.secret_key.message ?? "")}
+                </p>
+              )}
             </FormItem>
           )}
         />

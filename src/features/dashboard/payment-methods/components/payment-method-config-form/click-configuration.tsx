@@ -50,12 +50,7 @@ export const ClickConfiguration = ({ paymentMethod }: IProps) => {
 
   const initialValues: TClickPaymentMethodConfigForm = useMemo(() => {
     if (!paymentMethod.click_config) {
-      return {
-        merchant_id: "",
-        service_id: "",
-        merchant_user_id: "",
-        secret_key: "",
-      };
+      return {} as TClickPaymentMethodConfigForm;
     }
 
     return {
