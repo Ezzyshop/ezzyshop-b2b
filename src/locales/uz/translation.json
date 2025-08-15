@@ -361,7 +361,10 @@
       "sunday": "Yakshanba",
       "enter_name": "Filial nomini kiriting",
       "image": "Filial rasmi",
-      "enter_image": "Filial rasmini kiriting"
+      "enter_image": "Filial rasmini kiriting",
+      "name": "Filial nomi",
+      "name_required": "Filial nomi majburiy",
+      "name_max": "Filial nomi 100 ta belgidan oshmasligi kerak"
     },
     "orders": {
       "title": "Buyurtmalar",

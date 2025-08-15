@@ -2,9 +2,17 @@ import Joi from "joi";
 import { BranchStatus } from "./branches.enum";
 
 const localizedString = Joi.object({
-  uz: Joi.string().required().max(100),
-  ru: Joi.string().optional().allow("", null).max(100),
-  en: Joi.string().optional().allow("", null).max(100),
+  uz: Joi.string().required().max(100).messages({
+    "any.required": "dashboard.branches.name_required",
+    "string.empty": "dashboard.branches.name_required",
+    "string.max": "dashboard.branches.name_max",
+  }),
+  ru: Joi.string().optional().max(100).messages({
+    "string.max": "dashboard.branches.name_max",
+  }),
+  en: Joi.string().optional().max(100).messages({
+    "string.max": "dashboard.branches.name_max",
+  }),
 });
 
 const addressSchema = Joi.object({

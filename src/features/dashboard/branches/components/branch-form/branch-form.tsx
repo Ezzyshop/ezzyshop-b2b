@@ -40,11 +40,9 @@ export const BranchForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
     defaultValues:
       initialValues ||
       ({
-        name: { uz: undefined, en: undefined, ru: undefined },
-        address: { address: "", lat: 41.311081, lng: 69.240073 },
+        address: { address: "Tashkent", lat: 41.311081, lng: 69.240073 },
         pickup_enabled: false,
         delivery_enabled: false,
-        notes: "",
       } as unknown as IBranchForm),
   });
 
@@ -71,7 +69,7 @@ export const BranchForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel isRequired={activeLanguage === LanguageType.Uz}>
-                  {t("dashboard.products.name")}
+                  {t("dashboard.branches.name")}
                 </FormLabel>
                 <FormControl>
                   <Input
@@ -80,7 +78,14 @@ export const BranchForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
                     placeholder={t("dashboard.branches.enter_name")}
                   />
                 </FormControl>
-                <FormMessage />
+                {form.formState.errors.name?.[activeLanguage] && (
+                  <p className="text-destructive text-sm">
+                    {t(
+                      form.formState.errors.name?.[activeLanguage]?.message ??
+                        ""
+                    )}
+                  </p>
+                )}
               </FormItem>
             )}
           />
@@ -102,7 +107,6 @@ export const BranchForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
                   onCheckedChange={field.onChange}
                 />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -126,7 +130,6 @@ export const BranchForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
                   onCheckedChange={field.onChange}
                 />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
