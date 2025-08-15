@@ -127,7 +127,7 @@ export const PaymentMethodForm = ({
           key={`instructions-${activeLanguage}`}
           render={({ field }) => (
             <FormItem>
-              <FormLabel isRequired>
+              <FormLabel>
                 {type === PaymentMethodType.CardTransfer
                   ? t("dashboard.payment-methods.card_number")
                   : t("dashboard.payment-methods.instructions")}
