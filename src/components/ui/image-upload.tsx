@@ -158,10 +158,16 @@ export const MultipleImageUpload = ({
     }
 
     return (
-      <div className="flex flex-wrap justify-between gap-2">
+      <div className="grid grid-cols-7 gap-2">
         {value.map((image, index) => (
           <div key={index} className="relative w-[96px] h-[96px] ">
-            <img src={image} alt="Image" width={100} height={100} />
+            <img
+              src={image}
+              alt="Image"
+              width={96}
+              height={96}
+              className="rounded object-cover w-[96px] h-[96px]"
+            />
             <Button
               variant="outline"
               size="icon"
@@ -175,13 +181,13 @@ export const MultipleImageUpload = ({
         ))}
 
         {uploadImageMutation.isPending ? (
-          <div className="flex w-[96px] h-[96px] border border-dashed rounded-xl items-center flex-col justify-center">
+          <div className="flex w-[96px] h-[96px] border border-dashed rounded items-center flex-col justify-center">
             <Loader2 className="w-4 h-4 animate-spin " />
           </div>
         ) : (
           <div
             onClick={handleOpenFilePicker}
-            className="flex w-[96px] h-[96px] border border-dashed rounded-xl items-center flex-col justify-center"
+            className="flex w-[96px] h-[96px] border border-dashed rounded items-center flex-col justify-center"
           >
             <PlusIcon className="w-4 h-4" />
             <p className="text-xs">{t("common.upload_image")}</p>
@@ -192,7 +198,7 @@ export const MultipleImageUpload = ({
   }, [value, handleRemoveImage, t, uploadImageMutation.isPending]);
 
   return (
-    <CardContent className="border border-dashed p-5 rounded-xl w-full cursor-pointer min-h-[240px]">
+    <CardContent className="border border-dashed p-4 rounded-xl w-full cursor-pointer min-h-[240px]">
       {renderImages()}
       <input
         ref={inputRef}
