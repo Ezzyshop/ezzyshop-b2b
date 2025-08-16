@@ -411,7 +411,9 @@
       "order_status": "Buyurtma holati",
       "type_delivery": "Yetkazib berish turi",
       "pickup": "Olib ketish",
-      "delivery": "Yetkazib berish"
+      "delivery": "Yetkazib berish",
+      "customer_name": "Mijoz ismi",
+      "customer_phone": "Mijoz telefon raqami"
     },
     "filters": {
       "search": "Qidirish",

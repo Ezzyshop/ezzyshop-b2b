@@ -13,14 +13,23 @@ export const orderTableColumns = (
   t: TFunction
 ): ColumnDef<IOrderResponse>[] => [
   {
-    header: "table.columns.full_name",
+    header: "table.columns.created_at",
+    accessorKey: "created_at",
+    cell: ({ row }) => {
+      return (
+        <div>{dayjs(row.original.createdAt).format("DD.MM.YYYY HH:mm")}</div>
+      );
+    },
+  },
+  {
+    header: "table.columns.customer_name",
     accessorKey: "name",
     cell: ({ row }) => {
       return <div>{row.original.customer_info.name}</div>;
     },
   },
   {
-    header: "table.columns.phone",
+    header: "table.columns.customer_phone",
     accessorKey: "phone",
     cell: ({ row }) => {
       return <div>{row.original.customer_info.phone}</div>;
@@ -96,15 +105,6 @@ export const orderTableColumns = (
     },
   },
 
-  {
-    header: "table.columns.created_at",
-    accessorKey: "created_at",
-    cell: ({ row }) => {
-      return (
-        <div>{dayjs(row.original.createdAt).format("DD.MM.YYYY HH:mm")}</div>
-      );
-    },
-  },
   {
     header: "table.columns.actions",
     accessorKey: "actions",
