@@ -45,6 +45,12 @@ export const OrderStatusChanger = ({ order }: IProps) => {
       toast.success(t("dashboard.orders.status_changer.success"));
     },
   });
+
+  const orderStatuses = Object.values(OrderStatus).filter(
+    (_, idx) =>
+      idx >= Object.values(OrderStatus).findIndex((s) => s === order.status)
+  );
+
   return (
     <>
       <Select
@@ -55,7 +61,7 @@ export const OrderStatusChanger = ({ order }: IProps) => {
           <SelectValue placeholder="Status" />
         </SelectTrigger>
         <SelectContent>
-          {Object.values(OrderStatus).map((status) => (
+          {orderStatuses.map((status) => (
             <SelectItem key={status} value={status}>
               {t(orderStatusTranslations[status])}
             </SelectItem>
