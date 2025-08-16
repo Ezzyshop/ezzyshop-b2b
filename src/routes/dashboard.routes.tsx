@@ -41,6 +41,10 @@ const OrdersPage = lazy(
   () => import("@/features/dashboard/orders/pages/orders.page")
 );
 
+const OrderPage = lazy(
+  () => import("@/features/dashboard/orders/pages/order.page")
+);
+
 export const DashboardRoutes = () => {
   return (
     <DashboardLayout>
@@ -53,7 +57,10 @@ export const DashboardRoutes = () => {
         <Route path="/branches" element={<BranchesPage />} />
         <Route path="/plans" element={<PlansPage />} />
         <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/orders" element={<OrdersPage />} />
+        <Route path="/orders">
+          <Route index element={<OrdersPage />} />
+          <Route path=":orderId" element={<OrderPage />} />
+        </Route>
         <Route path="*" element={<NotFoundPage isDashboard />} />
       </Routes>
     </DashboardLayout>

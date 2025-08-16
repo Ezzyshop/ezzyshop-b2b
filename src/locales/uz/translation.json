@@ -372,6 +372,24 @@
       "created": "Buyurtma muvaffaqiyatli yaratildi",
       "updated": "Buyurtma muvaffaqiyatli yangilandi",
       "create_description": "Yangi buyurtma yaratish uchun quyidagi formadan foydalaning",
+      "items": {
+        "title": "Mahsulotlar",
+        "items_empty": "Mahsulotlar kiritilmagan",
+        "product": "Mahsulot nomi",
+        "quantity": "Miqdori",
+        "price": "Narxi",
+        "compare_at_price": "Chegirmasiz narxi",
+        "total": "Umumiy narx"
+      },
+      "summary": {
+        "title": "Buyurtma xaqida",
+        "subtotal": "Umumiy narx",
+        "shipping": "Yetkazib berish narxi",
+        "total": "Umumiy narx",
+        "discount": "Chegirmalar",
+        "payment_method": "To'lov usuli",
+        "payment_status": "To'lov holati"
+      },
       "status": {
         "new": "Yangi",
         "processing": "Jarayonda",
@@ -382,7 +400,41 @@
         "success": "Muvaffaqiyatli",
         "refunded": "Qaytarildi",
         "rejected": "Rad etildi"
-      }
+      },
+      "status_changer": {
+        "title": "Buyurtma holatini o'zgartirish",
+        "description": "Buyurtma holatini {{ status }} holatiga o'zgartirishni xohlaysizmi?",
+        "cancel": "Bekor qilish",
+        "save": "O'zgartirish",
+        "success": "Buyurtma holati muvaffaqiyatli o'zgartirildi"
+      },
+      "notes": "Qo'shimcha ma'lumotlar",
+      "order": "Buyurtma",
+      "pickup_address": "Olib ketish manzili",
+      "delivery_address": "Yetkazib berish manzili",
+      "view_on_map": "Xaritada ko'rish",
+      "cheques": "To'lov cheklari",
+      "cheques_empty": "To'lov cheklari kiritilmagan",
+      "cheque_date": "To'lov chekini yuklash vaqti",
+      "cheque_image_status": {
+        "pending": "Kutilmoqda",
+        "verified": "Tasdiqlandi",
+        "rejected": "Rad etildi"
+      },
+      "cheque_image_actions": {
+        "verify": "Tasdiqlash",
+        "reject": "Rad etish",
+        "changed": "To'lov chekini muvaffaqiyatli o'zgartirildi",
+        "close": "Yopish",
+        "verify_description": "To'lov chekini tasdiqlashni xohlaysizmi?",
+        "reject_description": "To'lov chekini rad etishni xohlaysizmi?"
+      },
+      "customer_information": {
+        "title": "Mijoz ma'lumotlari",
+        "name": "Mijoz ismi",
+        "phone": "Mijoz telefon raqami"
+      },
+      "status_information": "Buyurtma holati"
     }
   },
   "table": {

@@ -17,3 +17,12 @@ export const transactionStatusTranslations = {
   [TransactionStatus.Refunded]: "dashboard.orders.status.refunded",
   [TransactionStatus.Cancelled]: "dashboard.orders.status.cancelled",
 };
+
+export const transactionChequeImageStatusTranslations = {
+  [TransactionChequeImageStatus.Pending]:
+    "dashboard.orders.cheque_image_status.pending",
+  [TransactionChequeImageStatus.Verified]:
+    "dashboard.orders.cheque_image_status.verified",
+  [TransactionChequeImageStatus.Rejected]:
+    "dashboard.orders.cheque_image_status.rejected",
+};

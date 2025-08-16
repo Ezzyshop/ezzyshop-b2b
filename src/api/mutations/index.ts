@@ -7,3 +7,5 @@ export * from "./categories.mutation";
 export * from "./products.mutation";
 export * from "./delivery-methods.mutation";
 export * from "./branches.mutation";
+export * from "./transaction.mutation";
+export * from "./orders.mutation";

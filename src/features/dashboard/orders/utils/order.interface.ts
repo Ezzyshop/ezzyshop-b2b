@@ -37,6 +37,7 @@ export interface IOrderResponse {
   };
   total_quantity: number;
   total_price: number;
+  total_discount: number;
   delivery_method?: {
     _id: string;
     price: number;
@@ -60,10 +61,14 @@ export interface IOrderResponse {
     cheque_images: {
       url: string;
       status: TransactionChequeImageStatus;
+      createdAt: string;
+      updatedAt: string;
+      _id: string;
     }[];
     currency: ICurrency;
     provider: PaymentMethodType;
   };
+  notes?: string;
 }
 
 export interface IOrderProduct {
