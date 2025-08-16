@@ -30,11 +30,16 @@ export const OrderStatusProgress = ({ order }: IProps) => {
   const progressValue =
     (currentIndex / (Object.values(OrderStatus).length - 1)) * 100;
 
+  const isAbleToChangeStatus =
+    order.status === OrderStatus.New ||
+    order.status === OrderStatus.Processing ||
+    order.status === OrderStatus.Delivering;
+
   return (
     <Card>
       <div className="flex justify-between items-center gap-4 w-full px-4 md:px-6">
         <CardTitle>{t("dashboard.orders.status_information")}</CardTitle>
-        <OrderStatusChanger order={order} />
+        {isAbleToChangeStatus && <OrderStatusChanger order={order} />}
       </div>
       <CardContent className="space-y-4">
         <div className="flex items-center justify-between gap-2">

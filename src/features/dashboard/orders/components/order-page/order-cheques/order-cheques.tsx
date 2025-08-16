@@ -47,7 +47,7 @@ export const OrderCheques = ({ order }: IProps) => {
             <Image
               src={cheque.url}
               alt={cheque.url}
-              className="w-[76px] h-[76px] aspect-square rounded-lg object-cover"
+              className="w-[64px] h-[64px] min-w-[64px] min-h-[64px] aspect-square rounded-lg object-cover"
             />
             <div className="flex-grow">
               <p>{t("dashboard.orders.cheque_date")}</p>

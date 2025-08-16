@@ -338,3 +338,15 @@ body[data-theme-preset="rose-garden"]:is(.dark *) {
 .table-scrollbar::-webkit-scrollbar {
   display: block;
 }
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}

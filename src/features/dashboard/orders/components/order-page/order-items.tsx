@@ -19,7 +19,7 @@ export const OrderItems = ({ order }: IProps) => {
   const { t, i18n } = useTranslation();
 
   return (
-    <Card className="grid-cols-1 md:col-span-2">
+    <Card className="grid-cols-1 md:col-span-2 flex-grow">
       <CardHeader>
         <CardTitle>{t("dashboard.orders.items.title")}</CardTitle>
       </CardHeader>

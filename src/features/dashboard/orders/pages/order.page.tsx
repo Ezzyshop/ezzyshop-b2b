@@ -47,7 +47,7 @@ export const OrderPage = () => {
         </div>
       </div>
 
-      <div className="space-y-4 md:space-y-6 col-span-1 md:col-span-3">
+      <div className="space-y-4 md:space-y-6 col-span-1 md:col-span-3 flex flex-col">
         <OrderStatusProgress order={order} />
         <OrderItems order={order} />
       </div>
