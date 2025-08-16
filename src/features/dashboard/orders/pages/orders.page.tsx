@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { OrdersTableFilters } from "../components/orders-table/orders-table-filter";
 import { orderTableColumns } from "../components/orders-table/orders-table-columns";
+import { OrderPageAnalytics } from "../components/order-page/order-page-anaytics";
 
 export const OrdersPage = () => {
   const { t } = useTranslation();
@@ -31,6 +32,7 @@ export const OrdersPage = () => {
         <h1 className="text-2xl font-bold">{t("sidebar.dashboard.orders")}</h1>
       </div>
       <div className="space-y-4 md:space-y-6">
+        <OrderPageAnalytics />
         <OrdersTableFilters
           setQueryParams={setQueryParams}
           getQueryParams={getQueryParams}

@@ -9,3 +9,4 @@ export * from "./delivery-methods.query";
 export * from "./payment-methods.query";
 export * from "./branches.query";
 export * from "./orders.query";
+export * from "./analytics.query";
