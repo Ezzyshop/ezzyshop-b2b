@@ -120,6 +120,12 @@
     }
   },
   "dashboard": {
+    "main": {
+      "total_revenue": "Umumiy tushum",
+      "new_customers": "Yangi mijozlar soni",
+      "total_sales": "Mahsulotlar sotuv",
+      "from_last_month": "so'nggi oyga nisbatan"
+    },
     "categories": {
       "create": "Kategoriya qo'shish",
       "created": "Kategoriya muvaffaqiyatli yaratildi",
