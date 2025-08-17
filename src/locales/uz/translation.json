@@ -124,7 +124,9 @@
       "total_revenue": "Umumiy tushum",
       "new_customers": "Yangi mijozlar soni",
       "total_sales": "Mahsulotlar sotuv",
-      "from_last_month": "so'nggi oyga nisbatan"
+      "from_last_month": "so'nggi oyga nisbatan",
+      "recent_sales": "So'ngi sotuvlar",
+      "no_sales": "Sotuvlar mavjud emas"
     },
     "categories": {
       "create": "Kategoriya qo'shish",
