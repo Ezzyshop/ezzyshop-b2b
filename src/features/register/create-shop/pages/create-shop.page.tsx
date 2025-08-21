@@ -65,7 +65,6 @@ export const CreateShopPage = () => {
                     )}
                   />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
@@ -147,7 +146,6 @@ export const CreateShopPage = () => {
                     </SelectContent>
                   </Select>
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />

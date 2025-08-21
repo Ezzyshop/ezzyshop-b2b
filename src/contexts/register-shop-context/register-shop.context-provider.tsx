@@ -26,12 +26,8 @@ export const RegisterShopContextProvider = ({
     defaultValues: {
       business_type: BusinessType.OnlineStore,
       platform: ShopPlatform.Telegram,
-      currency: undefined,
-      name: undefined,
-      logo: undefined,
-      description: undefined,
       address: {
-        address: undefined,
+        address: "Ташкент, Национальный парк Узбекистана имени Алишера Навои",
         lat: 41.2995,
         long: 69.2401,
       },
