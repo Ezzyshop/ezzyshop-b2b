@@ -61,7 +61,7 @@ export const OrderItems = ({ order }: IProps) => {
                             ]
                           }
                         </span>
-                        {p.variant?.name && (
+                        {p.variant?.attributes && (
                           <span className="text-xs text-muted-foreground">
                             {Object.entries(p.variant.attributes)
                               .map(([key, value]) => `${key}: ${value}`)
