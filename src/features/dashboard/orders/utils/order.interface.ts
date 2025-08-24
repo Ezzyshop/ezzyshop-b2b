@@ -1,10 +1,10 @@
-import { PaymentMethodType } from "../../payment-methods/utils/payment-method.enum";
 import {
   TransactionChequeImageStatus,
   TransactionStatus,
 } from "./transaction.enum";
 import { OrderStatus } from "./order.enum";
 import { ICurrency } from "@/features/moderator/currencies/utils/currency.interface";
+import { IPaymentMethod } from "../../payment-methods/utils/payment-methods.interface";
 
 export interface IOrderCreateRequest {
   product: {
@@ -66,7 +66,7 @@ export interface IOrderResponse {
       _id: string;
     }[];
     currency: ICurrency;
-    provider: PaymentMethodType;
+    provider: IPaymentMethod;
   };
   notes?: string;
 }

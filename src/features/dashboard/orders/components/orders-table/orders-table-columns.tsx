@@ -99,7 +99,7 @@ export const orderTableColumns = (
     cell: ({ row }) => {
       return (
         <div>
-          {t(paymentMethodTypeLabels[row.original.transaction.provider])}
+          {t(paymentMethodTypeLabels[row.original.transaction.provider.type])}
         </div>
       );
     },

@@ -25,7 +25,7 @@ export const OrderCheques = ({ order }: IProps) => {
   const { t } = useTranslation();
 
   const isPaymentProviderCardTransfer =
-    order.transaction.provider === PaymentMethodType.CardTransfer;
+    order.transaction.provider.type === PaymentMethodType.CardTransfer;
 
   if (!isPaymentProviderCardTransfer) {
     return null;
