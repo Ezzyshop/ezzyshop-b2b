@@ -223,6 +223,8 @@
       "edit": "Yetkazib berish usuli tahrirlash",
       "name": "Yetkazib berish usuli nomi",
       "name_placeholder": "Yetkazib berish usuli nomini kiriting",
+      "min_order_price": "Minimal buyurtma narxi",
+      "min_order_price_placeholder": "Minimal buyurtma narxi kiriting",
       "price": "Yetkazib berish narxi",
       "enter_price": "Yetkazib berish narxi kiriting",
       "currency": "Valyuta",

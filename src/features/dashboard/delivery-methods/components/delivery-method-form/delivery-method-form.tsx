@@ -87,6 +87,26 @@ export const DeliveryMethodForm = ({
 
         <DeliveryTypeForm form={form} />
 
+        <FormField
+          control={form.control}
+          name="min_order_price"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel isRequired>
+                {t("dashboard.delivery-methods.min_order_price")}
+              </FormLabel>
+              <FormControl>
+                <Input
+                  placeholder={t(
+                    "dashboard.delivery-methods.min_order_price_placeholder"
+                  )}
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <div className="flex justify-end">
           <Button
             type="submit"

@@ -8,6 +8,7 @@ import {
   deliveryMethodDeliveryTypeLabel,
   deliveryMethodEstimatedDayPrefixLabel,
 } from "../utils/delivery-methods.enum";
+import { useShopContext } from "@/contexts";
 
 interface IProps {
   deliveryMethod: IDeliveryMethod;
@@ -15,6 +16,7 @@ interface IProps {
 
 export const DeliveryMethodCard = ({ deliveryMethod }: IProps) => {
   const { i18n, t } = useTranslation();
+  const { shop } = useShopContext();
   return (
     <Card>
       <CardHeader className="flex justify-between items-center">
@@ -38,12 +40,12 @@ export const DeliveryMethodCard = ({ deliveryMethod }: IProps) => {
       <CardContent className="space-y-2">
         {deliveryMethod.deliveryType === DeliveryMethodDeliveryType.Dynamic ? (
           <p className="text-2xl font-bold">
-            {deliveryMethod.initial_km_price?.toLocaleString()} UZS /{" "}
-            {t("common.km")}
+            {deliveryMethod.initial_km_price?.toLocaleString()}{" "}
+            {shop.currency.symbol} / {t("common.km")}
           </p>
         ) : (
           <p className="text-2xl font-bold">
-            {deliveryMethod.price?.toLocaleString()} UZS
+            {deliveryMethod.price?.toLocaleString()} {shop.currency.symbol}
           </p>
         )}
 
@@ -81,7 +83,8 @@ export const DeliveryMethodCard = ({ deliveryMethod }: IProps) => {
                 {t("dashboard.delivery-methods.initial_km_price_prefix")}:
               </p>
               <p className="text-sm">
-                {deliveryMethod.initial_km_price?.toLocaleString()} UZS
+                {deliveryMethod.initial_km_price?.toLocaleString()}{" "}
+                {shop.currency.symbol}
               </p>
             </div>
             <div className="flex items-center justify-between gap-2">
@@ -89,10 +92,23 @@ export const DeliveryMethodCard = ({ deliveryMethod }: IProps) => {
                 {t("dashboard.delivery-methods.every_km_price_prefix")}:
               </p>
               <p className="text-sm">
-                {deliveryMethod.every_km_price?.toLocaleString()} UZS
+                {deliveryMethod.every_km_price?.toLocaleString()}{" "}
+                {shop.currency.symbol}
               </p>
             </div>
           </>
+        )}
+
+        {deliveryMethod.min_order_price && (
+          <div className="flex items-center justify-between gap-2">
+            <p className="text-muted-foreground text-sm">
+              {t("dashboard.delivery-methods.min_order_price")}:
+            </p>
+            <p className="text-sm">
+              {deliveryMethod.min_order_price?.toLocaleString()}{" "}
+              {shop.currency.symbol}
+            </p>
+          </div>
         )}
       </CardContent>
     </Card>
