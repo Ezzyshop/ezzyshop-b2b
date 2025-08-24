@@ -11,6 +11,7 @@ import { IProductForm } from "../../../utils/product.interface";
 import { Switch } from "@/components/ui/switch";
 import { ProductStatus } from "../../../utils/product.enum";
 import { useTranslation } from "react-i18next";
+import { InputWithPrefix } from "@/components/ui/input";
 
 interface IProps {
   form: UseFormReturn<IProductForm, unknown, IProductForm>;
@@ -43,6 +44,30 @@ export const ProductFormSettings = ({ form }: IProps) => {
                     checked ? ProductStatus.ACTIVE : ProductStatus.INACTIVE
                   )
                 }
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <FormField
+        control={form.control}
+        name="delivery_time"
+        render={({ field }) => (
+          <FormItem className="flex items-center justify-between">
+            <div className="space-y-0.5">
+              <FormLabel>{t("dashboard.products.delivery_time")}</FormLabel>
+              <div className="text-sm text-muted-foreground">
+                {t("dashboard.products.delivery_time_description")}
+              </div>
+            </div>
+            <FormControl>
+              <InputWithPrefix
+                prefix="kun ichida"
+                type="number"
+                placeholder={t("dashboard.products.delivery_time_placeholder")}
+                {...field}
               />
             </FormControl>
             <FormMessage />

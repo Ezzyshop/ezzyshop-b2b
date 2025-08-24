@@ -23,6 +23,7 @@ export interface IProductForm {
     image?: string;
   }[];
   status: ProductStatus;
+  delivery_time?: number;
 }
 
 export interface IProduct {
@@ -55,4 +56,5 @@ export interface IProduct {
   };
   createdAt: string;
   updatedAt: string;
+  delivery_time?: number;
 }

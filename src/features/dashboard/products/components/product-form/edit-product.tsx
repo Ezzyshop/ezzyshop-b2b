@@ -57,6 +57,7 @@ export const EditProductButton = ({ product }: IProps) => {
       categories: product.categories,
       variants: product.variants,
       status: product.status,
+      delivery_time: product.delivery_time,
     };
   }, [product]);
 

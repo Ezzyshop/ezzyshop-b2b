@@ -177,7 +177,10 @@
       "pricing": "Mahsulot narxi",
       "delete": "Mahsulotni o'chirish",
       "delete_description": "Siz shu mahsulotni o'chirishni xohlaysizmi?",
-      "deleted": "Mahsulot muvaffaqiyatli o'chirildi"
+      "deleted": "Mahsulot muvaffaqiyatli o'chirildi",
+      "delivery_time": "Yetkazib berish vaqti",
+      "delivery_time_description": "Mahsulot yetkazib berish vaqtini kiriting",
+      "delivery_time_placeholder": "Yetkazib berish vaqtini kiriting"
     },
     "plans": {
       "title": "O'zingizga mos tarifni tanlang",
