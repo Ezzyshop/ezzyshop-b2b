@@ -92,7 +92,7 @@ export const DeliveryMethodForm = ({
           name="min_order_price"
           render={({ field }) => (
             <FormItem>
-              <FormLabel isRequired>
+              <FormLabel>
                 {t("dashboard.delivery-methods.min_order_price")}
               </FormLabel>
               <FormControl>
