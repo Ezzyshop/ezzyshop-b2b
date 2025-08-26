@@ -52,6 +52,7 @@ export interface IShop {
   updatedAt: Date;
   languages: ILanguage[];
   brand_color?: string;
+  telegram_group_id?: string;
 }
 
 export interface ILanguage {
@@ -82,6 +83,7 @@ export interface IShopForm {
   };
   languages: ILanguage[];
   brand_color?: string;
+  telegram_group_id?: string;
 }
 
 export interface IShopUpdateForm {
@@ -103,6 +105,7 @@ export interface IShopUpdateForm {
   };
   languages: ILanguage[];
   brand_color?: string;
+  telegram_group_id?: string;
 }
 
 export interface IShopTelegramForm {

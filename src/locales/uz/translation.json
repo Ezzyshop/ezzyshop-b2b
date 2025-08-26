@@ -330,6 +330,15 @@
         "youtube": "YouTube",
         "enter_youtube": "YouTube linkini kiriting"
       },
+      "notification": {
+        "title": "Bildirishnomalar",
+        "description": "Bildirishnomalarni qabul qilish uchun ijtimoiy tarmoqlarni ulang.",
+        "telegram-chat-id": "Telegram guruh ID'si",
+        "telegram-chat-id-placeholder": "Telegram guruh ID'sini kiriting",
+        "instructions": {
+          "telegram": "Iltimos, guruhingizga {{ bot }} botini qo'shing. Shundan so'ng siz yangi buyurtmalar haqida bildirishnoma olasiz"
+        }
+      },
       "address": {
         "title": "Manzil ma'lumotlari",
         "address": "Manzil",

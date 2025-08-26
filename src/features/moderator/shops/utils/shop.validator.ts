@@ -96,6 +96,7 @@ export const shopFields: Record<
       "languages.exactly_one_main": "Kamida bitta til asosiy bo'lishi kerak",
     }),
   brand_color: Joi.string().optional().allow(""),
+  telegram_group_id: Joi.number().optional().allow(null),
 };
 
 export const shopCreateSchema = Joi.object({
@@ -111,6 +112,7 @@ export const shopCreateSchema = Joi.object({
   address: shopFields.address,
   status: shopFields.status,
   languages: shopFields.languages,
+  telegram_group_id: shopFields.telegram_group_id,
 });
 
 export const shopUpdateSchema = Joi.object({
@@ -122,6 +124,7 @@ export const shopUpdateSchema = Joi.object({
   currency: shopFields.currency,
   address: shopFields.address,
   languages: shopFields.languages,
+  telegram_group_id: shopFields.telegram_group_id,
 });
 
 export const shopUpdatePlanSchema = Joi.object({
@@ -154,4 +157,5 @@ export const updateMyShopSchema = Joi.object({
   address: shopFields.address,
   languages: shopFields.languages,
   brand_color: shopFields.brand_color,
+  telegram_group_id: shopFields.telegram_group_id,
 });

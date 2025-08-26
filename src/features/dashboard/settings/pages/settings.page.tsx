@@ -40,6 +40,7 @@ export const SettingsPage = () => {
       description: shop.description,
       languages: shop.languages,
       brand_color: shop.brand_color,
+      telegram_group_id: shop.telegram_group_id,
     };
   }, [shop]);
 

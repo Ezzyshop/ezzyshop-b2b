@@ -12,6 +12,7 @@ import { cn } from "@/lib";
 import { SettingFormBasicInformation } from "./setting-form-sections/basic-information";
 import { SettingFormSocialLinks } from "./setting-form-sections/social-links";
 import { SettingFormAddressSection } from "./setting-form-sections/address-section";
+import { NotificationSettingsForm } from "./setting-form-sections/notification-section";
 
 interface IProps {
   shop: IShopUpdateForm;
@@ -33,6 +34,8 @@ export const SettingsForm = ({ shop, onSubmit, isLoading }: IProps) => {
         <SettingFormBasicInformation form={form} />
 
         <SettingFormSocialLinks form={form} />
+
+        <NotificationSettingsForm form={form} />
 
         <SettingFormAddressSection form={form} />
 
