@@ -1,4 +1,4 @@
-import { getTelegramByIdQueryFn } from "@/api/queries";
+import { getTelegramQueryFn } from "@/api/queries";
 import { LayoutLoader } from "@/components/loaders/global-loader";
 import {
   Card,
@@ -18,7 +18,7 @@ export const TelegramPage = () => {
   const { t } = useTranslation();
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["telegram", shop._id],
-    queryFn: () => getTelegramByIdQueryFn(shop._id),
+    queryFn: () => getTelegramQueryFn(shop._id),
     enabled: Boolean(shop._id),
   });
 

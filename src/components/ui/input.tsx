@@ -1,9 +1,6 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-import { useQuery } from "@tanstack/react-query";
-import { checkTelegramTokenQueryFn } from "@/api/queries";
-import { useDebounce } from "@/hooks/use-debounce";
 
 function Input({
   className,
@@ -98,43 +95,6 @@ function Input({
   );
 }
 
-function TelegramTokenInput({
-  className,
-  ...props
-}: React.ComponentProps<"input">) {
-  const [value, setValue] = React.useState<string>(props.value as string);
-
-  const debouncedValue = useDebounce(value, 500);
-
-  const { data, isLoading } = useQuery({
-    queryKey: ["telegram-token", debouncedValue],
-    queryFn: () => checkTelegramTokenQueryFn(debouncedValue),
-    enabled: !!debouncedValue,
-  });
-
-  React.useEffect(() => {
-    if (data?.isValid) {
-      props.onChange?.({
-        target: {
-          value: debouncedValue || "",
-        },
-      } as React.ChangeEvent<HTMLInputElement>);
-    }
-  }, [data, props, debouncedValue]);
-
-  return (
-    <Input
-      className={cn("w-full", className)}
-      {...props}
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-      aria-invalid={(data && !data.isValid) || props["aria-invalid"]}
-      data-success={data && data.isValid}
-      disabled={isLoading || props.disabled}
-    />
-  );
-}
-
 function InputWithPrefix({
   className,
   ...props
@@ -149,4 +109,4 @@ function InputWithPrefix({
   );
 }
 
-export { Input, TelegramTokenInput, InputWithPrefix };
+export { Input, InputWithPrefix };

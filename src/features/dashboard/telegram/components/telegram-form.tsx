@@ -60,12 +60,17 @@ export const TelegramForm = ({
 
   const deleteTelegramMutation = useMutation({
     mutationFn: () => deleteTelegramMutationFn(shop._id, telegramId!),
-    onSuccess: () => {
+    onSuccess: async () => {
       toast.success(t("dashboard.telegram.form.success"));
       refetch();
-      form.reset(undefined);
+      form.reset({
+        menu_text: undefined,
+        token: undefined,
+      });
     },
   });
+
+  console.log(initialValues);
 
   const handleSubmitForm = (data: TTelegramForm) => {
     if (initialValues && telegramId) {
@@ -118,14 +123,22 @@ export const TelegramForm = ({
 
         <Button
           className={cn(initialValues ? "col-span-1" : "col-span-2")}
-          disabled={!form.formState.isValid}
+          disabled={
+            !form.formState.isValid ||
+            createTelegramMutation.isPending ||
+            updateTelegramMutation.isPending
+          }
         >
           {t("common.save")}
         </Button>
         {initialValues && (
           <Button
             variant="destructive"
-            disabled={deleteTelegramMutation.isPending}
+            disabled={
+              deleteTelegramMutation.isPending ||
+              createTelegramMutation.isPending ||
+              updateTelegramMutation.isPending
+            }
             type="button"
             onClick={() => deleteTelegramMutation.mutate()}
           >
