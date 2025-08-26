@@ -21,6 +21,7 @@ import {
 import { useShopContext } from "@/contexts";
 import { toast } from "sonner";
 import { cn } from "@/lib";
+import { CreateTelegramInstruction } from "@/features/register/create-platform/components/instruction";
 
 interface IProps {
   initialValues?: TTelegramForm;
@@ -70,8 +71,6 @@ export const TelegramForm = ({
     },
   });
 
-  console.log(initialValues);
-
   const handleSubmitForm = (data: TTelegramForm) => {
     if (initialValues && telegramId) {
       updateTelegramMutation.mutate(data);
@@ -91,7 +90,9 @@ export const TelegramForm = ({
           name="menu_text"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t("dashboard.telegram.form.menu-text")}</FormLabel>
+              <FormLabel isRequired>
+                {t("dashboard.telegram.form.menu-text")}
+              </FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -109,7 +110,9 @@ export const TelegramForm = ({
           name="token"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t("dashboard.telegram.form.token")}</FormLabel>
+              <FormLabel isRequired>
+                {t("dashboard.telegram.form.token")}
+              </FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -121,8 +124,12 @@ export const TelegramForm = ({
           )}
         />
 
+        <div className="md:col-span-2">
+          <CreateTelegramInstruction />
+        </div>
+
         <Button
-          className={cn(initialValues ? "col-span-1" : "col-span-2")}
+          className={cn(initialValues ? "col-span-1" : "md:col-span-2")}
           disabled={
             !form.formState.isValid ||
             createTelegramMutation.isPending ||
