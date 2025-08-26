@@ -45,6 +45,10 @@ const OrderPage = lazy(
   () => import("@/features/dashboard/orders/pages/order.page")
 );
 
+const TelegramPage = lazy(
+  () => import("@/features/dashboard/telegram/pages/telegram.page")
+);
+
 export const DashboardRoutes = () => {
   return (
     <DashboardLayout>
@@ -61,6 +65,7 @@ export const DashboardRoutes = () => {
           <Route index element={<OrdersPage />} />
           <Route path=":orderId" element={<OrderPage />} />
         </Route>
+        <Route path="/telegram" element={<TelegramPage />} />
         <Route path="*" element={<NotFoundPage isDashboard />} />
       </Routes>
     </DashboardLayout>

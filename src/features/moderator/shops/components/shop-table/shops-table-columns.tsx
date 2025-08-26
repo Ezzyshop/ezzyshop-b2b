@@ -4,7 +4,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { IShop, ShopStatus, shopTypesTranslations } from "../../utils";
 import dayjs from "dayjs";
 import { Button } from "@/components/ui/button/button";
-import { BotIcon, CreditCardIcon, EditIcon } from "lucide-react";
+import { CreditCardIcon, EditIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { Badge } from "@/components/ui/badge/badge";
 
@@ -125,11 +125,7 @@ export const shopColumns: ColumnDef<IShop>[] = [
               <EditIcon className="w-4 h-4" />
             </NavLink>
           </Button>
-          <Button asChild variant="outline" size="icon">
-            <NavLink to={`/moderator/shops/${row.original._id}/telegram`}>
-              <BotIcon className="w-4 h-4" />
-            </NavLink>
-          </Button>
+
           <Button asChild variant="outline" size="icon">
             <NavLink to={`/moderator/shops/${row.original._id}/plan`}>
               <CreditCardIcon className="w-4 h-4" />

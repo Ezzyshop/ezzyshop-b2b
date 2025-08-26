@@ -7,11 +7,8 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form/form";
-import { Input, TelegramTokenInput } from "@/components/ui/input";
-import {
-  IShopTelegramForm,
-  telegramSchema,
-} from "@/features/moderator/shops/utils";
+import { Input } from "@/components/ui/input";
+import { IShopTelegramForm } from "@/features/moderator/shops/utils";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { Info } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -19,7 +16,8 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { useRegisterShopContext } from "@/contexts";
-import { assignTelegramBotMutationFn } from "@/api/mutations/shops.mutation";
+import { createTelegramMutationFn } from "@/api/mutations";
+import { createTelegramResolver } from "@/features/dashboard/telegram/utils/telegram.validator";
 
 export const CreateTelegramPage = () => {
   const { createdShop } = useRegisterShopContext();
@@ -27,18 +25,14 @@ export const CreateTelegramPage = () => {
   const { t } = useTranslation();
   const createTelegramBotMutation = useMutation({
     mutationFn: (data: IShopTelegramForm) =>
-      assignTelegramBotMutationFn(createdShop?._id || "", data),
+      createTelegramMutationFn(createdShop?._id || "", data),
     onSuccess: () => {
       navigate("/register/finish");
     },
   });
 
   const form = useForm<IShopTelegramForm>({
-    defaultValues: {
-      token: "",
-      menu_text: "",
-    },
-    resolver: joiResolver(telegramSchema),
+    resolver: joiResolver(createTelegramResolver),
   });
 
   const handleSubmit = (data: IShopTelegramForm) => {
@@ -60,12 +54,12 @@ export const CreateTelegramPage = () => {
                 {t("register.create_telegram.telegram_bot_token")}
               </FormLabel>
               <FormControl>
-                <TelegramTokenInput
+                <Input
                   placeholder={t(
                     "register.create_telegram.telegram_bot_token_placeholder"
                   )}
                   {...field}
-                  value={field.value || ""}
+                  value={field.value}
                 />
               </FormControl>
             </FormItem>
@@ -86,7 +80,7 @@ export const CreateTelegramPage = () => {
                     "register.create_telegram.menu_name_placeholder"
                   )}
                   {...field}
-                  value={field.value || ""}
+                  value={field.value}
                 />
               </FormControl>
             </FormItem>

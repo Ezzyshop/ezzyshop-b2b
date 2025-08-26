@@ -32,10 +32,6 @@ const ShopEditPage = lazy(
   () => import("@/features/moderator/shops/pages/shop-edit.page")
 );
 
-const ShopTelegramEditPage = lazy(
-  () => import("@/features/moderator/shops/pages/shop-telegram-edit.page")
-);
-
 const ShopPlanChangePage = lazy(
   () => import("@/features/moderator/shops/pages/shop-plan-change")
 );
@@ -80,7 +76,6 @@ export const ModeratorRoutes = () => {
             <Route index element={<ShopsPage />} />
             <Route path="create" element={<ShopCreatePage />} />
             <Route path=":id/edit" element={<ShopEditPage />} />
-            <Route path=":id/telegram" element={<ShopTelegramEditPage />} />
             <Route path=":id/plan" element={<ShopPlanChangePage />} />
           </Route>
           <Route path="/plans/">

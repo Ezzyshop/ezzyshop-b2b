@@ -116,7 +116,8 @@
         "title": "{{ plan }} tarifiga ga o'ting",
         "description": "{{ plan }} tarifini tanlab ko'proq imkoniyatlarga ega bo'ling.",
         "button_text": "Tarifni o'zgartirish"
-      }
+      },
+      "telegram": "Telegram"
     }
   },
   "dashboard": {
@@ -457,6 +458,17 @@
         "phone": "Mijoz telefon raqami"
       },
       "status_information": "Buyurtma holati"
+    },
+    "telegram": {
+      "title": "Telegram botni ulash",
+      "description": "",
+      "form": {
+        "menu-text": "Tugma nomi",
+        "menu-text-placeholder": "Tugma nomini kiriting",
+        "token": "Token",
+        "token-placeholder": "Tokenni kiriting",
+        "success": "Muvaffaqiyatli"
+      }
     }
   },
   "table": {

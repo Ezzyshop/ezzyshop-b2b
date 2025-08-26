@@ -12,6 +12,7 @@ import {
   SwitchCameraIcon,
   TruckIcon,
   UsersIcon,
+  SendIcon,
 } from "lucide-react";
 
 export const moderatorSidebarData = [
@@ -82,6 +83,11 @@ export const dashboardSidebarData = [
     icon: SwitchCameraIcon,
     title: "sidebar.dashboard.plans",
     url: "/dashboard/plans",
+  },
+  {
+    icon: SendIcon,
+    title: "sidebar.dashboard.telegram",
+    url: "/dashboard/telegram",
   },
   {
     icon: SettingsIcon,
