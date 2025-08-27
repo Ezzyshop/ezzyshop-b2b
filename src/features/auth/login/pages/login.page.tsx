@@ -1,13 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+
 import { useForm } from "react-hook-form";
 import { loginSchema, type ILoginForm } from "../utils";
 import {
@@ -15,16 +7,20 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
-  FormMessage,
 } from "@/components/ui/form/form";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
-import { loginMutationFn } from "@/api/mutations";
+import { verifyOtpMutationFn } from "@/api/mutations";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { PhoneInput } from "@/components/ui/phone-number-input";
 import { dashboardSidebarData } from "@/lib";
+import { useEffect } from "react";
+
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
 
 export default function LoginPage({
   className,
@@ -32,22 +28,18 @@ export default function LoginPage({
 }: React.ComponentProps<"div">) {
   const navigate = useNavigate();
   const form = useForm<ILoginForm>({
-    defaultValues: {
-      phone: "",
-      password: "",
-    },
     mode: "onChange",
     resolver: joiResolver(loginSchema),
   });
 
-  const { mutate, isPending } = useMutation({
-    mutationFn: loginMutationFn,
+  const { mutate } = useMutation({
+    mutationFn: verifyOtpMutationFn,
     onSuccess: () => {
       toast.success("Tizimga muvaffaqiyatli kirildi");
       navigate(dashboardSidebarData[0].url);
     },
     onError: () => {
-      form.resetField("password");
+      form.resetField("otp");
     },
   });
 
@@ -55,69 +47,61 @@ export default function LoginPage({
     mutate(data);
   };
 
+  const otp = form.watch("otp");
+
+  useEffect(() => {
+    if (otp?.length === 6) {
+      mutate({ otp });
+    }
+  }, [otp, mutate]);
+
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center h-screen gap-6",
+        "flex flex-col items-center justify-center h-[60vh]",
         className
       )}
       {...props}
     >
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle>Hisobga kirish</CardTitle>
-          <CardDescription>
-            Hisobga kirish uchun telefon raqamingizni va parolingizni kiriting
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-              <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel htmlFor="phone">Telefon raqamingiz</FormLabel>
-                    <FormControl>
-                      <PhoneInput
-                        id="phone"
-                        type="text"
-                        defaultCountry="UZ"
-                        countries={["UZ"]}
-                        placeholder="+998 (XX) XXX-XX-XX"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel htmlFor="password">Parolingiz</FormLabel>
-                    <FormControl>
-                      <Input
-                        id="password"
-                        type="password"
-                        placeholder="********"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="w-full" disabled={isPending}>
-                Login
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
+      <img src="/icons/logo.svg" alt="logo" className="w-32 h-10" />
+      <h2 className="text-3xl font-semibold mt-5 md:mt-8">Kodni kiriting</h2>
+      <p className="text-md text-foreground/80 mt-5 max-w-md text-center">
+        <a
+          href="https://t.me/ezzyshopbot"
+          target="_blank"
+          className="text-primary"
+        >
+          @ezzyshopbot
+        </a>{" "}
+        botiga kiring va 1 martalik kodingizni oling.
+      </p>
+      <Form {...form}>
+        <form
+          className=" mt-8 md:mt-10"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
+          <FormField
+            control={form.control}
+            name="otp"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <InputOTP maxLength={6} {...field}>
+                    <InputOTPGroup className="gap-2">
+                      <InputOTPSlot index={0} />
+                      <InputOTPSlot index={1} />
+                      <InputOTPSlot index={2} />
+                      <InputOTPSlot index={3} />
+                      <InputOTPSlot index={4} />
+                      <InputOTPSlot index={5} />
+                    </InputOTPGroup>
+                  </InputOTP>
+                </FormControl>
+              </FormItem>
+            )}
+          />
+        </form>
+      </Form>
     </div>
   );
 }
