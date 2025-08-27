@@ -337,7 +337,7 @@
         "telegram-chat-id": "Telegram guruh ID'si",
         "telegram-chat-id-placeholder": "Telegram guruh ID'sini kiriting",
         "instructions": {
-          "telegram": "Iltimos, guruhingizga {{ bot }} botini qo'shing. Shundan so'ng siz yangi buyurtmalar haqida bildirishnoma olasiz"
+          "telegram": "Iltimos, guruhingizga {{ bot }} botini qo'shing va /id buyrug'ini guruhga yuboring. Bot sizga guruh ID'sini yuboradi. Shundan so'ng siz yangi buyurtmalar haqida bildirishnoma olasiz"
         }
       },
       "address": {
