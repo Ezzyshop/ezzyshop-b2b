@@ -21,11 +21,14 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { useTheme } from "@/contexts";
+import { getLogo } from "@/lib/get-logo";
 
 export default function LoginPage({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const { theme } = useTheme();
   const navigate = useNavigate();
   const form = useForm<ILoginForm>({
     mode: "onChange",
@@ -63,7 +66,7 @@ export default function LoginPage({
       )}
       {...props}
     >
-      <img src="/icons/logo.svg" alt="logo" className="w-32 h-10" />
+      <img src={getLogo(theme)} alt="logo" className="w-[320px]" />
       <h2 className="text-3xl font-semibold mt-5 md:mt-8">Kodni kiriting</h2>
       <p className="text-md text-foreground/80 mt-5 max-w-md text-center">
         <a
@@ -76,10 +79,7 @@ export default function LoginPage({
         botiga kiring va 1 martalik kodingizni oling.
       </p>
       <Form {...form}>
-        <form
-          className=" mt-8 md:mt-10"
-          onSubmit={form.handleSubmit(onSubmit)}
-        >
+        <form className=" mt-8 md:mt-10" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
             control={form.control}
             name="otp"
