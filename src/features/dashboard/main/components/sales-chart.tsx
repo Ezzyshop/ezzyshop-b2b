@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { getTotalTransactionsQueryFn } from "@/api/queries";
+import { getSalesChartQueryFn } from "@/api/queries";
 import { useShopContext } from "@/contexts";
 import { useMemo, useState } from "react";
 import dayjs from "dayjs";
@@ -11,7 +11,7 @@ import { LineChart } from "./line-chart";
 
 export const description = "A line chart";
 
-export const RevenueChart = () => {
+export const SalesChart = () => {
   const { shop } = useShopContext();
   const { t } = useTranslation();
   const [filter, setFilter] = useState({
@@ -20,16 +20,16 @@ export const RevenueChart = () => {
   });
 
   const { data } = useQuery({
-    queryKey: ["revenue-chart", shop._id, filter.startDate, filter.endDate],
+    queryKey: ["sales-chart", shop._id, filter.startDate, filter.endDate],
     queryFn: () =>
-      getTotalTransactionsQueryFn(shop._id, filter.startDate, filter.endDate),
+      getSalesChartQueryFn(shop._id, filter.startDate, filter.endDate),
   });
 
   const chartData = useMemo(() => {
     if (!data) return [];
     return data.data.monthly_data.map((item) => ({
       date: item.month,
-      amount: item.amount,
+      orders: item.orders,
     }));
   }, [data]);
 
@@ -40,11 +40,11 @@ export const RevenueChart = () => {
   return (
     <LineChart
       data={chartData}
-      description={t("dashboard.main.revenue.description")}
-      title={t("dashboard.main.revenue.title")}
+      description={t("dashboard.main.sales.description")}
+      title={t("dashboard.main.sales.title")}
       filter={filter}
       setFilter={setFilter}
-      lineDataKey="amount"
+      lineDataKey="orders"
     />
   );
 };

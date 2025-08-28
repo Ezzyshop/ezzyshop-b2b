@@ -127,7 +127,15 @@
       "total_sales": "Mahsulotlar sotuv",
       "from_last_month": "so'nggi oyga nisbatan",
       "recent_sales": "So'ngi sotuvlar",
-      "no_sales": "Sotuvlar mavjud emas"
+      "no_sales": "Sotuvlar mavjud emas",
+      "revenue": {
+        "title": "Umumiy daromadlar",
+        "description": "Ma'lum bir muddat oralig'idagi umumiy daromadni ko'rish uchun kerakli muddatni tanlang"
+      },
+      "sales": {
+        "title": "Sotuvlar",
+        "description": "Kerakli muddatni tanlang"
+      }
     },
     "categories": {
       "create": "Kategoriya qo'shish",
