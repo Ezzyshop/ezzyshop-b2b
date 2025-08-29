@@ -62,12 +62,8 @@ export const ImageUploadSingle = ({
     }
 
     return (
-      <div className="relative group max-h-[200px]">
-        <img
-          src={value}
-          alt="Image"
-          className="object-cover w-full max-h-[200px] h-full aspect-square"
-        />
+      <div className=" group max-h-[200px]">
+        <img src={value} alt="Image" className="object-fit w-full max-h-[200px]" />
         <Button
           variant="outline"
           size="icon"
@@ -82,7 +78,7 @@ export const ImageUploadSingle = ({
   }, [value, onChange, t]);
 
   return (
-    <CardContent className="border border-dashed p-0 rounded-xl w-full cursor-pointer min-h-[240px]">
+    <CardContent className="border border-dashed rounded-xl w-full cursor-pointer min-h-[240px] flex p-4 justify-center items-center relative">
       {renderImages()}
       <input
         ref={inputRef}
