@@ -70,11 +70,11 @@ export default function LoginPage({
       <h2 className="text-3xl font-semibold mt-5 md:mt-8">Kodni kiriting</h2>
       <p className="text-md text-foreground/80 mt-5 max-w-md text-center">
         <a
-          href="https://t.me/ezzyshopbot"
+          href={`https://t.me/${import.meta.env.VITE_PUBLIC_TELEGRAM_BOT}`}
           target="_blank"
           className="text-primary"
         >
-          {import.meta.env.VITE_PUBLIC_TELEGRAM_BOT}
+          @{import.meta.env.VITE_PUBLIC_TELEGRAM_BOT}
         </a>{" "}
         botiga kiring va 1 martalik kodingizni oling.
       </p>
