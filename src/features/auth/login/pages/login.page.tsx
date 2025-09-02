@@ -74,7 +74,7 @@ export default function LoginPage({
           target="_blank"
           className="text-primary"
         >
-          {import.meta.env.VITE_TELEGRAM_BOT_NAME}
+          {import.meta.env.VITE_PUBLIC_TELEGRAM_BOT}
         </a>{" "}
         botiga kiring va 1 martalik kodingizni oling.
       </p>
