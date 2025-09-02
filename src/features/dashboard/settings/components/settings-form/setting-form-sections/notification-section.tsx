@@ -58,7 +58,7 @@ export const NotificationSettingsForm = ({ form }: IProps) => {
 
         <p className="max-w-md bg-primary/20 border border-primary rounded-xl px-4 py-3 text-primary-foreground mt-3 text-sm col-span-2">
           {t("dashboard.settings.notification.instructions.telegram", {
-            bot: "@ezzyshopbot",
+            bot: import.meta.env.VITE_TELEGRAM_BOT_NAME,
           })}
         </p>
       </div>
