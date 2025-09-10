@@ -17,7 +17,10 @@ export const createProductSchema = Joi.object({
     ru: Joi.string().max(500).optional(),
   }).optional(),
 
-  main_image: Joi.string().uri().optional(),
+  main_image: Joi.string().uri().required().messages({
+    "any.required": "dashboard.products.enter_main_image",
+    "string.uri": "dashboard.products.format_main_image",
+  }),
   categories: Joi.array().items(Joi.string().length(24)).optional(),
   variants: Joi.array()
     .items(

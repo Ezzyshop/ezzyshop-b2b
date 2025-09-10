@@ -5,12 +5,14 @@ import { uploadImageMutationFn } from "@/api/mutations/upload.mutation";
 import { Button } from "./button";
 import { Loader2, PlusIcon, UploadIcon, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { cn } from "@/lib";
 
 interface ISingleImageUploadProps {
   value: string | undefined;
   onChange: (value: string) => void;
   title?: string;
   description?: string;
+  error?: string;
 }
 
 export const ImageUploadSingle = ({
@@ -18,6 +20,7 @@ export const ImageUploadSingle = ({
   value,
   title,
   description,
+  error,
 }: ISingleImageUploadProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
@@ -54,12 +57,19 @@ export const ImageUploadSingle = ({
           onClick={handleOpenFilePicker}
           className="flex flex-col gap-2 items-center justify-center min-h-[200px] w-full"
         >
-          <UploadIcon />
+          <UploadIcon className={cn(error && "text-destructive")} />
           <div>
-            <p className="text-sm text-center">
+            <p
+              className={cn("text-sm text-center", error && "text-destructive")}
+            >
               {title || t("common.upload_image")}
             </p>
-            <p className="text-xs text-muted-foreground">
+            <p
+              className={cn(
+                "text-xs text-muted-foreground",
+                error && "text-destructive"
+              )}
+            >
               {description || t("common.upload_image_description")}
             </p>
           </div>
@@ -88,7 +98,12 @@ export const ImageUploadSingle = ({
   }, [value, onChange, t]);
 
   return (
-    <CardContent className="border border-dashed rounded-xl w-full cursor-pointer min-h-[240px] flex p-4 justify-center items-center relative">
+    <CardContent
+      className={cn(
+        "border border-dashed rounded-xl w-full cursor-pointer min-h-[240px] flex p-4 justify-center items-center relative",
+        error && "border-destructive"
+      )}
+    >
       {renderImages()}
       <input
         ref={inputRef}

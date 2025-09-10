@@ -191,7 +191,9 @@
       "delivery_time_description": "Mahsulot yetkazib berish vaqtini kiriting",
       "delivery_time_placeholder": "Yetkazib berish vaqtini kiriting",
       "main_image": "Asosiy rasm",
-      "main_image_description": "Mahsulot asosiy rasmini kiriting"
+      "main_image_description": "Mahsulot asosiy rasmini kiriting",
+      "enter_main_image": "Mahsulot asosiy rasmini kiriting",
+      "format_main_image": "Mahsulot asosiy rasmi noto'g'ri formatda"
     },
     "plans": {
       "title": "O'zingizga mos tarifni tanlang",

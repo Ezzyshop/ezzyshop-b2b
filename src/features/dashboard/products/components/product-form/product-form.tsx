@@ -79,6 +79,7 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
           onChange={(value) => form.setValue("main_image", value)}
           title={t("dashboard.products.main_image")}
           description={t("dashboard.products.main_image_description")}
+          error={form.formState.errors.main_image?.message}
         />
 
         <ProductFormCategories form={form} />
