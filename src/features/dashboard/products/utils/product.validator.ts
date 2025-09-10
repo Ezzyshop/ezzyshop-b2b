@@ -12,10 +12,7 @@ export const createProductSchema = Joi.object({
   }).required(),
 
   description: Joi.object({
-    uz: Joi.string().max(500).required().messages({
-      "any.required": "dashboard.products.enter_description",
-      "string.empty": "dashboard.products.enter_description",
-    }),
+    uz: Joi.string().max(500).optional(),
     en: Joi.string().max(500).optional(),
     ru: Joi.string().max(500).optional(),
   }).optional(),
