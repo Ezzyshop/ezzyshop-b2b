@@ -11,16 +11,15 @@ export interface IProductForm {
     en?: string;
     ru?: string;
   };
-  price: number;
-  compare_at_price?: number | null;
-  images?: string[];
+  main_image: string;
   categories?: string[];
   variants?: {
     sku: string;
     attributes: Record<string, string>;
     price: number;
     quantity: number;
-    image?: string;
+    compare_at_price?: number;
+    images: string[];
   }[];
   status: ProductStatus;
   delivery_time?: number;
@@ -38,16 +37,14 @@ export interface IProduct {
     en?: string;
     ru?: string;
   };
-  price: number;
-  compare_at_price?: number | null;
-  images?: string[];
+  main_image: string;
   categories?: string[];
   variants?: {
     sku: string;
     attributes: Record<string, string>;
     price: number;
     quantity: number;
-    image?: string;
+    images: string[];
   }[];
   status: ProductStatus;
   shop: {

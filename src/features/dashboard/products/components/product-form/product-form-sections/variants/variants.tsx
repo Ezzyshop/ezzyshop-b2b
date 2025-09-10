@@ -12,7 +12,8 @@ import { Input, InputWithPrefix } from "@/components/ui/input";
 import { Button } from "@/components/ui/button/button";
 import { VariantAttributeForm } from "./variant-attribute-form";
 import { useTranslation } from "react-i18next";
-import { ImageUploadSingle } from "@/components/ui/image-upload";
+import { MultipleImageUpload } from "@/components/ui/image-upload";
+import { useShopContext } from "@/contexts";
 
 interface IProps {
   form: UseFormReturn<IProductForm, unknown, IProductForm>;
@@ -20,6 +21,7 @@ interface IProps {
 
 export const ProductFormVariants = ({ form }: IProps) => {
   const { t } = useTranslation();
+  const { shop } = useShopContext();
   const addVariant = () => {
     const currentVariants = form.getValues("variants") || [];
     form.setValue("variants", [
@@ -29,7 +31,7 @@ export const ProductFormVariants = ({ form }: IProps) => {
         attributes: {},
         price: 0,
         quantity: 0,
-        image: "",
+        images: [],
       },
     ]);
   };
@@ -97,45 +99,23 @@ export const ProductFormVariants = ({ form }: IProps) => {
           </div>
 
           <div className="space-y-4 mb-4">
+            <FormField
+              control={form.control}
+              name={`variants.${variantIndex}.sku`}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("dashboard.products.sku")}</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      placeholder={t("dashboard.products.enter_sku")}
+                      maxLength={64}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <FormField
-                control={form.control}
-                name={`variants.${variantIndex}.sku`}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel isRequired>
-                      {t("dashboard.products.sku")}
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        placeholder={t("dashboard.products.enter_sku")}
-                        maxLength={64}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name={`variants.${variantIndex}.price`}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel isRequired>
-                      {t("dashboard.products.price")}
-                    </FormLabel>
-                    <FormControl>
-                      <InputWithPrefix
-                        {...field}
-                        prefix="UZS"
-                        onChange={(e) => field.onChange(e.target.value)}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-
               <FormField
                 control={form.control}
                 name={`variants.${variantIndex}.quantity`}
@@ -158,16 +138,52 @@ export const ProductFormVariants = ({ form }: IProps) => {
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name={`variants.${variantIndex}.price`}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel isRequired>
+                      {t("dashboard.products.price")}
+                    </FormLabel>
+                    <FormControl>
+                      <InputWithPrefix
+                        {...field}
+                        prefix={shop.currency.symbol}
+                        onChange={(e) => field.onChange(e.target.value)}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name={`variants.${variantIndex}.compare_at_price`}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      {t("dashboard.products.compare_at_price")}
+                    </FormLabel>
+                    <FormControl>
+                      <InputWithPrefix
+                        {...field}
+                        prefix={shop.currency.symbol}
+                        maxLength={64}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
             </div>
 
             <FormField
               control={form.control}
-              name={`variants.${variantIndex}.image`}
+              name={`variants.${variantIndex}.images`}
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("dashboard.products.image")}</FormLabel>
                   <FormControl>
-                    <ImageUploadSingle
+                    <MultipleImageUpload
                       {...field}
                       onChange={(value) => field.onChange(value)}
                     />

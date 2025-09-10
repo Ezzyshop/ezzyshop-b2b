@@ -4,7 +4,6 @@ import { Form } from "@/components/ui/form/form";
 import { Button } from "@/components/ui/button/button";
 import { ProductFormBasicInformation } from "./product-form-sections/basic-information";
 import { IProductForm } from "../../utils/product.interface";
-import { ProductFormPricingInformation } from "./product-form-sections/pricing-information";
 import { ProductFormCategories } from "./product-form-sections/categories";
 import { createProductSchema } from "../../utils/product.validator";
 import { ProductFormVariants } from "./product-form-sections/variants/variants";
@@ -15,7 +14,7 @@ import { useState } from "react";
 import { useShopContext } from "@/contexts";
 import { useTranslation } from "react-i18next";
 import { LanguageSelectTab } from "@/components/form/language-select-tab";
-import { MultipleImageUpload } from "@/components/ui/image-upload";
+import { ImageUploadSingle } from "@/components/ui/image-upload";
 
 interface IProps {
   onSubmit: (data: IProductForm) => void;
@@ -52,8 +51,6 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
           ...(data.description.ru && { ru: data.description.ru }),
         },
       }),
-      ...(data.compare_at_price && { compare_at_price: data.compare_at_price }),
-      ...(data.images?.length && { images: data.images }),
       ...(data.categories?.length && { categories: data.categories }),
       ...(data.variants?.length && { variants: data.variants }),
     };
@@ -77,11 +74,11 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
           activeLanguage={activeLanguage}
         />
 
-        <ProductFormPricingInformation form={form} />
-
-        <MultipleImageUpload
-          value={form.watch("images")}
-          onChange={(value) => form.setValue("images", value)}
+        <ImageUploadSingle
+          value={form.watch("main_image")}
+          onChange={(value) => form.setValue("main_image", value)}
+          title={t("dashboard.products.main_image")}
+          description={t("dashboard.products.main_image_description")}
         />
 
         <ProductFormCategories form={form} />

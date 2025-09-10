@@ -189,7 +189,9 @@
       "deleted": "Mahsulot muvaffaqiyatli o'chirildi",
       "delivery_time": "Yetkazib berish vaqti",
       "delivery_time_description": "Mahsulot yetkazib berish vaqtini kiriting",
-      "delivery_time_placeholder": "Yetkazib berish vaqtini kiriting"
+      "delivery_time_placeholder": "Yetkazib berish vaqtini kiriting",
+      "main_image": "Asosiy rasm",
+      "main_image_description": "Mahsulot asosiy rasmini kiriting"
     },
     "plans": {
       "title": "O'zingizga mos tarifni tanlang",
@@ -410,6 +412,7 @@
         "quantity": "Miqdori",
         "price": "Narxi",
         "compare_at_price": "Chegirmasiz narxi",
+        "enter_compare_at_price": "Chegirmasiz narxi kiriting",
         "total": "Umumiy narx"
       },
       "summary": {

@@ -19,7 +19,7 @@ export const productTableColumns = (
       return (
         <Avatar>
           <AvatarImage
-            src={row.original.images?.[0]}
+            src={row.original.main_image}
             className="rounded-full object-cover"
           />
           <AvatarFallback>{row.original.name[lang]?.charAt(0)}</AvatarFallback>
@@ -38,11 +38,11 @@ export const productTableColumns = (
     cell: ({ row }) => {
       return (
         <div>
-          {row.original.price.toLocaleString()} {shop.currency.symbol}
+          {row.original.variants?.[0].price.toLocaleString()} {shop.currency.symbol}
         </div>
       );
     },
-    accessorKey: "price",
+    accessorKey: "variants.price",
   },
   {
     header: "table.columns.status",

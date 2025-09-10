@@ -9,11 +9,15 @@ import { useTranslation } from "react-i18next";
 interface ISingleImageUploadProps {
   value: string | undefined;
   onChange: (value: string) => void;
+  title?: string;
+  description?: string;
 }
 
 export const ImageUploadSingle = ({
   onChange,
   value,
+  title,
+  description,
 }: ISingleImageUploadProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
@@ -52,9 +56,11 @@ export const ImageUploadSingle = ({
         >
           <UploadIcon />
           <div>
-            <p className="text-sm text-center">{t("common.upload_image")}</p>
+            <p className="text-sm text-center">
+              {title || t("common.upload_image")}
+            </p>
             <p className="text-xs text-muted-foreground">
-              {t("common.upload_image_description")}
+              {description || t("common.upload_image_description")}
             </p>
           </div>
         </div>
@@ -63,7 +69,11 @@ export const ImageUploadSingle = ({
 
     return (
       <div className=" group max-h-[200px]">
-        <img src={value} alt="Image" className="object-fit w-full max-h-[200px]" />
+        <img
+          src={value}
+          alt="Image"
+          className="object-fit w-full max-h-[200px]"
+        />
         <Button
           variant="outline"
           size="icon"
