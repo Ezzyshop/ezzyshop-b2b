@@ -31,11 +31,7 @@ export const createProductSchema = Joi.object({
           .pattern(Joi.string(), Joi.string().max(50))
           .required(),
         price: Joi.number().min(0).required(),
-        compare_at_price: Joi.number()
-          .min(0)
-          .optional()
-          .allow(null)
-          .default(null),
+        compare_at_price: Joi.number().optional().allow("").allow(null),
         quantity: Joi.number().integer().min(0).required(),
         images: Joi.array().items(Joi.string().uri()).max(10).optional(),
       })
