@@ -36,7 +36,7 @@ export const createProductSchema = Joi.object({
         images: Joi.array().items(Joi.string().uri()).max(10).optional(),
       })
     )
-    .optional(),
+    .required(),
 
   status: Joi.string().valid(ProductStatus.ACTIVE, ProductStatus.INACTIVE),
   delivery_time: Joi.number().min(0).optional().allow(null).default(null),

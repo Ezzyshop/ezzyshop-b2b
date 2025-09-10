@@ -73,9 +73,16 @@ export const ProductFormVariants = ({ form }: IProps) => {
   return (
     <Card className="p-3 gap-2">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold">
-          {t("dashboard.products.variants")}
-        </h3>
+        <div>
+          <h3 className="text-lg font-semibold">
+            {t("dashboard.products.variants")}
+          </h3>
+          {form.formState.errors.variants && (
+            <p className="text-sm text-destructive">
+              {t("dashboard.products.variants_required")}
+            </p>
+          )}
+        </div>
         <Button type="button" onClick={addVariant}>
           <Plus className="w-4 h-4 mr-2" />
           {t("common.add")}
