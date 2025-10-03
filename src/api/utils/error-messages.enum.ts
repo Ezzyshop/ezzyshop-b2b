@@ -41,6 +41,7 @@ export enum ErrorMessages {
   TransactionNotFound = "TRANSACTION_NOT_FOUND",
   TransactionAlreadyHasPendingChequeImage = "TRANSACTION_ALREADY_HAS_PENDING_CHEQUE_IMAGE",
   OtpNotFoundOrExpired = "OTP_NOT_FOUND_OR_EXPIRED",
+  UserAlreadyStaff = "USER_ALREADY_STAFF",
 }
 
 export const errorMessagesMap: Record<ErrorMessages, string> = {
@@ -100,4 +101,6 @@ export const errorMessagesMap: Record<ErrorMessages, string> = {
     "Tranzaksiya allaqachon pul yuborish surati yuborilgan",
   [ErrorMessages.OtpNotFoundOrExpired]:
     "Kod topilmadi yoki amal qilish muddati tugagan",
+  [ErrorMessages.UserAlreadyStaff]:
+    "Foydalanuvchi allaqachon xodimlar bo'limida",
 };

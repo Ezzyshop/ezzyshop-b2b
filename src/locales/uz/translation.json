@@ -112,6 +112,7 @@
       "payment-methods": "To'lov usullari",
       "branches": "Filialar",
       "settings": "Sozlamalar",
+      "staffs": "Xodimlar",
       "upgrade_plan": {
         "title": "{{ plan }} tarifiga ga o'ting",
         "description": "{{ plan }} tarifini tanlab ko'proq imkoniyatlarga ega bo'ling.",
@@ -483,6 +484,20 @@
         "token-placeholder": "Tokenni kiriting",
         "success": "Muvaffaqiyatli"
       }
+    },
+    "staffs": {
+      "title": "Xodimlar",
+      "create": "Xodim qo'shish",
+      "created": "Xodim muvaffaqiyatli yaratildi",
+      "updated": "Xodim muvaffaqiyatli yangilandi",
+      "create_description": "Yangi xodim yaratish uchun quyidagi formadan foydalaning",
+      "delete": "Xodimni o'chirish",
+      "delete_description": "Siz shu xodimni o'chirishni xohlaysizmi?",
+      "deleted": "Xodim muvaffaqiyatli o'chirildi",
+      "edit": "Xodim tahrirlash",
+      "edit_description": "Xodim ma'lumotlarini o'zgartirish uchun quyidagi formadan foydalaning",
+      "full_name": "Xodim ismi",
+      "phone": "Xodim telefon raqami"
     }
   },
   "table": {

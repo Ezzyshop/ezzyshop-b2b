@@ -9,6 +9,7 @@ export const userFields = {
   email: Joi.string()
     .email({ tlds: { allow: false } })
     .max(255)
+    .allow(null)
     .messages({
       "string.email": "Invalid email address",
       "string.max": "Email must be at most 255 characters long",

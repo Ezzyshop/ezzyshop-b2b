@@ -9,7 +9,7 @@ import { cn } from "@/lib";
 
 interface ISingleImageUploadProps {
   value: string | undefined;
-  onChange: (value: string) => void;
+  onChange: (value: string | null) => void;
   title?: string;
   description?: string;
   error?: string;
@@ -88,7 +88,7 @@ export const ImageUploadSingle = ({
           variant="outline"
           size="icon"
           className="absolute top-0 right-0 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          onClick={() => onChange("")}
+          onClick={() => onChange(null)}
           type="button"
         >
           <X className="w-4 h-4" />

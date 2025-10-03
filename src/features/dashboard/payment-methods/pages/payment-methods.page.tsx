@@ -32,8 +32,6 @@ export const PaymentMethodsPage = () => {
     );
   };
 
-  console.log(data?.data);
-
   return (
     <div className="space-y-4 md:space-y-6 h-full flex flex-col">
       <div className="flex justify-between items-center">

@@ -11,3 +11,8 @@ export const userRolesTranslations = {
   [UserRoles.Staff]: "Staff",
   [UserRoles.Basic]: "Foydalanuvchi",
 };
+
+export enum UserStatus {
+  Active = "ACTIVE",
+  Inactive = "INACTIVE",
+}

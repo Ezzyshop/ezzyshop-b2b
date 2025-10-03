@@ -29,6 +29,7 @@ export const UserFormChangePassword = ({ form }: IProps) => {
               <Input
                 type="password"
                 placeholder="Parolni kiriting"
+                autoComplete="new-password"
                 {...field}
               />
             </FormControl>
@@ -47,6 +48,7 @@ export const UserFormChangePassword = ({ form }: IProps) => {
               <Input
                 type="password"
                 placeholder="Parolni qayta kiriting"
+                autoComplete="new-password"
                 {...field}
               />
             </FormControl>

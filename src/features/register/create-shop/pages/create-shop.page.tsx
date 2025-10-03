@@ -24,7 +24,7 @@ import { AddressForm } from "../components/address-form";
 import { useTranslation } from "react-i18next";
 import { SelectLanguage } from "../components/select-language";
 import { ImageUploadSingle } from "@/components/ui/image-upload";
-import { dashboardSidebarData } from "@/lib";
+import { getDefaultPage } from "@/lib/get-default-page";
 
 export const CreateShopPage = () => {
   const { form, handleSubmitForm, isPending } = useRegisterShopContext();
@@ -174,7 +174,7 @@ export const CreateShopPage = () => {
                 type="button"
                 variant="outline"
                 className="cursor-pointer"
-                onClick={() => navigate(dashboardSidebarData[0].url)}
+                onClick={() => navigate(getDefaultPage(user.roles))}
               >
                 {t("common.back")}
               </Button>

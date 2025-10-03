@@ -13,11 +13,12 @@ import { Badge } from "@/components/ui/badge/badge";
 import { useRegisterShopContext, useUserContext } from "@/contexts";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { dashboardSidebarData } from "@/lib";
+import { getDefaultPage } from "@/lib/get-default-page";
 
 export const CreateSuccessPage = () => {
   const { createdShop } = useRegisterShopContext();
   const { refetch } = useUserContext();
+  const { user } = useUserContext();
 
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ export const CreateSuccessPage = () => {
 
   const handleGoDashboard = async () => {
     await refetch();
-    navigate(dashboardSidebarData[0].url);
+    navigate(getDefaultPage(user.roles));
   };
 
   return (

@@ -108,6 +108,7 @@
       "payment-methods": "Payment methods",
       "branches": "Branches",
       "settings": "Settings",
+      "staffs": "Staffs",
       "upgrade_plan": {
         "title": "Upgrade to {{ plan }} plan",
         "description": "Choose {{ plan }} plan to get more features.",

@@ -29,12 +29,19 @@ import { cn } from "@/lib/utils";
 import { UserRoles } from "@/lib/enums";
 import { userRolesTranslations } from "@/lib/enums";
 import { useState } from "react";
+import { ImageUploadSingle } from "@/components/ui/image-upload";
 
 interface IProps {
   form: UseFormReturn<IUserForm>;
+  hideRoles?: boolean;
+  hideEmail?: boolean;
 }
 
-export const UserFormBasicInformation = ({ form }: IProps) => {
+export const UserFormBasicInformation = ({
+  form,
+  hideRoles,
+  hideEmail,
+}: IProps) => {
   const [rolesOpen, setRolesOpen] = useState(false);
 
   const handleRoleToggle = (role: UserRoles) => {
@@ -62,31 +69,33 @@ export const UserFormBasicInformation = ({ form }: IProps) => {
         )}
       />
 
-      <FormField
-        control={form.control}
-        name="email"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Email</FormLabel>
-            <FormControl>
-              <Input
-                type="email"
-                placeholder="Email manzilini kiriting"
-                {...field}
-                value={field.value || ""}
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
+      {!hideEmail && (
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input
+                  type="email"
+                  placeholder="Email manzilini kiriting"
+                  {...field}
+                  value={field.value || ""}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      )}
 
       <FormField
         control={form.control}
         name="phone"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Telefon Raqam</FormLabel>
+            <FormLabel isRequired>Telefon Raqam</FormLabel>
             <FormControl>
               <Input
                 placeholder="Telefon raqamini kiriting"
@@ -103,74 +112,76 @@ export const UserFormBasicInformation = ({ form }: IProps) => {
         control={form.control}
         name="photo"
         render={({ field }) => (
-          <FormItem>
-            <FormLabel>Rasm URL</FormLabel>
+          <FormItem className="col-span-2">
+            <FormLabel>Rasm </FormLabel>
             <FormControl>
-              <Input
-                placeholder="Rasm URL manzilini kiriting"
+              <ImageUploadSingle
                 {...field}
-                value={field.value || ""}
+                onChange={field.onChange}
+                value={field.value ?? undefined}
               />
             </FormControl>
             <FormMessage />
           </FormItem>
         )}
       />
-      <FormField
-        control={form.control}
-        name="roles"
-        render={({ field }) => (
-          <FormItem className="flex flex-col">
-            <FormLabel>Rollar</FormLabel>
-            <Popover open={rolesOpen} onOpenChange={setRolesOpen}>
-              <PopoverTrigger asChild>
-                <FormControl>
-                  <Button
-                    variant="outline"
-                    role="combobox"
-                    className={cn(
-                      "justify-between",
-                      !field.value?.length && "text-muted-foreground"
-                    )}
-                  >
-                    {field.value?.length
-                      ? field.value
-                          .map((value) => userRolesTranslations[value])
-                          .join(", ")
-                      : "Rollarni tanlang"}
-                    <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                  </Button>
-                </FormControl>
-              </PopoverTrigger>
-              <PopoverContent className="w-full p-0">
-                <Command>
-                  <CommandInput placeholder="Rol qidirish..." />
-                  <CommandEmpty>Hech qanday rol topilmadi.</CommandEmpty>
-                  <CommandGroup>
-                    {Object.values(UserRoles).map((role) => (
-                      <CommandItem
-                        key={role}
-                        onSelect={() => handleRoleToggle(role)}
-                      >
-                        <CheckIcon
-                          className={cn(
-                            "mr-2 h-4 w-4",
-                            field.value?.includes(role)
-                              ? "opacity-100"
-                              : "opacity-0"
-                          )}
-                        />
-                        {userRolesTranslations[role]}
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </Command>
-              </PopoverContent>
-            </Popover>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
+      {!hideRoles && (
+        <FormField
+          control={form.control}
+          name="roles"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel>Rollar</FormLabel>
+              <Popover open={rolesOpen} onOpenChange={setRolesOpen}>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant="outline"
+                      role="combobox"
+                      className={cn(
+                        "justify-between",
+                        !field.value?.length && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value?.length
+                        ? field.value
+                            .map((value) => userRolesTranslations[value])
+                            .join(", ")
+                        : "Rollarni tanlang"}
+                      <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-full p-0">
+                  <Command>
+                    <CommandInput placeholder="Rol qidirish..." />
+                    <CommandEmpty>Hech qanday rol topilmadi.</CommandEmpty>
+                    <CommandGroup>
+                      {Object.values(UserRoles).map((role) => (
+                        <CommandItem
+                          key={role}
+                          onSelect={() => handleRoleToggle(role)}
+                        >
+                          <CheckIcon
+                            className={cn(
+                              "mr-2 h-4 w-4",
+                              field.value?.includes(role)
+                                ? "opacity-100"
+                                : "opacity-0"
+                            )}
+                          />
+                          {userRolesTranslations[role]}
+                        </CommandItem>
+                      ))}
+                    </CommandGroup>
+                  </Command>
+                </PopoverContent>
+              </Popover>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      )}
     </Card>
   );
 };

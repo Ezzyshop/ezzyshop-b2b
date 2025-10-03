@@ -10,3 +10,4 @@ export * from "./branches.mutation";
 export * from "./transaction.mutation";
 export * from "./orders.mutation";
 export * from "./telegram.mutation";
+export * from "./staffs.mutation";

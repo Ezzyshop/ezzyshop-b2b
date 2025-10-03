@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button/button";
-import { cn, dashboardSidebarData } from "@/lib";
+import { cn } from "@/lib";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { getDefaultPage } from "@/lib/get-default-page";
+import { UserRoles } from "@/lib/enums";
 
 interface IProps {
   isDashboard?: boolean;
@@ -26,7 +28,7 @@ export default function NotFoundPage({ isDashboard = false }: IProps) {
         {!isDashboard && (
           <Button
             className="cursor-pointer"
-            onClick={() => navigate(dashboardSidebarData[0].url)}
+            onClick={() => navigate(getDefaultPage([UserRoles.Staff]))}
           >
             {t("common.back_to_site")}
           </Button>

@@ -13,7 +13,6 @@ import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { verifyOtpMutationFn } from "@/api/mutations";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { dashboardSidebarData } from "@/lib";
 import { useEffect } from "react";
 
 import {
@@ -23,6 +22,8 @@ import {
 } from "@/components/ui/input-otp";
 import { useTheme } from "@/contexts";
 import { getLogo } from "@/lib/get-logo";
+import { getDefaultPage } from "@/lib/get-default-page";
+import { UserRoles } from "@/lib/enums";
 
 export default function LoginPage({
   className,
@@ -30,6 +31,7 @@ export default function LoginPage({
 }: React.ComponentProps<"div">) {
   const { theme } = useTheme();
   const navigate = useNavigate();
+
   const form = useForm<ILoginForm>({
     mode: "onChange",
     resolver: joiResolver(loginSchema),
@@ -39,7 +41,7 @@ export default function LoginPage({
     mutationFn: verifyOtpMutationFn,
     onSuccess: () => {
       toast.success("Tizimga muvaffaqiyatli kirildi");
-      navigate(dashboardSidebarData[0].url);
+      navigate(getDefaultPage([UserRoles.Staff]));
     },
     onError: () => {
       form.resetField("otp");
@@ -74,7 +76,7 @@ export default function LoginPage({
           target="_blank"
           className="text-primary"
         >
-          {import.meta.env.VITE_PUBLIC_TELEGRAM_BOT}
+          @{import.meta.env.VITE_PUBLIC_TELEGRAM_BOT}
         </a>{" "}
         botiga kiring va 1 martalik kodingizni oling.
       </p>
