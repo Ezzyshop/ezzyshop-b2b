@@ -37,6 +37,7 @@ export const UserEditPage = () => {
       confirm_password: "",
       photo: user.data.photo,
       roles: user.data.roles,
+      status: user.data.status,
     };
   }, [user]);
 

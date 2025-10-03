@@ -76,7 +76,7 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
 
         <ImageUploadSingle
           value={form.watch("main_image")}
-          onChange={(value) => form.setValue("main_image", value)}
+          onChange={(value) => form.setValue("main_image", value || "")}
           title={t("dashboard.products.main_image")}
           description={t("dashboard.products.main_image_description")}
           error={form.formState.errors.main_image?.message}
