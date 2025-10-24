@@ -49,15 +49,11 @@ export const dashboardRoutes = [
     roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
     icon: Package2,
     title: "sidebar.dashboard.orders",
-    children: [
-      {
-        path: ":orderId",
-        element: lazy(
-          () => import("@/features/dashboard/orders/pages/order.page")
-        ),
-        roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
-      },
-    ],
+  },
+  {
+    path: "/orders/:orderId",
+    element: lazy(() => import("@/features/dashboard/orders/pages/order.page")),
+    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
   },
   {
     path: "/delivery-methods",

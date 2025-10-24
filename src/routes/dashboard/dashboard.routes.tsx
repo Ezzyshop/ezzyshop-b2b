@@ -16,19 +16,7 @@ export const DashboardRoutes = () => {
                 {<route.element />}
               </ProtectedRoute>
             }
-          >
-            {route.children?.map((child) => (
-              <Route
-                key={child.path}
-                path={child.path}
-                element={
-                  <ProtectedRoute roles={child.roles}>
-                    {<child.element />}
-                  </ProtectedRoute>
-                }
-              />
-            ))}
-          </Route>
+          />
         ))}
       </Routes>
     </DashboardLayout>
