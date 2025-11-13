@@ -87,6 +87,7 @@ export interface IOrderProduct {
   quantity: number;
   total_price: number;
   variant?: {
+    images: string[];
     attributes: Record<string, string>;
     name: {
       uz: string;
