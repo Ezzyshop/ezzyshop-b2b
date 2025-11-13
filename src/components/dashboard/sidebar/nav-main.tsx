@@ -21,7 +21,7 @@ export function NavMain() {
       <SidebarMenu>
         {dashboardRoutes.map((item) => {
           const hasAccess = item.roles.some((role) =>
-            user.roles.includes(role)
+            user.shops[0].roles.includes(role)
           );
 
           const path = `/dashboard${item.path}`;

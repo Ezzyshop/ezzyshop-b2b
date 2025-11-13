@@ -11,7 +11,7 @@ interface IProps {
 export const ProtectedRoute = ({ roles, children }: IProps) => {
   const { user } = useUserContext();
 
-  const hasAccessToPage = roles.some((role) => user.roles.includes(role));
+  const hasAccessToPage = roles.some((role) => user.shops[0].roles.includes(role));
 
   if (!hasAccessToPage) {
     return <Navigate to="/not-found" />;
