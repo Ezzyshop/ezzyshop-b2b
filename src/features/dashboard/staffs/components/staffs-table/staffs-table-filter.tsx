@@ -19,7 +19,7 @@ export const StaffsTableFilters = ({
   const debouncedSetQueryParams = useDebounce(value, 500);
 
   useEffect(() => {
-    setQueryParams({ ...getQueryParams(), search: debouncedSetQueryParams });
+    setQueryParams({ ...getQueryParams(), search: debouncedSetQueryParams || undefined });
   }, [debouncedSetQueryParams]);
 
   return (
