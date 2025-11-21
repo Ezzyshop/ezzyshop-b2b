@@ -12,11 +12,11 @@ export const ShopContextProvider = ({ children }: PropsWithChildren) => {
 
   const hasUserShop = user.shops.length;
   const [activeShop, setActiveShop] = useState<IUserShop | null>(
-    user.shops[0].shop
+    user.shops[0]?.shop || null
   );
 
   const shop = useQuery({
-    queryKey: ["shop", activeShop?._id, user.shops[0].shop._id],
+    queryKey: ["shop", activeShop?._id, activeShop?._id],
     queryFn: () => getByShopByIdQueryFn(activeShop!._id),
     enabled: Boolean(activeShop?._id),
   });
