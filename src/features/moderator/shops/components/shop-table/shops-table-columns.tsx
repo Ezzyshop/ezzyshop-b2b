@@ -12,16 +12,16 @@ export const shopColumns: ColumnDef<IShop>[] = [
   {
     accessorKey: "owner.full_name",
     size: 120,
-    header: "Biznes egasi",
+    header: "Do'kon egasi",
   },
   {
     accessorKey: "name",
-    header: "Biznes nomi",
+    header: "Do'kon nomi",
     size: 160,
   },
   {
     accessorKey: "business_type",
-    header: "Biznes turi",
+    header: "Do'kon turi",
     size: 120,
     cell: ({ row }) => {
       return <div>{shopTypesTranslations[row.original.business_type]}</div>;

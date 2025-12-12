@@ -57,8 +57,8 @@ export const RegisterShopContextProvider = ({
           await mutateAsync(data);
         },
         {
-          loading: "Kompaniya yaratilmoqda...",
-          success: "Kompaniya yaratildi",
+          loading: "Do'kon yaratilmoqda...",
+          success: "Do'kon yaratildi",
         }
       );
     },

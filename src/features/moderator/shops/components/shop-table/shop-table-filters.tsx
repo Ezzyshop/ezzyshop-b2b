@@ -28,7 +28,10 @@ export const ShopTableFilters = ({
   const debouncedSetQueryParams = useDebounce(value, 500);
 
   useEffect(() => {
-    setQueryParams({ ...getQueryParams(), search: debouncedSetQueryParams || undefined });
+    setQueryParams({
+      ...getQueryParams(),
+      search: debouncedSetQueryParams || undefined,
+    });
   }, [debouncedSetQueryParams]);
 
   const [currencies, plans] = useQueries({
@@ -107,7 +110,7 @@ export const ShopTableFilters = ({
             setQueryParams({ ...getQueryParams(), businessType: "" })
           }
         >
-          <SelectValue placeholder="Biznes turi" />
+          <SelectValue placeholder="Do'kon turi" />
         </SelectTrigger>
         <SelectContent>
           {Object.values(BusinessType).map((platform) => (

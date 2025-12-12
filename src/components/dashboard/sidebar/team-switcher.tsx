@@ -91,7 +91,7 @@ export function TeamSwitcher() {
                   <Plus className="size-4" />
                 </div>
                 <div className="text-muted-foreground font-medium">
-                  Biznes qo'shish
+                  Do'kon qo'shish
                 </div>
               </Link>
             </DropdownMenuItem>

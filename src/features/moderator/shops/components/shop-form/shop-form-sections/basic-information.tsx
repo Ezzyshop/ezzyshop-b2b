@@ -67,9 +67,9 @@ export const ShopFormBasicInformation = ({ form, isEdit }: IProps) => {
         name="name"
         render={({ field }) => (
           <FormItem>
-            <FormLabel isRequired>Biznes nomi</FormLabel>
+            <FormLabel isRequired>Do'kon nomi</FormLabel>
             <FormControl>
-              <Input placeholder="Biznes nomini kiriting" {...field} />
+              <Input placeholder="Do'kon nomini kiriting" {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -81,7 +81,7 @@ export const ShopFormBasicInformation = ({ form, isEdit }: IProps) => {
         name="business_type"
         render={({ field }) => (
           <FormItem>
-            <FormLabel isRequired>Biznes turi</FormLabel>
+            <FormLabel isRequired>Do'kon turi</FormLabel>
             <FormControl>
               <Select
                 disabled={isEdit}
@@ -89,7 +89,7 @@ export const ShopFormBasicInformation = ({ form, isEdit }: IProps) => {
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Biznes turini tanlang" />
+                  <SelectValue placeholder="Do'kon turini tanlang" />
                 </SelectTrigger>
                 <SelectContent>
                   {Object.values(BusinessType).map((type) => (
@@ -183,12 +183,12 @@ export const ShopFormBasicInformation = ({ form, isEdit }: IProps) => {
         name="description"
         render={({ field }) => (
           <FormItem className="col-span-2">
-            <FormLabel>Biznes haqida</FormLabel>
+            <FormLabel>Do'kon haqida</FormLabel>
             <FormControl>
               <textarea
                 {...field}
                 value={field.value || ""}
-                placeholder="Biznes haqida ma'lumotlarni kiriting"
+                placeholder="Do'kon haqida ma'lumotlarni kiriting"
                 className="flex min-h-[80px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
               />
             </FormControl>
