@@ -21,7 +21,7 @@ export const RecentSales = () => {
   };
 
   const { data, isLoading } = useQuery({
-    queryKey: ["orders", shop._id],
+    queryKey: ["orders", shop._id, params],
     queryFn: () => getOrdersQueryFn(shop._id, params),
     enabled: !!shop?._id,
   });
