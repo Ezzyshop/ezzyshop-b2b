@@ -20,7 +20,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { useTheme } from "@/contexts";
+import { Theme, useTheme } from "@/contexts";
 import { getLogo } from "@/lib/get-logo";
 import { getDefaultPage } from "@/lib/get-default-page";
 import { UserRoles } from "@/lib/enums";
@@ -68,7 +68,11 @@ export default function LoginPage({
       )}
       {...props}
     >
-      <img src={getLogo(theme)} alt="logo" className="w-[320px]" />
+      <img
+        src={getLogo(theme.toLowerCase() as Theme)}
+        alt="logo"
+        className="w-[320px]"
+      />
       <h2 className="text-3xl font-semibold mt-5 md:mt-8">Kodni kiriting</h2>
       <p className="text-md text-foreground/80 mt-5 max-w-md text-center">
         <a
