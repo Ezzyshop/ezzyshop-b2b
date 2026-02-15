@@ -45,7 +45,7 @@ export const OrderItems = ({ order }: IProps) => {
                   <TableCell>
                     <div className="flex items-center gap-3">
                       <img
-                        src={p.product.images?.[0]}
+                        src={p.variant?.images?.[0]}
                         alt={
                           p.product.name[
                             i18n.language as keyof typeof p.product.name

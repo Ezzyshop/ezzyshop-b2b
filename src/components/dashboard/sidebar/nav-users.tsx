@@ -71,7 +71,7 @@ export function NavUser() {
             </DropdownMenuLabel>
             <DropdownMenuGroup
               className={cn(
-                !user.roles.includes(UserRoles.SuperAdmin) && "hidden"
+                !user.shops[0].roles.includes(UserRoles.SuperAdmin) && "hidden"
               )}
             >
               <DropdownMenuItem asChild>

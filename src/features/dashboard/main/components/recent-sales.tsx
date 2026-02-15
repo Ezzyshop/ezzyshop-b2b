@@ -7,6 +7,7 @@ import { AvatarFallback } from "@radix-ui/react-avatar";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { OrderStatus } from "../../orders/utils/order.enum";
 
 export const RecentSales = () => {
   const { t } = useTranslation();
@@ -16,10 +17,11 @@ export const RecentSales = () => {
     limit: 5,
     sortBy: "createdAt",
     sortOrder: "desc",
+    status: OrderStatus.Completed,
   };
 
   const { data, isLoading } = useQuery({
-    queryKey: ["orders", shop._id],
+    queryKey: ["orders", shop._id, params],
     queryFn: () => getOrdersQueryFn(shop._id, params),
     enabled: !!shop?._id,
   });

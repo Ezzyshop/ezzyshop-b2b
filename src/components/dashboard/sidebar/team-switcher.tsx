@@ -60,25 +60,28 @@ export function TeamSwitcher() {
               Teams
             </DropdownMenuLabel>
             {user.shops
-              .filter((shop) => shop._id !== activeShop._id)
-              .map((shop) => (
+              .filter((shop) => shop.shop._id !== activeShop._id)
+              .map(({ shop: currentShop }) => (
                 <DropdownMenuItem
-                  key={shop._id}
-                  onClick={() => setActiveShop(shop)}
+                  key={currentShop._id}
+                  onClick={() => {
+                    setActiveShop(currentShop);
+                    window.location.reload();
+                  }}
                   className="gap-2 p-2"
                 >
                   <div className="flex size-6 items-center justify-center rounded-md border">
                     <Avatar>
                       <AvatarImage
-                        src={shop.logo ?? ""}
+                        src={currentShop.logo ?? ""}
                         className="rounded-full object-cover"
                       />
                       <AvatarFallback>
-                        {shop.name.charAt(0).toUpperCase()}
+                        {currentShop.name.charAt(0).toUpperCase()}
                       </AvatarFallback>
                     </Avatar>
                   </div>
-                  {shop.name}
+                  {currentShop.name}
                 </DropdownMenuItem>
               ))}
             <DropdownMenuSeparator />
@@ -88,7 +91,7 @@ export function TeamSwitcher() {
                   <Plus className="size-4" />
                 </div>
                 <div className="text-muted-foreground font-medium">
-                  Biznes qo'shish
+                  Do'kon qo'shish
                 </div>
               </Link>
             </DropdownMenuItem>

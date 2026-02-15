@@ -86,7 +86,7 @@ export const ShopForm = ({ initialValue, onSubmit, isLoading }: IProps) => {
             className="w-full cursor-pointer"
             disabled={isLoading || !form.formState.isDirty}
           >
-            {initialValue ? "Biznesni tahrirlash" : "Biznes yaratish"}
+            {initialValue ? "Do'konni tahrirlash" : "Do'kon yaratish"}
           </Button>
         </div>
       </form>

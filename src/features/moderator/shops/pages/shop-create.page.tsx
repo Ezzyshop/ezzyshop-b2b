@@ -11,7 +11,7 @@ export const ShopCreatePage = () => {
   const shopCreateMutation = useMutation({
     mutationFn: (data: IShopForm) => createShopMutationFn(data),
     onSuccess: () => {
-      toast.success("Biznes yaratildi");
+      toast.success("Do'kon yaratildi");
       navigate("/moderator/shops");
       queryClient.invalidateQueries({ queryKey: ["shops"] });
     },

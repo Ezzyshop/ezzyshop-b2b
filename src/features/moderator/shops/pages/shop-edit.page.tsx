@@ -20,7 +20,7 @@ export const ShopEditPage = () => {
   const updateShopMutation = useMutation({
     mutationFn: (data: IShopForm) => updateShopMutationFn(id!, data),
     onSuccess: () => {
-      toast.success("Biznes yangilandi");
+      toast.success("Do'kon yangilandi");
       navigate("/moderator/shops");
       queryClient.invalidateQueries({ queryKey: ["shop", id] });
     },

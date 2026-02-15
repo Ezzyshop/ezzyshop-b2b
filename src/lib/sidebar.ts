@@ -18,7 +18,7 @@ export const moderatorSidebarData = [
     icon: UsersIcon,
   },
   {
-    title: "Bizneslar",
+    title: "Do'konlar",
     url: "/moderator/shops",
     icon: BotIcon,
   },

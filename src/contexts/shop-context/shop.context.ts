@@ -1,10 +1,10 @@
-import { IUser } from "@/lib/interfaces";
+import { IUserShop } from "@/lib/interfaces";
 import { IShop } from "@/features/moderator/shops/utils";
 import { createContext, useContext } from "react";
 
 interface IShopContext {
-  activeShop: IUser["shops"][number];
-  setActiveShop: (shop: IUser["shops"][number]) => void;
+  activeShop: IUserShop;
+  setActiveShop: (shop: IUserShop) => void;
   shop: IShop;
 }
 

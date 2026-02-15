@@ -179,7 +179,7 @@ export const MultipleImageUpload = ({
     }
 
     return (
-      <div className="grid grid-cols-7 gap-2">
+      <div className="grid grid-cols-7 gap-20">
         {value.map((image, index) => (
           <div key={index} className="relative w-[96px] h-[96px] ">
             <img

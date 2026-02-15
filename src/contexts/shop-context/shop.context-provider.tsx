@@ -5,18 +5,18 @@ import { useQuery } from "@tanstack/react-query";
 import { getByShopByIdQueryFn } from "@/api/queries";
 import { LoaderWithOverlay } from "@/components/loaders/global-loader";
 import { ShopContext } from "./shop.context";
-import { IUser } from "@/lib/interfaces";
+import { IUserShop } from "@/lib/interfaces";
 
 export const ShopContextProvider = ({ children }: PropsWithChildren) => {
   const { user } = useUserContext();
 
   const hasUserShop = user.shops.length;
-  const [activeShop, setActiveShop] = useState<IUser["shops"][number]>(
-    user.shops[0]
+  const [activeShop, setActiveShop] = useState<IUserShop | null>(
+    user.shops[0]?.shop || null
   );
 
   const shop = useQuery({
-    queryKey: ["shop", activeShop?._id],
+    queryKey: ["shop", activeShop?._id, activeShop?._id],
     queryFn: () => getByShopByIdQueryFn(activeShop!._id),
     enabled: Boolean(activeShop?._id),
   });

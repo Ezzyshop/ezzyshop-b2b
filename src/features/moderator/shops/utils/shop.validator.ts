@@ -22,8 +22,8 @@ export const shopFields: Record<
     .valid(...Object.values(BusinessType))
     .required()
     .messages({
-      "string.empty": "Biznes turi kiritilishi shart",
-      "any.only": "Noto'g'ri biznes turi",
+      "string.empty": "Do'kon turi kiritilishi shart",
+      "any.only": "Noto'g'ri Do'kon turi",
     }),
   platform: Joi.string()
     .valid(...Object.values(ShopPlatform))

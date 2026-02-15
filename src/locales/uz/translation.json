@@ -71,14 +71,14 @@
       "tip_5": "Tokendan nusxa oling va uni <span class=\"text-blue-500 cursor-pointer hover:underline\">yuqoridagi</span> maydonga joylashtiring"
     },
     "create_shop": {
-      "create_shop": "Kompaniya yaratish",
-      "create_shop_description": "Kompaniya yaratish uchun ma'lumotlarni kiriting",
-      "shop_name": "Kompaniya nomi",
-      "shop_name_placeholder": "Kompaniya nomini kiriting",
-      "shop_description": "Kompaniya haqida",
-      "shop_description_placeholder": "Kompaniya tavsifini kiriting",
-      "shop_address": "Kompaniya manzili",
-      "shop_address_description": "Kompaniya manzilini kiriting yoki xaritadan tanlang",
+      "create_shop": "Do'kon yaratish",
+      "create_shop_description": "Do'kon yaratish uchun ma'lumotlarni kiriting",
+      "shop_name": "Do'kon nomi",
+      "shop_name_placeholder": "Do'kon nomini kiriting",
+      "shop_description": "Do'kon haqida",
+      "shop_description_placeholder": "Do'kon tavsifini kiriting",
+      "shop_address": "Do'kon manzili",
+      "shop_address_description": "Do'kon manzilini kiriting yoki xaritadan tanlang",
       "shop_address_placeholder": "Manzilni kiriting",
       "currency": "Valyuta",
       "currency_placeholder": "Valyuta tanlang",
@@ -86,12 +86,12 @@
       "main_language": "Asosiy til"
     },
     "create_success": {
-      "title": "Kompaniya muvaffaqiyatli yaratildi! 🎉",
-      "description": "Kompaniya muvaffaqiyatli yaratildi va sotuvga tayyor!",
+      "title": "Do'kon muvaffaqiyatli yaratildi! 🎉",
+      "description": "Do'kon muvaffaqiyatli yaratildi va sotuvga tayyor!",
       "button_text": "Sotuvga o'tish",
-      "about_shop": "Kompaniya haqida",
-      "shop_name": "Kompaniya nomi",
-      "shop_id": "Kompaniya ID",
+      "about_shop": "Do'kon haqida",
+      "shop_name": "Do'kon nomi",
+      "shop_id": "Do'kon ID",
       "tips_title": "Maslahatlar",
       "tips": {
         "tip_1": "Mahsulot qo'shing",
@@ -316,12 +316,12 @@
     "settings": {
       "basic_information": {
         "title": "Asosiy ma'lumotlar",
-        "name": "Biznes nomi",
-        "enter_name": "Biznes nomini kiriting",
-        "logo": "Biznes logotipi",
-        "enter_logo": "Biznes logotipini kiriting",
-        "description": "Biznes tavsifi",
-        "enter_description": "Biznes tavsifini kiriting",
+        "name": "Do'kon nomi",
+        "enter_name": "Do'kon nomini kiriting",
+        "logo": "Do'kon logotipi",
+        "enter_logo": "Do'kon logotipini kiriting",
+        "description": "Do'kon tavsifi",
+        "enter_description": "Do'kon tavsifini kiriting",
         "currency": "Valyuta",
         "enter_currency": "Valyuta tanlang",
         "languages": "Tilni tanlang",
@@ -351,7 +351,7 @@
         "telegram-chat-id": "Telegram guruh ID'si",
         "telegram-chat-id-placeholder": "Telegram guruh ID'sini kiriting",
         "instructions": {
-          "telegram": "Iltimos, guruhingizga {{ bot }} botini qo'shing va /id buyrug'ini guruhga yuboring. Bot sizga guruh ID'sini yuboradi. Shundan so'ng siz yangi buyurtmalar haqida bildirishnoma olasiz"
+          "telegram": "Iltimos, guruhingizga @{{ bot }} botini qo'shing va /id buyrug'ini guruhga yuboring. Bot sizga guruh ID'sini yuboradi. Shundan so'ng siz yangi buyurtmalar haqida bildirishnoma olasiz"
         }
       },
       "address": {

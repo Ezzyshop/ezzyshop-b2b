@@ -42,6 +42,7 @@ export default function LoginPage({
     onSuccess: () => {
       toast.success("Tizimga muvaffaqiyatli kirildi");
       navigate(getDefaultPage([UserRoles.Staff]));
+      window.location.reload();
     },
     onError: () => {
       form.resetField("otp");

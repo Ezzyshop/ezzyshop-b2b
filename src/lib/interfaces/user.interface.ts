@@ -10,13 +10,8 @@ export interface IUser {
   roles: UserRoles[];
   shops: [
     {
-      _id: string;
-      name: string;
-      logo: string | null;
-      plan: {
-        _id: string;
-        name: string;
-      };
+      roles: UserRoles[];
+      shop: IUserShop;
     }
   ];
   createdAt: string;
@@ -29,3 +24,13 @@ export type IUserForm = Omit<
   IUser,
   "createdAt" | "updatedAt" | "_id" | "__v" | "shops"
 > & { confirm_password: string };
+
+export interface IUserShop {
+  _id: string;
+  name: string;
+  logo: string | null;
+  plan: {
+    _id: string;
+    name: string;
+  };
+}
