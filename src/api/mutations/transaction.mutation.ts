@@ -1,4 +1,7 @@
-import { TransactionChequeImageStatus } from "@/features/dashboard/orders/utils/transaction.enum";
+import {
+  TransactionChequeImageStatus,
+  TransactionStatus,
+} from "@/features/dashboard/orders/utils/transaction.enum";
 import { api } from "../axios";
 
 export const updateTransactionChequeStatusMutationFn = (
@@ -8,5 +11,15 @@ export const updateTransactionChequeStatusMutationFn = (
   status: TransactionChequeImageStatus
 ) =>
   api.patch(`/transactions/${shopId}/${transactionId}/${chequeId}/status`, {
+    status,
+  });
+
+export const updateTransactionStatusMutationFn = (
+  shopId: string,
+  orderId: string,
+  transactionId: string,
+  status: TransactionStatus
+) =>
+  api.patch(`/transactions/${shopId}/orders/${orderId}/transactions/${transactionId}/status`, {
     status,
   });

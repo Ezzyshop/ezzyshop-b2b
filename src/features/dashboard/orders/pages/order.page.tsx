@@ -14,6 +14,7 @@ import { OrderNote } from "../components/order-page/order-note";
 import { OrderAddress } from "../components/order-page/order-address";
 import { OrderCheques } from "../components/order-page/order-cheques/order-cheques";
 import { useTranslation } from "react-i18next";
+import { OrderTransactionStatus } from "../components/order-page/order-transaction-status";
 
 export const OrderPage = () => {
   const { orderId } = useParams();
@@ -54,6 +55,7 @@ export const OrderPage = () => {
       <div className="space-y-4 md:space-y-6">
         <OrderSummary order={order} />
         <OrderNote order={order} />
+        <OrderTransactionStatus order={order} />
         <OrderCheques order={order} />
         <OrderCustomer order={order} />
         <OrderAddress order={order} />

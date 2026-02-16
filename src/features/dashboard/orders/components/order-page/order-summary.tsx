@@ -41,14 +41,14 @@ export const OrderSummary = ({ order }: IProps) => {
             {subtotal.toLocaleString()} {currency}
           </span>
         </div>
-        {discountPrice && (
+        {discountPrice ? (
           <div className="flex items-center justify-between text-sm">
             <span>{t("dashboard.orders.summary.discount")}</span>
             <span className="text-destructive">
               -{discountPrice.toLocaleString()} {currency}
             </span>
           </div>
-        )}
+        ) : null}
 
         <div className="flex items-center justify-between text-sm">
           <span>{t("dashboard.orders.summary.shipping")}</span>

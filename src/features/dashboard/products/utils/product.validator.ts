@@ -12,9 +12,9 @@ export const createProductSchema = Joi.object({
   }).required(),
 
   description: Joi.object({
-    uz: Joi.string().max(500).optional(),
-    en: Joi.string().max(500).optional(),
-    ru: Joi.string().max(500).optional(),
+    uz: Joi.string().max(500).optional().allow(null),
+    en: Joi.string().max(500).optional().allow(null),
+    ru: Joi.string().max(500).optional().allow(null),
   }).optional(),
 
   main_image: Joi.string().uri().required().messages({

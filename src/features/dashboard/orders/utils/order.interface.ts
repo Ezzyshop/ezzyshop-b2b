@@ -82,7 +82,7 @@ export interface IOrderProduct {
       ru: string;
       en: string;
     };
-    images: string[];
+    main_image: string;
   };
   quantity: number;
   total_price: number;
