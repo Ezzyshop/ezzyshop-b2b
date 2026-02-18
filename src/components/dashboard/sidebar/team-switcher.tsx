@@ -66,7 +66,6 @@ export function TeamSwitcher() {
                   key={currentShop._id}
                   onClick={() => {
                     setActiveShop(currentShop);
-                    window.location.reload();
                   }}
                   className="gap-2 p-2"
                 >
