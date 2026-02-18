@@ -14,7 +14,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { moderatorSidebarData } from "@/lib";
 import { ModeratorSidebarUser } from "./moderator-sidebar-user";
 import { getLogo } from "@/lib/get-logo";
-import { useTheme } from "@/contexts";
+import { Theme, useTheme } from "@/contexts";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const location = useLocation();
@@ -25,7 +25,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <SidebarHeader className="flex items-center justify-center p-4">
           <img
-            src={getLogo(theme)}
+            src={getLogo(theme.toLowerCase() as Theme)}
             alt="logo"
             className=""
           />
