@@ -472,7 +472,8 @@
         "name": "Mijoz ismi",
         "phone": "Mijoz telefon raqami"
       },
-      "status_information": "Buyurtma holati"
+      "status_information": "Buyurtma holati",
+      "transaction_status": "To'lov holati"
     },
     "telegram": {
       "title": "Telegram botni ulash",

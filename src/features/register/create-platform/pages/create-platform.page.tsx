@@ -91,7 +91,11 @@ export const CreateTelegramPage = () => {
         </div>
 
         <div className="col-span-1 md:col-span-2 flex justify-end">
-          <Button type="submit" className="cursor-pointer">
+          <Button
+            type="submit"
+            disabled={createTelegramBotMutation.isPending}
+            className="cursor-pointer"
+          >
             {t("common.next")}
           </Button>
         </div>

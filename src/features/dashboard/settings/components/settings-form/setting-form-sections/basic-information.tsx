@@ -125,7 +125,7 @@ export const SettingFormBasicInformation = ({ form }: IProps) => {
             return (
               <FormItem>
                 <FormLabel>
-                  {t("dashboard.settings.basic_information.logo")}
+                  {t("dashboard.settings.basic_information.logo")} (600x600)
                 </FormLabel>
                 <FormControl>
                   <ImageUploadSingle

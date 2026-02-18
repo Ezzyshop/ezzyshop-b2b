@@ -68,6 +68,20 @@ export const ProductFormSettings = ({ form }: IProps) => {
                 type="number"
                 placeholder={t("dashboard.products.delivery_time_placeholder")}
                 {...field}
+                onBlur={(e) => {
+                  if (e.target.value === "") {
+                    field.onChange(null);
+                  } else {
+                    field.onChange(Number(e.target.value));
+                  }
+                }}
+                onChange={(e) => {
+                  if (e.target.value === "") {
+                    field.onChange(null);
+                  } else {
+                    field.onChange(Number(e.target.value));
+                  }
+                }}
               />
             </FormControl>
             <FormMessage />

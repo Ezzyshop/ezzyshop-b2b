@@ -32,7 +32,7 @@ interface YandexDragEvent {
 export const YandexMap = ({
   className,
   onLocationSelect,
-  initialCoordinates = [41.2995, 69.2401],
+  initialCoordinates = [38.8612, 65.7847],
   height = "200px",
   width = "100%",
 }: IProps) => {
