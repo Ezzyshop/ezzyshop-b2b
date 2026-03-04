@@ -167,30 +167,32 @@ export const TelegramForm = ({
           <CreateTelegramInstruction />
         </div>
 
-        <Button
-          className={cn(initialValues ? "col-span-1" : "md:col-span-2")}
-          disabled={
-            !form.formState.isValid ||
-            createTelegramMutation.isPending ||
-            updateTelegramMutation.isPending
-          }
-        >
-          {t("common.save")}
-        </Button>
-        {initialValues && (
+        <div className="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
           <Button
-            variant="destructive"
+            className={cn(initialValues ? "col-span-1" : "md:col-span-2")}
             disabled={
-              deleteTelegramMutation.isPending ||
+              !form.formState.isValid ||
               createTelegramMutation.isPending ||
               updateTelegramMutation.isPending
             }
-            type="button"
-            onClick={() => deleteTelegramMutation.mutate()}
           >
-            {t("common.delete")}
+            {t("common.save")}
           </Button>
-        )}
+          {initialValues && (
+            <Button
+              variant="destructive"
+              disabled={
+                deleteTelegramMutation.isPending ||
+                createTelegramMutation.isPending ||
+                updateTelegramMutation.isPending
+              }
+              type="button"
+              onClick={() => deleteTelegramMutation.mutate()}
+            >
+              {t("common.delete")}
+            </Button>
+          )}
+        </div>
       </form>
     </Form>
   );
