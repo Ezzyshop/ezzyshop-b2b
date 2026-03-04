@@ -17,6 +17,14 @@ import { useRegisterShopContext } from "@/contexts";
 import { createTelegramMutationFn } from "@/api/mutations";
 import { createTelegramResolver } from "@/features/dashboard/telegram/utils/telegram.validator";
 import { CreateTelegramInstruction } from "../components/instruction";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { TelegramBusinessType } from "@/features/dashboard/telegram/utils/telegram.enum";
 
 export const CreateTelegramPage = () => {
   const { createdShop } = useRegisterShopContext();
@@ -32,6 +40,9 @@ export const CreateTelegramPage = () => {
 
   const form = useForm<IShopTelegramForm>({
     resolver: joiResolver(createTelegramResolver),
+    defaultValues: {
+      business_type: TelegramBusinessType.Market,
+    },
   });
 
   const handleSubmit = (data: IShopTelegramForm) => {
@@ -41,9 +52,38 @@ export const CreateTelegramPage = () => {
   return (
     <Form {...form}>
       <form
-        className="grid grid-cols-1 md:grid-cols-2 gap-4"
+        className="grid grid-cols-1 md:grid-cols-3 gap-4"
         onSubmit={form.handleSubmit(handleSubmit)}
       >
+        <FormField
+          control={form.control}
+          name="business_type"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel isRequired>Do'kon turi</FormLabel>
+              <FormControl>
+                <Select
+                  {...field}
+                  onValueChange={field.onChange}
+                  value={field.value}
+                >
+                  <SelectTrigger>
+                    {" "}
+                    <SelectValue placeholder="Do'kon turini tanlang" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value={TelegramBusinessType.Market}>
+                      {t("dashboard.telegram.form.business-type.market")}
+                    </SelectItem>
+                    <SelectItem value={TelegramBusinessType.Restaurant}>
+                      {t("dashboard.telegram.form.business-type.restaurant")}
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              </FormControl>
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="token"
@@ -86,7 +126,7 @@ export const CreateTelegramPage = () => {
           )}
         />
 
-        <div className="col-span-1 md:col-span-2">
+        <div className="col-span-1 md:col-span-3">
           <CreateTelegramInstruction />
         </div>
 

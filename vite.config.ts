@@ -11,7 +11,7 @@ export default defineConfig({
       process.env.NODE_ENV === "development"
         ? {
             "/api": {
-              target: "http://localhost:9100/v1",
+              target: "http://192.168.0.215:9100/v1",
               changeOrigin: true,
               rewrite: (path) => path.replace(/^\/api/, ""),
             },

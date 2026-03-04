@@ -22,6 +22,14 @@ import { useShopContext } from "@/contexts";
 import { toast } from "sonner";
 import { cn } from "@/lib";
 import { CreateTelegramInstruction } from "@/features/register/create-platform/components/instruction";
+import { TelegramBusinessType } from "../utils/telegram.enum";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface IProps {
   initialValues?: TTelegramForm;
@@ -67,6 +75,7 @@ export const TelegramForm = ({
       form.reset({
         menu_text: undefined,
         token: undefined,
+        business_type: TelegramBusinessType.Market,
       });
     },
   });
@@ -82,7 +91,7 @@ export const TelegramForm = ({
   return (
     <Form {...form}>
       <form
-        className="grid grid-cols-1 md:grid-cols-2 gap-4"
+        className="grid grid-cols-1 md:grid-cols-3 gap-4"
         onSubmit={form.handleSubmit(handleSubmitForm)}
       >
         <FormField
@@ -107,6 +116,36 @@ export const TelegramForm = ({
 
         <FormField
           control={form.control}
+          name="business_type"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel isRequired>Do'kon turi</FormLabel>
+              <FormControl>
+                <Select
+                  {...field}
+                  onValueChange={field.onChange}
+                  value={field.value}
+                >
+                  <SelectTrigger>
+                    {" "}
+                    <SelectValue placeholder="Do'kon turini tanlang" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value={TelegramBusinessType.Market}>
+                      {t("dashboard.telegram.form.business-type.market")}
+                    </SelectItem>
+                    <SelectItem value={TelegramBusinessType.Restaurant}>
+                      {t("dashboard.telegram.form.business-type.restaurant")}
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
           name="token"
           render={({ field }) => (
             <FormItem>
@@ -124,7 +163,7 @@ export const TelegramForm = ({
           )}
         />
 
-        <div className="md:col-span-2">
+        <div className="md:col-span-3">
           <CreateTelegramInstruction />
         </div>
 

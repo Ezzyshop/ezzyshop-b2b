@@ -483,7 +483,11 @@
         "menu-text-placeholder": "Tugma nomini kiriting",
         "token": "Token",
         "token-placeholder": "Tokenni kiriting",
-        "success": "Muvaffaqiyatli"
+        "success": "Muvaffaqiyatli",
+        "business-type": {
+          "market": "Do'kon",
+          "restaurant": "Restoran"
+        }
       }
     },
     "staffs": {

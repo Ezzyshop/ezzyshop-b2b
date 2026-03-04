@@ -27,6 +27,7 @@ export const TelegramPage = () => {
       return {
         menu_text: data.menu_text,
         token: data.token,
+        business_type: data.business_type,
       };
     }
   }, [data]);

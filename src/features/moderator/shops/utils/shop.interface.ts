@@ -5,6 +5,7 @@ import {
   ShopPlatform,
   ShopStatus,
 } from "./shop.enum";
+import { TelegramBusinessType } from "@/features/dashboard/telegram/utils/telegram.enum";
 
 export interface IShop {
   _id: string;
@@ -111,4 +112,5 @@ export interface IShopUpdateForm {
 export interface IShopTelegramForm {
   token: string;
   menu_text: string;
+  business_type: TelegramBusinessType;
 }
