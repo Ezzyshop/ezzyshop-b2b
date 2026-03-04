@@ -130,7 +130,7 @@ export const CreateTelegramPage = () => {
           <CreateTelegramInstruction />
         </div>
 
-        <div className="col-span-1 md:col-span-2 flex justify-end">
+        <div className="col-span-1 md:col-span-3 flex justify-end">
           <Button
             type="submit"
             disabled={createTelegramBotMutation.isPending}
