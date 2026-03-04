@@ -5,7 +5,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { useUserContext } from "@/contexts";
+import { useShopContext, useUserContext } from "@/contexts";
 import { dashboardRoutes } from "@/routes/dashboard/dashboard.routes";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
@@ -13,7 +13,14 @@ import { Link, useLocation } from "react-router-dom";
 export function NavMain() {
   const { t } = useTranslation();
   const { user } = useUserContext();
+  const { activeShop } = useShopContext();
   const pathname = useLocation();
+
+  const userShop = user.shops.find((shop) => shop.shop._id === activeShop._id);
+
+  if (!userShop) {
+    return null;
+  }
 
   return (
     <SidebarGroup>
@@ -21,7 +28,7 @@ export function NavMain() {
       <SidebarMenu>
         {dashboardRoutes.map((item) => {
           const hasAccess = item.roles.some((role) =>
-            user.shops[0].roles.includes(role)
+            userShop.roles.includes(role)
           );
 
           const path = `/dashboard${item.path}`;
