@@ -39,7 +39,8 @@ export default function LoginPage({
 
   const { mutate } = useMutation({
     mutationFn: verifyOtpMutationFn,
-    onSuccess: () => {
+    onSuccess: (data) => {
+      localStorage.setItem("at", data.data.token);
       toast.success("Tizimga muvaffaqiyatli kirildi");
       navigate(getDefaultPage([UserRoles.Staff]));
       window.location.reload();
