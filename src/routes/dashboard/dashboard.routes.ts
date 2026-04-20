@@ -114,6 +114,18 @@ export const dashboardRoutes = [
     title: "sidebar.dashboard.telegram",
   },
   {
+    path: "/telegram-settings",
+    element: lazy(
+      () =>
+        import(
+          "@/features/dashboard/telegram-settings/pages/TelegramSettingsPage"
+        )
+    ),
+    roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+    icon: SendIcon,
+    title: "sidebar.dashboard.telegram-settings",
+  },
+  {
     icon: SettingsIcon,
     title: "sidebar.dashboard.settings",
     path: "/settings",

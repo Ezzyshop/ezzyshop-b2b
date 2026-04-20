@@ -11,3 +11,4 @@ export * from "./transaction.mutation";
 export * from "./orders.mutation";
 export * from "./telegram.mutation";
 export * from "./staffs.mutation";
+export * from "./bot-template.mutations";
