@@ -344,6 +344,14 @@
       "enter_name": "Enter branch name",
       "image": "Branch image",
       "enter_image": "Enter branch image"
+    },
+    "telegram-settings": {
+      "title": "Bot message settings",
+      "description": "Configure the message shown when a user taps /start in your bot",
+      "welcome-message": "Welcome message",
+      "welcome-message-placeholder": "e.g. Welcome! Thanks for visiting our store 🎉",
+      "menu-hint-text": "Hint text (optional)",
+      "menu-hint-text-placeholder": "e.g. Tap the button below to browse our store 👇"
     }
   },
   "table": {

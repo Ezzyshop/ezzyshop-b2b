@@ -490,6 +490,14 @@
         }
       }
     },
+    "telegram-settings": {
+      "title": "Bot xabarlari sozlamalari",
+      "description": "Foydalanuvchi /start bosganda ko'rinadigan xabarni sozlang",
+      "welcome-message": "Kutib olish xabari",
+      "welcome-message-placeholder": "Masalan: Xush kelibsiz! Do'konimizga tashrif buyurganingiz uchun rahmat 🎉",
+      "menu-hint-text": "Qo'shimcha matn (ixtiyoriy)",
+      "menu-hint-text-placeholder": "Masalan: Quyidagi tugmani bosib do'konimizni ko'ring 👇"
+    },
     "staffs": {
       "title": "Xodimlar",
       "create": "Xodim qo'shish",

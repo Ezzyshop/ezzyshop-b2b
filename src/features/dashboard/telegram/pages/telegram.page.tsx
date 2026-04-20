@@ -11,11 +11,13 @@ import { useShopContext } from "@/contexts";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { TelegramForm } from "../components/telegram-form";
+import { BotTemplateSettings } from "../components/bot-settings/bot-template-settings";
 import { useMemo } from "react";
 
 export const TelegramPage = () => {
   const { shop } = useShopContext();
   const { t } = useTranslation();
+
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["telegram", shop._id],
     queryFn: () => getTelegramQueryFn(shop._id),
@@ -37,19 +39,23 @@ export const TelegramPage = () => {
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{t("dashboard.telegram.title")}</CardTitle>
-        <CardDescription>{t("dashboard.telegram.description")}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <TelegramForm
-          initialValues={initialValues}
-          telegramId={data?._id}
-          refetch={refetch}
-        />
-      </CardContent>
-    </Card>
+    <div className="space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle>{t("dashboard.telegram.title")}</CardTitle>
+          <CardDescription>{t("dashboard.telegram.description")}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <TelegramForm
+            initialValues={initialValues}
+            telegramId={data?._id}
+            refetch={refetch}
+          />
+        </CardContent>
+      </Card>
+
+      {data?._id && <BotTemplateSettings botId={data._id} />}
+    </div>
   );
 };
 

@@ -11,3 +11,4 @@ export * from "./branches.query";
 export * from "./orders.query";
 export * from "./analytics.query";
 export * from "./staffs.query";
+export * from "./bot-template.query";
