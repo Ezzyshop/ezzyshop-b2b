@@ -30,6 +30,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 interface IProps {
   initialValues?: TTelegramForm;
@@ -89,111 +96,123 @@ export const TelegramForm = ({
   };
 
   return (
-    <Form {...form}>
-      <form
-        className="grid grid-cols-1 md:grid-cols-3 gap-4"
-        onSubmit={form.handleSubmit(handleSubmitForm)}
-      >
-        <FormField
-          control={form.control}
-          name="menu_text"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel isRequired>
-                {t("dashboard.telegram.form.menu-text")}
-              </FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  placeholder={t(
-                    "dashboard.telegram.form.menu-text-placeholder"
-                  )}
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="business_type"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel isRequired>Do'kon turi</FormLabel>
-              <FormControl>
-                <Select
-                  {...field}
-                  onValueChange={field.onChange}
-                  value={field.value}
-                >
-                  <SelectTrigger>
-                    {" "}
-                    <SelectValue placeholder="Do'kon turini tanlang" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value={TelegramBusinessType.Market}>
-                      {t("dashboard.telegram.form.business-type.market")}
-                    </SelectItem>
-                    <SelectItem value={TelegramBusinessType.Restaurant}>
-                      {t("dashboard.telegram.form.business-type.restaurant")}
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-              </FormControl>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="token"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel isRequired>
-                {t("dashboard.telegram.form.token")}
-              </FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  disabled={!!initialValues}
-                  placeholder={t("dashboard.telegram.form.token-placeholder")}
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-
-        <div className="md:col-span-3">
-          <CreateTelegramInstruction />
-        </div>
-
-        <div className="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Button
-            className={cn(initialValues ? "col-span-1" : "md:col-span-2")}
-            disabled={
-              !form.formState.isValid ||
-              createTelegramMutation.isPending ||
-              updateTelegramMutation.isPending
-            }
+    <Card>
+      <CardHeader>
+        <CardTitle>{t("dashboard.telegram.title")}</CardTitle>
+        <CardDescription>{t("dashboard.telegram.description")}</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Form {...form}>
+          <form
+            className="grid grid-cols-1 md:grid-cols-3 gap-4"
+            onSubmit={form.handleSubmit(handleSubmitForm)}
           >
-            {t("common.save")}
-          </Button>
-          {initialValues && (
-            <Button
-              variant="destructive"
-              disabled={
-                deleteTelegramMutation.isPending ||
-                createTelegramMutation.isPending ||
-                updateTelegramMutation.isPending
-              }
-              type="button"
-              onClick={() => deleteTelegramMutation.mutate()}
-            >
-              {t("common.delete")}
-            </Button>
-          )}
-        </div>
-      </form>
-    </Form>
+            <FormField
+              control={form.control}
+              name="menu_text"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel isRequired>
+                    {t("dashboard.telegram.form.menu-text")}
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      placeholder={t(
+                        "dashboard.telegram.form.menu-text-placeholder"
+                      )}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="business_type"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel isRequired>Do'kon turi</FormLabel>
+                  <FormControl>
+                    <Select
+                      {...field}
+                      onValueChange={field.onChange}
+                      value={field.value}
+                    >
+                      <SelectTrigger>
+                        {" "}
+                        <SelectValue placeholder="Do'kon turini tanlang" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value={TelegramBusinessType.Market}>
+                          {t("dashboard.telegram.form.business-type.market")}
+                        </SelectItem>
+                        <SelectItem value={TelegramBusinessType.Restaurant}>
+                          {t(
+                            "dashboard.telegram.form.business-type.restaurant"
+                          )}
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="token"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel isRequired>
+                    {t("dashboard.telegram.form.token")}
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      disabled={!!initialValues}
+                      placeholder={t(
+                        "dashboard.telegram.form.token-placeholder"
+                      )}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <div className="md:col-span-3">
+              <CreateTelegramInstruction />
+            </div>
+
+            <div className="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Button
+                className={cn(initialValues ? "col-span-1" : "md:col-span-2")}
+                disabled={
+                  !form.formState.isValid ||
+                  createTelegramMutation.isPending ||
+                  updateTelegramMutation.isPending
+                }
+              >
+                {t("common.save")}
+              </Button>
+              {initialValues && (
+                <Button
+                  variant="destructive"
+                  disabled={
+                    deleteTelegramMutation.isPending ||
+                    createTelegramMutation.isPending ||
+                    updateTelegramMutation.isPending
+                  }
+                  type="button"
+                  onClick={() => deleteTelegramMutation.mutate()}
+                >
+                  {t("common.delete")}
+                </Button>
+              )}
+            </div>
+          </form>
+        </Form>
+      </CardContent>
+    </Card>
   );
 };

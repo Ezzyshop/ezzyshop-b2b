@@ -118,7 +118,8 @@
         "description": "{{ plan }} tarifini tanlab ko'proq imkoniyatlarga ega bo'ling.",
         "button_text": "Tarifni o'zgartirish"
       },
-      "telegram": "Telegram"
+      "telegram": "Telegram",
+      "telegram-settings": "Telegram sozlamalari"
     }
   },
   "dashboard": {
@@ -503,6 +504,30 @@
       "edit_description": "Xodim ma'lumotlarini o'zgartirish uchun quyidagi formadan foydalaning",
       "full_name": "Xodim ismi",
       "phone": "Xodim telefon raqami"
+    },
+    "telegram-settings": {
+      "title": "Telegram sozlamalari",
+      "description": "Telegram bot xabarlari va tugmalarini sozlang",
+      "welcome-message": "Kutib olish xabari",
+      "welcome-message-placeholder": "Kutib olish xabarini kiriting",
+      "menu-hint-text": "Menyu yordamchi matni",
+      "menu-hint-text-placeholder": "Menyu yordamchi matnini kiriting",
+      "buttons": "Tugmalar",
+      "add-button": "Tugma qo'shish",
+      "no-buttons": "Hozircha tugmalar qo'shilmagan",
+      "button-text": "Tugma matni",
+      "button-action": "Tugma harakati",
+      "button-type": "Tugma turi",
+      "actions": {
+        "menu": "Menyu",
+        "orders": "Buyurtmalar",
+        "feedback": "Fikr-mulohaza",
+        "language": "Til"
+      },
+      "button-types": {
+        "callback": "Callback",
+        "url": "URL"
+      }
     }
   },
   "table": {

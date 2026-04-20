@@ -118,7 +118,7 @@ export const dashboardRoutes = [
     element: lazy(
       () =>
         import(
-          "@/features/dashboard/telegram-settings/pages/TelegramSettingsPage"
+          "@/features/dashboard/telegram/components/bot-settings/telegram-settings"
         )
     ),
     roles: [UserRoles.SuperAdmin, UserRoles.Admin],

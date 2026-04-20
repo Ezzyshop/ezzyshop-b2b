@@ -107,6 +107,9 @@
       "delivery-methods": "Способы доставки",
       "payment-methods": "Способы оплаты",
       "branches": "Филиалы",
+      "staffs": "Сотрудники",
+      "telegram": "Telegram",
+      "telegram-settings": "Настройки Telegram",
       "settings": "Настройки",
       "upgrade_plan": {
         "title": "Перейти на план {{ plan }}",
@@ -343,6 +346,30 @@
       "enter_name": "Введите название филиала",
       "image": "Изображение филиала",
       "enter_image": "Введите изображение филиала"
+    },
+    "telegram-settings": {
+      "title": "Настройки Telegram",
+      "description": "Настройте сообщения и кнопки Telegram бота",
+      "welcome-message": "Приветственное сообщение",
+      "welcome-message-placeholder": "Введите приветственное сообщение",
+      "menu-hint-text": "Текст подсказки меню",
+      "menu-hint-text-placeholder": "Введите текст подсказки меню",
+      "buttons": "Кнопки",
+      "add-button": "Добавить кнопку",
+      "no-buttons": "Кнопки пока не добавлены",
+      "button-text": "Текст кнопки",
+      "button-action": "Действие кнопки",
+      "button-type": "Тип кнопки",
+      "actions": {
+        "menu": "Меню",
+        "orders": "Заказы",
+        "feedback": "Обратная связь",
+        "language": "Язык"
+      },
+      "button-types": {
+        "callback": "Callback",
+        "url": "URL"
+      }
     }
   },
   "table": {

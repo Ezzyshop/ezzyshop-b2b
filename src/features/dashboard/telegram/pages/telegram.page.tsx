@@ -1,21 +1,14 @@
 import { getTelegramQueryFn } from "@/api/queries";
 import { LayoutLoader } from "@/components/loaders/global-loader";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
 import { useShopContext } from "@/contexts";
 import { useQuery } from "@tanstack/react-query";
-import { useTranslation } from "react-i18next";
 import { TelegramForm } from "../components/telegram-form";
 import { useMemo } from "react";
+import TelegramSettingsPage from "../components/bot-settings/telegram-settings";
 
 export const TelegramPage = () => {
   const { shop } = useShopContext();
-  const { t } = useTranslation();
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["telegram", shop._id],
     queryFn: () => getTelegramQueryFn(shop._id),
@@ -37,19 +30,15 @@ export const TelegramPage = () => {
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{t("dashboard.telegram.title")}</CardTitle>
-        <CardDescription>{t("dashboard.telegram.description")}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <TelegramForm
-          initialValues={initialValues}
-          telegramId={data?._id}
-          refetch={refetch}
-        />
-      </CardContent>
-    </Card>
+    <div className="space-y-4">
+      <TelegramForm
+        initialValues={initialValues}
+        telegramId={data?._id}
+        refetch={refetch}
+      />
+
+      <TelegramSettingsPage />
+    </div>
   );
 };
 

@@ -21,7 +21,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { TBotTemplateForm, ButtonAction, ButtonType } from '@/types/bot-template.types';
-import { telegramSettingsResolver } from '../utils/telegram-settings.validator';
+import { telegramSettingsResolver } from '../../utils/telegram-settings.validator';
 import {
   createBotTemplateMutationFn,
   updateBotTemplateMutationFn,
@@ -51,7 +51,7 @@ export const TelegramSettingsForm = ({
     resolver: joiResolver(telegramSettingsResolver),
   });
 
-  const { fields, append, remove, move } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     control: form.control,
     name: 'buttons',
   });

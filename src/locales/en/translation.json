@@ -108,6 +108,8 @@
       "payment-methods": "Payment methods",
       "branches": "Branches",
       "settings": "Settings",
+      "telegram": "Telegram",
+      "telegram-settings": "Telegram settings",
       "staffs": "Staffs",
       "upgrade_plan": {
         "title": "Upgrade to {{ plan }} plan",
@@ -344,6 +346,30 @@
       "enter_name": "Enter branch name",
       "image": "Branch image",
       "enter_image": "Enter branch image"
+    },
+    "telegram-settings": {
+      "title": "Telegram settings",
+      "description": "Configure your Telegram bot messages and buttons",
+      "welcome-message": "Welcome message",
+      "welcome-message-placeholder": "Enter welcome message",
+      "menu-hint-text": "Menu hint text",
+      "menu-hint-text-placeholder": "Enter menu hint text",
+      "buttons": "Buttons",
+      "add-button": "Add button",
+      "no-buttons": "No buttons added yet",
+      "button-text": "Button text",
+      "button-action": "Button action",
+      "button-type": "Button type",
+      "actions": {
+        "menu": "Menu",
+        "orders": "Orders",
+        "feedback": "Feedback",
+        "language": "Language"
+      },
+      "button-types": {
+        "callback": "Callback",
+        "url": "URL"
+      }
     }
   },
   "table": {
