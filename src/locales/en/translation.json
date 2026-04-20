@@ -350,8 +350,14 @@
       "description": "Configure the message shown when a user taps /start in your bot",
       "welcome-message": "Welcome message",
       "welcome-message-placeholder": "e.g. Welcome! Thanks for visiting our store 🎉",
-      "menu-hint-text": "Hint text (optional)",
-      "menu-hint-text-placeholder": "e.g. Tap the button below to browse our store 👇"
+      "bot-description": "Bot info text (optional)",
+      "bot-description-placeholder": "e.g. We deliver fresh products right to your door 🚀",
+      "broadcast-title": "Send message to all users",
+      "broadcast-description": "Send a notification to every user who has started your bot",
+      "broadcast-message": "Message",
+      "broadcast-message-placeholder": "Type your message here...",
+      "broadcast-send": "Send to all users",
+      "broadcast-success": "Sent to {{sent}} of {{total}} users"
     }
   },
   "table": {

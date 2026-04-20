@@ -349,8 +349,14 @@
       "description": "Настройте сообщение, которое пользователь видит при нажатии /start",
       "welcome-message": "Приветственное сообщение",
       "welcome-message-placeholder": "Например: Добро пожаловать! Спасибо за визит 🎉",
-      "menu-hint-text": "Дополнительный текст (необязательно)",
-      "menu-hint-text-placeholder": "Например: Нажмите кнопку ниже, чтобы открыть магазин 👇"
+      "bot-description": "Описание бота (необязательно)",
+      "bot-description-placeholder": "Например: Доставляем свежие товары прямо к вашей двери 🚀",
+      "broadcast-title": "Отправить сообщение всем пользователям",
+      "broadcast-description": "Отправьте уведомление всем пользователям, запустившим вашего бота",
+      "broadcast-message": "Сообщение",
+      "broadcast-message-placeholder": "Введите ваше сообщение...",
+      "broadcast-send": "Отправить всем",
+      "broadcast-success": "Отправлено {{sent}} из {{total}} пользователей"
     }
   },
   "table": {

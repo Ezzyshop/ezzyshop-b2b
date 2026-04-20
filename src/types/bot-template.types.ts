@@ -2,12 +2,16 @@ export interface IBotTemplate {
   _id: string;
   botId: string;
   welcomeMessage: string;
-  menuHintText: string;
+  botDescription: string;
   createdAt: string;
   updatedAt: string;
 }
 
 export type TBotTemplateForm = {
   welcomeMessage: string;
-  menuHintText: string;
+  botDescription: string;
+};
+
+export type TBroadcastForm = {
+  message: string;
 };

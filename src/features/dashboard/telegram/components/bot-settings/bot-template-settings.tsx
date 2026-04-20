@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { BotTemplateForm } from "./bot-template-form";
+import { BroadcastForm } from "./broadcast-form";
 
 interface IProps {
   botId: string;
@@ -30,20 +31,24 @@ export const BotTemplateSettings = ({ botId }: IProps) => {
 
   const initialValues = {
     welcomeMessage: data?.welcomeMessage ?? "",
-    menuHintText: data?.menuHintText ?? "",
+    botDescription: data?.botDescription ?? "",
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{t("dashboard.telegram-settings.title")}</CardTitle>
-        <CardDescription>
-          {t("dashboard.telegram-settings.description")}
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <BotTemplateForm botId={botId} initialValues={initialValues} />
-      </CardContent>
-    </Card>
+    <div className="space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle>{t("dashboard.telegram-settings.title")}</CardTitle>
+          <CardDescription>
+            {t("dashboard.telegram-settings.description")}
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <BotTemplateForm botId={botId} initialValues={initialValues} />
+        </CardContent>
+      </Card>
+
+      <BroadcastForm botId={botId} />
+    </div>
   );
 };

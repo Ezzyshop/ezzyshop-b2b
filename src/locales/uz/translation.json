@@ -495,8 +495,14 @@
       "description": "Foydalanuvchi /start bosganda ko'rinadigan xabarni sozlang",
       "welcome-message": "Kutib olish xabari",
       "welcome-message-placeholder": "Masalan: Xush kelibsiz! Do'konimizga tashrif buyurganingiz uchun rahmat 🎉",
-      "menu-hint-text": "Qo'shimcha matn (ixtiyoriy)",
-      "menu-hint-text-placeholder": "Masalan: Quyidagi tugmani bosib do'konimizni ko'ring 👇"
+      "bot-description": "Bot haqida matn (ixtiyoriy)",
+      "bot-description-placeholder": "Masalan: Yangi mahsulotlarni eshigingizgacha yetkazamiz 🚀",
+      "broadcast-title": "Barcha foydalanuvchilarga xabar yuborish",
+      "broadcast-description": "Botingizni ishga tushirgan barcha foydalanuvchilarga xabarnoma yuboring",
+      "broadcast-message": "Xabar",
+      "broadcast-message-placeholder": "Xabaringizni kiriting...",
+      "broadcast-send": "Barchaga yuborish",
+      "broadcast-success": "{{total}} ta foydalanuvchidan {{sent}} tasiga yuborildi"
     },
     "staffs": {
       "title": "Xodimlar",

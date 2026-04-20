@@ -2,5 +2,9 @@ import Joi from 'joi';
 
 export const botTemplateResolver = Joi.object({
   welcomeMessage: Joi.string().required().min(1).max(1000),
-  menuHintText: Joi.string().optional().allow('').max(500),
+  botDescription: Joi.string().optional().allow('').max(512),
+});
+
+export const broadcastResolver = Joi.object({
+  message: Joi.string().required().min(1).max(4096),
 });
