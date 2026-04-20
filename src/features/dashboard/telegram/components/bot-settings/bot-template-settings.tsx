@@ -32,6 +32,7 @@ export const BotTemplateSettings = ({ botId }: IProps) => {
   const initialValues = {
     welcomeMessage: data?.welcomeMessage ?? "",
     botDescription: data?.botDescription ?? "",
+    buttonText: data?.buttonText ?? "",
   };
 
   return (

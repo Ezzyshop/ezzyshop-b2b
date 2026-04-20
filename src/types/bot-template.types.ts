@@ -3,6 +3,7 @@ export interface IBotTemplate {
   botId: string;
   welcomeMessage: string;
   botDescription: string;
+  buttonText: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -10,6 +11,7 @@ export interface IBotTemplate {
 export type TBotTemplateForm = {
   welcomeMessage: string;
   botDescription: string;
+  buttonText: string;
 };
 
 export type TBroadcastForm = {

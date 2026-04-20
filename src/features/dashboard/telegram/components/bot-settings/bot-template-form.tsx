@@ -13,6 +13,7 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { TBotTemplateForm } from "@/types/bot-template.types";
 import { botTemplateResolver } from "../../utils/bot-template.validator";
@@ -162,6 +163,24 @@ export const BotTemplateForm = ({ botId, initialValues }: IProps) => {
                   }}
                   placeholder={t("dashboard.telegram-settings.bot-description-placeholder")}
                   className="min-h-[100px]"
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="buttonText"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                {t("dashboard.telegram-settings.button-text")}
+              </FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  placeholder={t("dashboard.telegram-settings.button-text-placeholder")}
                 />
               </FormControl>
             </FormItem>

@@ -352,6 +352,8 @@
       "welcome-message-placeholder": "e.g. Welcome! Thanks for visiting our store 🎉",
       "bot-description": "Bot info text (optional)",
       "bot-description-placeholder": "e.g. We deliver fresh products right to your door 🚀",
+      "button-text": "Menu button text (optional)",
+      "button-text-placeholder": "e.g. Open menu 🛍️",
       "broadcast-title": "Send message to all users",
       "broadcast-description": "Send a notification to every user who has started your bot",
       "broadcast-message": "Message",
