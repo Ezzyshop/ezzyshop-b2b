@@ -388,6 +388,18 @@
         "coupon_discount": "Coupon",
         "shipping": "Shipping",
         "total": "Total"
+      },
+      "status_changer": {
+        "title": "Change order status",
+        "description": "Are you sure you want to change the order status to {{ status }}?",
+        "cancel": "Cancel",
+        "save": "Confirm",
+        "success": "Order status updated successfully",
+        "cancel_reason": "Cancellation reason",
+        "cancel_reason_placeholder": "Enter the reason for cancellation..."
+      },
+      "status_history": {
+        "title": "Status history"
       }
     },
     "telegram": {

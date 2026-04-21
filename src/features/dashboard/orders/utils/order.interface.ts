@@ -27,9 +27,22 @@ export interface IOrderCreateRequest {
   notes?: string;
 }
 
+export interface IOrderStatusHistory {
+  from_status: OrderStatus;
+  to_status: OrderStatus;
+  changed_by: {
+    _id: string;
+    full_name: string;
+    email: string;
+  };
+  changed_at: string;
+  comment?: string;
+}
+
 export interface IOrderResponse {
   _id: string;
   status: OrderStatus;
+  status_history?: IOrderStatusHistory[];
   createdAt: string;
   customer_info: {
     name: string;

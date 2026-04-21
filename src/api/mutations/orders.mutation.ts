@@ -4,5 +4,6 @@ import { api } from "../axios";
 export const updateOrderStatusMutationFn = (
   shopId: string,
   orderId: string,
-  status: OrderStatus
-) => api.put(`/orders/${shopId}/${orderId}/status`, { status });
+  status: OrderStatus,
+  comment?: string,
+) => api.put(`/orders/${shopId}/${orderId}/status`, { status, comment });

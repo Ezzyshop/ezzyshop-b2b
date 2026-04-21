@@ -449,7 +449,9 @@
         "description": "Buyurtma holatini {{ status }} holatiga o'zgartirishni xohlaysizmi?",
         "cancel": "Bekor qilish",
         "save": "O'zgartirish",
-        "success": "Buyurtma holati muvaffaqiyatli o'zgartirildi"
+        "success": "Buyurtma holati muvaffaqiyatli o'zgartirildi",
+        "cancel_reason": "Bekor qilish sababi",
+        "cancel_reason_placeholder": "Bekor qilish sababini kiriting..."
       },
       "notes": "Qo'shimcha ma'lumotlar",
       "order": "Buyurtma",
@@ -478,22 +480,16 @@
         "phone": "Mijoz telefon raqami"
       },
       "status_information": "Buyurtma holati",
-      "transaction_status": "To'lov holati"
+      "transaction_status": "To'lov holati",
+      "status_history": {
+        "title": "Holat tarixi"
+      }
     },
     "telegram": {
-      "title": "Telegram botni ulash",
-      "description": "",
-      "form": {
-        "menu-text": "Tugma nomi",
-        "menu-text-placeholder": "Tugma nomini kiriting",
-        "token": "Token",
-        "token-placeholder": "Tokenni kiriting",
-        "success": "Muvaffaqiyatli",
-        "business-type": {
-          "market": "Do'kon",
-          "restaurant": "Restoran"
-        }
-      }
+      "title": "Telegram bot sozlash",
+      "description": "Bot tokenini kiriting va biznes turini tanlang",
+      "no-bot-setup": "Telegram bot hali sozlanmagan.",
+      "go-to-setup": "Sozlashga o'tish"
     },
     "coupons": {
       "create": "Kupon qo'shish",
@@ -522,12 +518,6 @@
       "usage_order": "Buyurtma",
       "usage_discount": "Chegirma",
       "usage_date": "Sana"
-    },
-    "telegram": {
-      "title": "Telegram bot sozlash",
-      "description": "Bot tokenini kiriting va biznes turini tanlang",
-      "no-bot-setup": "Telegram bot hali sozlanmagan.",
-      "go-to-setup": "Sozlashga o'tish"
     },
     "telegram-settings": {
       "title": "Bot xabarlari sozlamalari",

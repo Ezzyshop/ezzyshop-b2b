@@ -21,6 +21,8 @@ import {
 } from "@/components/ui/dialog";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { updateOrderStatusMutationFn } from "@/api/mutations";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
@@ -35,16 +37,28 @@ export const OrderStatusChanger = ({ order }: IProps) => {
   const { shop } = useShopContext();
   const queryClient = useQueryClient();
   const [status, setStatus] = useState<OrderStatus>(order.status);
+  const [comment, setComment] = useState("");
+
+  const isCancelling = status === OrderStatus.Cancelled;
+
   const { mutate, isPending } = useMutation({
-    mutationFn: (status: OrderStatus) =>
-      updateOrderStatusMutationFn(shop._id, order._id, status),
+    mutationFn: () =>
+      updateOrderStatusMutationFn(shop._id, order._id, status, comment || undefined),
     onSuccess: async () => {
       await queryClient.invalidateQueries({
         queryKey: ["order", shop._id, order._id],
       });
       toast.success(t("dashboard.orders.status_changer.success"));
+      setComment("");
     },
   });
+
+  const handleClose = () => {
+    setStatus(order.status);
+    setComment("");
+  };
+
+  const canSubmit = !isCancelling || comment.trim().length > 0;
 
   const orderStatuses = Object.values(OrderStatus).filter(
     (_, idx) =>
@@ -61,18 +75,15 @@ export const OrderStatusChanger = ({ order }: IProps) => {
           <SelectValue placeholder="Status" />
         </SelectTrigger>
         <SelectContent>
-          {orderStatuses.map((status) => (
-            <SelectItem key={status} value={status}>
-              {t(orderStatusTranslations[status])}
+          {orderStatuses.map((s) => (
+            <SelectItem key={s} value={s}>
+              {t(orderStatusTranslations[s])}
             </SelectItem>
           ))}
         </SelectContent>
       </Select>
 
-      <Dialog
-        open={status !== order.status}
-        onOpenChange={() => setStatus(order.status)}
-      >
+      <Dialog open={status !== order.status} onOpenChange={handleClose}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>
@@ -84,11 +95,33 @@ export const OrderStatusChanger = ({ order }: IProps) => {
               })}
             </DialogDescription>
           </DialogHeader>
+
+          {isCancelling && (
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="cancel-reason">
+                {t("dashboard.orders.status_changer.cancel_reason")}
+                <span className="text-destructive ml-1">*</span>
+              </Label>
+              <Textarea
+                id="cancel-reason"
+                rows={3}
+                placeholder={t(
+                  "dashboard.orders.status_changer.cancel_reason_placeholder"
+                )}
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              />
+            </div>
+          )}
+
           <DialogFooter>
-            <Button variant="outline" onClick={() => setStatus(order.status)}>
+            <Button variant="outline" onClick={handleClose}>
               {t("dashboard.orders.status_changer.cancel")}
             </Button>
-            <Button disabled={isPending} onClick={() => mutate(status)}>
+            <Button
+              disabled={isPending || !canSubmit}
+              onClick={() => mutate()}
+            >
               {t("dashboard.orders.status_changer.save")}
             </Button>
           </DialogFooter>

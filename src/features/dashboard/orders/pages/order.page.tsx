@@ -15,6 +15,7 @@ import { OrderAddress } from "../components/order-page/order-address";
 import { OrderCheques } from "../components/order-page/order-cheques/order-cheques";
 import { useTranslation } from "react-i18next";
 import { OrderTransactionStatus } from "../components/order-page/order-transaction-status";
+import { OrderStatusHistory } from "../components/order-page/order-status-history";
 
 export const OrderPage = () => {
   const { orderId } = useParams();
@@ -51,6 +52,7 @@ export const OrderPage = () => {
       <div className="space-y-4 md:space-y-6 col-span-1 md:col-span-3 flex flex-col">
         <OrderStatusProgress order={order} />
         <OrderItems order={order} />
+        <OrderStatusHistory order={order} />
       </div>
       <div className="space-y-4 md:space-y-6">
         <OrderSummary order={order} />
