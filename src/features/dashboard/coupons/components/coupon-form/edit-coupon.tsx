@@ -57,7 +57,9 @@ export const EditCoupon = ({ coupon }: IProps) => {
             discount_value: coupon.discount_value,
             min_order_price: coupon.min_order_price,
             max_uses: coupon.max_uses,
+            max_uses_per_user: coupon.max_uses_per_user,
             expires_at: coupon.expires_at,
+            allowed_users: coupon.allowed_users ?? [],
           }}
           hideCode
         />

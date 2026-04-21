@@ -19,9 +19,11 @@ export const createCouponValidator = Joi.object({
   }),
   min_order_price: Joi.number().min(0).optional().allow(null, ''),
   max_uses: Joi.number().integer().positive().optional().allow(null, ''),
+  max_uses_per_user: Joi.number().integer().positive().optional().allow(null, ''),
   expires_at: Joi.date().greater('now').optional().allow(null, '').messages({
     'date.greater': 'Expiry date must be in the future',
   }),
+  allowed_users: Joi.array().items(Joi.string()).optional().default([]),
 });
 
 export const updateCouponValidator = Joi.object({
@@ -31,8 +33,10 @@ export const updateCouponValidator = Joi.object({
   }),
   min_order_price: Joi.number().min(0).optional().allow(null, ''),
   max_uses: Joi.number().integer().positive().optional().allow(null, ''),
+  max_uses_per_user: Joi.number().integer().positive().optional().allow(null, ''),
   expires_at: Joi.date().greater('now').optional().allow(null, '').messages({
     'date.greater': 'Expiry date must be in the future',
   }),
+  allowed_users: Joi.array().items(Joi.string()).optional(),
   status: Joi.string().valid('ACTIVE', 'INACTIVE').optional(),
 });

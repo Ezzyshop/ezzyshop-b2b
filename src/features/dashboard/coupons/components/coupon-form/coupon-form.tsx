@@ -22,6 +22,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { MultiSelect } from "@/components/ui/multi-select";
+import { useQuery } from "@tanstack/react-query";
+import { getShopCustomersQueryFn } from "@/api/queries";
+import { useShopContext } from "@/contexts";
 
 interface IProps {
   onSubmit: (data: ICreateCouponForm) => void;
@@ -32,6 +36,19 @@ interface IProps {
 
 export const CouponForm = ({ onSubmit, isLoading, defaultValues, hideCode }: IProps) => {
   const { t } = useTranslation();
+  const { shop } = useShopContext();
+
+  const { data: customersData } = useQuery({
+    queryKey: ["shop-customers", shop._id],
+    queryFn: () => getShopCustomersQueryFn(shop._id),
+    enabled: Boolean(shop._id),
+  });
+
+  const customers = customersData?.data ?? [];
+  const customerOptions = customers.map((c) => ({
+    label: `${c.full_name} (${c.phone})`,
+    value: c._id,
+  }));
 
   const form = useForm<ICreateCouponForm>({
     resolver: joiResolver(hideCode ? updateCouponValidator : createCouponValidator),
@@ -39,7 +56,9 @@ export const CouponForm = ({ onSubmit, isLoading, defaultValues, hideCode }: IPr
       discount_type: CouponDiscountType.Percentage,
       min_order_price: 0,
       max_uses: null,
+      max_uses_per_user: null,
       expires_at: null,
+      allowed_users: [],
       ...defaultValues,
     },
   });
@@ -162,6 +181,28 @@ export const CouponForm = ({ onSubmit, isLoading, defaultValues, hideCode }: IPr
           )}
         />
 
+        <FormField
+          control={form.control}
+          name="max_uses_per_user"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{t("dashboard.coupons.max_uses_per_user")}</FormLabel>
+              <FormControl>
+                <Input
+                  type="number"
+                  placeholder={t("dashboard.coupons.max_uses_per_user_placeholder")}
+                  {...field}
+                  value={field.value ?? ""}
+                  onChange={(e) =>
+                    field.onChange(e.target.value === "" ? null : Number(e.target.value))
+                  }
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <FormItem>
           <FormLabel>{t("dashboard.coupons.expires_at")}</FormLabel>
           <FormControl>
@@ -178,6 +219,29 @@ export const CouponForm = ({ onSubmit, isLoading, defaultValues, hideCode }: IPr
             />
           </FormControl>
           <FormMessage>{form.formState.errors.expires_at?.message}</FormMessage>
+        </FormItem>
+
+        <FormItem>
+          <FormLabel>{t("dashboard.coupons.allowed_users")}</FormLabel>
+          <FormControl>
+            <Controller
+              name="allowed_users"
+              control={form.control}
+              render={({ field }) => (
+                <MultiSelect
+                  options={customerOptions}
+                  defaultValue={field.value ?? []}
+                  onValueChange={(values) => field.onChange(values)}
+                  placeholder={t("dashboard.coupons.allowed_users_placeholder")}
+                  maxCount={3}
+                />
+              )}
+            />
+          </FormControl>
+          <p className="text-xs text-muted-foreground">
+            {t("dashboard.coupons.allowed_users_hint")}
+          </p>
+          <FormMessage>{form.formState.errors.allowed_users?.message}</FormMessage>
         </FormItem>
 
         <Button type="submit" className="w-full" disabled={isLoading}>
