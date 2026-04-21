@@ -110,6 +110,10 @@
       "settings": "Settings",
       "staffs": "Staffs",
       "coupons": "Coupons",
+      "telegram": "Telegram",
+      "telegram-setup": "Set up",
+      "telegram-templates": "Templates",
+      "telegram-send-message": "Send message",
       "upgrade_plan": {
         "title": "Upgrade to {{ plan }} plan",
         "description": "Choose {{ plan }} plan to get more features.",
@@ -385,6 +389,12 @@
         "shipping": "Shipping",
         "total": "Total"
       }
+    },
+    "telegram": {
+      "title": "Telegram bot setup",
+      "description": "Connect your Telegram bot by entering the token and selecting your business type",
+      "no-bot-setup": "You have not set up a Telegram bot yet.",
+      "go-to-setup": "Go to setup"
     },
     "telegram-settings": {
       "title": "Bot message settings",

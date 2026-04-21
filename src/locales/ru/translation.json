@@ -109,6 +109,10 @@
       "branches": "Филиалы",
       "settings": "Настройки",
       "coupons": "Купоны",
+      "telegram": "Telegram",
+      "telegram-setup": "Настройка",
+      "telegram-templates": "Шаблоны",
+      "telegram-send-message": "Отправить сообщение",
       "upgrade_plan": {
         "title": "Перейти на план {{ plan }}",
         "description": "Выберите план {{ plan }}, чтобы получить больше возможностей.",
@@ -372,6 +376,12 @@
       "usage_order": "Заказ",
       "usage_discount": "Скидка",
       "usage_date": "Дата"
+    },
+    "telegram": {
+      "title": "Настройка Telegram бота",
+      "description": "Введите токен бота и выберите тип бизнеса",
+      "no-bot-setup": "Telegram бот ещё не настроен.",
+      "go-to-setup": "Перейти к настройке"
     },
     "telegram-settings": {
       "title": "Настройка сообщений бота",

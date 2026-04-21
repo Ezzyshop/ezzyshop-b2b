@@ -1,8 +1,10 @@
 import NotFoundPage from "@/features/static/not-found/pages/not-found.page";
 import { UserRoles } from "@/lib/enums";
 import {
+  BotIcon,
   CreditCardIcon,
   HomeIcon,
+  LayoutTemplateIcon,
   ListIcon,
   MapIcon,
   Package2,
@@ -14,7 +16,15 @@ import {
   TruckIcon,
   UsersIcon,
 } from "lucide-react";
-import { lazy } from "react";
+import { lazy, type LazyExoticComponent, type ComponentType } from "react";
+
+export type ChildRoute = {
+  path: string;
+  title: string;
+  icon?: ComponentType;
+  roles: UserRoles[];
+  element: LazyExoticComponent<ComponentType>;
+};
 
 export const dashboardRoutes = [
   {
@@ -108,11 +118,40 @@ export const dashboardRoutes = [
   {
     path: "/telegram",
     element: lazy(
-      () => import("@/features/dashboard/telegram/pages/telegram.page")
+      () => import("@/features/dashboard/telegram/pages/telegram-setup.page")
     ),
     roles: [UserRoles.SuperAdmin, UserRoles.Admin],
     icon: SendIcon,
     title: "sidebar.dashboard.telegram",
+    children: [
+      {
+        path: "/telegram/setup",
+        title: "sidebar.dashboard.telegram-setup",
+        icon: BotIcon,
+        roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+        element: lazy(
+          () => import("@/features/dashboard/telegram/pages/telegram-setup.page")
+        ),
+      },
+      {
+        path: "/telegram/templates",
+        title: "sidebar.dashboard.telegram-templates",
+        icon: LayoutTemplateIcon,
+        roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+        element: lazy(
+          () => import("@/features/dashboard/telegram/pages/telegram-templates.page")
+        ),
+      },
+      {
+        path: "/telegram/send-message",
+        title: "sidebar.dashboard.telegram-send-message",
+        icon: SendIcon,
+        roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+        element: lazy(
+          () => import("@/features/dashboard/telegram/pages/telegram-send-message.page")
+        ),
+      },
+    ] as ChildRoute[],
   },
   {
     path: "/coupons",

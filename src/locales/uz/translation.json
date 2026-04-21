@@ -119,6 +119,9 @@
         "button_text": "Tarifni o'zgartirish"
       },
       "telegram": "Telegram",
+      "telegram-setup": "Sozlash",
+      "telegram-templates": "Shablonlar",
+      "telegram-send-message": "Xabar yuborish",
       "coupons": "Kuponlar"
     }
   },
@@ -519,6 +522,12 @@
       "usage_order": "Buyurtma",
       "usage_discount": "Chegirma",
       "usage_date": "Sana"
+    },
+    "telegram": {
+      "title": "Telegram bot sozlash",
+      "description": "Bot tokenini kiriting va biznes turini tanlang",
+      "no-bot-setup": "Telegram bot hali sozlanmagan.",
+      "go-to-setup": "Sozlashga o'tish"
     },
     "telegram-settings": {
       "title": "Bot xabarlari sozlamalari",
