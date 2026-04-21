@@ -511,6 +511,8 @@
       "used_count": "Ishlatilgan",
       "unlimited": "Cheksiz",
       "no_expiry": "Muddatsiz",
+      "delete": "Kuponni o'chirish",
+      "delete_description": "\"{{code}}\" kuponni o'chirishni xohlaysizmi? Bu amalni bekor qilib bo'lmaydi.",
       "usages": "Kupon ishlatish tarixi",
       "usages_description": "Ushbu kupondan foydalangan mijozlar ro'yxati",
       "usage_customer": "Mijoz",

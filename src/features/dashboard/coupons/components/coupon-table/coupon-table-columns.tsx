@@ -7,6 +7,7 @@ import { TFunction } from "i18next";
 import { EditCoupon } from "../coupon-form/edit-coupon";
 import { DeleteCoupon } from "../coupon-form/delete-coupon";
 import { Link } from "react-router-dom";
+import { UsersIcon } from "lucide-react";
 
 export const couponTableColumns = (t: TFunction): ColumnDef<ICoupon>[] => [
   {
@@ -41,14 +42,8 @@ export const couponTableColumns = (t: TFunction): ColumnDef<ICoupon>[] => [
     id: "usage",
     header: t("dashboard.coupons.used_count"),
     cell: ({ row }) => {
-      const { _id, used_count, max_uses } = row.original;
-      return (
-        <Button variant="link" size="sm" className="p-0 h-auto" asChild>
-          <Link to={`/dashboard/coupons/${_id}/usages`}>
-            {used_count} / {max_uses ?? "∞"}
-          </Link>
-        </Button>
-      );
+      const { used_count, max_uses } = row.original;
+      return `${used_count} / ${max_uses ?? "∞"}`;
     },
   },
   {
@@ -76,6 +71,11 @@ export const couponTableColumns = (t: TFunction): ColumnDef<ICoupon>[] => [
     header: t("table.columns.actions"),
     cell: ({ row }) => (
       <div className="flex gap-2">
+        <Button variant="outline" size="icon" asChild>
+          <Link to={`/dashboard/coupons/${row.original._id}/usages`}>
+            <UsersIcon className="h-4 w-4" />
+          </Link>
+        </Button>
         <EditCoupon coupon={row.original} />
         <DeleteCoupon coupon={row.original} />
       </div>
