@@ -50,11 +50,11 @@ export const shopFields: Record<
     menu_url: Joi.string().uri().optional(),
   }),
   social_links: Joi.object({
-    telegram: Joi.string().uri().optional(),
-    instagram: Joi.string().uri().optional(),
-    facebook: Joi.string().uri().optional(),
-    twitter: Joi.string().uri().optional(),
-    youtube: Joi.string().uri().optional(),
+    telegram: Joi.string().uri().optional().allow(""),
+    instagram: Joi.string().uri().optional().allow(""),
+    facebook: Joi.string().uri().optional().allow(""),
+    twitter: Joi.string().uri().optional().allow(""),
+    youtube: Joi.string().uri().optional().allow(""),
   }),
   currency: Joi.string().required().messages({
     "string.empty": "Valyuta kiritilishi shart",
