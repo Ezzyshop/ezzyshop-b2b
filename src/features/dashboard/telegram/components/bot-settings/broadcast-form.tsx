@@ -24,6 +24,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { ImageLightbox } from "@/components/ui/image-lightbox";
 import { TBroadcastForm } from "@/types/bot-template.types";
 import { broadcastResolver } from "../../utils/bot-template.validator";
 import { broadcastMutationFn } from "@/api/mutations";
@@ -93,7 +94,6 @@ export const BroadcastForm = ({ botId }: IProps) => {
   const imageUrl = form.watch("imageUrl");
   const loadMoreRef = useRef<HTMLDivElement>(null);
 
-  // Broadcast history — infinite scroll
   const {
     data: historyPages,
     fetchNextPage,
@@ -113,7 +113,6 @@ export const BroadcastForm = ({ botId }: IProps) => {
 
   const history = historyPages?.pages.flatMap((p) => p.data) ?? [];
 
-  // IntersectionObserver — trigger fetchNextPage when sentinel enters view
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {
       if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
@@ -131,7 +130,6 @@ export const BroadcastForm = ({ botId }: IProps) => {
     return () => observer.disconnect();
   }, [handleObserver]);
 
-  // Image upload
   const uploadMutation = useMutation({
     mutationFn: uploadImageMutationFn,
     onSuccess: (data) => {
@@ -139,7 +137,6 @@ export const BroadcastForm = ({ botId }: IProps) => {
     },
   });
 
-  // Broadcast send
   const sendMutation = useMutation({
     mutationFn: (data: TBroadcastForm) => broadcastMutationFn(botId, data),
     onSuccess: (result) => {
@@ -182,7 +179,6 @@ export const BroadcastForm = ({ botId }: IProps) => {
 
   return (
     <div className="space-y-6">
-      {/* Send form */}
       <Card>
         <CardHeader>
           <CardTitle>{t("dashboard.telegram-settings.broadcast-title")}</CardTitle>
@@ -196,7 +192,6 @@ export const BroadcastForm = ({ botId }: IProps) => {
               onSubmit={form.handleSubmit((data) => sendMutation.mutate(data))}
               className="space-y-4"
             >
-              {/* Image preview / upload area */}
               {imageUrl ? (
                 <div className="relative w-full rounded-xl overflow-hidden border">
                   <img
@@ -226,7 +221,6 @@ export const BroadcastForm = ({ botId }: IProps) => {
                         {t("dashboard.telegram-settings.broadcast-message")}
                       </FormLabel>
                       <div className="flex items-center gap-1">
-                        {/* Image attach button */}
                         <Button
                           type="button"
                           variant="ghost"
@@ -276,7 +270,6 @@ export const BroadcastForm = ({ botId }: IProps) => {
         </CardContent>
       </Card>
 
-      {/* History */}
       {(historyStatus === "success" && history.length > 0) && (
         <Card>
           <CardHeader>
@@ -308,21 +301,17 @@ export const BroadcastForm = ({ botId }: IProps) => {
                       </span>
                     </div>
 
-                    {/* Image if present */}
                     {item.imageUrl && (
-                      <img
+                      <ImageLightbox
                         src={item.imageUrl}
-                        alt=""
-                        className="rounded-lg max-h-32 object-cover border"
+                        imgClassName="max-h-32 w-auto"
                       />
                     )}
 
-                    {/* Message text */}
                     <p className="text-sm text-foreground/80 whitespace-pre-wrap break-words">
                       {item.message}
                     </p>
 
-                    {/* Stats badge */}
                     <div className="flex items-center gap-1">
                       <Badge variant="secondary" className="gap-1 text-xs font-normal">
                         <UsersIcon className="h-3 w-3" />
@@ -335,7 +324,6 @@ export const BroadcastForm = ({ botId }: IProps) => {
               </div>
             ))}
 
-            {/* Infinite scroll sentinel */}
             <div ref={loadMoreRef} className="py-3 flex justify-center">
               {isFetchingNextPage && (
                 <Loader2Icon className="h-4 w-4 animate-spin text-muted-foreground" />
