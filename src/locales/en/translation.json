@@ -109,6 +109,7 @@
       "branches": "Branches",
       "settings": "Settings",
       "staffs": "Staffs",
+      "coupons": "Coupons",
       "upgrade_plan": {
         "title": "Upgrade to {{ plan }} plan",
         "description": "Choose {{ plan }} plan to get more features.",
@@ -345,6 +346,44 @@
       "image": "Branch image",
       "enter_image": "Enter branch image"
     },
+    "coupons": {
+      "create": "Add coupon",
+      "create_description": "Create a promo code for your customers",
+      "created": "Coupon created successfully",
+      "updated": "Coupon updated successfully",
+      "deleted": "Coupon deleted successfully",
+      "code": "Coupon code",
+      "enter_code": "e.g. SUMMER20",
+      "discount_type": "Discount type",
+      "type_percentage": "Percentage (%)",
+      "type_fixed": "Fixed amount",
+      "discount_value": "Discount amount",
+      "min_order_price": "Minimum order total",
+      "max_uses": "Usage limit",
+      "max_uses_placeholder": "Leave empty for unlimited",
+      "expires_at": "Expiry date",
+      "used_count": "Used",
+      "unlimited": "Unlimited",
+      "no_expiry": "No expiry",
+      "usages": "Coupon usage history",
+      "usages_description": "List of customers who used this coupon",
+      "usage_customer": "Customer",
+      "usage_order": "Order",
+      "usage_discount": "Discount",
+      "usage_date": "Date"
+    },
+    "orders": {
+      "summary": {
+        "title": "Order summary",
+        "payment_method": "Payment method",
+        "payment_status": "Payment status",
+        "subtotal": "Subtotal",
+        "discount": "Discount",
+        "coupon_discount": "Coupon",
+        "shipping": "Shipping",
+        "total": "Total"
+      }
+    },
     "telegram-settings": {
       "title": "Bot message settings",
       "description": "Configure the message shown when a user taps /start in your bot",
@@ -378,7 +417,22 @@
       "not_popular": "Not popular",
       "price": "Price",
       "created_at": "Created at",
-      "product_count": "Product count"
+      "product_count": "Product count",
+      "customer_name": "Customer",
+      "customer_phone": "Phone",
+      "product_quantity": "Qty",
+      "original_price": "Original price",
+      "coupon_discount": "Coupon discount",
+      "total_price": "Total",
+      "type_delivery": "Delivery type",
+      "order_status": "Order status",
+      "transaction_status": "Payment status",
+      "payment_method": "Payment method",
+      "pickup": "Pickup",
+      "delivery": "Delivery",
+      "full_name": "Full name",
+      "phone": "Phone",
+      "used_count": "Used"
     },
     "filters": {
       "search": "Search",

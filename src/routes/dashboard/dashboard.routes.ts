@@ -10,6 +10,7 @@ import {
   SendIcon,
   SettingsIcon,
   SwitchCameraIcon,
+  TagIcon,
   TruckIcon,
   UsersIcon,
 } from "lucide-react";
@@ -112,6 +113,18 @@ export const dashboardRoutes = [
     roles: [UserRoles.SuperAdmin, UserRoles.Admin],
     icon: SendIcon,
     title: "sidebar.dashboard.telegram",
+  },
+  {
+    path: "/coupons",
+    element: lazy(() => import("@/features/dashboard/coupons/pages/coupons.page")),
+    roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+    icon: TagIcon,
+    title: "sidebar.dashboard.coupons",
+  },
+  {
+    path: "/coupons/:couponId/usages",
+    element: lazy(() => import("@/features/dashboard/coupons/pages/coupon-usages.page")),
+    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
   },
   {
     icon: SettingsIcon,

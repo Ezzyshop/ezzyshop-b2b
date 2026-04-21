@@ -14,7 +14,8 @@ export const OrderSummary = ({ order }: IProps) => {
   const currency = order.transaction.currency.symbol;
   const shipping = order.delivery_method?.price ?? 0;
   const discountPrice = order.total_discount;
-  const subtotal = order.total_price - shipping + discountPrice;
+  const couponDiscount = order.coupon_discount ?? 0;
+  const subtotal = order.total_price - shipping + discountPrice + couponDiscount;
 
   return (
     <Card>
@@ -46,6 +47,17 @@ export const OrderSummary = ({ order }: IProps) => {
             <span>{t("dashboard.orders.summary.discount")}</span>
             <span className="text-destructive">
               -{discountPrice.toLocaleString()} {currency}
+            </span>
+          </div>
+        ) : null}
+        {couponDiscount ? (
+          <div className="flex items-center justify-between text-sm">
+            <span>
+              {t("dashboard.orders.summary.coupon_discount")}
+              {order.coupon_code ? ` (${order.coupon_code})` : ""}
+            </span>
+            <span className="text-green-600">
+              -{couponDiscount.toLocaleString()} {currency}
             </span>
           </div>
         ) : null}

@@ -118,7 +118,8 @@
         "description": "{{ plan }} tarifini tanlab ko'proq imkoniyatlarga ega bo'ling.",
         "button_text": "Tarifni o'zgartirish"
       },
-      "telegram": "Telegram"
+      "telegram": "Telegram",
+      "coupons": "Kuponlar"
     }
   },
   "dashboard": {
@@ -425,6 +426,7 @@
         "shipping": "Yetkazib berish narxi",
         "total": "Umumiy narx",
         "discount": "Chegirmalar",
+        "coupon_discount": "Kupon",
         "payment_method": "To'lov usuli",
         "payment_status": "To'lov holati"
       },
@@ -490,6 +492,32 @@
         }
       }
     },
+    "coupons": {
+      "create": "Kupon qo'shish",
+      "create_description": "Mijozlaringiz uchun promo-kod yarating",
+      "created": "Kupon muvaffaqiyatli yaratildi",
+      "updated": "Kupon muvaffaqiyatli yangilandi",
+      "deleted": "Kupon muvaffaqiyatli o'chirildi",
+      "code": "Kupon kodi",
+      "enter_code": "mas. SUMMER20",
+      "discount_type": "Chegirma turi",
+      "type_percentage": "Foiz (%)",
+      "type_fixed": "Belgilangan miqdor",
+      "discount_value": "Chegirma miqdori",
+      "min_order_price": "Minimal buyurtma summasi",
+      "max_uses": "Foydalanish chegarasi",
+      "max_uses_placeholder": "Cheksiz uchun bo'sh qoldiring",
+      "expires_at": "Tugash sanasi",
+      "used_count": "Ishlatilgan",
+      "unlimited": "Cheksiz",
+      "no_expiry": "Muddatsiz",
+      "usages": "Kupon ishlatish tarixi",
+      "usages_description": "Ushbu kupondan foydalangan mijozlar ro'yxati",
+      "usage_customer": "Mijoz",
+      "usage_order": "Buyurtma",
+      "usage_discount": "Chegirma",
+      "usage_date": "Sana"
+    },
     "telegram-settings": {
       "title": "Bot xabarlari sozlamalari",
       "description": "Foydalanuvchi /start bosganda ko'rinadigan xabarni sozlang",
@@ -549,7 +577,10 @@
       "pickup": "Olib ketish",
       "delivery": "Yetkazib berish",
       "customer_name": "Mijoz ismi",
-      "customer_phone": "Mijoz telefon raqami"
+      "customer_phone": "Mijoz telefon raqami",
+      "original_price": "Asl narxi",
+      "coupon_discount": "Kupon chegirmasi",
+      "used_count": "Ishlatilgan"
     },
     "filters": {
       "search": "Qidirish",

@@ -108,6 +108,7 @@
       "payment-methods": "Способы оплаты",
       "branches": "Филиалы",
       "settings": "Настройки",
+      "coupons": "Купоны",
       "upgrade_plan": {
         "title": "Перейти на план {{ plan }}",
         "description": "Выберите план {{ plan }}, чтобы получить больше возможностей.",
@@ -344,6 +345,32 @@
       "image": "Изображение филиала",
       "enter_image": "Введите изображение филиала"
     },
+    "coupons": {
+      "create": "Добавить купон",
+      "create_description": "Создайте промокод для ваших клиентов",
+      "created": "Купон успешно создан",
+      "updated": "Купон успешно обновлён",
+      "deleted": "Купон успешно удалён",
+      "code": "Код купона",
+      "enter_code": "напр. SUMMER20",
+      "discount_type": "Тип скидки",
+      "type_percentage": "Процент (%)",
+      "type_fixed": "Фиксированная сумма",
+      "discount_value": "Размер скидки",
+      "min_order_price": "Минимальная сумма заказа",
+      "max_uses": "Лимит использований",
+      "max_uses_placeholder": "Оставьте пустым для неограниченного",
+      "expires_at": "Дата истечения",
+      "used_count": "Использовано",
+      "unlimited": "Неограниченно",
+      "no_expiry": "Без срока",
+      "usages": "История использования купона",
+      "usages_description": "Список клиентов, использовавших этот купон",
+      "usage_customer": "Клиент",
+      "usage_order": "Заказ",
+      "usage_discount": "Скидка",
+      "usage_date": "Дата"
+    },
     "telegram-settings": {
       "title": "Настройка сообщений бота",
       "description": "Настройте сообщение, которое пользователь видит при нажатии /start",
@@ -359,6 +386,18 @@
       "broadcast-message-placeholder": "Введите ваше сообщение...",
       "broadcast-send": "Отправить всем",
       "broadcast-success": "Отправлено {{sent}} из {{total}} пользователей"
+    },
+    "orders": {
+      "summary": {
+        "title": "Сводка заказа",
+        "payment_method": "Способ оплаты",
+        "payment_status": "Статус оплаты",
+        "subtotal": "Подытог",
+        "discount": "Скидка",
+        "coupon_discount": "Купон",
+        "shipping": "Доставка",
+        "total": "Итого"
+      }
     }
   },
   "table": {
@@ -377,7 +416,22 @@
       "not_popular": "Не популярный",
       "price": "Цена",
       "created_at": "Создано",
-      "product_count": "Количество товаров"
+      "product_count": "Количество товаров",
+      "customer_name": "Клиент",
+      "customer_phone": "Телефон",
+      "product_quantity": "Кол-во",
+      "original_price": "Исходная цена",
+      "coupon_discount": "Скидка купона",
+      "total_price": "Итого",
+      "type_delivery": "Тип доставки",
+      "order_status": "Статус заказа",
+      "transaction_status": "Статус оплаты",
+      "payment_method": "Способ оплаты",
+      "pickup": "Самовывоз",
+      "delivery": "Доставка",
+      "full_name": "Полное имя",
+      "phone": "Телефон",
+      "used_count": "Использовано"
     },
     "filters": {
       "search": "Поиск",

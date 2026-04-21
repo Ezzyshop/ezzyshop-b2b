@@ -47,6 +47,32 @@ export const orderTableColumns = (
     },
   },
   {
+    header: "table.columns.original_price",
+    accessorKey: "original_price",
+    cell: ({ row }) => {
+      const { total_price, coupon_discount = 0, transaction } = row.original;
+      return (
+        <div>
+          {(total_price + coupon_discount).toLocaleString()}{" "}
+          {transaction.currency.symbol}
+        </div>
+      );
+    },
+  },
+  {
+    header: "table.columns.coupon_discount",
+    accessorKey: "coupon_discount",
+    cell: ({ row }) => {
+      const { coupon_discount = 0, transaction } = row.original;
+      if (!coupon_discount) return <div>—</div>;
+      return (
+        <div className="text-green-600">
+          -{coupon_discount.toLocaleString()} {transaction.currency.symbol}
+        </div>
+      );
+    },
+  },
+  {
     header: "table.columns.total_price",
     accessorKey: "total_price",
     cell: ({ row }) => {

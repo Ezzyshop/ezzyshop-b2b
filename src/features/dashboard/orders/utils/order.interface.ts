@@ -38,6 +38,8 @@ export interface IOrderResponse {
   total_quantity: number;
   total_price: number;
   total_discount: number;
+  coupon_discount?: number;
+  coupon_code?: string;
   delivery_method?: {
     _id: string;
     price: number;
