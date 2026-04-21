@@ -472,7 +472,9 @@
         "changed": "To'lov chekini muvaffaqiyatli o'zgartirildi",
         "close": "Yopish",
         "verify_description": "To'lov chekini tasdiqlashni xohlaysizmi?",
-        "reject_description": "To'lov chekini rad etishni xohlaysizmi?"
+        "reject_description": "To'lov chekini rad etishni xohlaysizmi?",
+        "reject_reason": "Rad etish sababi",
+        "reject_reason_placeholder": "Rad etish sababini kiriting..."
       },
       "customer_information": {
         "title": "Mijoz ma'lumotlari",

@@ -8,10 +8,12 @@ export const updateTransactionChequeStatusMutationFn = (
   shopId: string,
   transactionId: string,
   chequeId: string,
-  status: TransactionChequeImageStatus
+  status: TransactionChequeImageStatus,
+  reason?: string,
 ) =>
   api.patch(`/transactions/${shopId}/${transactionId}/${chequeId}/status`, {
     status,
+    reason,
   });
 
 export const updateTransactionStatusMutationFn = (

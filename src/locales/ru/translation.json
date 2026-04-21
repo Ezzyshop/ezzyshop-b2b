@@ -419,6 +419,16 @@
         "cancel_reason": "Причина отмены",
         "cancel_reason_placeholder": "Введите причину отмены..."
       },
+      "cheque_image_actions": {
+        "verify": "Подтвердить",
+        "reject": "Отклонить",
+        "changed": "Статус чека успешно обновлён",
+        "close": "Закрыть",
+        "verify_description": "Вы уверены, что хотите подтвердить этот платёжный чек?",
+        "reject_description": "Вы уверены, что хотите отклонить этот платёжный чек?",
+        "reject_reason": "Причина отклонения",
+        "reject_reason_placeholder": "Введите причину отклонения..."
+      },
       "status_history": {
         "title": "История статусов"
       }

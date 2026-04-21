@@ -76,9 +76,17 @@ export interface IOrderResponse {
     cheque_images: {
       url: string;
       status: TransactionChequeImageStatus;
+      reason?: string;
       createdAt: string;
       updatedAt: string;
       _id: string;
+      status_history?: {
+        from_status: TransactionChequeImageStatus;
+        to_status: TransactionChequeImageStatus;
+        changed_by: { _id: string; full_name: string; email: string };
+        changed_at: string;
+        reason?: string;
+      }[];
     }[];
     currency: ICurrency;
     provider: IPaymentMethod;

@@ -398,6 +398,16 @@
         "cancel_reason": "Cancellation reason",
         "cancel_reason_placeholder": "Enter the reason for cancellation..."
       },
+      "cheque_image_actions": {
+        "verify": "Verify",
+        "reject": "Reject",
+        "changed": "Cheque image status updated successfully",
+        "close": "Close",
+        "verify_description": "Are you sure you want to verify this payment cheque?",
+        "reject_description": "Are you sure you want to reject this payment cheque?",
+        "reject_reason": "Rejection reason",
+        "reject_reason_placeholder": "Enter rejection reason..."
+      },
       "status_history": {
         "title": "Status history"
       }
