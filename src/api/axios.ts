@@ -21,7 +21,7 @@ api.interceptors.response.use(
       window.location.href = "/server-error";
     }
 
-    toast.error(errorMessagesMap[message]);
+    toast.error(errorMessagesMap[message] ?? "Internal server error");
 
     if (message === ErrorMessages.UnauthorizedError) {
       window.location.href = "/login";
