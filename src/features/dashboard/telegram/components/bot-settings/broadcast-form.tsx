@@ -24,7 +24,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { TBroadcastForm, IBroadcastMessage } from "@/types/bot-template.types";
+import { TBroadcastForm } from "@/types/bot-template.types";
 import { broadcastResolver } from "../../utils/bot-template.validator";
 import { broadcastMutationFn } from "@/api/mutations";
 import { getBroadcastHistoryQueryFn } from "@/api/queries";
