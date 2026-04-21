@@ -8,4 +8,5 @@ export const botTemplateResolver = Joi.object({
 
 export const broadcastResolver = Joi.object({
   message: Joi.string().required().min(1).max(4096),
+  imageUrl: Joi.string().uri().allow('').optional(),
 });

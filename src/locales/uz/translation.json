@@ -540,7 +540,9 @@
       "broadcast-message": "Xabar",
       "broadcast-message-placeholder": "Xabaringizni kiriting...",
       "broadcast-send": "Barchaga yuborish",
-      "broadcast-success": "{{total}} ta foydalanuvchidan {{sent}} tasiga yuborildi"
+      "broadcast-success": "{{total}} ta foydalanuvchidan {{sent}} tasiga yuborildi",
+      "broadcast-history-title": "Yuborilgan xabarlar tarixi",
+      "broadcast-history-description": "Botingiz foydalanuvchilariga ilgari yuborilgan xabarlar"
     },
     "staffs": {
       "title": "Xodimlar",

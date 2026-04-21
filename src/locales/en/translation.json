@@ -437,7 +437,9 @@
       "broadcast-message": "Message",
       "broadcast-message-placeholder": "Type your message here...",
       "broadcast-send": "Send to all users",
-      "broadcast-success": "Sent to {{sent}} of {{total}} users"
+      "broadcast-success": "Sent to {{sent}} of {{total}} users",
+      "broadcast-history-title": "Broadcast History",
+      "broadcast-history-description": "Previously sent broadcasts to your bot users"
     }
   },
   "table": {

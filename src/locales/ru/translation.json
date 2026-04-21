@@ -402,7 +402,9 @@
       "broadcast-message": "Сообщение",
       "broadcast-message-placeholder": "Введите ваше сообщение...",
       "broadcast-send": "Отправить всем",
-      "broadcast-success": "Отправлено {{sent}} из {{total}} пользователей"
+      "broadcast-success": "Отправлено {{sent}} из {{total}} пользователей",
+      "broadcast-history-title": "История рассылок",
+      "broadcast-history-description": "Ранее отправленные рассылки пользователям вашего бота"
     },
     "orders": {
       "summary": {
