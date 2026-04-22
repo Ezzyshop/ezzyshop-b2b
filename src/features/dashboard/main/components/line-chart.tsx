@@ -54,7 +54,7 @@ export const LineChart = ({
 }: IProps) => {
   return (
     <Card>
-      <CardHeader className="flex items-start justify-between gap-2 border-b sm:flex-row">
+      <CardHeader className="flex items-start justify-between flex-col gap-2 border-b sm:flex-row">
         <div className="grid flex-1 gap-1">
           <CardTitle>{title}</CardTitle>
           <CardDescription>{description}</CardDescription>
