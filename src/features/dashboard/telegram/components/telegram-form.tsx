@@ -100,13 +100,13 @@ export const TelegramForm = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired>
-                {t("dashboard.telegram.form.menu-text")}
+                {t("register.create_telegram.menu_name")}
               </FormLabel>
               <FormControl>
                 <Input
                   {...field}
                   placeholder={t(
-                    "dashboard.telegram.form.menu-text-placeholder"
+                    "register.create_telegram.menu_name_placeholder"
                   )}
                 />
               </FormControl>
@@ -150,24 +150,26 @@ export const TelegramForm = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired>
-                {t("dashboard.telegram.form.token")}
+                {t("register.create_telegram.telegram_bot_token")}
               </FormLabel>
               <FormControl>
                 <Input
                   {...field}
                   disabled={!!initialValues}
-                  placeholder={t("dashboard.telegram.form.token-placeholder")}
+                  placeholder={t(
+                    "register.create_telegram.telegram_bot_token_placeholder"
+                  )}
                 />
               </FormControl>
             </FormItem>
           )}
         />
 
-        <div className="md:col-span-3">
+        <div className="col-span-1 md:col-span-3">
           <CreateTelegramInstruction />
         </div>
 
-        <div className="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="col-span-1 grid grid-cols-1 md:grid-cols-2 gap-4">
           <Button
             className={cn(initialValues ? "col-span-1" : "md:col-span-2")}
             disabled={
