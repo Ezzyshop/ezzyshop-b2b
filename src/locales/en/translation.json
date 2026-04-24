@@ -120,7 +120,7 @@
         "description": "Choose {{ plan }} plan to get more features.",
         "button_text": "Change plan"
       },
-      "delivery-zones": "Delivery Zones",
+      "delivery-zones": "Delivery zones",
       "delivery": "Delivery"
     }
   },

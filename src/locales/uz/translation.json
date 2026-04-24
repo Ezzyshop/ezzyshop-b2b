@@ -108,7 +108,7 @@
       "products": "Mahsulotlar",
       "plans": "Tariflar",
       "orders": "Buyurtmalar",
-      "delivery-methods": "Yetkazib berish usullari",
+      "delivery-methods": "Yetkazish usullari",
       "payment-methods": "To'lov usullari",
       "branches": "Filialar",
       "settings": "Sozlamalar",
@@ -124,7 +124,7 @@
       "telegram-send-message": "Xabar yuborish",
       "coupons": "Kuponlar",
       "chat": "Chat",
-      "delivery-zones": "Yetkazib berish zonalari",
+      "delivery-zones": "Yetkazish hududlari",
       "delivery": "Yetkazib berish"
     }
   },
@@ -632,11 +632,11 @@
     }
   },
   "delivery_zone": {
-    "title": "Yetkazib berish zonalari",
-    "add_zone": "Zona qo'shish",
-    "zone_name": "Zona nomi",
+    "title": "Yetkazib berish hududlari",
+    "add_zone": "Hudud qo'shish",
+    "zone_name": "Hudud nomi",
     "zone_name_placeholder": "Masalan: Chilanzar tumani",
-    "click_to_add_points": "Zona chegarasini belgilash uchun xaritani bosing",
+    "click_to_add_points": "Hudud chegarasini belgilash uchun xaritani bosing",
     "points": "nuqta",
     "save": "Saqlash",
     "update": "Yangilash",
@@ -646,15 +646,15 @@
     "edit": "Tahrirlash",
     "active": "Faol",
     "inactive": "Nofaol",
-    "no_zones": "Hech qanday zona yo'q. Yangi zona qo'shing.",
+    "no_zones": "Hech qanday hudud yo'q. Yangi hudud qo'shing.",
     "loading": "Yuklanmoqda...",
-    "zones_count": "zona",
-    "created": "Zona muvaffaqiyatli qo'shildi",
-    "updated": "Zona muvaffaqiyatli yangilandi",
-    "deleted": "Zona o'chirildi",
-    "min_points_error": "Zona kamida 3 ta nuqtadan iborat bo'lishi kerak",
-    "name_required": "Zona nomini kiriting",
+    "zones_count": "hudud",
+    "created": "Hudud muvaffaqiyatli qo'shildi",
+    "updated": "Hudud muvaffaqiyatli yangilandi",
+    "deleted": "Hudud o'chirildi",
+    "min_points_error": "Hudud kamida 3 ta nuqtadan iborat bo'lishi kerak",
+    "name_required": "Hudud nomini kiriting",
     "dblclick_to_remove": "O'chirish uchun 2x bosing",
-    "edit_zone": "Zonani tahrirlash"
+    "edit_zone": "Hududni tahrirlash"
   }
 }
