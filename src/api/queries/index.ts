@@ -13,3 +13,4 @@ export * from "./analytics.query";
 export * from "./staffs.query";
 export * from "./bot-template.query";
 export * from "./coupons.query";
+export * from "./support-session.query";

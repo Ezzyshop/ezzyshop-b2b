@@ -122,8 +122,31 @@
       "telegram-setup": "Sozlash",
       "telegram-templates": "Shablonlar",
       "telegram-send-message": "Xabar yuborish",
-      "coupons": "Kuponlar"
+      "coupons": "Kuponlar",
+      "chat": "Chat"
     }
+  },
+  "chat": {
+    "users": "Foydalanuvchilar",
+    "no_users": "Hali hech kim yozmagan",
+    "sessions": "Sessiyalar",
+    "no_sessions": "Bu foydalanuvchida sessiyalar yo'q",
+    "select_user": "Sessiyalarni ko'rish uchun foydalanuvchini tanlang",
+    "select_session": "Xabarlarni ko'rish uchun sessiyani tanlang",
+    "no_messages": "Hali xabarlar yo'q",
+    "open": "ochiq",
+    "total": "jami",
+    "open_status": "Ochiq",
+    "resolved": "Yopilgan",
+    "issue_resolved": "Masala hal qilindi",
+    "resolve_confirm_title": "Bu masalani hal qilingan deb belgilaymizmi?",
+    "resolve_confirm_description": "Mijoz bu sessiyada boshqa xabar yubora olmaydi. U istalgan vaqtda yangi sessiya ochishi mumkin.",
+    "confirm_resolve": "Ha, hal qilish",
+    "session_resolved_banner": "Bu sessiya yopilgan va qulflangan.",
+    "type_reply": "Javob yozing...",
+    "send_failed": "Xabarni yuborib bo'lmadi",
+    "resolve_failed": "Sessiyani yopib bo'lmadi",
+    "upload_failed": "Rasmni yuklab bo'lmadi"
   },
   "dashboard": {
     "main": {

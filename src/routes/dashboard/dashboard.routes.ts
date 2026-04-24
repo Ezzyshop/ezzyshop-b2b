@@ -7,6 +7,7 @@ import {
   LayoutTemplateIcon,
   ListIcon,
   MapIcon,
+  MessageSquareIcon,
   Package2,
   PackageIcon,
   SendIcon,
@@ -164,6 +165,13 @@ export const dashboardRoutes = [
     path: "/coupons/:couponId/usages",
     element: lazy(() => import("@/features/dashboard/coupons/pages/coupon-usages.page")),
     roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+  },
+  {
+    path: "/chat",
+    element: lazy(() => import("@/features/dashboard/chat/pages/chat.page")),
+    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+    icon: MessageSquareIcon,
+    title: "sidebar.dashboard.chat",
   },
   {
     icon: SettingsIcon,

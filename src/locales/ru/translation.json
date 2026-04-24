@@ -113,12 +113,35 @@
       "telegram-setup": "Настройка",
       "telegram-templates": "Шаблоны",
       "telegram-send-message": "Отправить сообщение",
+      "chat": "Чат",
       "upgrade_plan": {
         "title": "Перейти на план {{ plan }}",
         "description": "Выберите план {{ plan }}, чтобы получить больше возможностей.",
         "button_text": "Изменить план"
       }
     }
+  },
+  "chat": {
+    "users": "Пользователи",
+    "no_users": "Пока никто не написал",
+    "sessions": "Сессии",
+    "no_sessions": "У пользователя нет сессий",
+    "select_user": "Выберите пользователя, чтобы посмотреть сессии",
+    "select_session": "Выберите сессию, чтобы посмотреть сообщения",
+    "no_messages": "Пока нет сообщений",
+    "open": "открыто",
+    "total": "всего",
+    "open_status": "Открыта",
+    "resolved": "Закрыта",
+    "issue_resolved": "Проблема решена",
+    "resolve_confirm_title": "Отметить как решённую?",
+    "resolve_confirm_description": "Клиент больше не сможет отправлять сообщения в этой сессии. Он всегда может открыть новую.",
+    "confirm_resolve": "Да, закрыть",
+    "session_resolved_banner": "Эта сессия закрыта и заблокирована.",
+    "type_reply": "Введите ответ...",
+    "send_failed": "Не удалось отправить сообщение",
+    "resolve_failed": "Не удалось закрыть сессию",
+    "upload_failed": "Не удалось загрузить изображение"
   },
   "dashboard": {
     "categories": {

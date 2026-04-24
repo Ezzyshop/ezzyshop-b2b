@@ -114,12 +114,35 @@
       "telegram-setup": "Set up",
       "telegram-templates": "Templates",
       "telegram-send-message": "Send message",
+      "chat": "Chat",
       "upgrade_plan": {
         "title": "Upgrade to {{ plan }} plan",
         "description": "Choose {{ plan }} plan to get more features.",
         "button_text": "Change plan"
       }
     }
+  },
+  "chat": {
+    "users": "Users",
+    "no_users": "No users have messaged yet",
+    "sessions": "Sessions",
+    "no_sessions": "No sessions for this user",
+    "select_user": "Select a user to view their sessions",
+    "select_session": "Select a session to view messages",
+    "no_messages": "No messages yet",
+    "open": "open",
+    "total": "total",
+    "open_status": "Open",
+    "resolved": "Resolved",
+    "issue_resolved": "Issue Resolved",
+    "resolve_confirm_title": "Mark this issue as resolved?",
+    "resolve_confirm_description": "The customer will no longer be able to send messages in this session. They can always open a new one.",
+    "confirm_resolve": "Yes, resolve",
+    "session_resolved_banner": "This session has been resolved and is locked.",
+    "type_reply": "Type a reply...",
+    "send_failed": "Failed to send message",
+    "resolve_failed": "Failed to resolve session",
+    "upload_failed": "Failed to upload image"
   },
   "dashboard": {
     "categories": {
