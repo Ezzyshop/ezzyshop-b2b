@@ -25,3 +25,11 @@ export const deleteCategoryMutationFn = async (
   const response = await api.delete(`/categories/${shopId}/${categoryId}`);
   return response.data;
 };
+
+export const reorderCategoriesMutationFn = async (
+  shopId: string,
+  items: { id: string; order: number }[]
+) => {
+  const response = await api.put(`/categories/${shopId}/reorder`, { items });
+  return response.data;
+};

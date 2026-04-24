@@ -12,6 +12,7 @@ export interface ICategory {
   shop: Pick<IShop, "_id" | "name">;
   status: CategoryStatus;
   is_popular: boolean;
+  order: number;
   product_count: number;
   createdAt: string;
   updatedAt: string;

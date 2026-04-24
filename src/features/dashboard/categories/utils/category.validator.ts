@@ -5,7 +5,7 @@ import { CategoryStatus } from "./category.enum";
 export const categoryFields: Record<
   keyof Omit<
     ICategory,
-    "createdAt" | "updatedAt" | "shop" | "product_count" | "_id"
+    "createdAt" | "updatedAt" | "shop" | "product_count" | "_id" | "order"
   >,
   Joi.Schema
 > = {

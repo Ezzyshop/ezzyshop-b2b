@@ -10,3 +10,14 @@ export const getCategoriesQueryFn = async (
   const response = await api.get(`/categories/${shopId}`, { params: filters });
   return response.data;
 };
+
+export const getCategoriesInfiniteQueryFn = async (
+  shopId: string,
+  pageParam: number,
+  filters?: TObject
+): Promise<IPaginatedResponse<ICategory>> => {
+  const response = await api.get(`/categories/${shopId}`, {
+    params: { ...filters, page: pageParam, limit: 30 },
+  });
+  return response.data;
+};

@@ -9,6 +9,17 @@ export const getProductsQueryFn = (
 ): Promise<IPaginatedResponse<IProduct>> =>
   api.get(`/products/${shopId}`, { params: filters }).then((res) => res.data);
 
+export const getProductsInfiniteQueryFn = (
+  shopId: string,
+  pageParam: number,
+  filters?: TObject
+): Promise<IPaginatedResponse<IProduct>> =>
+  api
+    .get(`/products/${shopId}`, {
+      params: { ...filters, page: pageParam, limit: 30 },
+    })
+    .then((res) => res.data);
+
 export const getProductQueryFn = (
   shopId: string,
   productId: string

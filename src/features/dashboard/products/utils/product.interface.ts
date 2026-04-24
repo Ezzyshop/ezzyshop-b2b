@@ -51,6 +51,7 @@ export interface IProduct {
     _id: string;
     name: string;
   };
+  order: number;
   createdAt: string;
   updatedAt: string;
   delivery_time?: number;
