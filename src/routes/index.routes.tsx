@@ -20,7 +20,7 @@ export const IndexRoutes = () => {
         apikey: import.meta.env.VITE_YANDEX_MAPS_API_KEY,
         lang: "ru_RU",
         ns: "use-load-option",
-        load: "Map,Placemark,map.addon.balloon",
+        load: "Map,Placemark,Polygon,map.addon.balloon",
       }}
     >
       <Routes>

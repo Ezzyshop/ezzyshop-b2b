@@ -13,3 +13,4 @@ export * from "./telegram.mutation";
 export * from "./bot-template.mutations";
 export * from "./staffs.mutation";
 export * from "./coupons.mutation";
+export * from "./delivery-zones.mutation";

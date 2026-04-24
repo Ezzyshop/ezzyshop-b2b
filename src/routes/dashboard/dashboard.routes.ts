@@ -68,7 +68,7 @@ export const dashboardRoutes = [
     roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
   },
   {
-    path: "/delivery-methods",
+    path: "/delivery",
     element: lazy(
       () =>
         import(
@@ -77,7 +77,33 @@ export const dashboardRoutes = [
     ),
     roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
     icon: TruckIcon,
-    title: "sidebar.dashboard.delivery-methods",
+    title: "sidebar.dashboard.delivery",
+    children: [
+      {
+        path: "/delivery-methods",
+        title: "sidebar.dashboard.delivery-methods",
+        icon: TruckIcon,
+        roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+        element: lazy(
+          () =>
+            import(
+              "@/features/dashboard/delivery-methods/pages/delivery-methods.page"
+            )
+        ),
+      },
+      {
+        path: "/delivery-zones",
+        title: "sidebar.dashboard.delivery-zones",
+        icon: MapIcon,
+        roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+        element: lazy(
+          () =>
+            import(
+              "@/features/dashboard/delivery-zone/pages/delivery-zone.page"
+            )
+        ),
+      },
+    ] as ChildRoute[],
   },
   {
     path: "/payment-methods",

@@ -123,7 +123,9 @@
       "telegram-templates": "Shablonlar",
       "telegram-send-message": "Xabar yuborish",
       "coupons": "Kuponlar",
-      "chat": "Chat"
+      "chat": "Chat",
+      "delivery-zones": "Yetkazib berish zonalari",
+      "delivery": "Yetkazib berish"
     }
   },
   "chat": {
@@ -626,5 +628,30 @@
       "order_status": "Buyurtma holati",
       "payment_method": "To'lov usuli"
     }
+  },
+  "delivery_zone": {
+    "title": "Yetkazib berish zonalari",
+    "add_zone": "Zona qo'shish",
+    "zone_name": "Zona nomi",
+    "zone_name_placeholder": "Masalan: Chilanzar tumani",
+    "click_to_add_points": "Zona chegarasini belgilash uchun xaritani bosing",
+    "points": "nuqta",
+    "save": "Saqlash",
+    "update": "Yangilash",
+    "cancel": "Bekor qilish",
+    "undo": "Orqaga",
+    "clear": "Tozalash",
+    "edit": "Tahrirlash",
+    "active": "Faol",
+    "inactive": "Nofaol",
+    "no_zones": "Hech qanday zona yo'q. Yangi zona qo'shing.",
+    "loading": "Yuklanmoqda...",
+    "zones_count": "zona",
+    "created": "Zona muvaffaqiyatli qo'shildi",
+    "updated": "Zona muvaffaqiyatli yangilandi",
+    "deleted": "Zona o'chirildi",
+    "min_points_error": "Zona kamida 3 ta nuqtadan iborat bo'lishi kerak",
+    "name_required": "Zona nomini kiriting",
+    "dblclick_to_remove": "Nuqtani o'chirish uchun ustiga ikki marta bosing"
   }
 }
