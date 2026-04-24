@@ -47,4 +47,5 @@ export interface ICreateCouponForm {
   max_uses_per_user?: number | null;
   expires_at?: string | null;
   allowed_users?: string[];
+  notification_message?: string;
 }

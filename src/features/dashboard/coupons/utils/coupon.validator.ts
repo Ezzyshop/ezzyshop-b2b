@@ -24,6 +24,11 @@ export const createCouponValidator = Joi.object({
     'date.greater': 'Expiry date must be in the future',
   }),
   allowed_users: Joi.array().items(Joi.string()).optional().default([]),
+  notification_message: Joi.string().when('allowed_users', {
+    is: Joi.array().min(1),
+    then: Joi.string().required().messages({ 'any.required': 'Telegram notification message is required for user-based coupons' }),
+    otherwise: Joi.string().optional().allow('', null),
+  }),
 });
 
 export const updateCouponValidator = Joi.object({

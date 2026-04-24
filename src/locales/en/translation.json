@@ -399,6 +399,8 @@
       "allowed_users": "Restrict to specific customers",
       "allowed_users_placeholder": "Search customers...",
       "allowed_users_hint": "Leave empty to allow all customers",
+      "notification_message": "Telegram notification message",
+      "notification_message_placeholder": "e.g. We have a special offer just for you! Use promocode to get a discount.",
       "delete": "Delete coupon",
       "delete_description": "Are you sure you want to delete coupon \"{{code}}\"? This action cannot be undone.",
       "usages": "Coupon usage history",

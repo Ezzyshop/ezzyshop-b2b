@@ -6,6 +6,7 @@ import { CouponDiscountType } from "../../utils/coupon.enum";
 import { createCouponValidator, updateCouponValidator } from "../../utils/coupon.validator";
 import { Button } from "@/components/ui/button/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { DatePicker } from "@/components/ui/date-picker";
 import {
   Form,
@@ -64,6 +65,7 @@ export const CouponForm = ({ onSubmit, isLoading, defaultValues, hideCode }: IPr
   });
 
   const discountType = form.watch("discount_type");
+  const allowedUsers = form.watch("allowed_users");
 
   return (
     <Form {...form}>
@@ -243,6 +245,27 @@ export const CouponForm = ({ onSubmit, isLoading, defaultValues, hideCode }: IPr
           </p>
           <FormMessage>{form.formState.errors.allowed_users?.message}</FormMessage>
         </FormItem>
+
+        {!hideCode && allowedUsers && allowedUsers.length > 0 && (
+          <FormField
+            control={form.control}
+            name="notification_message"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t("dashboard.coupons.notification_message")}</FormLabel>
+                <FormControl>
+                  <Textarea
+                    {...field}
+                    value={field.value ?? ""}
+                    placeholder={t("dashboard.coupons.notification_message_placeholder")}
+                    rows={3}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        )}
 
         <Button type="submit" className="w-full" disabled={isLoading}>
           {isLoading ? t("common.loading") : t("common.save")}

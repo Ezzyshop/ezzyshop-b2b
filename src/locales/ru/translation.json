@@ -398,6 +398,8 @@
       "allowed_users": "Ограничить определёнными клиентами",
       "allowed_users_placeholder": "Найти клиентов...",
       "allowed_users_hint": "Оставьте пустым — доступно всем клиентам",
+      "notification_message": "Сообщение в Telegram",
+      "notification_message_placeholder": "Напр.: Специальное предложение для вас! Используйте купон.",
       "delete": "Удалить купон",
       "delete_description": "Вы уверены, что хотите удалить купон \"{{code}}\"? Это действие нельзя отменить.",
       "usages": "История использования купона",
