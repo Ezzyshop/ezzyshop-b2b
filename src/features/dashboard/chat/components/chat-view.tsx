@@ -187,7 +187,7 @@ export const ChatView = ({ sessionId }: IProps) => {
     setUploading(true);
     try {
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("image", file);
       const res = await uploadImageMutationFn(formData);
       const url = res?.data?.url || res?.url;
       if (url) {
