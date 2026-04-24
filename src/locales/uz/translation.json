@@ -652,6 +652,7 @@
     "deleted": "Zona o'chirildi",
     "min_points_error": "Zona kamida 3 ta nuqtadan iborat bo'lishi kerak",
     "name_required": "Zona nomini kiriting",
-    "dblclick_to_remove": "Nuqtani o'chirish uchun ustiga ikki marta bosing"
+    "dblclick_to_remove": "O'chirish uchun 2x bosing",
+    "edit_zone": "Zonani tahrirlash"
   }
 }

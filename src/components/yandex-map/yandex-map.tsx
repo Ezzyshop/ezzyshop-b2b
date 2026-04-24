@@ -105,9 +105,8 @@ export const YandexMap = ({
             options={{
               draggable: true,
               iconColor: "var(--primary)",
-            }}
-            properties={{
-              hintContent: "Drag to move",
+              hasBalloon: false,
+              hasHint: false,
             }}
             onDragEnd={handleDragEnd}
           />

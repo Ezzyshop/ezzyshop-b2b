@@ -529,6 +529,7 @@
     "deleted": "Zone deleted",
     "min_points_error": "A zone must have at least 3 points",
     "name_required": "Please enter a zone name",
-    "dblclick_to_remove": "Double-click a point to remove it"
+    "dblclick_to_remove": "Double-click to remove a point",
+    "edit_zone": "Edit Zone"
   }
 }
