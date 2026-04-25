@@ -47,9 +47,15 @@ export const customersTableColumns = (
 
   const onSort = (field: string) => {
     const current = getQueryParams();
-    const newOrder =
-      current.sortBy === field && current.sortOrder === "asc" ? "desc" : "asc";
-    setQueryParams({ ...current, sortBy: field, sortOrder: newOrder, page: 1 });
+    if (current.sortBy !== field) {
+      setQueryParams({ ...current, sortBy: field, sortOrder: "desc", page: 1 });
+    } else if (current.sortOrder === "desc") {
+      setQueryParams({ ...current, sortBy: field, sortOrder: "asc", page: 1 });
+    } else {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { sortBy: _sb, sortOrder: _so, ...rest } = current;
+      setQueryParams({ ...rest, page: 1 });
+    }
   };
 
   return [

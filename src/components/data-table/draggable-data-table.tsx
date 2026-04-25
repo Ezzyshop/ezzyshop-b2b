@@ -158,10 +158,9 @@ export const DraggableDataTable = <
                     <TableHead key={header.id}>
                       {header.isPlaceholder
                         ? null
-                        : flexRender(
-                            t(header.column.columnDef.header as string),
-                            header.getContext()
-                          )}
+                        : typeof header.column.columnDef.header === "function"
+                        ? flexRender(header.column.columnDef.header, header.getContext())
+                        : t(header.column.columnDef.header as string)}
                     </TableHead>
                   ))}
                 </TableRow>

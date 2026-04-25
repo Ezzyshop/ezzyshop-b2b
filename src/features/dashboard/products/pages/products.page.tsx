@@ -71,9 +71,10 @@ export const ProductsPage = () => {
         <ProductTableFilters
           setQueryParams={setQueryParams}
           getQueryParams={getQueryParams}
+          shopId={shop._id}
         />
         <DraggableDataTable
-          columns={productTableColumns(shop, i18n.language as LanguageType)}
+          columns={productTableColumns(shop, i18n.language as LanguageType, getQueryParams, setQueryParams, t)}
           data={allProducts}
           isLoading={isLoading}
           hasNextPage={hasNextPage}

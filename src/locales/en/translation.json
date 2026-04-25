@@ -512,6 +512,7 @@
       "search": "Search",
       "status": "Status",
       "is_popular": "Popular",
+      "category": "Category",
       "sort_by": "Sort by",
       "sort_asc": "Ascending",
       "sort_desc": "Descending",

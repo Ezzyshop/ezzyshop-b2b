@@ -73,7 +73,7 @@ export function CategoriesPage() {
           getQueryParams={getQueryParams}
         />
         <DraggableDataTable
-          columns={categoryTableColumns(t, i18n.language as LanguageType)}
+          columns={categoryTableColumns(t, i18n.language as LanguageType, getQueryParams, setQueryParams)}
           data={allCategories}
           isLoading={isLoading}
           hasNextPage={hasNextPage}

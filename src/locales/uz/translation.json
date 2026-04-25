@@ -632,6 +632,7 @@
       "search": "Qidirish",
       "status": "Holat",
       "is_popular": "Mashxurmi",
+      "category": "Kategoriya",
       "transaction_status": "To'lov holati",
       "order_status": "Buyurtma holati",
       "payment_method": "To'lov usuli",
