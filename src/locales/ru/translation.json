@@ -120,7 +120,8 @@
         "button_text": "Изменить план"
       },
       "delivery-zones": "Зоны доставки",
-      "delivery": "Доставка"
+      "delivery": "Доставка",
+      "customers": "Клиенты"
     }
   },
   "chat": {
@@ -499,12 +500,20 @@
       "delivery": "Доставка",
       "full_name": "Полное имя",
       "phone": "Телефон",
-      "used_count": "Использовано"
+      "used_count": "Использовано",
+      "total_orders": "Заказы",
+      "total_amount": "Всего потрачено",
+      "registered_at": "Зарегистрирован",
+      "first_order_date": "Первый заказ"
     },
     "filters": {
       "search": "Поиск",
       "status": "Статус",
-      "is_popular": "Популярный"
+      "is_popular": "Популярный",
+      "sort_by": "Сортировать по",
+      "sort_asc": "По возрастанию",
+      "sort_desc": "По убыванию",
+      "sort_order": "Порядок"
     }
   },
   "delivery_zone": {

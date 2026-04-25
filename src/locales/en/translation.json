@@ -121,7 +121,8 @@
         "button_text": "Change plan"
       },
       "delivery-zones": "Delivery zones",
-      "delivery": "Delivery"
+      "delivery": "Delivery",
+      "customers": "Customers"
     }
   },
   "chat": {
@@ -500,12 +501,20 @@
       "delivery": "Delivery",
       "full_name": "Full name",
       "phone": "Phone",
-      "used_count": "Used"
+      "used_count": "Used",
+      "total_orders": "Orders",
+      "total_amount": "Total spent",
+      "registered_at": "Registered",
+      "first_order_date": "First order"
     },
     "filters": {
       "search": "Search",
       "status": "Status",
-      "is_popular": "Popular"
+      "is_popular": "Popular",
+      "sort_by": "Sort by",
+      "sort_asc": "Ascending",
+      "sort_desc": "Descending",
+      "sort_order": "Order"
     }
   },
   "delivery_zone": {

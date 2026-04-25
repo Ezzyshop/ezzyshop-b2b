@@ -125,7 +125,8 @@
       "coupons": "Kuponlar",
       "chat": "Chat",
       "delivery-zones": "Yetkazish hududlari",
-      "delivery": "Yetkazib berish"
+      "delivery": "Yetkazib berish",
+      "customers": "Mijozlar"
     }
   },
   "chat": {
@@ -620,7 +621,11 @@
       "customer_phone": "Mijoz telefon raqami",
       "original_price": "Asl narxi",
       "coupon_discount": "Kupon chegirmasi",
-      "used_count": "Ishlatilgan"
+      "used_count": "Ishlatilgan",
+      "total_orders": "Buyurtmalar",
+      "total_amount": "Jami sarflangan",
+      "registered_at": "Ro'yxatdan o'tgan",
+      "first_order_date": "Birinchi buyurtma"
     },
     "filters": {
       "search": "Qidirish",
@@ -628,7 +633,11 @@
       "is_popular": "Mashxurmi",
       "transaction_status": "To'lov holati",
       "order_status": "Buyurtma holati",
-      "payment_method": "To'lov usuli"
+      "payment_method": "To'lov usuli",
+      "sort_by": "Saralash",
+      "sort_asc": "O'sish tartibida",
+      "sort_desc": "Kamayish tartibida",
+      "sort_order": "Tartib"
     }
   },
   "delivery_zone": {

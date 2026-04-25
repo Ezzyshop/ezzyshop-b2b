@@ -15,3 +15,4 @@ export * from "./bot-template.query";
 export * from "./coupons.query";
 export * from "./support-session.query";
 export * from "./delivery-zones.query";
+export * from "./customers.query";

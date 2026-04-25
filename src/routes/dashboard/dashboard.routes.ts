@@ -200,6 +200,15 @@ export const dashboardRoutes = [
     title: "sidebar.dashboard.chat",
   },
   {
+    path: "/customers",
+    element: lazy(
+      () => import("@/features/dashboard/customers/pages/customers.page")
+    ),
+    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+    icon: UsersIcon,
+    title: "sidebar.dashboard.customers",
+  },
+  {
     icon: SettingsIcon,
     title: "sidebar.dashboard.settings",
     path: "/settings",
