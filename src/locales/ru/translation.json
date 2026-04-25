@@ -121,7 +121,8 @@
       },
       "delivery-zones": "Зоны доставки",
       "delivery": "Доставка",
-      "customers": "Клиенты"
+      "customers": "Клиенты",
+      "total_orders": "Все заказы"
     }
   },
   "chat": {

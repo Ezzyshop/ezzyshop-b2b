@@ -36,7 +36,7 @@ export const CustomersPage = () => {
           getQueryParams={getQueryParams}
         />
         <DataTable
-          columns={customersTableColumns(t)}
+          columns={customersTableColumns(t, getQueryParams, setQueryParams)}
           data={data?.data ?? []}
           isLoading={isLoading}
           paginationInfo={data?.paginationInfo}

@@ -59,10 +59,12 @@ export const DataTable = <TData, TValue>({
                     >
                       {header.isPlaceholder
                         ? null
-                        : flexRender(
-                            t(header.column.columnDef.header as string),
+                        : typeof header.column.columnDef.header === "function"
+                        ? flexRender(
+                            header.column.columnDef.header,
                             header.getContext()
-                          )}
+                          )
+                        : t(header.column.columnDef.header as string)}
                     </TableHead>
                   );
                 })}

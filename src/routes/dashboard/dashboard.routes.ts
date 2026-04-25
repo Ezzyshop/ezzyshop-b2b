@@ -12,6 +12,7 @@ import {
   PackageIcon,
   SendIcon,
   SettingsIcon,
+  ShoppingCartIcon,
   SwitchCameraIcon,
   TagIcon,
   TruckIcon,
@@ -54,13 +55,33 @@ export const dashboardRoutes = [
     title: "sidebar.dashboard.products",
   },
   {
-    path: "/orders",
+    path: "/order-management",
     element: lazy(
       () => import("@/features/dashboard/orders/pages/orders.page")
     ),
     roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
-    icon: Package2,
+    icon: ShoppingCartIcon,
     title: "sidebar.dashboard.orders",
+    children: [
+      {
+        path: "/orders",
+        title: "sidebar.dashboard.total_orders",
+        icon: Package2,
+        roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+        element: lazy(
+          () => import("@/features/dashboard/orders/pages/orders.page")
+        ),
+      },
+      {
+        path: "/customers",
+        title: "sidebar.dashboard.customers",
+        icon: UsersIcon,
+        roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+        element: lazy(
+          () => import("@/features/dashboard/customers/pages/customers.page")
+        ),
+      },
+    ] as ChildRoute[],
   },
   {
     path: "/orders/:orderId",
@@ -198,15 +219,6 @@ export const dashboardRoutes = [
     roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
     icon: MessageSquareIcon,
     title: "sidebar.dashboard.chat",
-  },
-  {
-    path: "/customers",
-    element: lazy(
-      () => import("@/features/dashboard/customers/pages/customers.page")
-    ),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
-    icon: UsersIcon,
-    title: "sidebar.dashboard.customers",
   },
   {
     icon: SettingsIcon,

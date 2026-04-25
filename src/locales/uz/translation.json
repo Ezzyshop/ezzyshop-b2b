@@ -126,7 +126,8 @@
       "chat": "Chat",
       "delivery-zones": "Yetkazish hududlari",
       "delivery": "Yetkazib berish",
-      "customers": "Mijozlar"
+      "customers": "Mijozlar",
+      "total_orders": "Barcha buyurtmalar"
     }
   },
   "chat": {

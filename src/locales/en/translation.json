@@ -122,7 +122,8 @@
       },
       "delivery-zones": "Delivery zones",
       "delivery": "Delivery",
-      "customers": "Customers"
+      "customers": "Customers",
+      "total_orders": "Total Orders"
     }
   },
   "chat": {
