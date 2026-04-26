@@ -13,6 +13,7 @@ import {
   SendIcon,
   SettingsIcon,
   ShoppingCartIcon,
+  StarIcon,
   SwitchCameraIcon,
   TagIcon,
   TruckIcon,
@@ -212,6 +213,15 @@ export const dashboardRoutes = [
     path: "/coupons/:couponId/usages",
     element: lazy(() => import("@/features/dashboard/coupons/pages/coupon-usages.page")),
     roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+  },
+  {
+    path: "/reviews",
+    element: lazy(
+      () => import("@/features/dashboard/reviews/pages/reviews.page")
+    ),
+    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+    icon: StarIcon,
+    title: "sidebar.dashboard.reviews",
   },
   {
     path: "/chat",

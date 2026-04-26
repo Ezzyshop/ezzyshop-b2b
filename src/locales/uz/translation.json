@@ -127,7 +127,8 @@
       "delivery-zones": "Yetkazish hududlari",
       "delivery": "Yetkazib berish",
       "customers": "Mijozlar",
-      "total_orders": "Barcha buyurtmalar"
+      "total_orders": "Barcha buyurtmalar",
+      "reviews": "Sharhlar"
     }
   },
   "chat": {
@@ -667,5 +668,26 @@
     "name_required": "Hudud nomini kiriting",
     "dblclick_to_remove": "O'chirish uchun 2x bosing",
     "edit_zone": "Hududni tahrirlash"
+  },
+  "reviews": {
+    "title": "Sharhlar",
+    "no_reviews": "Hali sharhlar yo'q",
+    "product": "Mahsulot",
+    "customer": "Mijoz",
+    "rating": "Baho",
+    "message": "Sharh matni",
+    "date": "Sana",
+    "reply": "Javob berish",
+    "reply_placeholder": "Javob yozing...",
+    "save_reply": "Saqlash",
+    "delete": "O'chirish",
+    "delete_confirm": "Ushbu sharhni o'chirishni tasdiqlaysizmi?",
+    "avg_rating": "O'rtacha baho",
+    "filter_by_product": "Mahsulot bo'yicha filtrlash",
+    "search_product": "Mahsulot qidirish...",
+    "all_products": "Barcha mahsulotlar",
+    "sort_by_rating": "Baho bo'yicha saralash",
+    "full_review": "Sharh matni",
+    "images": "Rasmlar"
   }
 }

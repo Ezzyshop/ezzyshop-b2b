@@ -122,7 +122,8 @@
       "delivery-zones": "Зоны доставки",
       "delivery": "Доставка",
       "customers": "Клиенты",
-      "total_orders": "Все заказы"
+      "total_orders": "Все заказы",
+      "reviews": "Отзывы"
     }
   },
   "chat": {
@@ -543,5 +544,26 @@
     "name_required": "Введите название зоны",
     "dblclick_to_remove": "2x клик для удаления точки",
     "edit_zone": "Редактировать зону"
+  },
+  "reviews": {
+    "title": "Отзывы",
+    "no_reviews": "Отзывов пока нет",
+    "product": "Товар",
+    "customer": "Покупатель",
+    "rating": "Оценка",
+    "message": "Текст отзыва",
+    "date": "Дата",
+    "reply": "Ответить",
+    "reply_placeholder": "Написать ответ...",
+    "save_reply": "Сохранить",
+    "delete": "Удалить",
+    "delete_confirm": "Вы уверены, что хотите удалить этот отзыв?",
+    "avg_rating": "Средняя оценка",
+    "filter_by_product": "Фильтр по товару",
+    "search_product": "Поиск товара...",
+    "all_products": "Все товары",
+    "sort_by_rating": "Сортировать по оценке",
+    "full_review": "Текст отзыва",
+    "images": "Изображения"
   }
 }

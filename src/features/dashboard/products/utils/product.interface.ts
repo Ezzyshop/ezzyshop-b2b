@@ -55,4 +55,6 @@ export interface IProduct {
   createdAt: string;
   updatedAt: string;
   delivery_time?: number;
+  avg_rating?: number;
+  review_count?: number;
 }

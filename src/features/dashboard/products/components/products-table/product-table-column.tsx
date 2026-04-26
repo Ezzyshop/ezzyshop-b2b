@@ -6,7 +6,7 @@ import { EditProductButton } from "../product-form/edit-product";
 import { IShop, LanguageType } from "@/features/moderator/shops/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DeleteProduct } from "../delete-product";
-import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpDown, Star } from "lucide-react";
 import { TObject } from "@/hooks";
 import { TFunction } from "i18next";
 
@@ -141,6 +141,30 @@ export const productTableColumns = (
       cell: ({ row }) => (
         <div>{dayjs(row.original.createdAt).format("DD.MM.YYYY")}</div>
       ),
+    },
+    {
+      id: "avg_rating",
+      header: () => (
+        <SortHeader
+          label={t("reviews.avg_rating")}
+          field="avg_rating"
+          sortBy={sortBy as string}
+          sortOrder={sortOrder as string}
+          onSort={onSort}
+        />
+      ),
+      cell: ({ row }) => {
+        const rating = row.original.avg_rating ?? 0;
+        const count = row.original.review_count ?? 0;
+        if (count === 0) return <span className="text-muted-foreground text-sm">—</span>;
+        return (
+          <div className="flex items-center gap-1">
+            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+            <span className="text-sm">{rating.toFixed(1)}</span>
+            <span className="text-xs text-muted-foreground">({count})</span>
+          </div>
+        );
+      },
     },
     {
       header: "table.columns.actions",
