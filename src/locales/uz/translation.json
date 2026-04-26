@@ -155,6 +155,18 @@
     "upload_failed": "Rasmni yuklab bo'lmadi"
   },
   "dashboard": {
+    "setup": {
+      "title": "Bozor yoki restoraningizni sozlang",
+      "progress": "{{completed}} / {{total}} bajarildi",
+      "go_to": "O'tish",
+      "steps": {
+        "bot": "Bot ulash",
+        "category": "Kategoriya qo'shish",
+        "product": "Mahsulot qo'shish",
+        "delivery": "Yetkazib berish usulini qo'shish",
+        "payment": "To'lov tizimini qo'shish"
+      }
+    },
     "main": {
       "total_revenue": "Shu oydagi tushum",
       "new_customers": "Yangi mijozlar soni",

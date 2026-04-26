@@ -3,6 +3,7 @@ import { SalesChart } from "../components/sales-chart";
 import { RecentSales } from "../components/recent-sales";
 import { useTranslation } from "react-i18next";
 import { RevenueChart } from "../components/revenue-chart";
+import { SetupChecklist } from "../components/setup-checklist";
 
 export const DashboardMainPage = () => {
   const { t } = useTranslation();
@@ -12,6 +13,7 @@ export const DashboardMainPage = () => {
         {t("sidebar.dashboard.main_page")}
       </h2>
       <div className="space-y-4 md:space-y-6">
+        <SetupChecklist />
         <StatisticsCard />
         <RevenueChart />
 

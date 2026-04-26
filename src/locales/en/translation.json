@@ -151,6 +151,18 @@
     "upload_failed": "Failed to upload image"
   },
   "dashboard": {
+    "setup": {
+      "title": "Set up your market or restaurant",
+      "progress": "{{completed}} of {{total}} completed",
+      "go_to": "Go to",
+      "steps": {
+        "bot": "Connect bot",
+        "category": "Add category",
+        "product": "Add product",
+        "delivery": "Add delivery method",
+        "payment": "Add payment method"
+      }
+    },
     "categories": {
       "create": "Add category",
       "created": "Category created successfully",
