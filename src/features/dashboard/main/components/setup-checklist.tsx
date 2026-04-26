@@ -71,7 +71,7 @@ export const SetupChecklist = () => {
       key: "delivery",
       label: t("dashboard.setup.steps.delivery"),
       href: "/dashboard/delivery-methods",
-      completed: (paymentData?.data?.length ?? 0) > 0,
+      completed: (deliveryData?.data?.length ?? 0) > 0,
     },
     {
       key: "payment",
