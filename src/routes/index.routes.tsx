@@ -12,6 +12,12 @@ const LoginPage = lazy(() => import("@/features/auth/login/pages/login.page"));
 const LogoutPage = lazy(
   () => import("@/features/auth/logout/pages/logout.page")
 );
+const TelegramCallbackPage = lazy(
+  () =>
+    import(
+      "@/features/auth/telegram-callback/pages/telegram-callback.page"
+    )
+);
 
 export const IndexRoutes = () => {
   return (
@@ -30,6 +36,10 @@ export const IndexRoutes = () => {
         />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/logout" element={<LogoutPage />} />
+        <Route
+          path="/auth/telegram/callback"
+          element={<TelegramCallbackPage />}
+        />
         <Route path="/moderator/*" element={<ModeratorRoutes />} />
         <Route path="/dashboard/*" element={<DashboardRoutes />} />
         <Route path="/register/*" element={<RegisterRoutes />} />

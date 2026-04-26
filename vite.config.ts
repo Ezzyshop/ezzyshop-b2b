@@ -6,6 +6,9 @@ import path from "path";
 // https://vite.dev/config/
 export default defineConfig({
   server: {
+    allowedHosts: [
+      "749c-2a05-45c2-51a4-cc01-fdae-8c82-5bbc-5cdf.ngrok-free.app",
+    ],
     port: 5000,
     proxy:
       process.env.NODE_ENV === "development"
