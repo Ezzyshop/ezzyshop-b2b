@@ -405,6 +405,10 @@
         "enter_address": "Manzilni kiriting",
         "latitude": "Kenglik",
         "longitude": "Uzunlik"
+      },
+      "work_hours": {
+        "title": "Ish vaqti",
+        "description": "Do'koningizning har kuni uchun ish vaqtini belgilang"
       }
     },
     "branches": {

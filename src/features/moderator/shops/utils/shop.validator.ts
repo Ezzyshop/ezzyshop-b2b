@@ -97,6 +97,15 @@ export const shopFields: Record<
     }),
   brand_color: Joi.string().optional().allow(""),
   telegram_group_id: Joi.number().optional().allow(null),
+  work_hours: Joi.object({
+    monday: Joi.object({ is_open: Joi.boolean(), open: Joi.string(), close: Joi.string() }),
+    tuesday: Joi.object({ is_open: Joi.boolean(), open: Joi.string(), close: Joi.string() }),
+    wednesday: Joi.object({ is_open: Joi.boolean(), open: Joi.string(), close: Joi.string() }),
+    thursday: Joi.object({ is_open: Joi.boolean(), open: Joi.string(), close: Joi.string() }),
+    friday: Joi.object({ is_open: Joi.boolean(), open: Joi.string(), close: Joi.string() }),
+    saturday: Joi.object({ is_open: Joi.boolean(), open: Joi.string(), close: Joi.string() }),
+    sunday: Joi.object({ is_open: Joi.boolean(), open: Joi.string(), close: Joi.string() }),
+  }).optional(),
 };
 
 export const shopCreateSchema = Joi.object({
@@ -125,6 +134,7 @@ export const shopUpdateSchema = Joi.object({
   address: shopFields.address,
   languages: shopFields.languages,
   telegram_group_id: shopFields.telegram_group_id,
+  work_hours: shopFields.work_hours,
 });
 
 export const shopUpdatePlanSchema = Joi.object({
@@ -147,4 +157,5 @@ export const updateMyShopSchema = Joi.object({
   languages: shopFields.languages,
   brand_color: shopFields.brand_color,
   telegram_group_id: shopFields.telegram_group_id,
+  work_hours: shopFields.work_hours,
 });

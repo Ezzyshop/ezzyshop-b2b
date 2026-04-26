@@ -54,11 +54,28 @@ export interface IShop {
   languages: ILanguage[];
   brand_color?: string;
   telegram_group_id?: string;
+  work_hours?: IWorkHours;
 }
 
 export interface ILanguage {
   type: LanguageType;
   is_main: boolean;
+}
+
+export interface IWorkHourDay {
+  is_open: boolean;
+  open: string;
+  close: string;
+}
+
+export interface IWorkHours {
+  monday: IWorkHourDay;
+  tuesday: IWorkHourDay;
+  wednesday: IWorkHourDay;
+  thursday: IWorkHourDay;
+  friday: IWorkHourDay;
+  saturday: IWorkHourDay;
+  sunday: IWorkHourDay;
 }
 
 export interface IShopForm {
@@ -107,6 +124,7 @@ export interface IShopUpdateForm {
   languages: ILanguage[];
   brand_color?: string;
   telegram_group_id?: string;
+  work_hours?: IWorkHours;
 }
 
 export interface IShopTelegramForm {

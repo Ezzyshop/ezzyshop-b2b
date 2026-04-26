@@ -95,7 +95,7 @@ export const CreateTelegramPage = () => {
               <FormControl>
                 <Input
                   placeholder={t(
-                    "register.create_telegram.telegram_bot_token_placeholder"
+                    "register.create_telegram.telegram_bot_token_placeholder",
                   )}
                   {...field}
                   value={field.value}
@@ -116,7 +116,7 @@ export const CreateTelegramPage = () => {
               <FormControl>
                 <Input
                   placeholder={t(
-                    "register.create_telegram.menu_name_placeholder"
+                    "register.create_telegram.menu_name_placeholder",
                   )}
                   {...field}
                   value={field.value}

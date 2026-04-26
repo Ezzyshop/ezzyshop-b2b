@@ -351,6 +351,10 @@
         "enter_address": "Enter address",
         "latitude": "Latitude",
         "longitude": "Longitude"
+      },
+      "work_hours": {
+        "title": "Working hours",
+        "description": "Set working hours for your shop for each day"
       }
     },
     "branches": {

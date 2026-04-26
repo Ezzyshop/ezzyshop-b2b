@@ -13,6 +13,7 @@ import { SettingFormBasicInformation } from "./setting-form-sections/basic-infor
 import { SettingFormSocialLinks } from "./setting-form-sections/social-links";
 import { SettingFormAddressSection } from "./setting-form-sections/address-section";
 import { NotificationSettingsForm } from "./setting-form-sections/notification-section";
+import { WorkHoursSection } from "./setting-form-sections/work-hours";
 
 interface IProps {
   shop: IShopUpdateForm;
@@ -36,6 +37,8 @@ export const SettingsForm = ({ shop, onSubmit, isLoading }: IProps) => {
         <SettingFormSocialLinks form={form} />
 
         <NotificationSettingsForm form={form} />
+
+        <WorkHoursSection form={form} />
 
         <SettingFormAddressSection form={form} />
 

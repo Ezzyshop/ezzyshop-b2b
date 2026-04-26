@@ -41,6 +41,15 @@ export const SettingsPage = () => {
       languages: shop.languages,
       brand_color: shop.brand_color,
       telegram_group_id: shop.telegram_group_id,
+      work_hours: shop.work_hours ?? {
+        monday: { is_open: true, open: "09:00", close: "18:00" },
+        tuesday: { is_open: true, open: "09:00", close: "18:00" },
+        wednesday: { is_open: true, open: "09:00", close: "18:00" },
+        thursday: { is_open: true, open: "09:00", close: "18:00" },
+        friday: { is_open: true, open: "09:00", close: "18:00" },
+        saturday: { is_open: true, open: "09:00", close: "18:00" },
+        sunday: { is_open: true, open: "09:00", close: "18:00" },
+      },
     };
   }, [shop]);
 
