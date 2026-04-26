@@ -47,6 +47,10 @@ export enum ErrorMessages {
   CouponUsageLimitReached = "COUPON_USAGE_LIMIT_REACHED",
   CouponMinOrderPriceNotMet = "COUPON_MIN_ORDER_PRICE_NOT_MET",
   CouponCodeAlreadyExists = "COUPON_CODE_ALREADY_EXISTS",
+  DeliveryZoneNotFound = "DELIVERY_ZONE_NOT_FOUND",
+  DeliveryZoneNotCovered = "DELIVERY_ZONE_NOT_COVERED",
+  ReviewNotFound = "REVIEW_NOT_FOUND",
+  ReviewAlreadyExists = "REVIEW_ALREADY_EXISTS",
 }
 
 export const errorMessagesMap: Record<ErrorMessages, string> = {
@@ -110,8 +114,13 @@ export const errorMessagesMap: Record<ErrorMessages, string> = {
     "Foydalanuvchi allaqachon xodimlar bo'limida",
   [ErrorMessages.CouponNotFound]: "Kupon topilmadi",
   [ErrorMessages.CouponExpired]: "Kuponning amal qilish muddati tugagan",
-  [ErrorMessages.CouponUsageLimitReached]: "Kupondan foydalanish limiti tugagan",
+  [ErrorMessages.CouponUsageLimitReached]:
+    "Kupondan foydalanish limiti tugagan",
   [ErrorMessages.CouponMinOrderPriceNotMet]:
     "Minimal buyurtma narxi talabiga mos kelmadi",
   [ErrorMessages.CouponCodeAlreadyExists]: "Kupon kodi allaqachon mavjud",
+  [ErrorMessages.DeliveryZoneNotFound]: "Yetkazish hududi topilmadi",
+  [ErrorMessages.DeliveryZoneNotCovered]: "Yetkazish hududi topilmadi",
+  [ErrorMessages.ReviewNotFound]: "Sharh topilmadi",
+  [ErrorMessages.ReviewAlreadyExists]: "Allaqachon sharh qoldirgansiz",
 };
