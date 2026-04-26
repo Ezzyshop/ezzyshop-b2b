@@ -37,7 +37,7 @@ export function NavMain() {
       <SidebarMenu>
         {dashboardRoutes.map((item) => {
           const hasAccess = item.roles.some((role) =>
-            userShop.roles.includes(role)
+            userShop.roles.includes(role),
           );
 
           if (!hasAccess || !item.title) return null;
@@ -45,7 +45,7 @@ export function NavMain() {
           // Item with sub-menu
           if (item.children?.length) {
             const isAnyChildActive = item.children.some(
-              (child) => pathname === `/dashboard${child.path}`
+              (child) => pathname === `/dashboard${child.path}`,
             );
 
             return (
@@ -57,7 +57,10 @@ export function NavMain() {
               >
                 <SidebarMenuItem>
                   <CollapsibleTrigger asChild>
-                    <SidebarMenuButton isActive={isAnyChildActive} tooltip={t(item.title)}>
+                    <SidebarMenuButton
+                      isActive={isAnyChildActive}
+                      tooltip={t(item.title)}
+                    >
                       {item.icon && <item.icon />}
                       <span>{t(item.title)}</span>
                       <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
@@ -68,6 +71,7 @@ export function NavMain() {
                       {item.children.map((child) => {
                         const childPath = `/dashboard${child.path}`;
                         const isActive = pathname === childPath;
+                        if (!child.title) return;
                         return (
                           <SidebarMenuSubItem key={child.path}>
                             <SidebarMenuSubButton asChild isActive={isActive}>
@@ -90,7 +94,11 @@ export function NavMain() {
           const path = `/dashboard${item.path}`;
           return (
             <SidebarMenuItem key={item.path}>
-              <SidebarMenuButton asChild isActive={pathname === path} tooltip={t(item.title)}>
+              <SidebarMenuButton
+                asChild
+                isActive={pathname === path}
+                tooltip={t(item.title)}
+              >
                 <Link to={path}>
                   {item.icon && <item.icon />}
                   <span>{t(item.title)}</span>

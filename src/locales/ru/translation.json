@@ -123,7 +123,8 @@
       "delivery": "Доставка",
       "customers": "Клиенты",
       "total_orders": "Все заказы",
-      "reviews": "Отзывы"
+      "reviews": "Отзывы",
+      "marketing": "Маркетинг"
     }
   },
   "chat": {

@@ -124,7 +124,8 @@
       "delivery": "Delivery",
       "customers": "Customers",
       "total_orders": "Total Orders",
-      "reviews": "Reviews"
+      "reviews": "Reviews",
+      "marketing": "Marketing"
     }
   },
   "chat": {

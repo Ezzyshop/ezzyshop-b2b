@@ -10,6 +10,7 @@ import {
   MessageSquareIcon,
   Package2,
   PackageIcon,
+  PercentIcon,
   SendIcon,
   SettingsIcon,
   ShoppingCartIcon,
@@ -40,7 +41,7 @@ export const dashboardRoutes = [
   {
     path: "/categories",
     element: lazy(
-      () => import("@/features/dashboard/categories/pages/categories.page")
+      () => import("@/features/dashboard/categories/pages/categories.page"),
     ),
     roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
     icon: ListIcon,
@@ -49,7 +50,7 @@ export const dashboardRoutes = [
   {
     path: "/products",
     element: lazy(
-      () => import("@/features/dashboard/products/pages/products.page")
+      () => import("@/features/dashboard/products/pages/products.page"),
     ),
     roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
     icon: PackageIcon,
@@ -58,7 +59,7 @@ export const dashboardRoutes = [
   {
     path: "/order-management",
     element: lazy(
-      () => import("@/features/dashboard/orders/pages/orders.page")
+      () => import("@/features/dashboard/orders/pages/orders.page"),
     ),
     roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
     icon: ShoppingCartIcon,
@@ -70,7 +71,7 @@ export const dashboardRoutes = [
         icon: Package2,
         roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
         element: lazy(
-          () => import("@/features/dashboard/orders/pages/orders.page")
+          () => import("@/features/dashboard/orders/pages/orders.page"),
         ),
       },
       {
@@ -79,7 +80,7 @@ export const dashboardRoutes = [
         icon: UsersIcon,
         roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
         element: lazy(
-          () => import("@/features/dashboard/customers/pages/customers.page")
+          () => import("@/features/dashboard/customers/pages/customers.page"),
         ),
       },
     ] as ChildRoute[],
@@ -93,9 +94,7 @@ export const dashboardRoutes = [
     path: "/delivery",
     element: lazy(
       () =>
-        import(
-          "@/features/dashboard/delivery-methods/pages/delivery-methods.page"
-        )
+        import("@/features/dashboard/delivery-methods/pages/delivery-methods.page"),
     ),
     roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
     icon: TruckIcon,
@@ -108,9 +107,7 @@ export const dashboardRoutes = [
         roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
         element: lazy(
           () =>
-            import(
-              "@/features/dashboard/delivery-methods/pages/delivery-methods.page"
-            )
+            import("@/features/dashboard/delivery-methods/pages/delivery-methods.page"),
         ),
       },
       {
@@ -120,9 +117,7 @@ export const dashboardRoutes = [
         roles: [UserRoles.SuperAdmin, UserRoles.Admin],
         element: lazy(
           () =>
-            import(
-              "@/features/dashboard/delivery-zone/pages/delivery-zone.page"
-            )
+            import("@/features/dashboard/delivery-zone/pages/delivery-zone.page"),
         ),
       },
     ] as ChildRoute[],
@@ -131,9 +126,7 @@ export const dashboardRoutes = [
     path: "/payment-methods",
     element: lazy(
       () =>
-        import(
-          "@/features/dashboard/payment-methods/pages/payment-methods.page"
-        )
+        import("@/features/dashboard/payment-methods/pages/payment-methods.page"),
     ),
     roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
     icon: CreditCardIcon,
@@ -142,7 +135,7 @@ export const dashboardRoutes = [
   {
     path: "/branches",
     element: lazy(
-      () => import("@/features/dashboard/branches/pages/branches.page")
+      () => import("@/features/dashboard/branches/pages/branches.page"),
     ),
     roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
     icon: MapIcon,
@@ -151,7 +144,7 @@ export const dashboardRoutes = [
   {
     path: "/staffs",
     element: lazy(
-      () => import("@/features/dashboard/staffs/pages/staffs.page")
+      () => import("@/features/dashboard/staffs/pages/staffs.page"),
     ),
     roles: [UserRoles.SuperAdmin, UserRoles.Admin],
     icon: UsersIcon,
@@ -167,7 +160,7 @@ export const dashboardRoutes = [
   {
     path: "/telegram",
     element: lazy(
-      () => import("@/features/dashboard/telegram/pages/telegram-setup.page")
+      () => import("@/features/dashboard/telegram/pages/telegram-setup.page"),
     ),
     roles: [UserRoles.SuperAdmin, UserRoles.Admin],
     icon: SendIcon,
@@ -179,7 +172,8 @@ export const dashboardRoutes = [
         icon: BotIcon,
         roles: [UserRoles.SuperAdmin, UserRoles.Admin],
         element: lazy(
-          () => import("@/features/dashboard/telegram/pages/telegram-setup.page")
+          () =>
+            import("@/features/dashboard/telegram/pages/telegram-setup.page"),
         ),
       },
       {
@@ -188,7 +182,8 @@ export const dashboardRoutes = [
         icon: LayoutTemplateIcon,
         roles: [UserRoles.SuperAdmin, UserRoles.Admin],
         element: lazy(
-          () => import("@/features/dashboard/telegram/pages/telegram-templates.page")
+          () =>
+            import("@/features/dashboard/telegram/pages/telegram-templates.page"),
         ),
       },
       {
@@ -197,45 +192,62 @@ export const dashboardRoutes = [
         icon: SendIcon,
         roles: [UserRoles.SuperAdmin, UserRoles.Admin],
         element: lazy(
-          () => import("@/features/dashboard/telegram/pages/telegram-send-message.page")
+          () =>
+            import("@/features/dashboard/telegram/pages/telegram-send-message.page"),
         ),
       },
     ] as ChildRoute[],
   },
+
   {
-    path: "/coupons",
-    element: lazy(() => import("@/features/dashboard/coupons/pages/coupons.page")),
+    path: "/",
+    title: "sidebar.dashboard.marketing",
     roles: [UserRoles.SuperAdmin, UserRoles.Admin],
-    icon: TagIcon,
-    title: "sidebar.dashboard.coupons",
+    icon: PercentIcon,
+    children: [
+      {
+        path: "/coupons",
+        element: lazy(
+          () => import("@/features/dashboard/coupons/pages/coupons.page"),
+        ),
+        roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+        icon: TagIcon,
+        title: "sidebar.dashboard.coupons",
+      },
+      {
+        path: "/coupons/:couponId/usages",
+        element: lazy(
+          () => import("@/features/dashboard/coupons/pages/coupon-usages.page"),
+        ),
+        roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+      },
+      {
+        path: "/reviews",
+        element: lazy(
+          () => import("@/features/dashboard/reviews/pages/reviews.page"),
+        ),
+        roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+        icon: StarIcon,
+        title: "sidebar.dashboard.reviews",
+      },
+      {
+        path: "/chat",
+        element: lazy(
+          () => import("@/features/dashboard/chat/pages/chat.page"),
+        ),
+        roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+        icon: MessageSquareIcon,
+        title: "sidebar.dashboard.chat",
+      },
+    ],
   },
-  {
-    path: "/coupons/:couponId/usages",
-    element: lazy(() => import("@/features/dashboard/coupons/pages/coupon-usages.page")),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
-  },
-  {
-    path: "/reviews",
-    element: lazy(
-      () => import("@/features/dashboard/reviews/pages/reviews.page")
-    ),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
-    icon: StarIcon,
-    title: "sidebar.dashboard.reviews",
-  },
-  {
-    path: "/chat",
-    element: lazy(() => import("@/features/dashboard/chat/pages/chat.page")),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
-    icon: MessageSquareIcon,
-    title: "sidebar.dashboard.chat",
-  },
+
   {
     icon: SettingsIcon,
     title: "sidebar.dashboard.settings",
     path: "/settings",
     element: lazy(
-      () => import("@/features/dashboard/settings/pages/settings.page")
+      () => import("@/features/dashboard/settings/pages/settings.page"),
     ),
     roles: [UserRoles.SuperAdmin, UserRoles.Admin],
   },
