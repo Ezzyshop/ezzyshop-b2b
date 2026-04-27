@@ -1,4 +1,5 @@
 import { UserRoles, UserStatus } from "../enums";
+import { IRole } from "../types/permission.types";
 
 export interface IUser {
   _id: string;
@@ -8,12 +9,11 @@ export interface IUser {
   password: string;
   photo: string | null;
   roles: UserRoles[];
-  shops: [
-    {
-      roles: UserRoles[];
-      shop: IUserShop;
-    }
-  ];
+  shops: {
+    roles: UserRoles[];
+    shop: IUserShop;
+    customRole: IRole | null;
+  }[];
   createdAt: string;
   updatedAt: string;
   status: UserStatus;

@@ -1,9 +1,10 @@
 import NotFoundPage from "@/features/static/not-found/pages/not-found.page";
-import { UserRoles } from "@/lib/enums";
+import { RouteAccess } from "@/lib/types/permission.types";
 import {
   BotIcon,
   CreditCardIcon,
   HomeIcon,
+  KeyRoundIcon,
   LayoutTemplateIcon,
   ListIcon,
   MapIcon,
@@ -24,17 +25,26 @@ import { lazy, type LazyExoticComponent, type ComponentType } from "react";
 
 export type ChildRoute = {
   path: string;
-  title: string;
+  title?: string;
   icon?: ComponentType;
-  roles: UserRoles[];
+  access: RouteAccess;
   element: LazyExoticComponent<ComponentType>;
 };
 
-export const dashboardRoutes = [
+export type DashboardRoute = {
+  path: string;
+  title?: string;
+  icon?: ComponentType;
+  access: RouteAccess;
+  element?: LazyExoticComponent<ComponentType> | ComponentType;
+  children?: ChildRoute[];
+};
+
+export const dashboardRoutes: DashboardRoute[] = [
   {
     path: "/main",
     element: lazy(() => import("@/features/dashboard/main/pages/main.page")),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+    access: { accessType: "admin-only" },
     icon: HomeIcon,
     title: "sidebar.dashboard.main_page",
   },
@@ -43,7 +53,7 @@ export const dashboardRoutes = [
     element: lazy(
       () => import("@/features/dashboard/categories/pages/categories.page"),
     ),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+    access: { accessType: "permission", resource: "categories", action: "read" },
     icon: ListIcon,
     title: "sidebar.dashboard.categories",
   },
@@ -52,7 +62,7 @@ export const dashboardRoutes = [
     element: lazy(
       () => import("@/features/dashboard/products/pages/products.page"),
     ),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+    access: { accessType: "permission", resource: "products", action: "read" },
     icon: PackageIcon,
     title: "sidebar.dashboard.products",
   },
@@ -61,7 +71,7 @@ export const dashboardRoutes = [
     element: lazy(
       () => import("@/features/dashboard/orders/pages/orders.page"),
     ),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+    access: { accessType: "permission", resource: "orders", action: "read" },
     icon: ShoppingCartIcon,
     title: "sidebar.dashboard.orders",
     children: [
@@ -69,7 +79,7 @@ export const dashboardRoutes = [
         path: "/orders",
         title: "sidebar.dashboard.total_orders",
         icon: Package2,
-        roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+        access: { accessType: "permission", resource: "orders", action: "read" },
         element: lazy(
           () => import("@/features/dashboard/orders/pages/orders.page"),
         ),
@@ -78,7 +88,7 @@ export const dashboardRoutes = [
         path: "/customers",
         title: "sidebar.dashboard.customers",
         icon: UsersIcon,
-        roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+        access: { accessType: "permission", resource: "customers", action: "read" },
         element: lazy(
           () => import("@/features/dashboard/customers/pages/customers.page"),
         ),
@@ -88,7 +98,7 @@ export const dashboardRoutes = [
   {
     path: "/orders/:orderId",
     element: lazy(() => import("@/features/dashboard/orders/pages/order.page")),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+    access: { accessType: "permission", resource: "orders", action: "read" },
   },
   {
     path: "/delivery",
@@ -96,7 +106,7 @@ export const dashboardRoutes = [
       () =>
         import("@/features/dashboard/delivery-methods/pages/delivery-methods.page"),
     ),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+    access: { accessType: "permission", resource: "delivery_methods", action: "read" },
     icon: TruckIcon,
     title: "sidebar.dashboard.delivery",
     children: [
@@ -104,7 +114,7 @@ export const dashboardRoutes = [
         path: "/delivery-methods",
         title: "sidebar.dashboard.delivery-methods",
         icon: TruckIcon,
-        roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+        access: { accessType: "permission", resource: "delivery_methods", action: "read" },
         element: lazy(
           () =>
             import("@/features/dashboard/delivery-methods/pages/delivery-methods.page"),
@@ -114,7 +124,7 @@ export const dashboardRoutes = [
         path: "/delivery-zones",
         title: "sidebar.dashboard.delivery-zones",
         icon: MapIcon,
-        roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+        access: { accessType: "permission", resource: "delivery_zones", action: "read" },
         element: lazy(
           () =>
             import("@/features/dashboard/delivery-zone/pages/delivery-zone.page"),
@@ -128,7 +138,7 @@ export const dashboardRoutes = [
       () =>
         import("@/features/dashboard/payment-methods/pages/payment-methods.page"),
     ),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+    access: { accessType: "permission", resource: "payment_methods", action: "read" },
     icon: CreditCardIcon,
     title: "sidebar.dashboard.payment-methods",
   },
@@ -137,7 +147,7 @@ export const dashboardRoutes = [
     element: lazy(
       () => import("@/features/dashboard/branches/pages/branches.page"),
     ),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+    access: { accessType: "permission", resource: "branches", action: "read" },
     icon: MapIcon,
     title: "sidebar.dashboard.branches",
   },
@@ -146,14 +156,23 @@ export const dashboardRoutes = [
     element: lazy(
       () => import("@/features/dashboard/staffs/pages/staffs.page"),
     ),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+    access: { accessType: "permission", resource: "staffs", action: "read" },
     icon: UsersIcon,
     title: "sidebar.dashboard.staffs",
   },
   {
+    path: "/roles",
+    element: lazy(
+      () => import("@/features/dashboard/roles/pages/roles.page"),
+    ),
+    access: { accessType: "admin-only" },
+    icon: KeyRoundIcon,
+    title: "sidebar.dashboard.roles",
+  },
+  {
     path: "/plans",
     element: lazy(() => import("@/features/dashboard/plans/pages/plans.page")),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+    access: { accessType: "admin-only" },
     icon: SwitchCameraIcon,
     title: "sidebar.dashboard.plans",
   },
@@ -162,7 +181,7 @@ export const dashboardRoutes = [
     element: lazy(
       () => import("@/features/dashboard/telegram/pages/telegram-setup.page"),
     ),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+    access: { accessType: "permission", resource: "telegram_setup", action: "read" },
     icon: SendIcon,
     title: "sidebar.dashboard.telegram",
     children: [
@@ -170,7 +189,7 @@ export const dashboardRoutes = [
         path: "/telegram/setup",
         title: "sidebar.dashboard.telegram-setup",
         icon: BotIcon,
-        roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+        access: { accessType: "permission", resource: "telegram_setup", action: "read" },
         element: lazy(
           () =>
             import("@/features/dashboard/telegram/pages/telegram-setup.page"),
@@ -180,7 +199,7 @@ export const dashboardRoutes = [
         path: "/telegram/templates",
         title: "sidebar.dashboard.telegram-templates",
         icon: LayoutTemplateIcon,
-        roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+        access: { accessType: "permission", resource: "telegram_templates", action: "read" },
         element: lazy(
           () =>
             import("@/features/dashboard/telegram/pages/telegram-templates.page"),
@@ -190,7 +209,7 @@ export const dashboardRoutes = [
         path: "/telegram/send-message",
         title: "sidebar.dashboard.telegram-send-message",
         icon: SendIcon,
-        roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+        access: { accessType: "permission", resource: "telegram_messages", action: "read" },
         element: lazy(
           () =>
             import("@/features/dashboard/telegram/pages/telegram-send-message.page"),
@@ -202,7 +221,7 @@ export const dashboardRoutes = [
   {
     path: "/",
     title: "sidebar.dashboard.marketing",
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+    access: { accessType: "any" },
     icon: PercentIcon,
     children: [
       {
@@ -210,7 +229,7 @@ export const dashboardRoutes = [
         element: lazy(
           () => import("@/features/dashboard/coupons/pages/coupons.page"),
         ),
-        roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+        access: { accessType: "permission", resource: "coupons", action: "read" },
         icon: TagIcon,
         title: "sidebar.dashboard.coupons",
       },
@@ -219,14 +238,14 @@ export const dashboardRoutes = [
         element: lazy(
           () => import("@/features/dashboard/coupons/pages/coupon-usages.page"),
         ),
-        roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+        access: { accessType: "permission", resource: "coupons", action: "read" },
       },
       {
         path: "/reviews",
         element: lazy(
           () => import("@/features/dashboard/reviews/pages/reviews.page"),
         ),
-        roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+        access: { accessType: "permission", resource: "reviews", action: "read" },
         icon: StarIcon,
         title: "sidebar.dashboard.reviews",
       },
@@ -235,7 +254,7 @@ export const dashboardRoutes = [
         element: lazy(
           () => import("@/features/dashboard/chat/pages/chat.page"),
         ),
-        roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+        access: { accessType: "permission", resource: "chat", action: "full" },
         icon: MessageSquareIcon,
         title: "sidebar.dashboard.chat",
       },
@@ -249,12 +268,12 @@ export const dashboardRoutes = [
     element: lazy(
       () => import("@/features/dashboard/settings/pages/settings.page"),
     ),
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin],
+    access: { accessType: "permission", resource: "shop_settings", action: "read" },
   },
 
   {
     path: "*",
     element: NotFoundPage,
-    roles: [UserRoles.SuperAdmin, UserRoles.Admin, UserRoles.Staff],
+    access: { accessType: "any" },
   },
 ];

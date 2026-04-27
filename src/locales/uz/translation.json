@@ -113,6 +113,7 @@
       "branches": "Filialar",
       "settings": "Sozlamalar",
       "staffs": "Xodimlar",
+      "roles": "Rollar",
       "upgrade_plan": {
         "title": "{{ plan }} tarifiga ga o'ting",
         "description": "{{ plan }} tarifini tanlab ko'proq imkoniyatlarga ega bo'ling.",
@@ -613,8 +614,52 @@
       "phone": "Xodim telefon raqami",
       "role": "Rol",
       "role_placeholder": "Rolni tanlang",
-      "role_staff": "Xodim",
-      "role_admin": "Admin"
+      "make_admin": "Admin qilish",
+      "make_admin_description": "Adminlar do'konning barcha xususiyatlariga to'liq kirish huquqiga ega"
+    },
+    "roles": {
+      "title": "Rollar",
+      "create": "Rol qo'shish",
+      "created": "Rol muvaffaqiyatli yaratildi",
+      "updated": "Rol muvaffaqiyatli yangilandi",
+      "deleted": "Rol muvaffaqiyatli o'chirildi",
+      "create_description": "Rol nomini kiriting va ruxsatlarni belgilang",
+      "edit": "Rolni tahrirlash",
+      "edit_description": "Rol nomini yoki ruxsatlarni yangilang",
+      "delete": "Rolni o'chirish",
+      "delete_description": "Ushbu rolni o'chirmoqchimisiz? Xodimga tayinlangan bo'lsa o'chirilmaydi.",
+      "name": "Rol nomi",
+      "name_placeholder": "masalan: Kassir, Ombor menejeri",
+      "permissions": "Ruxsatlar",
+      "permissions_description": "Bu rol qanday amallarni bajarishi mumkinligini tanlang",
+      "resources": {
+        "products": "Mahsulotlar",
+        "categories": "Kategoriyalar",
+        "orders": "Buyurtmalar",
+        "transactions": "Tranzaksiyalar",
+        "customers": "Mijozlar",
+        "delivery_methods": "Yetkazib berish usullari",
+        "delivery_zones": "Yetkazib berish zonalari",
+        "payment_methods": "To'lov usullari",
+        "branches": "Filialar",
+        "staffs": "Xodimlar",
+        "roles": "Rollar",
+        "coupons": "Kuponlar",
+        "reviews": "Sharhlar",
+        "review_replies": "Sharh javoblari",
+        "chat": "Mijozlar bilan chat",
+        "shop_settings": "Do'kon sozlamalari",
+        "telegram_setup": "Telegram sozlash",
+        "telegram_templates": "Telegram shablonlar",
+        "telegram_messages": "Telegram xabarlar"
+      },
+      "actions": {
+        "read": "Ko'rish",
+        "create": "Yaratish",
+        "update": "Tahrirlash",
+        "delete": "O'chirish",
+        "full": "To'liq kirish"
+      }
     }
   },
   "table": {
