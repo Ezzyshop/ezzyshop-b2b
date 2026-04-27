@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button/button";
 import { CreditCardIcon, EditIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { Badge } from "@/components/ui/badge/badge";
+import { AssignStaff } from "../assign-staff";
 
 export const shopColumns: ColumnDef<IShop>[] = [
   {
@@ -114,7 +115,7 @@ export const shopColumns: ColumnDef<IShop>[] = [
     },
   },
   {
-    size: 120,
+    size: 160,
     accessorKey: "actions",
     header: "Amallar",
     cell: ({ row }) => {
@@ -131,6 +132,8 @@ export const shopColumns: ColumnDef<IShop>[] = [
               <CreditCardIcon className="w-4 h-4" />
             </NavLink>
           </Button>
+
+          <AssignStaff shopId={row.original._id} />
         </div>
       );
     },

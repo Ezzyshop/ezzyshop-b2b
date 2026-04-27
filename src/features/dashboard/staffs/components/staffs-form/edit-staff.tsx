@@ -17,6 +17,7 @@ import { useState } from "react";
 import { EditIcon } from "lucide-react";
 import { IUser } from "@/lib";
 import { StaffForm } from "./staff-form";
+import { UserRoles } from "@/lib/enums";
 
 interface IProps {
   staff: IUser;
@@ -42,10 +43,15 @@ export const EditStaff = ({ staff }: IProps) => {
     updateStaffMutation.mutate(data);
   };
 
+  const shopRole = staff.shops
+    ?.find((s) => s.shop._id === shop._id)
+    ?.roles.find((r) => r === UserRoles.Admin || r === UserRoles.Staff);
+
   const initialValues: IStaffForm = {
     full_name: staff.full_name,
     phone: staff.phone!,
     photo: staff.photo!,
+    role: (shopRole as UserRoles.Staff | UserRoles.Admin) ?? UserRoles.Staff,
   };
 
   return (

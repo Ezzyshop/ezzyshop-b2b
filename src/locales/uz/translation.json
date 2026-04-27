@@ -538,7 +538,11 @@
       "no-bot-setup": "Telegram bot hali sozlanmagan.",
       "go-to-setup": "Sozlashga o'tish",
       "form": {
-        "token": "Bot tokenini kiriting"
+        "token": "Bot tokenini kiriting",
+        "business-type": {
+          "market": "Do'kon",
+          "restaurant": "Restoran"
+        }
       }
     },
     "coupons": {
@@ -606,7 +610,11 @@
       "edit": "Xodim tahrirlash",
       "edit_description": "Xodim ma'lumotlarini o'zgartirish uchun quyidagi formadan foydalaning",
       "full_name": "Xodim ismi",
-      "phone": "Xodim telefon raqami"
+      "phone": "Xodim telefon raqami",
+      "role": "Rol",
+      "role_placeholder": "Rolni tanlang",
+      "role_staff": "Xodim",
+      "role_admin": "Admin"
     }
   },
   "table": {
@@ -706,5 +714,11 @@
     "sort_by_rating": "Baho bo'yicha saralash",
     "full_review": "Sharh matni",
     "images": "Rasmlar"
+  },
+  "login": {
+    "enter_code": "Kodni kiriting",
+    "bot_instruction": "botiga kiring va 1 martalik kodingizni oling.",
+    "or": "yoki",
+    "login_with_phone": "Telefon raqam bilan kirish"
   }
 }

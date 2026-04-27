@@ -1,4 +1,4 @@
-import { UserStatus } from "@/lib/enums";
+import { UserRoles, UserStatus } from "@/lib/enums";
 import Joi from "joi";
 
 export const userFields = {
@@ -15,12 +15,17 @@ export const userFields = {
     "string.max": "Photo must be at most 255 characters long",
     "string.uri": "Photo must be a valid URL",
   }),
+  role: Joi.string()
+    .valid(UserRoles.Staff, UserRoles.Admin)
+    .default(UserRoles.Staff)
+    .messages({ "any.only": "Role must be Staff or Admin" }),
 };
 
 export const staffValidator = Joi.object({
   full_name: userFields.full_name,
   phone: userFields.phone,
   photo: userFields.photo,
+  role: userFields.role,
 });
 
 export const changeStaffStatusValidator = Joi.object({

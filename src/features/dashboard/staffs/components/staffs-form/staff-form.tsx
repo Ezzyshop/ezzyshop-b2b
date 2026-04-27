@@ -1,4 +1,4 @@
-import { Form } from "@/components/ui/form/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form/form";
 import { useForm, UseFormReturn } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { DrawerClose, DrawerFooter } from "@/components/ui/drawer";
@@ -9,6 +9,14 @@ import { IStaffForm } from "../../utils/staff.interface";
 import { UserFormBasicInformation } from "@/features/moderator/users/components/user-form/user-form-sections/basic-information";
 import { IUserForm } from "@/lib";
 import { staffValidator } from "../../utils/staff.validator";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { UserRoles } from "@/lib/enums";
 
 interface IProps {
   initialValues?: IStaffForm;
@@ -19,7 +27,7 @@ interface IProps {
 export const StaffForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
   const { t } = useTranslation();
   const form = useForm<IStaffForm>({
-    defaultValues: initialValues,
+    defaultValues: { role: UserRoles.Staff, ...initialValues },
     resolver: joiResolver(staffValidator),
   });
 
@@ -33,6 +41,32 @@ export const StaffForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
           form={form as unknown as UseFormReturn<IUserForm>}
           hideRoles
           hideEmail
+        />
+
+        <FormField
+          control={form.control}
+          name="role"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel isRequired>{t("dashboard.staffs.role")}</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder={t("dashboard.staffs.role_placeholder")} />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value={UserRoles.Staff}>
+                    {t("dashboard.staffs.role_staff")}
+                  </SelectItem>
+                  <SelectItem value={UserRoles.Admin}>
+                    {t("dashboard.staffs.role_admin")}
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
         />
 
         <DrawerFooter className="flex flex-col gap-2 col-span-2">

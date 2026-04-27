@@ -395,6 +395,24 @@
       "image": "Branch image",
       "enter_image": "Enter branch image"
     },
+    "staffs": {
+      "title": "Staffs",
+      "create": "Add staff",
+      "created": "Staff created successfully",
+      "updated": "Staff updated successfully",
+      "create_description": "Use the form below to create a new staff member",
+      "delete": "Delete staff",
+      "delete_description": "Are you sure you want to delete this staff member?",
+      "deleted": "Staff deleted successfully",
+      "edit": "Edit staff",
+      "edit_description": "Use the form below to change staff information",
+      "full_name": "Staff name",
+      "phone": "Staff phone",
+      "role": "Role",
+      "role_placeholder": "Select role",
+      "role_staff": "Staff",
+      "role_admin": "Admin"
+    },
     "coupons": {
       "create": "Add coupon",
       "create_description": "Create a promo code for your customers",
@@ -468,7 +486,13 @@
       "title": "Telegram bot setup",
       "description": "Connect your Telegram bot by entering the token and selecting your business type",
       "no-bot-setup": "You have not set up a Telegram bot yet.",
-      "go-to-setup": "Go to setup"
+      "go-to-setup": "Go to setup",
+      "form": {
+        "business-type": {
+          "market": "Market",
+          "restaurant": "Restaurant"
+        }
+      }
     },
     "telegram-settings": {
       "title": "Bot message settings",
@@ -583,5 +607,11 @@
     "sort_by_rating": "Sort by rating",
     "full_review": "Review text",
     "images": "Images"
+  },
+  "login": {
+    "enter_code": "Enter the code",
+    "bot_instruction": "open the bot and get your one-time code.",
+    "or": "or",
+    "login_with_phone": "Login with phone number"
   }
 }
