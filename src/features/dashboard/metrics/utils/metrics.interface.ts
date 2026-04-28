@@ -18,7 +18,7 @@ export interface ISearchAnalytics {
 
 export interface IProductViewsAnalytics {
   period: { start: string; end: string };
-  summary: { total_views: number; unique_products_viewed: number };
+  summary: { total_views: number; total_unique_views: number };
   products: {
     product_id: string;
     name: { uz: string; ru?: string; en?: string };
@@ -67,10 +67,19 @@ export interface IOrdersDetailedAnalytics {
     total_revenue: number;
     avg_order_value: number;
     total_discount: number;
+    delivery_total: number;
   };
   status_breakdown: Record<string, number>;
   payment_breakdown: { method: string; count: number; revenue: number }[];
-  trend: { date: string; orders: number; revenue: number }[];
+  top_products: {
+    product_id: string;
+    name: { uz: string; ru?: string; en?: string };
+    main_image: string;
+    total_quantity: number;
+    total_revenue: number;
+    order_count: number;
+  }[];
+  trend: { date: string; orders: number; revenue: number; delivery: number }[];
 }
 
 export interface IConversionFunnelAnalytics {

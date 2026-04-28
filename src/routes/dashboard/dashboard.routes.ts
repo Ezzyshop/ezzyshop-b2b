@@ -25,7 +25,6 @@ import {
   TruckIcon,
   Trophy,
   UsersIcon,
-  TrendingUpIcon,
 } from "lucide-react";
 import { lazy, type LazyExoticComponent, type ComponentType } from "react";
 
@@ -289,15 +288,6 @@ export const dashboardRoutes: DashboardRoute[] = [
         access: { accessType: "permission", resource: "analytics", action: "read" },
         element: lazy(
           () => import("@/features/dashboard/metrics/pages/product-views.page"),
-        ),
-      },
-      {
-        path: "/metrics/product-sales",
-        title: "sidebar.dashboard.metrics_product_sales",
-        icon: TrendingUpIcon,
-        access: { accessType: "permission", resource: "analytics", action: "read" },
-        element: lazy(
-          () => import("@/features/dashboard/metrics/pages/product-sales.page"),
         ),
       },
       {

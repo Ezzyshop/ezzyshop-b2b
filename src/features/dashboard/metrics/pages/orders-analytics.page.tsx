@@ -18,10 +18,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ShoppingCartIcon, DollarSignIcon, ReceiptIcon, TagIcon } from "lucide-react";
+import { ShoppingCartIcon, DollarSignIcon, ReceiptIcon, TagIcon, TruckIcon } from "lucide-react";
 
 export const OrdersAnalyticsPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { shop } = useShopContext();
   const chartRef = useRef<HTMLDivElement>(null);
 
@@ -39,12 +39,19 @@ export const OrdersAnalyticsPage = () => {
   });
 
   const analytics = data?.data;
+  const lang = (i18n.language as "uz" | "ru" | "en") ?? "uz";
 
   const trendExportData = (analytics?.trend ?? []).map((t) => ({
     date: t.date,
     orders: t.orders,
     revenue: t.revenue,
+    delivery: t.delivery,
   }));
+
+  const getProductName = (name: { uz: string; ru?: string; en?: string } | undefined) => {
+    if (!name) return "—";
+    return name[lang] ?? name.uz ?? "—";
+  };
 
   return (
     <div className="space-y-6">
@@ -68,7 +75,7 @@ export const OrdersAnalyticsPage = () => {
         <div className="text-muted-foreground">{t("common.loading")}</div>
       ) : (
         <>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
             <MetricsSummaryCard
               title={t("metrics.orders.total_orders")}
               value={analytics?.summary.total_orders ?? 0}
@@ -89,6 +96,11 @@ export const OrdersAnalyticsPage = () => {
               value={analytics?.summary.total_discount ?? 0}
               icon={<TagIcon className="w-4 h-4" />}
             />
+            <MetricsSummaryCard
+              title={t("metrics.orders.delivery_total")}
+              value={analytics?.summary.delivery_total ?? 0}
+              icon={<TruckIcon className="w-4 h-4" />}
+            />
           </div>
 
           <div ref={chartRef} className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -100,6 +112,11 @@ export const OrdersAnalyticsPage = () => {
                   dataKey: "revenue",
                   label: t("metrics.orders.revenue"),
                   color: "var(--chart-1)",
+                },
+                {
+                  dataKey: "delivery",
+                  label: t("metrics.orders.delivery_total"),
+                  color: "var(--chart-3)",
                 },
               ]}
             />
@@ -181,6 +198,46 @@ export const OrdersAnalyticsPage = () => {
               </CardContent>
             </Card>
           </div>
+
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-base">
+                {t("metrics.orders.top_products")}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>#</TableHead>
+                    <TableHead>{t("metrics.orders.product")}</TableHead>
+                    <TableHead className="text-right">{t("metrics.orders.quantity")}</TableHead>
+                    <TableHead className="text-right">{t("metrics.orders.orders")}</TableHead>
+                    <TableHead className="text-right">{t("metrics.orders.revenue")}</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {(analytics?.top_products ?? []).length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={5} className="text-center text-muted-foreground py-6">
+                        {t("common.no_results_found")}
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    analytics?.top_products.map((p, idx) => (
+                      <TableRow key={String(p.product_id)}>
+                        <TableCell className="text-muted-foreground">{idx + 1}</TableCell>
+                        <TableCell>{getProductName(p.name)}</TableCell>
+                        <TableCell className="text-right">{p.total_quantity.toLocaleString()}</TableCell>
+                        <TableCell className="text-right">{p.order_count.toLocaleString()}</TableCell>
+                        <TableCell className="text-right">{p.total_revenue.toLocaleString()}</TableCell>
+                      </TableRow>
+                    ))
+                  )}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
         </>
       )}
     </div>

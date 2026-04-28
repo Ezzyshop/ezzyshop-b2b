@@ -700,6 +700,7 @@
       "title": "Просмотры товаров",
       "total_views": "Всего просмотров",
       "unique_products": "Уникальных товаров просмотрено",
+      "total_unique_views": "Всего уникальных просмотров",
       "trend": "Тренд просмотров",
       "top_products": "Самые просматриваемые товары",
       "views": "Просмотры",
@@ -721,15 +722,19 @@
       "total_revenue": "Общая выручка",
       "avg_order_value": "Средний чек",
       "total_discount": "Общая скидка",
+      "delivery_total": "Доход от доставки",
       "revenue_trend": "Тренд выручки",
       "orders_trend": "Тренд заказов",
       "status_breakdown": "Статусы заказов",
       "payment_breakdown": "Способы оплаты",
+      "top_products": "Топ продаваемых товаров",
       "status": "Статус",
       "count": "Количество",
       "revenue": "Выручка",
       "orders": "Заказы",
-      "payment_method": "Способ оплаты"
+      "payment_method": "Способ оплаты",
+      "product": "Товар",
+      "quantity": "Количество"
     },
     "top_customers": {
       "title": "Топ клиенты",

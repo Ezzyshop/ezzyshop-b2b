@@ -700,6 +700,7 @@
       "title": "Product Views",
       "total_views": "Total Views",
       "unique_products": "Unique Products Viewed",
+      "total_unique_views": "Total Unique Views",
       "trend": "Views Trend",
       "top_products": "Most Viewed Products",
       "views": "Views",
@@ -721,15 +722,19 @@
       "total_revenue": "Total Revenue",
       "avg_order_value": "Avg. Order Value",
       "total_discount": "Total Discount",
+      "delivery_total": "Delivery Revenue",
       "revenue_trend": "Revenue Trend",
       "orders_trend": "Orders Trend",
       "status_breakdown": "Order Status Breakdown",
       "payment_breakdown": "Payment Breakdown",
+      "top_products": "Top Selling Products",
       "status": "Status",
       "count": "Count",
       "revenue": "Revenue",
       "orders": "Orders",
-      "payment_method": "Payment Method"
+      "payment_method": "Payment Method",
+      "product": "Product",
+      "quantity": "Quantity"
     },
     "top_customers": {
       "title": "Top Customers",

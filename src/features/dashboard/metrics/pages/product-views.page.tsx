@@ -74,8 +74,8 @@ export const ProductViewsPage = () => {
               icon={<EyeIcon className="w-4 h-4" />}
             />
             <MetricsSummaryCard
-              title={t("metrics.product_views.unique_products")}
-              value={analytics?.summary.unique_products_viewed ?? 0}
+              title={t("metrics.product_views.total_unique_views")}
+              value={analytics?.summary.total_unique_views ?? 0}
               icon={<PackageIcon className="w-4 h-4" />}
             />
           </div>

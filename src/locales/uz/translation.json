@@ -807,6 +807,7 @@
       "title": "Mahsulot ko'rishlar",
       "total_views": "Jami ko'rishlar",
       "unique_products": "Ko'rilgan noyob mahsulotlar",
+      "total_unique_views": "Jami noyob ko'rishlar",
       "trend": "Ko'rishlar trendi",
       "top_products": "Ko'p ko'rilgan mahsulotlar",
       "views": "Ko'rishlar",
@@ -828,15 +829,19 @@
       "total_revenue": "Jami daromad",
       "avg_order_value": "O'rtacha buyurtma qiymati",
       "total_discount": "Jami chegirma",
+      "delivery_total": "Yetkazib berish daromadi",
       "revenue_trend": "Daromad trendi",
       "orders_trend": "Buyurtmalar trendi",
       "status_breakdown": "Buyurtma holatlari",
       "payment_breakdown": "To'lov turlari",
+      "top_products": "Eng ko'p sotilgan mahsulotlar",
       "status": "Holat",
       "count": "Soni",
       "revenue": "Daromad",
       "orders": "Buyurtmalar",
-      "payment_method": "To'lov turi"
+      "payment_method": "To'lov turi",
+      "product": "Mahsulot",
+      "quantity": "Miqdor"
     },
     "top_customers": {
       "title": "Top mijozlar",
