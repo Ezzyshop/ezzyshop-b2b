@@ -12,6 +12,8 @@ import { OrderStatusChanger } from "./order-status-changer";
 
 interface IProps {
   order: IOrderResponse;
+  autoOpenCancel?: boolean;
+  onDialogClose?: () => void;
 }
 
 const orderStatusIcon: Record<OrderStatus, React.ReactNode> = {
@@ -22,7 +24,7 @@ const orderStatusIcon: Record<OrderStatus, React.ReactNode> = {
   [OrderStatus.Cancelled]: <X className="size-4" />,
 };
 
-export const OrderStatusProgress = ({ order }: IProps) => {
+export const OrderStatusProgress = ({ order, autoOpenCancel, onDialogClose }: IProps) => {
   const { t } = useTranslation();
   const currentIndex =
     Object.values(OrderStatus).findIndex((s) => s === order.status) ?? 0;
@@ -39,7 +41,7 @@ export const OrderStatusProgress = ({ order }: IProps) => {
     <Card>
       <div className="flex justify-between items-center gap-4 w-full px-4 md:px-6">
         <CardTitle>{t("dashboard.orders.status_information")}</CardTitle>
-        {isAbleToChangeStatus && <OrderStatusChanger order={order} />}
+        {isAbleToChangeStatus && <OrderStatusChanger order={order} autoOpenCancel={autoOpenCancel} onDialogClose={onDialogClose} />}
       </div>
       <CardContent className="space-y-4">
         <div className="flex items-center justify-between gap-2">

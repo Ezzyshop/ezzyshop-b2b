@@ -96,7 +96,11 @@ export const OrderPage = () => {
       </div>
 
       <div className="space-y-4 md:space-y-6 col-span-1 md:col-span-3 flex flex-col">
-        <OrderStatusProgress order={order} />
+        <OrderStatusProgress
+          order={order}
+          autoOpenCancel={searchParams.get("cancel") === "true"}
+          onDialogClose={() => setSearchParams((p) => { p.delete("cancel"); return p; })}
+        />
         <OrderItems order={order} />
         <OrderStatusHistory order={order} />
       </div>

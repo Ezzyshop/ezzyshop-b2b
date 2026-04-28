@@ -30,9 +30,11 @@ import { useShopContext } from "@/contexts";
 
 interface IProps {
   order: IOrderResponse;
+  autoOpenCancel?: boolean;
+  onDialogClose?: () => void;
 }
 
-export const OrderStatusChanger = ({ order }: IProps) => {
+export const OrderStatusChanger = ({ order, autoOpenCancel, onDialogClose }: IProps) => {
   const { t } = useTranslation();
   const { shop } = useShopContext();
   const queryClient = useQueryClient();
@@ -42,6 +44,12 @@ export const OrderStatusChanger = ({ order }: IProps) => {
   useEffect(() => {
     setStatus(order.status);
   }, [order.status]);
+
+  useEffect(() => {
+    if (autoOpenCancel) {
+      setStatus(OrderStatus.Cancelled);
+    }
+  }, [autoOpenCancel]);
 
   const isCancelling = status === OrderStatus.Cancelled;
 
@@ -54,12 +62,14 @@ export const OrderStatusChanger = ({ order }: IProps) => {
       });
       toast.success(t("dashboard.orders.status_changer.success"));
       setComment("");
+      onDialogClose?.();
     },
   });
 
   const handleClose = () => {
     setStatus(order.status);
     setComment("");
+    onDialogClose?.();
   };
 
   const canSubmit = !isCancelling || comment.trim().length > 0;
