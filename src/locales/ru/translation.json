@@ -455,7 +455,8 @@
         "shop_settings": "Настройки магазина",
         "telegram_setup": "Настройка Telegram",
         "telegram_templates": "Шаблоны Telegram",
-        "telegram_messages": "Сообщения Telegram"
+        "telegram_messages": "Сообщения Telegram",
+        "analytics": "Аналитика и метрики"
       },
       "actions": {
         "read": "Просмотр",

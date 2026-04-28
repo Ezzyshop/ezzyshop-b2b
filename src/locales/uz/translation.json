@@ -658,7 +658,8 @@
         "shop_settings": "Do'kon sozlamalari",
         "telegram_setup": "Telegram sozlash",
         "telegram_templates": "Telegram shablonlar",
-        "telegram_messages": "Telegram xabarlar"
+        "telegram_messages": "Telegram xabarlar",
+        "analytics": "Analitika va metrikalar"
       },
       "actions": {
         "read": "Ko'rish",

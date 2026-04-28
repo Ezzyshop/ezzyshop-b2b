@@ -271,13 +271,13 @@ export const dashboardRoutes: DashboardRoute[] = [
     path: "/metrics",
     title: "sidebar.dashboard.metrics",
     icon: BarChart2Icon,
-    access: { accessType: "permission", resource: "orders", action: "read" },
+    access: { accessType: "permission", resource: "analytics", action: "read" },
     children: [
       {
         path: "/metrics/search-analytics",
         title: "sidebar.dashboard.metrics_search",
         icon: SearchIcon,
-        access: { accessType: "permission", resource: "orders", action: "read" },
+        access: { accessType: "permission", resource: "analytics", action: "read" },
         element: lazy(
           () => import("@/features/dashboard/metrics/pages/search-analytics.page"),
         ),
@@ -286,7 +286,7 @@ export const dashboardRoutes: DashboardRoute[] = [
         path: "/metrics/product-views",
         title: "sidebar.dashboard.metrics_product_views",
         icon: EyeIcon,
-        access: { accessType: "permission", resource: "orders", action: "read" },
+        access: { accessType: "permission", resource: "analytics", action: "read" },
         element: lazy(
           () => import("@/features/dashboard/metrics/pages/product-views.page"),
         ),
@@ -295,7 +295,7 @@ export const dashboardRoutes: DashboardRoute[] = [
         path: "/metrics/product-sales",
         title: "sidebar.dashboard.metrics_product_sales",
         icon: TrendingUpIcon,
-        access: { accessType: "permission", resource: "orders", action: "read" },
+        access: { accessType: "permission", resource: "analytics", action: "read" },
         element: lazy(
           () => import("@/features/dashboard/metrics/pages/product-sales.page"),
         ),
@@ -304,7 +304,7 @@ export const dashboardRoutes: DashboardRoute[] = [
         path: "/metrics/orders",
         title: "sidebar.dashboard.metrics_orders",
         icon: ShoppingCartIcon,
-        access: { accessType: "permission", resource: "orders", action: "read" },
+        access: { accessType: "permission", resource: "analytics", action: "read" },
         element: lazy(
           () => import("@/features/dashboard/metrics/pages/orders-analytics.page"),
         ),
@@ -313,7 +313,7 @@ export const dashboardRoutes: DashboardRoute[] = [
         path: "/metrics/top-customers",
         title: "sidebar.dashboard.metrics_top_customers",
         icon: Trophy,
-        access: { accessType: "permission", resource: "orders", action: "read" },
+        access: { accessType: "permission", resource: "analytics", action: "read" },
         element: lazy(
           () => import("@/features/dashboard/metrics/pages/top-customers.page"),
         ),
@@ -322,7 +322,7 @@ export const dashboardRoutes: DashboardRoute[] = [
         path: "/metrics/conversion-funnel",
         title: "sidebar.dashboard.metrics_funnel",
         icon: FunnelIcon,
-        access: { accessType: "permission", resource: "orders", action: "read" },
+        access: { accessType: "permission", resource: "analytics", action: "read" },
         element: lazy(
           () => import("@/features/dashboard/metrics/pages/conversion-funnel.page"),
         ),

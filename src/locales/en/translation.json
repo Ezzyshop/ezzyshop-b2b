@@ -455,7 +455,8 @@
         "shop_settings": "Shop Settings",
         "telegram_setup": "Telegram Setup",
         "telegram_templates": "Telegram Templates",
-        "telegram_messages": "Telegram Messages"
+        "telegram_messages": "Telegram Messages",
+        "analytics": "Analytics & Metrics"
       },
       "actions": {
         "read": "Read",
