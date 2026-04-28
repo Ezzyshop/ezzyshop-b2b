@@ -1,4 +1,5 @@
 export type PermissionResource =
+  | 'main_menu'
   | 'products'
   | 'categories'
   | 'orders'
@@ -10,6 +11,7 @@ export type PermissionResource =
   | 'branches'
   | 'staffs'
   | 'roles'
+  | 'plans'
   | 'coupons'
   | 'reviews'
   | 'review_replies'
@@ -56,6 +58,7 @@ export const PERMISSION_MATRIX: {
   label: string;
   actions: PermissionAction[];
 }[] = [
+  { resource: 'main_menu', label: 'Main Menu', actions: ['read'] },
   { resource: 'products', label: 'Products', actions: ['read', 'create', 'update', 'delete'] },
   { resource: 'categories', label: 'Categories', actions: ['read', 'create', 'update', 'delete'] },
   { resource: 'orders', label: 'Orders', actions: ['read', 'update'] },
@@ -67,6 +70,7 @@ export const PERMISSION_MATRIX: {
   { resource: 'branches', label: 'Branches', actions: ['read', 'create', 'update', 'delete'] },
   { resource: 'staffs', label: 'Staffs', actions: ['read', 'create', 'update', 'delete'] },
   { resource: 'roles', label: 'Roles', actions: ['read', 'create', 'update', 'delete'] },
+  { resource: 'plans', label: 'Plans', actions: ['read'] },
   { resource: 'coupons', label: 'Coupons', actions: ['read', 'create', 'update', 'delete'] },
   { resource: 'reviews', label: 'Reviews', actions: ['read', 'delete'] },
   { resource: 'review_replies', label: 'Review Replies', actions: ['create'] },

@@ -601,7 +601,8 @@
       "total_orders": "Orders",
       "total_amount": "Total spent",
       "registered_at": "Registered",
-      "first_order_date": "First order"
+      "first_order_date": "First order",
+      "role": "Role"
     },
     "filters": {
       "search": "Search",

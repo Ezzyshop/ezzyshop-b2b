@@ -601,7 +601,8 @@
       "total_orders": "Заказы",
       "total_amount": "Всего потрачено",
       "registered_at": "Зарегистрирован",
-      "first_order_date": "Первый заказ"
+      "first_order_date": "Первый заказ",
+      "role": "Роль"
     },
     "filters": {
       "search": "Поиск",

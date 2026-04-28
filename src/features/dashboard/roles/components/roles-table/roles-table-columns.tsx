@@ -4,7 +4,12 @@ import { EditRole } from "../role-form/edit-role";
 import { DeleteRole } from "../role-form/delete-role";
 import { Badge } from "@/components/ui/badge";
 
-export const rolesTableColumns = (): ColumnDef<IRole>[] => [
+interface RolesTableOptions {
+  canEdit: boolean;
+  canDelete: boolean;
+}
+
+export const rolesTableColumns = ({ canEdit, canDelete }: RolesTableOptions): ColumnDef<IRole>[] => [
   {
     header: "table.columns.name",
     accessorKey: "name",
@@ -33,8 +38,8 @@ export const rolesTableColumns = (): ColumnDef<IRole>[] => [
     accessorKey: "actions",
     cell: ({ row }) => (
       <div className="flex items-center gap-2">
-        <EditRole role={row.original} />
-        <DeleteRole role={row.original} />
+        {canEdit && <EditRole role={row.original} />}
+        {canDelete && <DeleteRole role={row.original} />}
       </div>
     ),
   },

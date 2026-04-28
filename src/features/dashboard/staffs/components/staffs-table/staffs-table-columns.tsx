@@ -2,26 +2,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { EditStaff } from "../staffs-form/edit-staff";
 import { DeleteStaff } from "../staffs-form/delete-staff";
 import { IUser } from "@/lib";
-import { Badge } from "@/components/ui/badge";
-import { UserRoles } from "@/lib/enums";
-import { useShopContext } from "@/contexts";
-
-const StaffRoleCell = ({ staff }: { staff: IUser }) => {
-  const { shop } = useShopContext();
-  const shopEntry = staff.shops?.find((s) => s.shop._id === shop._id);
-
-  if (!shopEntry) return <span className="text-muted-foreground">—</span>;
-
-  if (shopEntry.roles?.includes(UserRoles.Admin)) {
-    return <Badge variant="default">Admin</Badge>;
-  }
-
-  if (shopEntry.customRole) {
-    return <Badge variant="secondary">{shopEntry.customRole.name}</Badge>;
-  }
-
-  return <span className="text-muted-foreground">—</span>;
-};
+import { StaffRoleCell } from "./staff-role-cell";
 
 export const staffsTableColumns = (): ColumnDef<IUser>[] => [
   {

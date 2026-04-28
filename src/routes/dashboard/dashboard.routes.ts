@@ -50,7 +50,7 @@ export const dashboardRoutes: DashboardRoute[] = [
   {
     path: "/main",
     element: lazy(() => import("@/features/dashboard/main/pages/main.page")),
-    access: { accessType: "admin-only" },
+    access: { accessType: "permission", resource: "main_menu", action: "read" },
     icon: HomeIcon,
     title: "sidebar.dashboard.main_page",
   },
@@ -171,14 +171,14 @@ export const dashboardRoutes: DashboardRoute[] = [
     element: lazy(
       () => import("@/features/dashboard/roles/pages/roles.page"),
     ),
-    access: { accessType: "admin-only" },
+    access: { accessType: "permission", resource: "roles", action: "read" },
     icon: KeyRoundIcon,
     title: "sidebar.dashboard.roles",
   },
   {
     path: "/plans",
     element: lazy(() => import("@/features/dashboard/plans/pages/plans.page")),
-    access: { accessType: "admin-only" },
+    access: { accessType: "permission", resource: "plans", action: "read" },
     icon: SwitchCameraIcon,
     title: "sidebar.dashboard.plans",
   },
