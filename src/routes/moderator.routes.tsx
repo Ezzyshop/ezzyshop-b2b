@@ -1,8 +1,16 @@
 import { ModeratorLayout } from "@/layouts/moderator.layout";
-import { ProtectedRoute } from "@/layouts/protected-route.layout";
+import { useUserContext } from "@/contexts/user-context/user.context";
 import { UserRoles } from "@/lib/enums";
-import { lazy } from "react";
+import { lazy, PropsWithChildren } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+
+const SuperAdminGuard = ({ children }: PropsWithChildren) => {
+  const { user } = useUserContext();
+  if (!user.roles.includes(UserRoles.SuperAdmin)) {
+    return <Navigate to="/login" replace />;
+  }
+  return <>{children}</>;
+};
 
 const StatisticsPage = lazy(
   () => import("@/features/moderator/statistics/pages/statistics.page")
@@ -63,7 +71,7 @@ const CurrencyEditPage = lazy(
 export const ModeratorRoutes = () => {
   return (
     <ModeratorLayout>
-      <ProtectedRoute roles={[UserRoles.SuperAdmin]}>
+      <SuperAdminGuard>
         <Routes>
           <Route path="/" element={<Navigate to="/moderator/statistics" />} />
           <Route path="/statistics" element={<StatisticsPage />} />
@@ -90,7 +98,7 @@ export const ModeratorRoutes = () => {
           </Route>
           <Route path="*" element={<Navigate to="/moderator/statistics" />} />
         </Routes>
-      </ProtectedRoute>
+      </SuperAdminGuard>
     </ModeratorLayout>
   );
 };

@@ -17,3 +17,4 @@ export * from "./support-session.query";
 export * from "./delivery-zones.query";
 export * from "./customers.query";
 export * from "./reviews.query";
+export * from "./roles.query";

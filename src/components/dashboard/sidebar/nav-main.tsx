@@ -13,37 +13,44 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { useShopContext, useUserContext } from "@/contexts";
-import { dashboardRoutes } from "@/routes/dashboard/dashboard.routes";
+import { usePermissionContext } from "@/contexts/permission-context";
+import { dashboardRoutes, type ChildRoute } from "@/routes/dashboard/dashboard.routes";
+import { RouteAccess } from "@/lib/types/permission.types";
 import { ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 
+const useRouteAccess = () => {
+  const { isAdmin, hasPermission } = usePermissionContext();
+
+  return (access: RouteAccess): boolean => {
+    if (access.accessType === "admin-only") return isAdmin;
+    if (access.accessType === "permission") return hasPermission(access.resource, access.action);
+    return true;
+  };
+};
+
 export function NavMain() {
   const { t } = useTranslation();
-  const { user } = useUserContext();
-  const { activeShop } = useShopContext();
   const { pathname } = useLocation();
-
-  const userShop = user.shops.find((shop) => shop.shop._id === activeShop._id);
-
-  if (!userShop) {
-    return null;
-  }
+  const checkAccess = useRouteAccess();
 
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
       <SidebarMenu>
         {dashboardRoutes.map((item) => {
-          const hasAccess = item.roles.some((role) =>
-            userShop.roles.includes(role),
-          );
+          if (!item.title) return null;
 
-          if (!hasAccess || !item.title) return null;
-
-          // Item with sub-menu
+          // For parent items with children: show if any child is accessible
           if (item.children?.length) {
+            const accessibleChildren = item.children.filter(
+              (child): child is ChildRoute & { title: string } =>
+                Boolean(child.title) && checkAccess(child.access),
+            );
+
+            if (accessibleChildren.length === 0) return null;
+
             const isAnyChildActive = item.children.some(
               (child) => pathname === `/dashboard${child.path}`,
             );
@@ -68,10 +75,9 @@ export function NavMain() {
                   </CollapsibleTrigger>
                   <CollapsibleContent>
                     <SidebarMenuSub>
-                      {item.children.map((child) => {
+                      {accessibleChildren.map((child) => {
                         const childPath = `/dashboard${child.path}`;
                         const isActive = pathname === childPath;
-                        if (!child.title) return;
                         return (
                           <SidebarMenuSubItem key={child.path}>
                             <SidebarMenuSubButton asChild isActive={isActive}>
@@ -90,7 +96,8 @@ export function NavMain() {
             );
           }
 
-          // Regular flat item
+          if (!checkAccess(item.access)) return null;
+
           const path = `/dashboard${item.path}`;
           return (
             <SidebarMenuItem key={item.path}>

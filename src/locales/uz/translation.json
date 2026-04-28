@@ -113,6 +113,7 @@
       "branches": "Filialar",
       "settings": "Sozlamalar",
       "staffs": "Xodimlar",
+      "roles": "Rollar",
       "upgrade_plan": {
         "title": "{{ plan }} tarifiga ga o'ting",
         "description": "{{ plan }} tarifini tanlab ko'proq imkoniyatlarga ega bo'ling.",
@@ -129,7 +130,14 @@
       "customers": "Mijozlar",
       "total_orders": "Barcha buyurtmalar",
       "reviews": "Sharhlar",
-      "marketing": "Marketing"
+      "marketing": "Marketing",
+      "metrics": "Metrikalar",
+      "metrics_search": "Qidiruv statistikasi",
+      "metrics_product_views": "Mahsulot ko'rishlar",
+      "metrics_product_sales": "Mahsulot sotimlari",
+      "metrics_orders": "Buyurtmalar statistikasi",
+      "metrics_top_customers": "Top mijozlar",
+      "metrics_funnel": "Konversiya funnel"
     }
   },
   "chat": {
@@ -613,8 +621,53 @@
       "phone": "Xodim telefon raqami",
       "role": "Rol",
       "role_placeholder": "Rolni tanlang",
-      "role_staff": "Xodim",
-      "role_admin": "Admin"
+      "make_admin": "Admin qilish",
+      "make_admin_description": "Adminlar do'konning barcha xususiyatlariga to'liq kirish huquqiga ega"
+    },
+    "roles": {
+      "title": "Rollar",
+      "create": "Rol qo'shish",
+      "created": "Rol muvaffaqiyatli yaratildi",
+      "updated": "Rol muvaffaqiyatli yangilandi",
+      "deleted": "Rol muvaffaqiyatli o'chirildi",
+      "create_description": "Rol nomini kiriting va ruxsatlarni belgilang",
+      "edit": "Rolni tahrirlash",
+      "edit_description": "Rol nomini yoki ruxsatlarni yangilang",
+      "delete": "Rolni o'chirish",
+      "delete_description": "Ushbu rolni o'chirmoqchimisiz? Xodimga tayinlangan bo'lsa o'chirilmaydi.",
+      "name": "Rol nomi",
+      "name_placeholder": "masalan: Kassir, Ombor menejeri",
+      "permissions": "Ruxsatlar",
+      "permissions_description": "Bu rol qanday amallarni bajarishi mumkinligini tanlang",
+      "resources": {
+        "products": "Mahsulotlar",
+        "categories": "Kategoriyalar",
+        "orders": "Buyurtmalar",
+        "transactions": "Tranzaksiyalar",
+        "customers": "Mijozlar",
+        "delivery_methods": "Yetkazib berish usullari",
+        "delivery_zones": "Yetkazib berish zonalari",
+        "payment_methods": "To'lov usullari",
+        "branches": "Filialar",
+        "staffs": "Xodimlar",
+        "roles": "Rollar",
+        "coupons": "Kuponlar",
+        "reviews": "Sharhlar",
+        "review_replies": "Sharh javoblari",
+        "chat": "Mijozlar bilan chat",
+        "shop_settings": "Do'kon sozlamalari",
+        "telegram_setup": "Telegram sozlash",
+        "telegram_templates": "Telegram shablonlar",
+        "telegram_messages": "Telegram xabarlar",
+        "analytics": "Analitika va metrikalar"
+      },
+      "actions": {
+        "read": "Ko'rish",
+        "create": "Yaratish",
+        "update": "Tahrirlash",
+        "delete": "O'chirish",
+        "full": "To'liq kirish"
+      }
     }
   },
   "table": {
@@ -652,7 +705,8 @@
       "total_orders": "Buyurtmalar",
       "total_amount": "Jami sarflangan",
       "registered_at": "Ro'yxatdan o'tgan",
-      "first_order_date": "Birinchi buyurtma"
+      "first_order_date": "Birinchi buyurtma",
+      "role": "Roli"
     },
     "filters": {
       "search": "Qidirish",
@@ -720,5 +774,97 @@
     "bot_instruction": "botiga kiring va 1 martalik kodingizni oling.",
     "or": "yoki",
     "login_with_phone": "Telefon raqam bilan kirish"
+  },
+  "metrics": {
+    "filter": {
+      "today": "Bugun",
+      "last_7_days": "7 kun",
+      "last_30_days": "30 kun",
+      "last_90_days": "90 kun",
+      "group_day": "Kunlik",
+      "group_week": "Haftalik",
+      "group_month": "Oylik"
+    },
+    "export": {
+      "xlsx": "Excel (.xlsx) formatida yuklab olish",
+      "chart_png": "Grafikni PNG formatida yuklab olish"
+    },
+    "common": {
+      "product": "Mahsulot"
+    },
+    "search_analytics": {
+      "title": "Qidiruv statistikasi",
+      "total_searches": "Jami qidiruvlar",
+      "unique_keywords": "Noyob kalit so'zlar",
+      "trend": "Qidiruv trendi",
+      "top_keywords": "Top kalit so'zlar",
+      "keyword": "Kalit so'z",
+      "count": "Soni",
+      "last_searched": "Oxirgi qidiruv",
+      "searches": "Qidiruvlar"
+    },
+    "product_views": {
+      "title": "Mahsulot ko'rishlar",
+      "total_views": "Jami ko'rishlar",
+      "unique_products": "Ko'rilgan noyob mahsulotlar",
+      "total_unique_views": "Jami noyob ko'rishlar",
+      "trend": "Ko'rishlar trendi",
+      "top_products": "Ko'p ko'rilgan mahsulotlar",
+      "views": "Ko'rishlar",
+      "unique_views": "Noyob ko'rishlar"
+    },
+    "product_sales": {
+      "title": "Mahsulot sotimlari",
+      "total_revenue": "Jami daromad",
+      "total_quantity": "Sotilgan miqdor",
+      "revenue_trend": "Daromad va buyurtmalar trendi",
+      "top_products": "Ko'p sotiladigan mahsulotlar",
+      "revenue": "Daromad",
+      "orders": "Buyurtmalar",
+      "quantity": "Miqdor"
+    },
+    "orders": {
+      "title": "Buyurtmalar statistikasi",
+      "total_orders": "Jami buyurtmalar",
+      "total_revenue": "Jami daromad",
+      "avg_order_value": "O'rtacha buyurtma qiymati",
+      "total_discount": "Jami chegirma",
+      "delivery_total": "Yetkazib berish daromadi",
+      "revenue_trend": "Daromad trendi",
+      "orders_trend": "Buyurtmalar trendi",
+      "status_breakdown": "Buyurtma holatlari",
+      "payment_breakdown": "To'lov turlari",
+      "top_products": "Eng ko'p sotilgan mahsulotlar",
+      "status": "Holat",
+      "count": "Soni",
+      "revenue": "Daromad",
+      "orders": "Buyurtmalar",
+      "payment_method": "To'lov turi",
+      "product": "Mahsulot",
+      "quantity": "Miqdor"
+    },
+    "top_customers": {
+      "title": "Top mijozlar",
+      "total_revenue": "Jami daromad",
+      "unique_customers": "Noyob mijozlar",
+      "ranking": "Mijozlar reytingi",
+      "rank": "O'rin",
+      "name": "Ism",
+      "phone": "Telefon",
+      "total_spent": "Jami xarid",
+      "order_count": "Buyurtmalar",
+      "last_order": "Oxirgi buyurtma"
+    },
+    "funnel": {
+      "title": "Konversiya funnel",
+      "checkout_rate": "Checkout darajasi",
+      "purchase_rate": "Xarid darajasi",
+      "funnel_steps": "Funnel bosqichlari",
+      "daily_trend": "Kunlik funnel trendi",
+      "add_to_cart": "Savatga qo'shish",
+      "view_cart": "Savatni ko'rish",
+      "begin_checkout": "To'lovni boshlash",
+      "purchase": "Xarid"
+    }
   }
 }

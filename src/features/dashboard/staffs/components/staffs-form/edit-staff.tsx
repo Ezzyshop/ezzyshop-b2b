@@ -39,19 +39,16 @@ export const EditStaff = ({ staff }: IProps) => {
     },
   });
 
-  const onSubmit = (data: IStaffForm) => {
-    updateStaffMutation.mutate(data);
-  };
-
-  const shopRole = staff.shops
-    ?.find((s) => s.shop._id === shop._id)
-    ?.roles.find((r) => r === UserRoles.Admin || r === UserRoles.Staff);
+  const shopEntry = staff.shops?.find((s) => s.shop._id === shop._id);
+  const isAdmin = shopEntry?.roles?.includes(UserRoles.Admin) ?? false;
+  const roleId = shopEntry?.customRole?._id ?? undefined;
 
   const initialValues: IStaffForm = {
     full_name: staff.full_name,
     phone: staff.phone!,
-    photo: staff.photo!,
-    role: (shopRole as UserRoles.Staff | UserRoles.Admin) ?? UserRoles.Staff,
+    photo: staff.photo,
+    isAdmin,
+    roleId,
   };
 
   return (
@@ -61,15 +58,13 @@ export const EditStaff = ({ staff }: IProps) => {
           <EditIcon />
         </Button>
       </DrawerTrigger>
-      <DrawerContent className="w-full  md:max-w-lg">
+      <DrawerContent className="w-full md:max-w-lg">
         <DrawerHeader>
           <DrawerTitle>{t("dashboard.staffs.edit")}</DrawerTitle>
-          <DrawerDescription>
-            {t("dashboard.staffs.edit_description")}
-          </DrawerDescription>
+          <DrawerDescription>{t("dashboard.staffs.edit_description")}</DrawerDescription>
         </DrawerHeader>
         <StaffForm
-          onSubmit={onSubmit}
+          onSubmit={(data) => updateStaffMutation.mutate(data)}
           isLoading={updateStaffMutation.isPending}
           initialValues={initialValues}
         />

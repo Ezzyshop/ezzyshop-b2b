@@ -15,3 +15,4 @@ export * from "./staffs.mutation";
 export * from "./coupons.mutation";
 export * from "./delivery-zones.mutation";
 export * from "./reviews.mutation";
+export * from "./roles.mutation";

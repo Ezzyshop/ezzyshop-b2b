@@ -1,19 +1,29 @@
-import { useUserContext } from "@/contexts/user-context/user.context";
-import { UserRoles } from "@/lib/enums";
+import { usePermissionContext } from "@/contexts/permission-context";
+import { RouteAccess } from "@/lib/types/permission.types";
 import { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 
 interface IProps {
   children: ReactNode;
-  roles: UserRoles[];
+  access: RouteAccess;
 }
 
-export const ProtectedRoute = ({ roles, children }: IProps) => {
-  const { user } = useUserContext();
+export const ProtectedRoute = ({ access, children }: IProps) => {
+  const { isAdmin, hasPermission, isLoading } = usePermissionContext();
 
-  const hasAccessToPage = roles.some((role) => user.shops[0].roles.includes(role));
+  if (isLoading) return null;
 
-  if (!hasAccessToPage) {
+  let allowed = false;
+
+  if (access.accessType === "admin-only") {
+    allowed = isAdmin;
+  } else if (access.accessType === "permission") {
+    allowed = hasPermission(access.resource, access.action);
+  } else {
+    allowed = true;
+  }
+
+  if (!allowed) {
     return <Navigate to="/not-found" />;
   }
 

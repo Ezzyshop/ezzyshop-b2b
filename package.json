@@ -53,6 +53,7 @@
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
+    "html2canvas": "^1.4.1",
     "i18next": "^25.3.0",
     "i18next-browser-languagedetector": "^8.2.0",
     "input-otp": "^1.4.2",
@@ -76,7 +77,8 @@
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.11",
     "tiptap-extension-resize-image": "^1.2.1",
-    "vaul": "^1.1.2"
+    "vaul": "^1.1.2",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",

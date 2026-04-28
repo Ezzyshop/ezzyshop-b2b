@@ -108,6 +108,8 @@
       "payment-methods": "Способы оплаты",
       "branches": "Филиалы",
       "settings": "Настройки",
+      "staffs": "Сотрудники",
+      "roles": "Роли",
       "coupons": "Купоны",
       "telegram": "Telegram",
       "telegram-setup": "Настройка",
@@ -124,7 +126,14 @@
       "customers": "Клиенты",
       "total_orders": "Все заказы",
       "reviews": "Отзывы",
-      "marketing": "Маркетинг"
+      "marketing": "Маркетинг",
+      "metrics": "Метрики",
+      "metrics_search": "Аналитика поиска",
+      "metrics_product_views": "Просмотры товаров",
+      "metrics_product_sales": "Продажи товаров",
+      "metrics_orders": "Аналитика заказов",
+      "metrics_top_customers": "Топ клиенты",
+      "metrics_funnel": "Воронка конверсий"
     }
   },
   "chat": {
@@ -409,8 +418,53 @@
       "phone": "Телефон сотрудника",
       "role": "Роль",
       "role_placeholder": "Выберите роль",
-      "role_staff": "Сотрудник",
-      "role_admin": "Администратор"
+      "make_admin": "Сделать администратором",
+      "make_admin_description": "Администраторы имеют полный доступ ко всем функциям магазина"
+    },
+    "roles": {
+      "title": "Роли",
+      "create": "Добавить роль",
+      "created": "Роль успешно создана",
+      "updated": "Роль успешно обновлена",
+      "deleted": "Роль успешно удалена",
+      "create_description": "Введите название роли и назначьте разрешения",
+      "edit": "Редактировать роль",
+      "edit_description": "Обновите название роли или измените разрешения",
+      "delete": "Удалить роль",
+      "delete_description": "Вы уверены, что хотите удалить эту роль? Её нельзя удалить, если она назначена сотруднику.",
+      "name": "Название роли",
+      "name_placeholder": "например: Кассир, Менеджер склада",
+      "permissions": "Разрешения",
+      "permissions_description": "Выберите, какие действия может выполнять эта роль",
+      "resources": {
+        "products": "Товары",
+        "categories": "Категории",
+        "orders": "Заказы",
+        "transactions": "Транзакции",
+        "customers": "Клиенты",
+        "delivery_methods": "Способы доставки",
+        "delivery_zones": "Зоны доставки",
+        "payment_methods": "Способы оплаты",
+        "branches": "Филиалы",
+        "staffs": "Сотрудники",
+        "roles": "Роли",
+        "coupons": "Купоны",
+        "reviews": "Отзывы",
+        "review_replies": "Ответы на отзывы",
+        "chat": "Чат с клиентами",
+        "shop_settings": "Настройки магазина",
+        "telegram_setup": "Настройка Telegram",
+        "telegram_templates": "Шаблоны Telegram",
+        "telegram_messages": "Сообщения Telegram",
+        "analytics": "Аналитика и метрики"
+      },
+      "actions": {
+        "read": "Просмотр",
+        "create": "Создание",
+        "update": "Редактирование",
+        "delete": "Удаление",
+        "full": "Полный доступ"
+      }
     },
     "coupons": {
       "create": "Добавить купон",
@@ -547,7 +601,8 @@
       "total_orders": "Заказы",
       "total_amount": "Всего потрачено",
       "registered_at": "Зарегистрирован",
-      "first_order_date": "Первый заказ"
+      "first_order_date": "Первый заказ",
+      "role": "Роль"
     },
     "filters": {
       "search": "Поиск",
@@ -612,5 +667,97 @@
     "bot_instruction": "откройте бота и получите одноразовый код.",
     "or": "или",
     "login_with_phone": "Войти с номером телефона"
+  },
+  "metrics": {
+    "filter": {
+      "today": "Сегодня",
+      "last_7_days": "7 дней",
+      "last_30_days": "30 дней",
+      "last_90_days": "90 дней",
+      "group_day": "По дням",
+      "group_week": "По неделям",
+      "group_month": "По месяцам"
+    },
+    "export": {
+      "xlsx": "Экспорт в Excel (.xlsx)",
+      "chart_png": "Экспорт графика в PNG"
+    },
+    "common": {
+      "product": "Товар"
+    },
+    "search_analytics": {
+      "title": "Аналитика поиска",
+      "total_searches": "Всего поисков",
+      "unique_keywords": "Уникальные ключевые слова",
+      "trend": "Тренд поиска",
+      "top_keywords": "Топ ключевые слова",
+      "keyword": "Ключевое слово",
+      "count": "Количество",
+      "last_searched": "Последний поиск",
+      "searches": "Поиски"
+    },
+    "product_views": {
+      "title": "Просмотры товаров",
+      "total_views": "Всего просмотров",
+      "unique_products": "Уникальных товаров просмотрено",
+      "total_unique_views": "Всего уникальных просмотров",
+      "trend": "Тренд просмотров",
+      "top_products": "Самые просматриваемые товары",
+      "views": "Просмотры",
+      "unique_views": "Уникальные просмотры"
+    },
+    "product_sales": {
+      "title": "Продажи товаров",
+      "total_revenue": "Общая выручка",
+      "total_quantity": "Продано единиц",
+      "revenue_trend": "Тренд выручки и заказов",
+      "top_products": "Топ продаваемые товары",
+      "revenue": "Выручка",
+      "orders": "Заказы",
+      "quantity": "Количество"
+    },
+    "orders": {
+      "title": "Аналитика заказов",
+      "total_orders": "Всего заказов",
+      "total_revenue": "Общая выручка",
+      "avg_order_value": "Средний чек",
+      "total_discount": "Общая скидка",
+      "delivery_total": "Доход от доставки",
+      "revenue_trend": "Тренд выручки",
+      "orders_trend": "Тренд заказов",
+      "status_breakdown": "Статусы заказов",
+      "payment_breakdown": "Способы оплаты",
+      "top_products": "Топ продаваемых товаров",
+      "status": "Статус",
+      "count": "Количество",
+      "revenue": "Выручка",
+      "orders": "Заказы",
+      "payment_method": "Способ оплаты",
+      "product": "Товар",
+      "quantity": "Количество"
+    },
+    "top_customers": {
+      "title": "Топ клиенты",
+      "total_revenue": "Общая выручка",
+      "unique_customers": "Уникальные клиенты",
+      "ranking": "Рейтинг клиентов",
+      "rank": "Место",
+      "name": "Имя",
+      "phone": "Телефон",
+      "total_spent": "Потрачено всего",
+      "order_count": "Заказы",
+      "last_order": "Последний заказ"
+    },
+    "funnel": {
+      "title": "Воронка конверсий",
+      "checkout_rate": "Конверсия в оформление",
+      "purchase_rate": "Конверсия в покупку",
+      "funnel_steps": "Шаги воронки",
+      "daily_trend": "Дневной тренд воронки",
+      "add_to_cart": "В корзину",
+      "view_cart": "Просмотр корзины",
+      "begin_checkout": "Начало оформления",
+      "purchase": "Покупка"
+    }
   }
 }
