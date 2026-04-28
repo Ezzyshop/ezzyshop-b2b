@@ -1,8 +1,11 @@
 import NotFoundPage from "@/features/static/not-found/pages/not-found.page";
 import { RouteAccess } from "@/lib/types/permission.types";
 import {
+  BarChart2Icon,
   BotIcon,
   CreditCardIcon,
+  EyeIcon,
+  FunnelIcon,
   HomeIcon,
   KeyRoundIcon,
   LayoutTemplateIcon,
@@ -12,6 +15,7 @@ import {
   Package2,
   PackageIcon,
   PercentIcon,
+  SearchIcon,
   SendIcon,
   SettingsIcon,
   ShoppingCartIcon,
@@ -19,7 +23,9 @@ import {
   SwitchCameraIcon,
   TagIcon,
   TruckIcon,
+  Trophy,
   UsersIcon,
+  TrendingUpIcon,
 } from "lucide-react";
 import { lazy, type LazyExoticComponent, type ComponentType } from "react";
 
@@ -259,6 +265,69 @@ export const dashboardRoutes: DashboardRoute[] = [
         title: "sidebar.dashboard.chat",
       },
     ],
+  },
+
+  {
+    path: "/metrics",
+    title: "sidebar.dashboard.metrics",
+    icon: BarChart2Icon,
+    access: { accessType: "permission", resource: "orders", action: "read" },
+    children: [
+      {
+        path: "/metrics/search-analytics",
+        title: "sidebar.dashboard.metrics_search",
+        icon: SearchIcon,
+        access: { accessType: "permission", resource: "orders", action: "read" },
+        element: lazy(
+          () => import("@/features/dashboard/metrics/pages/search-analytics.page"),
+        ),
+      },
+      {
+        path: "/metrics/product-views",
+        title: "sidebar.dashboard.metrics_product_views",
+        icon: EyeIcon,
+        access: { accessType: "permission", resource: "orders", action: "read" },
+        element: lazy(
+          () => import("@/features/dashboard/metrics/pages/product-views.page"),
+        ),
+      },
+      {
+        path: "/metrics/product-sales",
+        title: "sidebar.dashboard.metrics_product_sales",
+        icon: TrendingUpIcon,
+        access: { accessType: "permission", resource: "orders", action: "read" },
+        element: lazy(
+          () => import("@/features/dashboard/metrics/pages/product-sales.page"),
+        ),
+      },
+      {
+        path: "/metrics/orders",
+        title: "sidebar.dashboard.metrics_orders",
+        icon: ShoppingCartIcon,
+        access: { accessType: "permission", resource: "orders", action: "read" },
+        element: lazy(
+          () => import("@/features/dashboard/metrics/pages/orders-analytics.page"),
+        ),
+      },
+      {
+        path: "/metrics/top-customers",
+        title: "sidebar.dashboard.metrics_top_customers",
+        icon: Trophy,
+        access: { accessType: "permission", resource: "orders", action: "read" },
+        element: lazy(
+          () => import("@/features/dashboard/metrics/pages/top-customers.page"),
+        ),
+      },
+      {
+        path: "/metrics/conversion-funnel",
+        title: "sidebar.dashboard.metrics_funnel",
+        icon: FunnelIcon,
+        access: { accessType: "permission", resource: "orders", action: "read" },
+        element: lazy(
+          () => import("@/features/dashboard/metrics/pages/conversion-funnel.page"),
+        ),
+      },
+    ] as ChildRoute[],
   },
 
   {
