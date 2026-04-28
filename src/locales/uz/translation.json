@@ -538,6 +538,11 @@
       "transaction_status": "To'lov holati",
       "status_history": {
         "title": "Holat tarixi"
+      },
+      "accept": {
+        "success": "Buyurtma muvaffaqiyatli qabul qilindi",
+        "already_accepted": "Bu buyurtma allaqachon qabul qilingan",
+        "error": "Buyurtmani qabul qilishda xatolik yuz berdi"
       }
     },
     "telegram": {

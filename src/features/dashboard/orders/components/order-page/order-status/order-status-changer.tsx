@@ -11,7 +11,7 @@ import {
   orderStatusTranslations,
 } from "../../../utils/order.enum";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -38,6 +38,10 @@ export const OrderStatusChanger = ({ order }: IProps) => {
   const queryClient = useQueryClient();
   const [status, setStatus] = useState<OrderStatus>(order.status);
   const [comment, setComment] = useState("");
+
+  useEffect(() => {
+    setStatus(order.status);
+  }, [order.status]);
 
   const isCancelling = status === OrderStatus.Cancelled;
 

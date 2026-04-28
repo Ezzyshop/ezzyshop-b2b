@@ -7,3 +7,6 @@ export const updateOrderStatusMutationFn = (
   status: OrderStatus,
   comment?: string,
 ) => api.put(`/orders/${shopId}/${orderId}/status`, { status, comment });
+
+export const acceptOrderMutationFn = (shopId: string, orderId: string) =>
+  api.put(`/orders/${shopId}/${orderId}/accept`);
