@@ -533,6 +533,11 @@
       },
       "status_history": {
         "title": "Status history"
+      },
+      "accept": {
+        "success": "Order accepted successfully",
+        "already_accepted": "This order has already been accepted",
+        "error": "Failed to accept order"
       }
     },
     "telegram": {

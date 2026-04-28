@@ -92,6 +92,9 @@ export interface IOrderResponse {
     provider: IPaymentMethod;
   };
   notes?: string;
+  accepted_by?: { _id: string; full_name: string; email: string };
+  accepted_at?: string;
+  time_to_accept?: number;
 }
 
 export interface IOrderProduct {
