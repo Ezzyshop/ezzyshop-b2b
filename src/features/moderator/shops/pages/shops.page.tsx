@@ -7,6 +7,7 @@ import { ShopTableFilters } from "../components/shop-table/shop-table-filters";
 import { useQueryParams } from "@/hooks";
 import { DataTable } from "@/components/data-table/data-table";
 import { YemakImportButton } from "../components/yemak-import-modal";
+import { YandexImportButton } from "../components/yandex-import-modal";
 
 export const ShopsPage = () => {
   const { getQueryParams, setQueryParams } = useQueryParams();
@@ -30,6 +31,7 @@ export const ShopsPage = () => {
         <h1 className="text-2xl font-bold">Mijozlar</h1>
         <div className="flex items-center gap-2">
           <YemakImportButton />
+          <YandexImportButton />
           <Button asChild>
             <NavLink to="/moderator/shops/create">Mijoz qo'shish</NavLink>
           </Button>
