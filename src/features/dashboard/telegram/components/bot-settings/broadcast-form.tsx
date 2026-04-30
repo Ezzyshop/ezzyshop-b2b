@@ -29,7 +29,8 @@ import { TBroadcastForm } from "@/types/bot-template.types";
 import { broadcastResolver } from "../../utils/bot-template.validator";
 import { broadcastMutationFn } from "@/api/mutations";
 import { getBroadcastHistoryQueryFn } from "@/api/queries";
-import { uploadImageMutationFn } from "@/api/mutations/upload.mutation";
+import { uploadShopImageMutationFn } from "@/api/mutations/upload.mutation";
+import { useShopContext } from "@/contexts";
 
 const EMOJIS = [
   "😊","🎉","👋","🛍️","🏪","🎁","✅","🔥","💯","⭐",
@@ -83,6 +84,7 @@ interface IProps {
 export const BroadcastForm = ({ botId }: IProps) => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
+  const { shop } = useShopContext();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -131,7 +133,8 @@ export const BroadcastForm = ({ botId }: IProps) => {
   }, [handleObserver]);
 
   const uploadMutation = useMutation({
-    mutationFn: uploadImageMutationFn,
+    mutationFn: (formData: FormData) =>
+      uploadShopImageMutationFn(shop._id, "product", formData),
     onSuccess: (data) => {
       form.setValue("imageUrl", data.data.url, { shouldDirty: true });
     },

@@ -26,9 +26,10 @@ import { useTranslation } from "react-i18next";
 
 interface IProps {
   form: UseFormReturn<IShopUpdateForm>;
+  shopId: string;
 }
 
-export const SettingFormBasicInformation = ({ form }: IProps) => {
+export const SettingFormBasicInformation = ({ form, shopId }: IProps) => {
   const { t } = useTranslation();
   const { data: currencies } = useQuery({
     queryKey: ["currencies"],
@@ -131,6 +132,8 @@ export const SettingFormBasicInformation = ({ form }: IProps) => {
                   <ImageUploadSingle
                     value={field.value}
                     onChange={field.onChange}
+                    shopId={shopId}
+                    type="logo"
                   />
                 </FormControl>
                 <FormMessage />

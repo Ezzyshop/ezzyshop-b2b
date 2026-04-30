@@ -193,6 +193,8 @@ export const ProductFormVariants = ({ form }: IProps) => {
                     <MultipleImageUpload
                       {...field}
                       onChange={(value) => field.onChange(value)}
+                      shopId={shop._id}
+                      type="product"
                     />
                   </FormControl>
                 </FormItem>

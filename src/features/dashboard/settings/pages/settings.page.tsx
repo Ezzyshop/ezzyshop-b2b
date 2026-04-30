@@ -56,6 +56,7 @@ export const SettingsPage = () => {
   return (
     <SettingsForm
       shop={shopInitialValues}
+      shopId={shop._id}
       onSubmit={updateShop}
       isLoading={isPending}
     />

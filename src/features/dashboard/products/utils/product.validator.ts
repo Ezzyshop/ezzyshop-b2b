@@ -12,9 +12,9 @@ export const createProductSchema = Joi.object({
   }).required(),
 
   description: Joi.object({
-    uz: Joi.string().max(500).optional().allow(null),
-    en: Joi.string().max(500).optional().allow(null),
-    ru: Joi.string().max(500).optional().allow(null),
+    uz: Joi.string().max(500).optional().allow(null).allow(""),
+    en: Joi.string().max(500).optional().allow(null).allow(""),
+    ru: Joi.string().max(500).optional().allow(null).allow(""),
   }).optional(),
 
   main_image: Joi.string().uri().required().messages({
@@ -34,10 +34,10 @@ export const createProductSchema = Joi.object({
         compare_at_price: Joi.number().optional().allow("").allow(null),
         quantity: Joi.number().integer().min(0).required(),
         images: Joi.array().items(Joi.string().uri()).max(10).optional(),
-      })
+      }),
     )
     .required(),
 
   status: Joi.string().valid(ProductStatus.ACTIVE, ProductStatus.INACTIVE),
-  delivery_time: Joi.number().min(0).optional().allow(null).default(null),
+  delivery_time: Joi.number().min(0).optional().allow(null).allow("").default(null),
 });

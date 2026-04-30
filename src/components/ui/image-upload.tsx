@@ -1,7 +1,11 @@
 import { useCallback, useRef } from "react";
 import { CardContent } from "./card";
 import { useMutation } from "@tanstack/react-query";
-import { uploadImageMutationFn } from "@/api/mutations/upload.mutation";
+import {
+  uploadImageMutationFn,
+  uploadShopImageMutationFn,
+  UploadType,
+} from "@/api/mutations/upload.mutation";
 import { Button } from "./button";
 import { Loader2, PlusIcon, UploadIcon, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -13,6 +17,8 @@ interface ISingleImageUploadProps {
   title?: string;
   description?: string;
   error?: string;
+  shopId?: string;
+  type?: UploadType;
 }
 
 export const ImageUploadSingle = ({
@@ -21,13 +27,17 @@ export const ImageUploadSingle = ({
   title,
   description,
   error,
+  shopId,
+  type,
 }: ISingleImageUploadProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
 
   const uploadImageMutation = useMutation({
-    mutationFn: uploadImageMutationFn,
-
+    mutationFn: (formData: FormData) =>
+      shopId && type
+        ? uploadShopImageMutationFn(shopId, type, formData)
+        : uploadImageMutationFn(formData),
     onSuccess: (data) => {
       onChange(data.data.url);
     },
@@ -35,7 +45,6 @@ export const ImageUploadSingle = ({
 
   const handleOpenFilePicker = () => {
     if (!inputRef.current) return;
-
     inputRef.current.click();
   };
 
@@ -119,18 +128,24 @@ export const ImageUploadSingle = ({
 interface IMultipleImageUploadProps {
   value: string[] | undefined;
   onChange: (value: string[] | undefined) => void;
+  shopId?: string;
+  type?: UploadType;
 }
 
 export const MultipleImageUpload = ({
   onChange,
   value,
+  shopId,
+  type,
 }: IMultipleImageUploadProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
 
   const uploadImageMutation = useMutation({
-    mutationFn: uploadImageMutationFn,
-
+    mutationFn: (formData: FormData) =>
+      shopId && type
+        ? uploadShopImageMutationFn(shopId, type, formData)
+        : uploadImageMutationFn(formData),
     onSuccess: (data) => {
       onChange([...(value ?? []), data.data.url]);
     },
@@ -138,7 +153,6 @@ export const MultipleImageUpload = ({
 
   const handleOpenFilePicker = () => {
     if (!inputRef.current) return;
-
     inputRef.current.click();
   };
 
