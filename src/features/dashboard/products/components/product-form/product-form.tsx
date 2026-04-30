@@ -80,6 +80,8 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
           title={t("dashboard.products.main_image")}
           description={t("dashboard.products.main_image_description")}
           error={form.formState.errors.main_image?.message}
+          shopId={shop._id}
+          type="product"
         />
 
         <ProductFormCategories form={form} />
