@@ -50,7 +50,8 @@
     "fixed": "Fixed",
     "dynamic": "Dynamic",
     "free": "Free",
-    "custom": "Custom"
+    "custom": "Custom",
+    "uploading": "Uploading..."
   },
   "register": {
     "create_telegram": {
@@ -211,7 +212,10 @@
       "enter_image": "Enter image",
       "attributes": "Attributes",
       "attribute_name": "Attribute name",
-      "attribute_value": "Attribute value"
+      "attribute_value": "Attribute value",
+      "upload_video": "Upload video",
+      "upload_video_description": "Click here to upload a product video (max 10MB)",
+      "video_size_limit": "Video size must not exceed 10MB"
     },
     "plans": {
       "title": "Choose the plan that suits you",
@@ -569,6 +573,48 @@
       "broadcast-success": "Sent to {{sent}} of {{total}} users",
       "broadcast-history-title": "Broadcast History",
       "broadcast-history-description": "Previously sent broadcasts to your bot users"
+    },
+    "main": {
+      "total_revenue": "This month's revenue",
+      "new_customers": "New customers",
+      "total_sales": "Products sold",
+      "from_last_month": "vs last month",
+      "today_orders": "Today's orders",
+      "today_vs_yesterday": "vs yesterday",
+      "recent_sales": "Recent sales",
+      "no_sales": "No sales yet",
+      "recent_orders": "Recent orders",
+      "view_all": "View all",
+      "no_orders": "No orders yet",
+      "low_stock": "Low stock",
+      "low_stock_description": "Products running low",
+      "no_low_stock": "All products are well-stocked",
+      "items_left": "left",
+      "pending_reviews": "Pending reviews",
+      "pending_reviews_description": "Awaiting your reply",
+      "no_pending_reviews": "No pending reviews",
+      "reply": "Reply",
+      "plan_usage": "Plan usage",
+      "plan_usage_description": "Your current plan limits",
+      "products_limit": "Products",
+      "categories_limit": "Categories",
+      "orders_limit": "Monthly orders",
+      "unlimited": "Unlimited",
+      "upgrade_plan": "Upgrade plan",
+      "coupons_summary": "Coupons",
+      "coupons_active": "Active coupons",
+      "coupons_expiring": "Expiring in 7 days",
+      "coupons_total_redemptions": "Total redemptions",
+      "no_coupons": "No coupons yet",
+      "create_coupon": "Create coupon",
+      "revenue": {
+        "title": "Total revenue",
+        "description": "Select a date range to view revenue"
+      },
+      "sales": {
+        "title": "Sales",
+        "description": "Select a date range to view sales"
+      }
     }
   },
   "table": {

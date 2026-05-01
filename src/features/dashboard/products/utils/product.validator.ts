@@ -21,6 +21,7 @@ export const createProductSchema = Joi.object({
     "any.required": "dashboard.products.enter_main_image",
     "string.uri": "dashboard.products.format_main_image",
   }),
+  video: Joi.string().uri().optional().allow(null).allow(""),
   categories: Joi.array().items(Joi.string().length(24)).optional(),
   variants: Joi.array()
     .items(

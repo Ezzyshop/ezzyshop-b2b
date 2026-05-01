@@ -49,7 +49,12 @@ export const EditProductButton = ({ product }: IProps) => {
       description: product.description,
       main_image: product.main_image,
       categories: product.categories,
-      variants: product.variants,
+      variants: product.variants?.map((v) => {
+        if (!v.attributes) {
+          v.attributes = {};
+        }
+        return v;
+      }),
       status: product.status,
       delivery_time: product.delivery_time,
     };
