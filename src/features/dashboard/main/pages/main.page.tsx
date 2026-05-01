@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { SetupChecklist } from "../components/setup-checklist";
 import { OrdersAnalyticsSummary } from "../components/orders-analytics-summary";
-import { RecentOrders } from "../components/recent-orders";
 import { LowStockAlerts } from "../components/low-stock-alerts";
 import { PendingReviews } from "../components/pending-reviews";
 import { PlanUsage } from "../components/plan-usage";
@@ -28,8 +27,6 @@ export const DashboardMainPage = () => {
           <LowStockAlerts />
           <PendingReviews />
         </div>
-
-        <RecentOrders />
       </div>
     </div>
   );
