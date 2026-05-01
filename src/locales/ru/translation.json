@@ -701,6 +701,7 @@
     "message": "Текст отзыва",
     "date": "Дата",
     "reply": "Ответить",
+    "replied": "Ответ дан",
     "reply_placeholder": "Написать ответ...",
     "save_reply": "Сохранить",
     "delete": "Удалить",

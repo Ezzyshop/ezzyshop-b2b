@@ -701,6 +701,7 @@
     "message": "Review text",
     "date": "Date",
     "reply": "Reply",
+    "replied": "Replied",
     "reply_placeholder": "Write a reply...",
     "save_reply": "Save",
     "delete": "Delete",
