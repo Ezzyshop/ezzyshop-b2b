@@ -13,9 +13,9 @@ export const DashboardLayout = ({ children }: PropsWithChildren) => {
         <PermissionContextProvider>
           <SidebarProvider>
             <DashboardSidebar />
-            <SidebarInset>
+            <SidebarInset className="min-w-0">
               <Header />
-              <div className="flex-1 p-4">{children}</div>
+              <div className="flex-1 min-w-0 p-4">{children}</div>
             </SidebarInset>
           </SidebarProvider>
         </PermissionContextProvider>
