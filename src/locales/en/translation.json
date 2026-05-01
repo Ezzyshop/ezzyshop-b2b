@@ -51,7 +51,18 @@
     "dynamic": "Dynamic",
     "free": "Free",
     "custom": "Custom",
-    "uploading": "Uploading..."
+    "uploading": "Uploading...",
+    "ai_image_use_ai": "Edit with AI",
+    "ai_image_prompt_placeholder": "Describe how you want to edit the image...",
+    "ai_image_generate": "Edit with AI",
+    "ai_image_generating_button": "Editing...",
+    "ai_image_regenerate": "Edit again",
+    "ai_image_generating": "Editing image",
+    "ai_image_use": "Use this image",
+    "ai_image_error": "Failed to edit image. Please try again.",
+    "tab_upload": "Upload",
+    "tab_my_files": "My Files",
+    "my_files_empty": "No AI images yet. Generate one from a product or category form."
   },
   "register": {
     "create_telegram": {
@@ -134,7 +145,10 @@
       "metrics_product_sales": "Product Sales",
       "metrics_orders": "Orders Analytics",
       "metrics_top_customers": "Top Customers",
-      "metrics_funnel": "Conversion Funnel"
+      "metrics_funnel": "Conversion Funnel",
+      "ai": "AI",
+      "ai_images": "AI Images",
+      "ai_settings": "AI Settings"
     }
   },
   "chat": {
@@ -615,6 +629,36 @@
         "title": "Sales",
         "description": "Select a date range to view sales"
       }
+    },
+    "ai_images": {
+      "title": "AI Images",
+      "description": "All images generated or edited with AI for your shop.",
+      "edit_dialog_title": "Edit image with AI",
+      "original": "Original",
+      "result": "Result",
+      "result_placeholder": "Edited image will appear here",
+      "edit": "Edit with AI",
+      "edit_again": "Edit again",
+      "type_product": "Product",
+      "type_category": "Category",
+      "filter_all": "All",
+      "empty_title": "No AI images yet",
+      "empty_description": "Generate or edit an image using AI on a product or category."
+    },
+    "ai_settings": {
+      "title": "AI Settings",
+      "description": "Configure how AI generates and edits images for your shop.",
+      "prompt_suffix_title": "Default prompt style",
+      "prompt_suffix_description": "This text is automatically appended to every AI prompt. Use it to enforce a consistent visual style across all AI-generated images.",
+      "prompt_suffix_placeholder": "e.g. professional product photography, white background, high resolution",
+      "saved": "AI settings saved",
+      "tips_title": "Tips for better prompts",
+      "tips": [
+        "Be specific about colors, materials, and background.",
+        "Mention the style: realistic, illustration, minimalist…",
+        "Keep prompts under 200 characters for best results.",
+        "Use the default style suffix for consistent branding."
+      ]
     }
   },
   "table": {

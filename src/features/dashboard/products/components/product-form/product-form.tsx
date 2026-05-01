@@ -82,6 +82,7 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
           error={form.formState.errors.main_image?.message}
           shopId={shop._id}
           type="product"
+          enableAI
         />
 
         <VideoUpload

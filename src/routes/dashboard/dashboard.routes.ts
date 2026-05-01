@@ -7,6 +7,7 @@ import {
   EyeIcon,
   FunnelIcon,
   HomeIcon,
+  ImageIcon,
   KeyRoundIcon,
   LayoutTemplateIcon,
   ListIcon,
@@ -19,6 +20,7 @@ import {
   SendIcon,
   SettingsIcon,
   ShoppingCartIcon,
+  SparklesIcon,
   StarIcon,
   SwitchCameraIcon,
   TagIcon,
@@ -315,6 +317,33 @@ export const dashboardRoutes: DashboardRoute[] = [
         access: { accessType: "permission", resource: "analytics", action: "read" },
         element: lazy(
           () => import("@/features/dashboard/metrics/pages/conversion-funnel.page"),
+        ),
+      },
+    ] as ChildRoute[],
+  },
+
+  {
+    path: "/ai",
+    title: "sidebar.dashboard.ai",
+    icon: SparklesIcon,
+    access: { accessType: "any" },
+    children: [
+      {
+        path: "/ai/images",
+        title: "sidebar.dashboard.ai_images",
+        icon: ImageIcon,
+        access: { accessType: "any" },
+        element: lazy(
+          () => import("@/features/dashboard/ai-images/pages/ai-images.page"),
+        ),
+      },
+      {
+        path: "/ai/settings",
+        title: "sidebar.dashboard.ai_settings",
+        icon: SettingsIcon,
+        access: { accessType: "any" },
+        element: lazy(
+          () => import("@/features/dashboard/ai-images/pages/ai-settings.page"),
         ),
       },
     ] as ChildRoute[],

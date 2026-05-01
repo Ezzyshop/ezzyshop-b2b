@@ -55,7 +55,18 @@
     "upload_image": "Rasm yuklash",
     "upload_image_description": "Rasmni yuklash uchun shu yerga bosing",
     "uploading": "Yuklanmoqda...",
-    "details": "Batafsil"
+    "ai_image_use_ai": "AI bilan tahrirlash",
+    "ai_image_prompt_placeholder": "Rasmni qanday o'zgartirmoqchiliginizni tasvirlab bering...",
+    "ai_image_generate": "AI bilan tahrirlash",
+    "ai_image_generating_button": "Tahrirlanmoqda...",
+    "ai_image_regenerate": "Qayta tahrirlash",
+    "ai_image_generating": "Rasm tahrirlanmoqda",
+    "ai_image_use": "Ushbu rasmni ishlatish",
+    "ai_image_error": "Rasmni tahrirlash muvaffaqiyatsiz. Qayta urinib ko'ring.",
+    "details": "Batafsil",
+    "tab_upload": "Yuklash",
+    "tab_my_files": "Mening fayllarim",
+    "my_files_empty": "AI rasmlar yo'q. Mahsulot yoki kategoriya formasida yarating."
   },
   "register": {
     "create_telegram": {
@@ -138,7 +149,10 @@
       "metrics_product_sales": "Mahsulot sotimlari",
       "metrics_orders": "Buyurtmalar statistikasi",
       "metrics_top_customers": "Top mijozlar",
-      "metrics_funnel": "Konversiya funnel"
+      "metrics_funnel": "Konversiya funnel",
+      "ai": "AI",
+      "ai_images": "AI Rasmlar",
+      "ai_settings": "AI Sozlamalari"
     }
   },
   "chat": {
@@ -703,6 +717,36 @@
         "delete": "O'chirish",
         "full": "To'liq kirish"
       }
+    },
+    "ai_images": {
+      "title": "AI Rasmlar",
+      "description": "Do'koningiz uchun AI yordamida yaratilgan yoki tahrirlangan rasmlar.",
+      "edit_dialog_title": "Rasmni AI bilan tahrirlash",
+      "original": "Asl nusxa",
+      "result": "Natija",
+      "result_placeholder": "Tahrirlangan rasm shu yerda ko'rinadi",
+      "edit": "AI bilan tahrirlash",
+      "edit_again": "Qayta tahrirlash",
+      "type_product": "Mahsulot",
+      "type_category": "Kategoriya",
+      "filter_all": "Barchasi",
+      "empty_title": "AI rasmlar yo'q",
+      "empty_description": "Mahsulot yoki kategoriya uchun AI yordamida rasm yarating yoki tahrirlang."
+    },
+    "ai_settings": {
+      "title": "AI Sozlamalari",
+      "description": "AI rasmlarni qanday yaratishi va tahrirlashini sozlang.",
+      "prompt_suffix_title": "Standart uslub",
+      "prompt_suffix_description": "Bu matn har bir AI so'roviga avtomatik qo'shiladi. Barcha AI rasmlar uchun yagona vizual uslubni ta'minlash uchun foydalaning.",
+      "prompt_suffix_placeholder": "Masalan: professional mahsulot fotosuratlari, oq fon, yuqori sifat",
+      "saved": "AI sozlamalari saqlandi",
+      "tips_title": "Yaxshi promptlar uchun maslahatlar",
+      "tips": [
+        "Ranglar, materiallar va fon haqida aniq bo'ling.",
+        "Uslubni ko'rsating: realistik, illyustratsiya, minimalistik…",
+        "Eng yaxshi natijalar uchun promptni 200 belgidan kam saqlang.",
+        "Yagona brending uchun standart uslub qo'shimchasidan foydalaning."
+      ]
     }
   },
   "table": {

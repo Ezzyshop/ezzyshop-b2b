@@ -103,6 +103,7 @@ export const CategoryForm = ({
                     onChange={field.onChange}
                     shopId={shop._id}
                     type="category"
+                    enableAI
                   />
                 </FormControl>
                 {form.formState.errors.image && (
