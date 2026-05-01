@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
-import { ImageIcon, Loader2 } from "lucide-react";
+import { ImageIcon, Loader2, Sparkles } from "lucide-react";
 import { useShopContext } from "@/contexts";
 import { getAiImagesQueryFn } from "@/api/queries/ai-images.query";
 import { AiImageCard } from "../components/ai-image-card";
+import { GenerateAiImageModal } from "../components/generate-ai-image-modal";
 import { Button } from "@/components/ui/button/button";
 import {
   Select,
@@ -19,6 +20,7 @@ export default function AiImagesPage() {
   const { shop } = useShopContext();
   const [typeFilter, setTypeFilter] = useState<"all" | "product" | "category">("all");
   const [page, setPage] = useState(1);
+  const [generateOpen, setGenerateOpen] = useState(false);
 
   const { data, isLoading } = useQuery({
     queryKey: ["ai-images", shop._id, typeFilter, page],
@@ -43,22 +45,32 @@ export default function AiImagesPage() {
           </p>
         </div>
 
-        <Select
-          value={typeFilter}
-          onValueChange={(v) => {
-            setTypeFilter(v as typeof typeFilter);
-            setPage(1);
-          }}
-        >
-          <SelectTrigger className="w-40">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">{t("dashboard.ai_images.filter_all")}</SelectItem>
-            <SelectItem value="product">{t("dashboard.ai_images.type_product")}</SelectItem>
-            <SelectItem value="category">{t("dashboard.ai_images.type_category")}</SelectItem>
-          </SelectContent>
-        </Select>
+        <div className="flex items-center gap-3">
+          <Button
+            className="gap-2"
+            onClick={() => setGenerateOpen(true)}
+          >
+            <Sparkles className="w-4 h-4" />
+            {t("dashboard.ai_images.generate_button")}
+          </Button>
+
+          <Select
+            value={typeFilter}
+            onValueChange={(v) => {
+              setTypeFilter(v as typeof typeFilter);
+              setPage(1);
+            }}
+          >
+            <SelectTrigger className="w-40">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">{t("dashboard.ai_images.filter_all")}</SelectItem>
+              <SelectItem value="product">{t("dashboard.ai_images.type_product")}</SelectItem>
+              <SelectItem value="category">{t("dashboard.ai_images.type_category")}</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
       {isLoading ? (
@@ -76,6 +88,10 @@ export default function AiImagesPage() {
               {t("dashboard.ai_images.empty_description")}
             </p>
           </div>
+          <Button className="gap-2" onClick={() => setGenerateOpen(true)}>
+            <Sparkles className="w-4 h-4" />
+            {t("dashboard.ai_images.generate_button")}
+          </Button>
         </div>
       ) : (
         <>
@@ -110,6 +126,11 @@ export default function AiImagesPage() {
           )}
         </>
       )}
+
+      <GenerateAiImageModal
+        open={generateOpen}
+        onOpenChange={setGenerateOpen}
+      />
     </div>
   );
 }

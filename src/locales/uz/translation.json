@@ -151,8 +151,7 @@
       "metrics_top_customers": "Top mijozlar",
       "metrics_funnel": "Konversiya funnel",
       "ai": "AI",
-      "ai_images": "AI Rasmlar",
-      "ai_settings": "AI Sozlamalari"
+      "ai_images": "AI Rasmlar"
     }
   },
   "chat": {
@@ -731,22 +730,17 @@
       "type_category": "Kategoriya",
       "filter_all": "Barchasi",
       "empty_title": "AI rasmlar yo'q",
-      "empty_description": "Mahsulot yoki kategoriya uchun AI yordamida rasm yarating yoki tahrirlang."
-    },
-    "ai_settings": {
-      "title": "AI Sozlamalari",
-      "description": "AI rasmlarni qanday yaratishi va tahrirlashini sozlang.",
-      "prompt_suffix_title": "Standart uslub",
-      "prompt_suffix_description": "Bu matn har bir AI so'roviga avtomatik qo'shiladi. Barcha AI rasmlar uchun yagona vizual uslubni ta'minlash uchun foydalaning.",
-      "prompt_suffix_placeholder": "Masalan: professional mahsulot fotosuratlari, oq fon, yuqori sifat",
-      "saved": "AI sozlamalari saqlandi",
-      "tips_title": "Yaxshi promptlar uchun maslahatlar",
-      "tips": [
-        "Ranglar, materiallar va fon haqida aniq bo'ling.",
-        "Uslubni ko'rsating: realistik, illyustratsiya, minimalistik…",
-        "Eng yaxshi natijalar uchun promptni 200 belgidan kam saqlang.",
-        "Yagona brending uchun standart uslub qo'shimchasidan foydalaning."
-      ]
+      "empty_description": "Mahsulot yoki kategoriya uchun AI yordamida rasm yarating yoki tahrirlang.",
+      "generate_button": "AI bilan yaratish",
+      "generate_title": "AI bilan yaratish",
+      "generate_type_label": "Tur",
+      "generate_type_locked": "Tur yuklangandan keyin o'zgartirib bo'lmaydi",
+      "generate_source": "Manba rasm",
+      "generate_upload_title": "Rasmingizni yuklang",
+      "generate_upload_description": "Bosing yoki tortib tashlang — JPEG, PNG, WEBP",
+      "generate_button_modal": "Yaratish",
+      "generate_history": "Oldingi versiyalar",
+      "generate_history_note": "Barcha versiyalar AI Rasmlar kutubxonangizga saqlanadi."
     }
   },
   "table": {

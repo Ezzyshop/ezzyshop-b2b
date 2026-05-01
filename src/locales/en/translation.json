@@ -147,8 +147,7 @@
       "metrics_top_customers": "Top Customers",
       "metrics_funnel": "Conversion Funnel",
       "ai": "AI",
-      "ai_images": "AI Images",
-      "ai_settings": "AI Settings"
+      "ai_images": "AI Images"
     }
   },
   "chat": {
@@ -643,22 +642,17 @@
       "type_category": "Category",
       "filter_all": "All",
       "empty_title": "No AI images yet",
-      "empty_description": "Generate or edit an image using AI on a product or category."
-    },
-    "ai_settings": {
-      "title": "AI Settings",
-      "description": "Configure how AI generates and edits images for your shop.",
-      "prompt_suffix_title": "Default prompt style",
-      "prompt_suffix_description": "This text is automatically appended to every AI prompt. Use it to enforce a consistent visual style across all AI-generated images.",
-      "prompt_suffix_placeholder": "e.g. professional product photography, white background, high resolution",
-      "saved": "AI settings saved",
-      "tips_title": "Tips for better prompts",
-      "tips": [
-        "Be specific about colors, materials, and background.",
-        "Mention the style: realistic, illustration, minimalist…",
-        "Keep prompts under 200 characters for best results.",
-        "Use the default style suffix for consistent branding."
-      ]
+      "empty_description": "Generate or edit an image using AI on a product or category.",
+      "generate_button": "Generate with AI",
+      "generate_title": "Generate with AI",
+      "generate_type_label": "Type",
+      "generate_type_locked": "Type is locked after upload",
+      "generate_source": "Source image",
+      "generate_upload_title": "Upload your photo",
+      "generate_upload_description": "Click or drag & drop — JPEG, PNG, WEBP",
+      "generate_button_modal": "Generate",
+      "generate_history": "Previous versions",
+      "generate_history_note": "All versions are saved to your AI Images library."
     }
   },
   "table": {
