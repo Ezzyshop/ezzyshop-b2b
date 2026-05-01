@@ -573,6 +573,48 @@
         "already_accepted": "Этот заказ уже принят",
         "error": "Ошибка при принятии заказа"
       }
+    },
+    "main": {
+      "total_revenue": "Выручка за месяц",
+      "new_customers": "Новые клиенты",
+      "total_sales": "Продажи товаров",
+      "from_last_month": "по сравнению с прошлым месяцем",
+      "today_orders": "Заказы сегодня",
+      "today_vs_yesterday": "по сравнению с вчера",
+      "recent_sales": "Последние продажи",
+      "no_sales": "Продаж нет",
+      "recent_orders": "Последние заказы",
+      "view_all": "Смотреть все",
+      "no_orders": "Нет заказов",
+      "low_stock": "Мало на складе",
+      "low_stock_description": "Товары, заканчивающиеся на складе",
+      "no_low_stock": "Все товары хорошо укомплектованы",
+      "items_left": "осталось",
+      "pending_reviews": "Ожидающие отзывы",
+      "pending_reviews_description": "Ожидают вашего ответа",
+      "no_pending_reviews": "Нет ожидающих отзывов",
+      "reply": "Ответить",
+      "plan_usage": "Использование тарифа",
+      "plan_usage_description": "Лимиты вашего текущего тарифа",
+      "products_limit": "Товары",
+      "categories_limit": "Категории",
+      "orders_limit": "Заказы в месяц",
+      "unlimited": "Безлимитно",
+      "upgrade_plan": "Сменить тариф",
+      "coupons_summary": "Купоны",
+      "coupons_active": "Активные купоны",
+      "coupons_expiring": "Истекают через 7 дней",
+      "coupons_total_redemptions": "Всего использований",
+      "no_coupons": "Нет купонов",
+      "create_coupon": "Создать купон",
+      "revenue": {
+        "title": "Общий доход",
+        "description": "Выберите диапазон дат для просмотра дохода"
+      },
+      "sales": {
+        "title": "Продажи",
+        "description": "Выберите нужный период"
+      }
     }
   },
   "table": {

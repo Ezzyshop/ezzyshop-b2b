@@ -55,6 +55,7 @@ export interface IShop {
   brand_color?: string;
   telegram_group_id?: string;
   work_hours?: IWorkHours;
+  setup?: boolean;
 }
 
 export interface ILanguage {

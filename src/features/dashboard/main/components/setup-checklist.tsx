@@ -6,46 +6,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { useShopContext } from "@/contexts";
-import { getProductsQueryFn } from "@/api/queries/products.query";
-import { getCategoriesQueryFn } from "@/api/queries/categories.query";
-import { getPaymentMethodsQueryFn } from "@/api/queries/payment-methods.query";
-import { getDeliveryMethodsQueryFn } from "@/api/queries/delivery-methods.query";
-import { getTelegramQueryFn } from "@/api/queries/telegram.query";
+import { getSetupChecklistQueryFn } from "@/api/queries/setup-checklist.query";
 
 export const SetupChecklist = () => {
   const { t } = useTranslation();
   const { shop } = useShopContext();
   const shopId = shop._id;
 
-  const { data: telegramData } = useQuery({
-    queryKey: ["telegram", shopId],
-    queryFn: () => getTelegramQueryFn(shopId),
-    enabled: !!shopId,
-    retry: false,
-  });
-
-  const { data: categoriesData } = useQuery({
-    queryKey: ["categories", shopId, { limit: 1 }],
-    queryFn: () => getCategoriesQueryFn(shopId, { limit: 1 }),
-    enabled: !!shopId,
-  });
-
-  const { data: productsData } = useQuery({
-    queryKey: ["products", shopId, { limit: 1 }],
-    queryFn: () => getProductsQueryFn(shopId, { limit: 1 }),
-    enabled: !!shopId,
-  });
-
-  const { data: deliveryData } = useQuery({
-    queryKey: ["delivery-methods", shopId, { limit: 1 }],
-    queryFn: () => getDeliveryMethodsQueryFn(shopId, { limit: 1 }),
-    enabled: !!shopId,
-  });
-
-  const { data: paymentData } = useQuery({
-    queryKey: ["payment-methods", shopId],
-    queryFn: () => getPaymentMethodsQueryFn(shopId),
-    enabled: !!shopId,
+  const { data } = useQuery({
+    queryKey: ["setup-checklist", shopId],
+    queryFn: () => getSetupChecklistQueryFn(shopId),
+    enabled: !!shopId && !shop.setup,
   });
 
   const steps = [
@@ -53,33 +24,35 @@ export const SetupChecklist = () => {
       key: "bot",
       label: t("dashboard.setup.steps.bot"),
       href: "/dashboard/telegram/setup",
-      completed: !!telegramData?.token,
+      completed: data?.telegram ?? false,
     },
     {
       key: "category",
       label: t("dashboard.setup.steps.category"),
       href: "/dashboard/categories",
-      completed: (categoriesData?.paginationInfo?.totalItems ?? 0) > 0,
+      completed: data?.categories ?? false,
     },
     {
       key: "product",
       label: t("dashboard.setup.steps.product"),
       href: "/dashboard/products",
-      completed: (productsData?.paginationInfo?.totalItems ?? 0) > 0,
+      completed: data?.products ?? false,
     },
     {
       key: "delivery",
       label: t("dashboard.setup.steps.delivery"),
       href: "/dashboard/delivery-methods",
-      completed: (deliveryData?.data?.length ?? 0) > 0,
+      completed: data?.deliveryMethods ?? false,
     },
     {
       key: "payment",
       label: t("dashboard.setup.steps.payment"),
       href: "/dashboard/payment-methods",
-      completed: (paymentData?.data?.length ?? 0) > 0,
+      completed: data?.paymentMethods ?? false,
     },
   ];
+
+  if (shop.setup) return null;
 
   const completedCount = steps.filter((s) => s.completed).length;
   const progressPercent = (completedCount / steps.length) * 100;

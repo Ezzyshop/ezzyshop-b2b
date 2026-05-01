@@ -1,9 +1,11 @@
-import { StatisticsCard } from "../components/statistics-card";
-import { SalesChart } from "../components/sales-chart";
-import { RecentSales } from "../components/recent-sales";
 import { useTranslation } from "react-i18next";
-import { RevenueChart } from "../components/revenue-chart";
 import { SetupChecklist } from "../components/setup-checklist";
+import { OrdersAnalyticsSummary } from "../components/orders-analytics-summary";
+import { RecentOrders } from "../components/recent-orders";
+import { LowStockAlerts } from "../components/low-stock-alerts";
+import { PendingReviews } from "../components/pending-reviews";
+import { PlanUsage } from "../components/plan-usage";
+import { CouponsSummary } from "../components/coupons-summary";
 
 export const DashboardMainPage = () => {
   const { t } = useTranslation();
@@ -14,15 +16,20 @@ export const DashboardMainPage = () => {
       </h2>
       <div className="space-y-4 md:space-y-6">
         <SetupChecklist />
-        <StatisticsCard />
-        <RevenueChart />
 
-        <div className="grid grid-cols-1 md:grid-cols-7 gap-4 md:gap-6">
-          <div className="md:col-span-4">
-            <SalesChart />
-          </div>
-          <RecentSales />
+        <OrdersAnalyticsSummary />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <PlanUsage />
+          <CouponsSummary />
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <LowStockAlerts />
+          <PendingReviews />
+        </div>
+
+        <RecentOrders />
       </div>
     </div>
   );

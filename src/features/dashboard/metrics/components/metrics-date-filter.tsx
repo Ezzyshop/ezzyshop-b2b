@@ -49,7 +49,7 @@ export const MetricsDateFilter = ({
 
   return (
     <div className="flex flex-wrap gap-2 items-center">
-      <div className="flex gap-1">
+      <div className="flex gap-1 items-center">
         {PRESETS.map((p) => (
           <Button
             key={p.days}
@@ -60,33 +60,39 @@ export const MetricsDateFilter = ({
             {t(p.labelKey)}
           </Button>
         ))}
+        <DateRangePicker
+          onUpdate={(values) => {
+            setActivePreset(null);
+            onDateChange({
+              startDate: values.range.from.toISOString().split("T")[0],
+              endDate:
+                values.range.to?.toISOString().split("T")[0] ??
+                dayjs().format("YYYY-MM-DD"),
+            });
+          }}
+          initialDateFrom={dateRange.startDate}
+          initialDateTo={dateRange.endDate}
+          align="end"
+          locale="en-US"
+        />
       </div>
 
-      <DateRangePicker
-        onUpdate={(values) => {
-          setActivePreset(null);
-          onDateChange({
-            startDate: values.range.from.toISOString().split("T")[0],
-            endDate:
-              values.range.to?.toISOString().split("T")[0] ??
-              dayjs().format("YYYY-MM-DD"),
-          });
-        }}
-        initialDateFrom={dateRange.startDate}
-        initialDateTo={dateRange.endDate}
-        align="end"
-        locale="en-US"
-      />
-
       {showGroupBy && onGroupByChange && (
-        <Select value={groupBy} onValueChange={(v) => onGroupByChange(v as GroupBy)}>
+        <Select
+          value={groupBy}
+          onValueChange={(v) => onGroupByChange(v as GroupBy)}
+        >
           <SelectTrigger className="w-32">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="day">{t("metrics.filter.group_day")}</SelectItem>
-            <SelectItem value="week">{t("metrics.filter.group_week")}</SelectItem>
-            <SelectItem value="month">{t("metrics.filter.group_month")}</SelectItem>
+            <SelectItem value="week">
+              {t("metrics.filter.group_week")}
+            </SelectItem>
+            <SelectItem value="month">
+              {t("metrics.filter.group_month")}
+            </SelectItem>
           </SelectContent>
         </Select>
       )}
