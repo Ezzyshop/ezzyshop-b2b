@@ -54,6 +54,7 @@
     "km": "km",
     "upload_image": "Rasm yuklash",
     "upload_image_description": "Rasmni yuklash uchun shu yerga bosing",
+    "uploading": "Yuklanmoqda...",
     "details": "Batafsil"
   },
   "register": {
@@ -248,7 +249,10 @@
       "main_image": "Asosiy rasm",
       "main_image_description": "Mahsulot asosiy rasmini kiriting",
       "enter_main_image": "Mahsulot asosiy rasmini kiriting",
-      "format_main_image": "Mahsulot asosiy rasmi noto'g'ri formatda"
+      "format_main_image": "Mahsulot asosiy rasmi noto'g'ri formatda",
+      "upload_video": "Video yuklash",
+      "upload_video_description": "Mahsulot videosini yuklash uchun shu yerga bosing (max 10MB)",
+      "video_size_limit": "Video hajmi 10MB dan oshmasligi kerak"
     },
     "plans": {
       "title": "O'zingizga mos tarifni tanlang",

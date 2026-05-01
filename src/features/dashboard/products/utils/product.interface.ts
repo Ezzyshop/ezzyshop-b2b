@@ -12,6 +12,7 @@ export interface IProductForm {
     ru?: string;
   };
   main_image: string;
+  video?: string;
   categories?: string[];
   variants?: {
     sku: string;
@@ -38,6 +39,7 @@ export interface IProduct {
     ru?: string;
   };
   main_image: string;
+  video?: string;
   categories?: string[];
   variants?: {
     sku: string;

@@ -4,10 +4,11 @@ import { useMutation } from "@tanstack/react-query";
 import {
   uploadImageMutationFn,
   uploadShopImageMutationFn,
+  uploadShopVideoMutationFn,
   UploadType,
 } from "@/api/mutations/upload.mutation";
 import { Button } from "./button";
-import { Loader2, PlusIcon, UploadIcon, X } from "lucide-react";
+import { Loader2, PlusIcon, UploadIcon, VideoIcon, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib";
 
@@ -239,6 +240,114 @@ export const MultipleImageUpload = ({
         ref={inputRef}
         type="file"
         className="hidden"
+        onChange={handleFileChange}
+      />
+    </CardContent>
+  );
+};
+
+interface IVideoUploadProps {
+  value: string | undefined;
+  onChange: (value: string | null) => void;
+  shopId: string;
+  error?: string;
+}
+
+export const VideoUpload = ({ value, onChange, shopId, error }: IVideoUploadProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const { t } = useTranslation();
+
+  const uploadVideoMutation = useMutation({
+    mutationFn: (formData: FormData) => uploadShopVideoMutationFn(shopId, formData),
+    onSuccess: (data) => {
+      onChange(data.data.url);
+    },
+  });
+
+  const handleOpenFilePicker = () => {
+    if (!inputRef.current) return;
+    inputRef.current.click();
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 10 * 1024 * 1024) {
+      alert(t("dashboard.products.video_size_limit"));
+      e.target.value = "";
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("video", file);
+
+    uploadVideoMutation.mutate(formData);
+    e.target.value = "";
+  };
+
+  const renderContent = useCallback(() => {
+    if (uploadVideoMutation.isPending) {
+      return (
+        <div className="flex flex-col gap-2 items-center justify-center min-h-[200px] w-full">
+          <Loader2 className="animate-spin" />
+          <p className="text-sm text-muted-foreground">{t("common.uploading")}</p>
+        </div>
+      );
+    }
+
+    if (!value) {
+      return (
+        <div
+          onClick={handleOpenFilePicker}
+          className="flex flex-col gap-2 items-center justify-center min-h-[200px] w-full"
+        >
+          <VideoIcon className={cn(error && "text-destructive")} />
+          <div>
+            <p className={cn("text-sm text-center", error && "text-destructive")}>
+              {t("dashboard.products.upload_video")}
+            </p>
+            <p className={cn("text-xs text-muted-foreground", error && "text-destructive")}>
+              {t("dashboard.products.upload_video_description")}
+            </p>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="relative group max-h-[200px] flex items-center justify-center">
+        <video
+          src={value}
+          controls
+          className="max-h-[200px] w-full rounded"
+        />
+        <Button
+          variant="outline"
+          size="icon"
+          className="absolute top-0 right-0 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          onClick={() => onChange(null)}
+          type="button"
+        >
+          <X className="w-4 h-4" />
+        </Button>
+      </div>
+    );
+  }, [value, uploadVideoMutation.isPending, error, t]);
+
+  return (
+    <CardContent
+      className={cn(
+        "border border-dashed rounded-xl w-full cursor-pointer min-h-[240px] flex p-4 justify-center items-center relative",
+        error && "border-destructive"
+      )}
+    >
+      {renderContent()}
+      <input
+        ref={inputRef}
+        type="file"
+        className="hidden"
+        accept="video/mp4,video/webm,video/quicktime,video/x-msvideo,video/mpeg"
         onChange={handleFileChange}
       />
     </CardContent>

@@ -50,7 +50,8 @@
     "fixed": "Fixed",
     "dynamic": "Dynamic",
     "free": "Free",
-    "custom": "Custom"
+    "custom": "Custom",
+    "uploading": "Uploading..."
   },
   "register": {
     "create_telegram": {
@@ -211,7 +212,10 @@
       "enter_image": "Enter image",
       "attributes": "Attributes",
       "attribute_name": "Attribute name",
-      "attribute_value": "Attribute value"
+      "attribute_value": "Attribute value",
+      "upload_video": "Upload video",
+      "upload_video_description": "Click here to upload a product video (max 10MB)",
+      "video_size_limit": "Video size must not exceed 10MB"
     },
     "plans": {
       "title": "Choose the plan that suits you",
