@@ -20,7 +20,7 @@ export const PlanFeatureGuard = ({ featureKey, children }: IProps) => {
   if (isEnabled) return <>{children}</>;
 
   return (
-    <div className="relative min-h-[60vh] overflow-hidden rounded-lg">
+    <div className="relative min-h-[60vh] max-h-[90vh] overflow-hidden rounded-lg">
       {/* Blurred background — children rendered but non-interactive */}
       <div
         className="blur-md pointer-events-none select-none opacity-40"
@@ -30,7 +30,7 @@ export const PlanFeatureGuard = ({ featureKey, children }: IProps) => {
       </div>
 
       {/* Upgrade overlay */}
-      <div className="absolute inset-0 flex items-center justify-center z-10">
+      <div className="absolute inset-0  flex items-center justify-center z-10">
         <div className="bg-background/90 backdrop-blur-sm border rounded-2xl p-8 text-center space-y-4 max-w-sm shadow-lg">
           <div className="flex justify-center">
             <div className="rounded-full bg-muted p-4">
