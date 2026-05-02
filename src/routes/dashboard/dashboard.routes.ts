@@ -148,7 +148,6 @@ export const dashboardRoutes: DashboardRoute[] = [
           () =>
             import("@/features/dashboard/delivery-methods/pages/delivery-methods.page"),
         ),
-        planFeature: "delivery_types",
       },
       {
         path: "/delivery-zones",
@@ -163,7 +162,6 @@ export const dashboardRoutes: DashboardRoute[] = [
           () =>
             import("@/features/dashboard/delivery-zone/pages/delivery-zone.page"),
         ),
-        planFeature: "delivery_zones",
       },
     ] as ChildRoute[],
   },
@@ -180,7 +178,6 @@ export const dashboardRoutes: DashboardRoute[] = [
     },
     icon: CreditCardIcon,
     title: "sidebar.dashboard.payment-methods",
-    planFeature: "payment_methods",
   },
   {
     path: "/branches",
@@ -190,7 +187,6 @@ export const dashboardRoutes: DashboardRoute[] = [
     access: { accessType: "permission", resource: "branches", action: "read" },
     icon: MapIcon,
     title: "sidebar.dashboard.branches",
-    planFeature: "branches",
   },
   {
     path: "/staffs",
@@ -200,7 +196,6 @@ export const dashboardRoutes: DashboardRoute[] = [
     access: { accessType: "permission", resource: "staffs", action: "read" },
     icon: UsersIcon,
     title: "sidebar.dashboard.staffs",
-    planFeature: "staffs",
   },
   {
     path: "/roles",
@@ -208,7 +203,6 @@ export const dashboardRoutes: DashboardRoute[] = [
     access: { accessType: "permission", resource: "roles", action: "read" },
     icon: KeyRoundIcon,
     title: "sidebar.dashboard.roles",
-    planFeature: "roles",
   },
   {
     path: "/plans",
@@ -296,7 +290,6 @@ export const dashboardRoutes: DashboardRoute[] = [
         },
         icon: TagIcon,
         title: "sidebar.dashboard.coupons",
-        planFeature: "coupons",
       },
       {
         path: "/coupons/:couponId/usages",
@@ -308,7 +301,6 @@ export const dashboardRoutes: DashboardRoute[] = [
           resource: "coupons",
           action: "read",
         },
-        planFeature: "coupons",
       },
       {
         path: "/reviews",
@@ -427,7 +419,6 @@ export const dashboardRoutes: DashboardRoute[] = [
     element: lazy(
       () => import("@/features/dashboard/ai-images/pages/ai-images.page"),
     ),
-    planFeature: "ai_image_generator",
   },
 
   {
