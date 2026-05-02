@@ -333,6 +333,8 @@
       "merchant_user_id_placeholder": "Введите ID пользователя мерчанта",
       "secret_key": "Секретный ключ",
       "secret_key_placeholder": "Введите секретный ключ",
+      "telegram_provider_token": "Telegram Provider Token",
+      "telegram_provider_token_placeholder": "Введите Telegram Provider Token из BotFather",
       "empty_state": {
         "title": "Нет способов оплаты",
         "description": "Пока не добавлено ни одного способа оплаты. Нажмите кнопку, чтобы добавить первый способ оплаты."

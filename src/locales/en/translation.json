@@ -333,6 +333,8 @@
       "merchant_user_id_placeholder": "Enter Merchant User ID",
       "secret_key": "Secret Key",
       "secret_key_placeholder": "Enter Secret Key",
+      "telegram_provider_token": "Telegram Provider Token",
+      "telegram_provider_token_placeholder": "Enter Telegram Provider Token from BotFather",
       "empty_state": {
         "title": "No payment methods",
         "description": "No payment methods have been added yet. Press the button to add the first payment method."

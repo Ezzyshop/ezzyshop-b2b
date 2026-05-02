@@ -54,10 +54,7 @@ export const ClickConfiguration = ({ paymentMethod }: IProps) => {
     }
 
     return {
-      merchant_id: paymentMethod.click_config.merchant_id,
-      service_id: paymentMethod.click_config.service_id,
-      merchant_user_id: paymentMethod.click_config.merchant_user_id,
-      secret_key: paymentMethod.click_config.secret_key,
+      telegram_provider_token: paymentMethod.click_config.telegram_provider_token ?? "",
     };
   }, [paymentMethod]);
 

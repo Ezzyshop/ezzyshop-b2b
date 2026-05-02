@@ -398,6 +398,8 @@
       "merchant_user_id_placeholder": "Merchant User ID ni kiriting",
       "secret_key": "Secret Key",
       "secret_key_placeholder": "Secret Key ni kiriting",
+      "telegram_provider_token": "Telegram Provider Token",
+      "telegram_provider_token_placeholder": "BotFather dan olingan Telegram Provider Tokenni kiriting",
       "merchant_id_required": "Merchant ID majburiy",
       "merchant_id_pattern": "Merchant ID 6 xonali raqam bo'lishi kerak",
       "service_id_required": "Service ID majburiy",
