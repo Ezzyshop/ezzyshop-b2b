@@ -1,10 +1,13 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { IPlan } from "../../utils/plan.interface";
+import { PLAN_FEATURE_MAP } from "@/lib/plan-features.const";
 import dayjs from "dayjs";
 import { Button } from "@/components/ui/button/button";
 import { EditIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { StatusChangeSwitch } from "@/components/moderator/forms/change-status-switch";
+
+const formatLimit = (limit: number) => (limit === -1 ? "Cheksiz" : limit.toLocaleString());
 
 export const plansTableColumns: ColumnDef<IPlan>[] = [
   {
@@ -17,65 +20,44 @@ export const plansTableColumns: ColumnDef<IPlan>[] = [
   },
   {
     accessorKey: "order",
-    header: "Tartib raqami",
+    header: "Tartib",
+    size: 80,
   },
   {
     accessorKey: "subscriptions",
-    header: "Mijozlar soni",
-    cell: ({ row }) => {
-      return <div>{row.original.subscriptions}</div>;
-    },
+    header: "Mijozlar",
+    size: 90,
+    cell: ({ row }) => <div>{row.original.subscriptions}</div>,
   },
   {
     accessorKey: "price",
-    header: "Narxi",
-    cell: ({ row }) => {
-      return <div>{row.original.price.toLocaleString()} so'm</div>;
-    },
+    header: "Oylik narx",
+    cell: ({ row }) => <div>{row.original.price.toLocaleString()} so'm</div>,
   },
   {
     accessorKey: "annual_price",
-    header: "Yillik narxi",
-    cell: ({ row }) => {
-      return <div>{row.original.annual_price.toLocaleString()} so'm</div>;
-    },
+    header: "Yillik narx",
+    cell: ({ row }) => (
+      <div>{row.original.annual_price.toLocaleString()} so'm</div>
+    ),
   },
   {
-    accessorKey: "products.max",
-    header: "Maximal productlar",
-    size: 200,
+    id: "features",
+    header: "Xususiyatlar",
     cell: ({ row }) => {
+      const features = row.original.features ?? {};
+      const enabled = Object.entries(features).filter(([, v]) => v.enabled);
+      if (enabled.length === 0) {
+        return <span className="text-muted-foreground text-xs">—</span>;
+      }
       return (
-        <div>
-          {row.original.products.max > 0
-            ? row.original.products.max
-            : "Cheksiz"}
-        </div>
-      );
-    },
-  },
-  {
-    accessorKey: "categories.max",
-    header: "Maximal kategoriyalar",
-    size: 200,
-    cell: ({ row }) => {
-      return (
-        <div>
-          {row.original.categories.max > 0
-            ? row.original.categories.max
-            : "Cheksiz"}
-        </div>
-      );
-    },
-  },
-  {
-    accessorKey: "orders.max",
-    header: "Maximal buyurtmalar",
-    size: 200,
-    cell: ({ row }) => {
-      return (
-        <div>
-          {row.original.orders.max > 0 ? row.original.orders.max : "Cheksiz"}
+        <div className="flex flex-col gap-0.5">
+          {enabled.map(([key, v]) => (
+            <span key={key} className="text-xs whitespace-nowrap">
+              {PLAN_FEATURE_MAP[key]?.label ?? key}:{" "}
+              <span className="font-medium">{formatLimit(v.limit)}</span>
+            </span>
+          ))}
         </div>
       );
     },
@@ -83,48 +65,38 @@ export const plansTableColumns: ColumnDef<IPlan>[] = [
   {
     accessorKey: "status",
     header: "Holati",
-    cell: ({ row }) => {
-      return (
-        <StatusChangeSwitch
-          status={row.original.status}
-          url={`/plans/${row.original._id}/status`}
-          invalidateQueryKey={["plans"]}
-        />
-      );
-    },
+    cell: ({ row }) => (
+      <StatusChangeSwitch
+        status={row.original.status}
+        url={`/plans/${row.original._id}/status`}
+        invalidateQueryKey={["plans"]}
+      />
+    ),
   },
   {
     accessorKey: "createdAt",
-    header: "Yaratilgan vaqt",
-    cell: ({ row }) => {
-      return (
-        <div>{dayjs(row.original.createdAt).format("DD.MM.YYYY HH:mm")}</div>
-      );
-    },
+    header: "Yaratilgan",
+    cell: ({ row }) => (
+      <div>{dayjs(row.original.createdAt).format("DD.MM.YYYY HH:mm")}</div>
+    ),
   },
   {
     accessorKey: "updatedAt",
-    header: "Yangilangan vaqt",
-    cell: ({ row }) => {
-      return (
-        <div>{dayjs(row.original.updatedAt).format("DD.MM.YYYY HH:mm")}</div>
-      );
-    },
+    header: "Yangilangan",
+    cell: ({ row }) => (
+      <div>{dayjs(row.original.updatedAt).format("DD.MM.YYYY HH:mm")}</div>
+    ),
   },
   {
-    accessorKey: "actions",
+    id: "actions",
     header: "Amallar",
-    size: 100,
-    cell: ({ row }) => {
-      return (
-        <div>
-          <Button variant="outline" size="icon" asChild>
-            <NavLink to={`/moderator/plans/${row.original._id}/edit`}>
-              <EditIcon />
-            </NavLink>
-          </Button>
-        </div>
-      );
-    },
+    size: 80,
+    cell: ({ row }) => (
+      <Button variant="outline" size="icon" asChild>
+        <NavLink to={`/moderator/plans/${row.original._id}/edit`}>
+          <EditIcon />
+        </NavLink>
+      </Button>
+    ),
   },
 ];

@@ -1,8 +1,12 @@
-import { useForm } from "react-hook-form";
-import { IPlanForm } from "../../utils/plan.interface";
+import { useForm, useWatch, Control } from "react-hook-form";
+import { IPlanForm, IFeatureValue } from "../../utils/plan.interface";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { createPlanValidator } from "../../utils/plan.validator";
 import { PlanStatus } from "../../utils/plan.enum";
+import {
+  PLAN_FEATURE_CATEGORIES,
+  IFeatureDefinition,
+} from "@/lib/plan-features.const";
 import {
   Form,
   FormControl,
@@ -12,6 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form/form";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select,
   SelectContent,
@@ -22,39 +27,103 @@ import {
 import { Button } from "@/components/ui/button/button";
 import { cn } from "@/lib/utils";
 
+const buildDefaultFeatures = (): Record<string, IFeatureValue> =>
+  Object.fromEntries(
+    PLAN_FEATURE_CATEGORIES.flatMap((cat) =>
+      cat.features.map((f) => [
+        f.key,
+        { enabled: false, limit: f.hasLimit ? 0 : -1 },
+      ]),
+    ),
+  );
+
 interface IProps {
   initialValues?: IPlanForm;
   onSubmit: (data: IPlanForm) => void;
   isLoading: boolean;
 }
 
+interface IFeatureRowProps {
+  featureKey: string;
+  feature: IFeatureDefinition;
+  control: Control<IPlanForm>;
+}
+
+const FeatureRow = ({ featureKey, feature, control }: IFeatureRowProps) => {
+  const enabled = useWatch({
+    control,
+    name: `features.${featureKey}.enabled` as `features.${string}.enabled`,
+  });
+
+  return (
+    <div className="flex items-start gap-4 py-2">
+      <FormField
+        control={control}
+        name={`features.${featureKey}.enabled` as `features.${string}.enabled`}
+        render={({ field }) => (
+          <FormItem className="flex items-start gap-3 space-y-0 flex-1">
+            <FormControl>
+              <Checkbox
+                checked={field.value}
+                onCheckedChange={field.onChange}
+                className="mt-0.5"
+              />
+            </FormControl>
+            <div className="space-y-0.5">
+              <FormLabel className="font-normal cursor-pointer leading-none">
+                {feature.label}
+              </FormLabel>
+              <p className="text-xs text-muted-foreground">
+                {feature.description}
+              </p>
+            </div>
+          </FormItem>
+        )}
+      />
+      {feature.hasLimit && (
+        <FormField
+          control={control}
+          name={`features.${featureKey}.limit` as `features.${string}.limit`}
+          render={({ field }) => (
+            <FormItem className="w-44 shrink-0">
+              <FormControl>
+                <Input
+                  type="number"
+                  min={-1}
+                  disabled={!enabled}
+                  placeholder="-1 = cheksiz"
+                  {...field}
+                  onChange={(e) => field.onChange(Number(e.target.value))}
+                  className={cn(!enabled && "opacity-40 pointer-events-none")}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      )}
+    </div>
+  );
+};
+
 export const PlanForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
   const form = useForm<IPlanForm>({
     resolver: joiResolver(createPlanValidator),
     defaultValues: initialValues ?? {
       name: "",
-      description: {
-        uz: "",
-        ru: "",
-        en: "",
-      },
+      description: { uz: "", ru: "", en: "" },
       price: 0,
-      products: { max: 0 },
-      categories: { max: 0 },
-      orders: { max: 0 },
-      order: 0,
       annual_price: 0,
+      order: 0,
       status: PlanStatus.Inactive,
+      features: buildDefaultFeatures(),
     },
   });
 
-  const handleSubmit = (data: IPlanForm) => {
-    onSubmit(data);
-  };
-
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        {/* Basic info */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FormField
             control={form.control}
@@ -89,13 +158,14 @@ export const PlanForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
           />
         </div>
 
+        {/* Pricing */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FormField
             control={form.control}
             name="price"
             render={({ field }) => (
               <FormItem>
-                <FormLabel isRequired>Narxi</FormLabel>
+                <FormLabel isRequired>Oylik narxi</FormLabel>
                 <FormControl>
                   <Input
                     type="number"
@@ -128,128 +198,63 @@ export const PlanForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
           />
         </div>
 
+        {/* Descriptions */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <FormField
-            control={form.control}
-            name="description.uz"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel isRequired>Tavsifi (UZ)</FormLabel>
-                <FormControl>
-                  <textarea
-                    className={cn(
-                      "flex min-h-[80px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    )}
-                    placeholder="Tarif tavsifini kiriting"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="description.ru"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Tavsifi (RU)</FormLabel>
-                <FormControl>
-                  <textarea
-                    className={cn(
-                      "flex min-h-[80px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    )}
-                    placeholder="Tarif tavsifini kiriting"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="description.en"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Tavsifi (EN)</FormLabel>
-                <FormControl>
-                  <textarea
-                    className={cn(
-                      "flex min-h-[80px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    )}
-                    placeholder="Tarif tavsifini kiriting"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {(["uz", "ru", "en"] as const).map((lang) => (
+            <FormField
+              key={lang}
+              control={form.control}
+              name={`description.${lang}`}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel isRequired={lang === "uz"}>
+                    Tavsifi ({lang.toUpperCase()})
+                  </FormLabel>
+                  <FormControl>
+                    <textarea
+                      className="flex min-h-[80px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      placeholder="Tarif tavsifini kiriting"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          ))}
         </div>
 
-        <div className="space-y-4">
-          <h3 className="text-lg font-medium">Limitlar</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <FormField
-              control={form.control}
-              name="products.max"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel isRequired>Maximal productlar</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      placeholder="0"
-                      {...field}
-                      onChange={(e) => field.onChange(Number(e.target.value))}
+        {/* Dynamic features */}
+        <div className="space-y-3">
+          <h3 className="text-base font-semibold">Xususiyatlar va limitlar</h3>
+          <p className="text-sm text-muted-foreground">
+            Yoqilgan xususiyat uchun limit qo'ying. -1 cheksizni bildiradi.
+          </p>
+          <div className="space-y-3">
+            {PLAN_FEATURE_CATEGORIES.map((category) => (
+              <div
+                key={category.key}
+                className="border rounded-lg px-4 pt-3 pb-1"
+              >
+                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
+                  {category.label}
+                </p>
+                <div className="divide-y">
+                  {category.features.map((feature) => (
+                    <FeatureRow
+                      key={feature.key}
+                      featureKey={feature.key}
+                      feature={feature}
+                      control={form.control}
                     />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="categories.max"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel isRequired>Maximal kategoriyalar</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      placeholder="0"
-                      {...field}
-                      onChange={(e) => field.onChange(Number(e.target.value))}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="orders.max"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel isRequired>Maximal buyurtmalar</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      placeholder="0"
-                      {...field}
-                      onChange={(e) => field.onChange(Number(e.target.value))}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
+        {/* Status */}
         <FormField
           control={form.control}
           name="status"
@@ -272,15 +277,13 @@ export const PlanForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
           )}
         />
 
-        <div className="flex justify-end">
-          <Button
-            type="submit"
-            disabled={isLoading}
-            className="w-full cursor-pointer"
-          >
-            {isLoading ? "Saqlanyapti" : "Saqlash"}
-          </Button>
-        </div>
+        <Button
+          type="submit"
+          disabled={isLoading}
+          className="w-full cursor-pointer"
+        >
+          {isLoading ? "Saqlanyapti..." : "Saqlash"}
+        </Button>
       </form>
     </Form>
   );

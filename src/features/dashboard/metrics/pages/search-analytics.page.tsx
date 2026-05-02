@@ -4,7 +4,10 @@ import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import { useShopContext } from "@/contexts";
 import { getSearchAnalyticsQueryFn } from "@/api/queries";
-import { MetricsDateFilter, type GroupBy } from "../components/metrics-date-filter";
+import {
+  MetricsDateFilter,
+  type GroupBy,
+} from "../components/metrics-date-filter";
 import { MetricsSummaryCard } from "../components/metrics-summary-card";
 import { MetricsLineChart } from "../components/metrics-line-chart";
 import { MetricsExportButton } from "../components/metrics-export-button";
@@ -42,7 +45,9 @@ export const SearchAnalyticsPage = () => {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h2 className="text-2xl font-bold">{t("metrics.search_analytics.title")}</h2>
+        <h2 className="text-2xl font-bold">
+          {t("metrics.search_analytics.title")}
+        </h2>
         <MetricsExportButton
           data={analytics?.keywords ?? []}
           filename="search-analytics"
@@ -99,7 +104,9 @@ export const SearchAnalyticsPage = () => {
                 <TableHeader>
                   <TableRow>
                     <TableHead>#</TableHead>
-                    <TableHead>{t("metrics.search_analytics.keyword")}</TableHead>
+                    <TableHead>
+                      {t("metrics.search_analytics.keyword")}
+                    </TableHead>
                     <TableHead className="text-right">
                       {t("metrics.search_analytics.count")}
                     </TableHead>
@@ -111,16 +118,25 @@ export const SearchAnalyticsPage = () => {
                 <TableBody>
                   {analytics?.keywords.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={4} className="text-center text-muted-foreground py-8">
+                      <TableCell
+                        colSpan={4}
+                        className="text-center text-muted-foreground py-8"
+                      >
                         {t("common.no_results_found")}
                       </TableCell>
                     </TableRow>
                   ) : (
                     analytics?.keywords.map((kw, idx) => (
                       <TableRow key={kw.keyword}>
-                        <TableCell className="text-muted-foreground">{idx + 1}</TableCell>
-                        <TableCell className="font-medium">{kw.keyword}</TableCell>
-                        <TableCell className="text-right">{kw.count.toLocaleString()}</TableCell>
+                        <TableCell className="text-muted-foreground">
+                          {idx + 1}
+                        </TableCell>
+                        <TableCell className="font-medium">
+                          {kw.keyword}
+                        </TableCell>
+                        <TableCell className="text-right">
+                          {kw.count.toLocaleString()}
+                        </TableCell>
                         <TableCell className="text-right text-muted-foreground">
                           {dayjs(kw.last_searched).format("MMM D, YYYY")}
                         </TableCell>

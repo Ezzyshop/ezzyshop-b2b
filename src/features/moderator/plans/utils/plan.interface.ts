@@ -1,5 +1,10 @@
 import { PlanStatus } from "./plan.enum";
 
+export interface IFeatureValue {
+  enabled: boolean;
+  limit: number; // -1 = unlimited
+}
+
 export interface IPlan {
   _id: string;
   name: string;
@@ -9,25 +14,14 @@ export interface IPlan {
     en: string;
   };
   price: number;
-  products: {
-    max: number;
-  };
-  categories: {
-    max: number;
-  };
-  orders: {
-    max: number;
-  };
+  annual_price: number;
+  features: Record<string, IFeatureValue>;
   status: PlanStatus;
   order: number;
-  annual_price: number;
   subscriptions: number;
   createdAt: Date;
   updatedAt: Date;
   __v: number;
 }
 
-export type IPlanForm = Omit<
-  IPlan,
-  "createdAt" | "updatedAt" | "_id" | "__v" | "subscriptions"
->;
+export type IPlanForm = Omit<IPlan, "createdAt" | "updatedAt" | "_id" | "__v" | "subscriptions">;

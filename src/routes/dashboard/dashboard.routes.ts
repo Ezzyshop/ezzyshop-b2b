@@ -35,6 +35,7 @@ export type ChildRoute = {
   icon?: ComponentType;
   access: RouteAccess;
   element: LazyExoticComponent<ComponentType>;
+  planFeature?: string;
 };
 
 export type DashboardRoute = {
@@ -44,6 +45,7 @@ export type DashboardRoute = {
   access: RouteAccess;
   element?: LazyExoticComponent<ComponentType> | ComponentType;
   children?: ChildRoute[];
+  planFeature?: string;
 };
 
 export const dashboardRoutes: DashboardRoute[] = [
@@ -59,7 +61,11 @@ export const dashboardRoutes: DashboardRoute[] = [
     element: lazy(
       () => import("@/features/dashboard/categories/pages/categories.page"),
     ),
-    access: { accessType: "permission", resource: "categories", action: "read" },
+    access: {
+      accessType: "permission",
+      resource: "categories",
+      action: "read",
+    },
     icon: ListIcon,
     title: "sidebar.dashboard.categories",
   },
@@ -85,7 +91,11 @@ export const dashboardRoutes: DashboardRoute[] = [
         path: "/orders",
         title: "sidebar.dashboard.total_orders",
         icon: Package2,
-        access: { accessType: "permission", resource: "orders", action: "read" },
+        access: {
+          accessType: "permission",
+          resource: "orders",
+          action: "read",
+        },
         element: lazy(
           () => import("@/features/dashboard/orders/pages/orders.page"),
         ),
@@ -94,10 +104,15 @@ export const dashboardRoutes: DashboardRoute[] = [
         path: "/customers",
         title: "sidebar.dashboard.customers",
         icon: UsersIcon,
-        access: { accessType: "permission", resource: "customers", action: "read" },
+        access: {
+          accessType: "permission",
+          resource: "customers",
+          action: "read",
+        },
         element: lazy(
           () => import("@/features/dashboard/customers/pages/customers.page"),
         ),
+        planFeature: "customers",
       },
     ] as ChildRoute[],
   },
@@ -112,7 +127,11 @@ export const dashboardRoutes: DashboardRoute[] = [
       () =>
         import("@/features/dashboard/delivery-methods/pages/delivery-methods.page"),
     ),
-    access: { accessType: "permission", resource: "delivery_methods", action: "read" },
+    access: {
+      accessType: "permission",
+      resource: "delivery_methods",
+      action: "read",
+    },
     icon: TruckIcon,
     title: "sidebar.dashboard.delivery",
     children: [
@@ -120,21 +139,31 @@ export const dashboardRoutes: DashboardRoute[] = [
         path: "/delivery-methods",
         title: "sidebar.dashboard.delivery-methods",
         icon: TruckIcon,
-        access: { accessType: "permission", resource: "delivery_methods", action: "read" },
+        access: {
+          accessType: "permission",
+          resource: "delivery_methods",
+          action: "read",
+        },
         element: lazy(
           () =>
             import("@/features/dashboard/delivery-methods/pages/delivery-methods.page"),
         ),
+        planFeature: "delivery_types",
       },
       {
         path: "/delivery-zones",
         title: "sidebar.dashboard.delivery-zones",
         icon: MapIcon,
-        access: { accessType: "permission", resource: "delivery_zones", action: "read" },
+        access: {
+          accessType: "permission",
+          resource: "delivery_zones",
+          action: "read",
+        },
         element: lazy(
           () =>
             import("@/features/dashboard/delivery-zone/pages/delivery-zone.page"),
         ),
+        planFeature: "delivery_zones",
       },
     ] as ChildRoute[],
   },
@@ -144,9 +173,14 @@ export const dashboardRoutes: DashboardRoute[] = [
       () =>
         import("@/features/dashboard/payment-methods/pages/payment-methods.page"),
     ),
-    access: { accessType: "permission", resource: "payment_methods", action: "read" },
+    access: {
+      accessType: "permission",
+      resource: "payment_methods",
+      action: "read",
+    },
     icon: CreditCardIcon,
     title: "sidebar.dashboard.payment-methods",
+    planFeature: "payment_methods",
   },
   {
     path: "/branches",
@@ -156,6 +190,7 @@ export const dashboardRoutes: DashboardRoute[] = [
     access: { accessType: "permission", resource: "branches", action: "read" },
     icon: MapIcon,
     title: "sidebar.dashboard.branches",
+    planFeature: "branches",
   },
   {
     path: "/staffs",
@@ -165,15 +200,15 @@ export const dashboardRoutes: DashboardRoute[] = [
     access: { accessType: "permission", resource: "staffs", action: "read" },
     icon: UsersIcon,
     title: "sidebar.dashboard.staffs",
+    planFeature: "staffs",
   },
   {
     path: "/roles",
-    element: lazy(
-      () => import("@/features/dashboard/roles/pages/roles.page"),
-    ),
+    element: lazy(() => import("@/features/dashboard/roles/pages/roles.page")),
     access: { accessType: "permission", resource: "roles", action: "read" },
     icon: KeyRoundIcon,
     title: "sidebar.dashboard.roles",
+    planFeature: "roles",
   },
   {
     path: "/plans",
@@ -187,7 +222,11 @@ export const dashboardRoutes: DashboardRoute[] = [
     element: lazy(
       () => import("@/features/dashboard/telegram/pages/telegram-setup.page"),
     ),
-    access: { accessType: "permission", resource: "telegram_setup", action: "read" },
+    access: {
+      accessType: "permission",
+      resource: "telegram_setup",
+      action: "read",
+    },
     icon: SendIcon,
     title: "sidebar.dashboard.telegram",
     children: [
@@ -195,31 +234,46 @@ export const dashboardRoutes: DashboardRoute[] = [
         path: "/telegram/setup",
         title: "sidebar.dashboard.telegram-setup",
         icon: BotIcon,
-        access: { accessType: "permission", resource: "telegram_setup", action: "read" },
+        access: {
+          accessType: "permission",
+          resource: "telegram_setup",
+          action: "read",
+        },
         element: lazy(
           () =>
             import("@/features/dashboard/telegram/pages/telegram-setup.page"),
         ),
+        planFeature: "telegram_setup",
       },
       {
         path: "/telegram/templates",
         title: "sidebar.dashboard.telegram-templates",
         icon: LayoutTemplateIcon,
-        access: { accessType: "permission", resource: "telegram_templates", action: "read" },
+        access: {
+          accessType: "permission",
+          resource: "telegram_templates",
+          action: "read",
+        },
         element: lazy(
           () =>
             import("@/features/dashboard/telegram/pages/telegram-templates.page"),
         ),
+        planFeature: "telegram_templates",
       },
       {
         path: "/telegram/send-message",
         title: "sidebar.dashboard.telegram-send-message",
         icon: SendIcon,
-        access: { accessType: "permission", resource: "telegram_messages", action: "read" },
+        access: {
+          accessType: "permission",
+          resource: "telegram_messages",
+          action: "read",
+        },
         element: lazy(
           () =>
             import("@/features/dashboard/telegram/pages/telegram-send-message.page"),
         ),
+        planFeature: "telegram_send_message",
       },
     ] as ChildRoute[],
   },
@@ -235,25 +289,40 @@ export const dashboardRoutes: DashboardRoute[] = [
         element: lazy(
           () => import("@/features/dashboard/coupons/pages/coupons.page"),
         ),
-        access: { accessType: "permission", resource: "coupons", action: "read" },
+        access: {
+          accessType: "permission",
+          resource: "coupons",
+          action: "read",
+        },
         icon: TagIcon,
         title: "sidebar.dashboard.coupons",
+        planFeature: "coupons",
       },
       {
         path: "/coupons/:couponId/usages",
         element: lazy(
           () => import("@/features/dashboard/coupons/pages/coupon-usages.page"),
         ),
-        access: { accessType: "permission", resource: "coupons", action: "read" },
+        access: {
+          accessType: "permission",
+          resource: "coupons",
+          action: "read",
+        },
+        planFeature: "coupons",
       },
       {
         path: "/reviews",
         element: lazy(
           () => import("@/features/dashboard/reviews/pages/reviews.page"),
         ),
-        access: { accessType: "permission", resource: "reviews", action: "read" },
+        access: {
+          accessType: "permission",
+          resource: "reviews",
+          action: "read",
+        },
         icon: StarIcon,
         title: "sidebar.dashboard.reviews",
+        planFeature: "reviews",
       },
       {
         path: "/chat",
@@ -263,6 +332,7 @@ export const dashboardRoutes: DashboardRoute[] = [
         access: { accessType: "permission", resource: "chat", action: "full" },
         icon: MessageSquareIcon,
         title: "sidebar.dashboard.chat",
+        planFeature: "chat",
       },
     ],
   },
@@ -277,46 +347,74 @@ export const dashboardRoutes: DashboardRoute[] = [
         path: "/metrics/search-analytics",
         title: "sidebar.dashboard.metrics_search",
         icon: SearchIcon,
-        access: { accessType: "permission", resource: "analytics", action: "read" },
+        access: {
+          accessType: "permission",
+          resource: "analytics",
+          action: "read",
+        },
         element: lazy(
-          () => import("@/features/dashboard/metrics/pages/search-analytics.page"),
+          () =>
+            import("@/features/dashboard/metrics/pages/search-analytics.page"),
         ),
+        planFeature: "analytics_search",
       },
       {
         path: "/metrics/product-views",
         title: "sidebar.dashboard.metrics_product_views",
         icon: EyeIcon,
-        access: { accessType: "permission", resource: "analytics", action: "read" },
+        access: {
+          accessType: "permission",
+          resource: "analytics",
+          action: "read",
+        },
         element: lazy(
           () => import("@/features/dashboard/metrics/pages/product-views.page"),
         ),
+        planFeature: "analytics_product_views",
       },
       {
         path: "/metrics/orders",
         title: "sidebar.dashboard.metrics_orders",
         icon: ShoppingCartIcon,
-        access: { accessType: "permission", resource: "analytics", action: "read" },
+        access: {
+          accessType: "permission",
+          resource: "analytics",
+          action: "read",
+        },
         element: lazy(
-          () => import("@/features/dashboard/metrics/pages/orders-analytics.page"),
+          () =>
+            import("@/features/dashboard/metrics/pages/orders-analytics.page"),
         ),
+        planFeature: "analytics_orders",
       },
       {
         path: "/metrics/top-customers",
         title: "sidebar.dashboard.metrics_top_customers",
         icon: Trophy,
-        access: { accessType: "permission", resource: "analytics", action: "read" },
+        access: {
+          accessType: "permission",
+          resource: "analytics",
+          action: "read",
+        },
         element: lazy(
           () => import("@/features/dashboard/metrics/pages/top-customers.page"),
         ),
+        planFeature: "analytics_orders",
       },
       {
         path: "/metrics/conversion-funnel",
         title: "sidebar.dashboard.metrics_funnel",
         icon: FunnelIcon,
-        access: { accessType: "permission", resource: "analytics", action: "read" },
+        access: {
+          accessType: "permission",
+          resource: "analytics",
+          action: "read",
+        },
         element: lazy(
-          () => import("@/features/dashboard/metrics/pages/conversion-funnel.page"),
+          () =>
+            import("@/features/dashboard/metrics/pages/conversion-funnel.page"),
         ),
+        planFeature: "analytics_conversion",
       },
     ] as ChildRoute[],
   },
@@ -329,6 +427,7 @@ export const dashboardRoutes: DashboardRoute[] = [
     element: lazy(
       () => import("@/features/dashboard/ai-images/pages/ai-images.page"),
     ),
+    planFeature: "ai_image_generator",
   },
 
   {
@@ -338,7 +437,12 @@ export const dashboardRoutes: DashboardRoute[] = [
     element: lazy(
       () => import("@/features/dashboard/settings/pages/settings.page"),
     ),
-    access: { accessType: "permission", resource: "shop_settings", action: "read" },
+    access: {
+      accessType: "permission",
+      resource: "shop_settings",
+      action: "read",
+    },
+    planFeature: "settings",
   },
 
   {

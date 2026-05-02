@@ -51,6 +51,12 @@ export enum ErrorMessages {
   DeliveryZoneNotCovered = "DELIVERY_ZONE_NOT_COVERED",
   ReviewNotFound = "REVIEW_NOT_FOUND",
   ReviewAlreadyExists = "REVIEW_ALREADY_EXISTS",
+  RoleNotFound = "ROLE_NOT_FOUND",
+  RoleNameAlreadyExists = "ROLE_NAME_ALREADY_EXISTS",
+  RoleInUse = "ROLE_IN_USE",
+  RoleDoesNotBelongToShop = "ROLE_DOES_NOT_BELONG_TO_SHOP",
+  FeatureNotAvailableOnYourPlan = "FEATURE_NOT_AVAILABLE_ON_YOUR_PLAN",
+  PlanLimitReached = "PLAN_LIMIT_REACHED",
 }
 
 export const errorMessagesMap: Record<ErrorMessages, string> = {
@@ -123,4 +129,11 @@ export const errorMessagesMap: Record<ErrorMessages, string> = {
   [ErrorMessages.DeliveryZoneNotCovered]: "Yetkazish hududi topilmadi",
   [ErrorMessages.ReviewNotFound]: "Sharh topilmadi",
   [ErrorMessages.ReviewAlreadyExists]: "Allaqachon sharh qoldirgansiz",
+  [ErrorMessages.RoleNotFound]: "Rol topilmadi",
+  [ErrorMessages.RoleNameAlreadyExists]: "Bu nom bilan rol mavjud",
+  [ErrorMessages.RoleInUse]: "Rol allaqachon faol",
+  [ErrorMessages.RoleDoesNotBelongToShop]: "Rol bu dokonga tegishli emas",
+  [ErrorMessages.FeatureNotAvailableOnYourPlan]:
+    "Bu qism sizning tarifingizda mavjud emas",
+  [ErrorMessages.PlanLimitReached]: "Tarif bo'yicha limit tugagan",
 };

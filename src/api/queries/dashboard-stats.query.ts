@@ -23,11 +23,15 @@ export interface IPendingReview {
   createdAt: string;
 }
 
+export interface IPlanUsageFeature {
+  key: string;
+  used: number;
+  max: number; // -1 = unlimited
+}
+
 export interface IPlanUsage {
   planName: string;
-  products: { used: number; max: number };
-  categories: { used: number; max: number };
-  orders: { used: number; max: number };
+  features: IPlanUsageFeature[];
 }
 
 export const getLowStockQueryFn = (shopId: string): Promise<ILowStockProduct[]> =>
@@ -41,3 +45,6 @@ export const getPendingReviewsQueryFn = (shopId: string): Promise<IPendingReview
 
 export const getPlanUsageQueryFn = (shopId: string): Promise<IPlanUsage> =>
   api.get(`/dashboard-stats/${shopId}/plan-usage`).then((res) => res.data.data);
+
+export const getPlanFeaturesQueryFn = (shopId: string): Promise<Record<string, { enabled: boolean; limit: number }>> =>
+  api.get(`/dashboard-stats/${shopId}/plan-features`).then((res) => res.data.data);

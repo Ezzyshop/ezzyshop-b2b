@@ -1,61 +1,56 @@
 import Joi from "joi";
 import { PlanStatus } from "./plan.enum";
-import { IPlan } from "./plan.interface";
 
-export const planFields: Record<
-  keyof Omit<IPlan, "createdAt" | "updatedAt" | "_id" | "__v" | "subscriptions">,
-  Joi.Schema
-> = {
+const featureValueSchema = Joi.object({
+  enabled: Joi.boolean().required(),
+  limit: Joi.number().integer().min(-1).default(-1).messages({
+    "number.min": "Limit -1 (cheksiz) yoki musbat son bo'lishi kerak",
+    "number.base": "Limit son bo'lishi kerak",
+  }),
+});
+
+const planBaseSchema = {
   name: Joi.string().required().max(255).messages({
-    "string.empty": "Name is required",
-    "string.max": "Name must be less than 255 characters long",
+    "string.empty": "Nomi majburiy",
+    "string.max": "Nomi 255 ta belgidan oshmasligi kerak",
   }),
   description: Joi.object({
     uz: Joi.string().required().max(500).messages({
-      "string.empty": "Description is required",
-      "string.max": "Description must be less than 500 characters long",
+      "string.empty": "Tavsif (UZ) majburiy",
+      "string.max": "Tavsif 500 ta belgidan oshmasligi kerak",
     }),
-    ru: Joi.string().optional().max(500).messages({
-      "string.max": "Description must be less than 500 characters long",
-    }),
-    en: Joi.string().optional().max(500).messages({
-      "string.max": "Description must be less than 500 characters long",
-    }),
+    ru: Joi.string().optional().allow("").max(500),
+    en: Joi.string().optional().allow("").max(500),
   }),
   price: Joi.number().required().min(0).messages({
-    "number.empty": "Price is required",
-    "number.min": "Price must be greater than 0",
-  }),
-  products: Joi.object({
-    max: Joi.number().required(),
-  }),
-  categories: Joi.object({
-    max: Joi.number().required(),
-  }),
-  orders: Joi.object({
-    max: Joi.number().required(),
-  }),
-  status: Joi.string()
-    .required()
-    .valid(PlanStatus.Active, PlanStatus.Inactive)
-    .messages({
-      "string.empty": "Status is required",
-      "any.only": "Status must be either Active or Inactive",
-    }),
-  order: Joi.number().required().min(0).messages({
-    "number.empty": "Order is required",
-    "number.min": "Order must be greater than 0",
+    "number.base": "Narx majburiy",
+    "number.min": "Narx 0 dan katta yoki teng bo'lishi kerak",
   }),
   annual_price: Joi.number().required().min(0).messages({
-    "number.empty": "Annual price is required",
-    "number.min": "Annual price must be greater than 0",
+    "number.base": "Yillik narx majburiy",
+    "number.min": "Yillik narx 0 dan katta yoki teng bo'lishi kerak",
+  }),
+  features: Joi.object()
+    .pattern(Joi.string(), featureValueSchema)
+    .required()
+    .messages({ "object.base": "Xususiyatlar ob'ekt bo'lishi kerak" }),
+  status: Joi.string()
+    .valid(PlanStatus.Active, PlanStatus.Inactive)
+    .required()
+    .messages({
+      "string.empty": "Holati majburiy",
+      "any.only": "Holat noto'g'ri",
+    }),
+  order: Joi.number().required().min(0).messages({
+    "number.base": "Tartib raqami majburiy",
+    "number.min": "Tartib raqami 0 dan katta yoki teng bo'lishi kerak",
   }),
 };
 
-export const createPlanValidator = Joi.object(planFields);
+export const createPlanValidator = Joi.object(planBaseSchema).options({ stripUnknown: true });
 
-export const updatePlanValidator = Joi.object(planFields);
+export const updatePlanValidator = Joi.object(planBaseSchema).options({ stripUnknown: true });
 
 export const changePlanStatusValidator = Joi.object({
-  status: planFields.status,
+  status: planBaseSchema.status,
 });
