@@ -8,16 +8,24 @@ import { reviewTableColumns } from "../components/review-table/review-table-colu
 import { LanguageType } from "@/features/moderator/shops/utils";
 import { useQueryParams } from "@/hooks";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
 import { IProduct } from "../../products/utils/product.interface";
 import { useState } from "react";
+import { useIsFeatureEnabled } from "@/hooks/use-plan-features";
 
 export function ReviewsPage() {
   const { t, i18n } = useTranslation();
   const { shop } = useShopContext();
   const lang = i18n.language as LanguageType;
   const { getQueryParams, setQueryParams } = useQueryParams();
+  const isEnabled = useIsFeatureEnabled("telegram_send_message");
 
   const [productSearch, setProductSearch] = useState("");
 
@@ -26,13 +34,13 @@ export function ReviewsPage() {
   const { data, isLoading } = useQuery({
     queryKey: ["reviews", shop._id, params],
     queryFn: () => getShopReviewsQueryFn(shop._id, params),
-    enabled: Boolean(shop._id),
+    enabled: Boolean(shop._id) && isEnabled,
   });
 
   const { data: productsData } = useQuery({
     queryKey: ["products-list", shop._id],
     queryFn: () => getProductsQueryFn(shop._id, { limit: 200 }),
-    enabled: Boolean(shop._id),
+    enabled: Boolean(shop._id) && isEnabled,
   });
 
   const products: IProduct[] = productsData?.data ?? [];
@@ -58,9 +66,19 @@ export function ReviewsPage() {
   const handleSortRating = () => {
     const current = getQueryParams();
     if (current.sortBy !== "rating") {
-      setQueryParams({ ...current, sortBy: "rating", sortOrder: "desc", page: 1 });
+      setQueryParams({
+        ...current,
+        sortBy: "rating",
+        sortOrder: "desc",
+        page: 1,
+      });
     } else if (current.sortOrder === "desc") {
-      setQueryParams({ ...current, sortBy: "rating", sortOrder: "asc", page: 1 });
+      setQueryParams({
+        ...current,
+        sortBy: "rating",
+        sortOrder: "asc",
+        page: 1,
+      });
     } else {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { sortBy: _sb, sortOrder: _so, page: _pg, ...rest } = current;
@@ -68,8 +86,14 @@ export function ReviewsPage() {
     }
   };
 
-  const ratingSort = params.sortBy === "rating" ? (params.sortOrder as string) : "";
-  const RatingSortIcon = ratingSort === "desc" ? ArrowDown : ratingSort === "asc" ? ArrowUp : ArrowUpDown;
+  const ratingSort =
+    params.sortBy === "rating" ? (params.sortOrder as string) : "";
+  const RatingSortIcon =
+    ratingSort === "desc"
+      ? ArrowDown
+      : ratingSort === "asc"
+        ? ArrowUp
+        : ArrowUpDown;
 
   return (
     <div className="space-y-4 md:space-y-6">
@@ -99,7 +123,11 @@ export function ReviewsPage() {
               <SelectItem key={p._id} value={p._id}>
                 <div className="flex items-center gap-2">
                   {p.main_image && (
-                    <img src={p.main_image} alt="" className="w-5 h-5 rounded object-cover" />
+                    <img
+                      src={p.main_image}
+                      alt=""
+                      className="w-5 h-5 rounded object-cover"
+                    />
                   )}
                   <span className="truncate max-w-44">
                     {p.name[lang] ?? p.name.uz}
@@ -114,7 +142,9 @@ export function ReviewsPage() {
         <button
           onClick={handleSortRating}
           className={`flex items-center gap-1.5 px-3 py-2 rounded-md border text-sm transition-colors ${
-            ratingSort ? "border-primary text-primary bg-primary/5" : "border-input hover:border-primary/50"
+            ratingSort
+              ? "border-primary text-primary bg-primary/5"
+              : "border-input hover:border-primary/50"
           }`}
         >
           <RatingSortIcon className="w-4 h-4" />

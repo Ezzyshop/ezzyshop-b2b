@@ -4,7 +4,10 @@ import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import { useShopContext } from "@/contexts";
 import { getProductViewsAnalyticsQueryFn } from "@/api/queries";
-import { MetricsDateFilter, type GroupBy } from "../components/metrics-date-filter";
+import {
+  MetricsDateFilter,
+  type GroupBy,
+} from "../components/metrics-date-filter";
 import { MetricsSummaryCard } from "../components/metrics-summary-card";
 import { MetricsLineChart } from "../components/metrics-line-chart";
 import { MetricsExportButton } from "../components/metrics-export-button";
@@ -18,11 +21,13 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { EyeIcon, PackageIcon } from "lucide-react";
+import { useIsFeatureEnabled } from "@/hooks/use-plan-features";
 
 export const ProductViewsPage = () => {
   const { t } = useTranslation();
   const { shop } = useShopContext();
   const chartRef = useRef<HTMLDivElement>(null);
+  const isEnabled = useIsFeatureEnabled("analytics_search");
 
   const [dateRange, setDateRange] = useState({
     startDate: dayjs().subtract(30, "day").format("YYYY-MM-DD"),
@@ -34,7 +39,7 @@ export const ProductViewsPage = () => {
     queryKey: ["metrics-product-views", shop._id, dateRange, groupBy],
     queryFn: () =>
       getProductViewsAnalyticsQueryFn(shop._id, { ...dateRange, groupBy }),
-    enabled: Boolean(shop._id),
+    enabled: Boolean(shop._id) && isEnabled,
   });
 
   const analytics = data?.data;
@@ -48,7 +53,9 @@ export const ProductViewsPage = () => {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h2 className="text-2xl font-bold">{t("metrics.product_views.title")}</h2>
+        <h2 className="text-2xl font-bold">
+          {t("metrics.product_views.title")}
+        </h2>
         <MetricsExportButton
           data={tableData}
           filename="product-views"
@@ -117,14 +124,19 @@ export const ProductViewsPage = () => {
                 <TableBody>
                   {analytics?.products.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={4} className="text-center text-muted-foreground py-8">
+                      <TableCell
+                        colSpan={4}
+                        className="text-center text-muted-foreground py-8"
+                      >
                         {t("common.no_results_found")}
                       </TableCell>
                     </TableRow>
                   ) : (
                     analytics?.products.map((p, idx) => (
                       <TableRow key={p.product_id}>
-                        <TableCell className="text-muted-foreground">{idx + 1}</TableCell>
+                        <TableCell className="text-muted-foreground">
+                          {idx + 1}
+                        </TableCell>
                         <TableCell>
                           <div className="flex items-center gap-3">
                             {p.main_image && (
@@ -134,11 +146,17 @@ export const ProductViewsPage = () => {
                                 className="w-8 h-8 rounded object-cover"
                               />
                             )}
-                            <span className="font-medium">{p.name?.uz ?? "-"}</span>
+                            <span className="font-medium">
+                              {p.name?.uz ?? "-"}
+                            </span>
                           </div>
                         </TableCell>
-                        <TableCell className="text-right">{p.total_views.toLocaleString()}</TableCell>
-                        <TableCell className="text-right">{p.unique_views.toLocaleString()}</TableCell>
+                        <TableCell className="text-right">
+                          {p.total_views.toLocaleString()}
+                        </TableCell>
+                        <TableCell className="text-right">
+                          {p.unique_views.toLocaleString()}
+                        </TableCell>
                       </TableRow>
                     ))
                   )}

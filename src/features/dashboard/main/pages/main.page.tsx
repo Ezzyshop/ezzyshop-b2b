@@ -9,10 +9,7 @@ import { useIsFeatureEnabled } from "@/hooks/use-plan-features";
 
 export const DashboardMainPage = () => {
   const { t } = useTranslation();
-  const showOverview = useIsFeatureEnabled("stat_overview");
-  const showCoupons = useIsFeatureEnabled("stat_coupons");
-  const showLowStock = useIsFeatureEnabled("stat_low_stock");
-  const showPendingReviews = useIsFeatureEnabled("stat_pending_reviews");
+  const showOverview = useIsFeatureEnabled("analytics_orders");
 
   return (
     <div className="space-y-4 md:space-y-6">
@@ -26,15 +23,13 @@ export const DashboardMainPage = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           <PlanUsage />
-          {showCoupons && <CouponsSummary />}
+          <CouponsSummary />
         </div>
 
-        {(showLowStock || showPendingReviews) && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            {showLowStock && <LowStockAlerts />}
-            {showPendingReviews && <PendingReviews />}
-          </div>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <LowStockAlerts />
+          <PendingReviews />
+        </div>
       </div>
     </div>
   );

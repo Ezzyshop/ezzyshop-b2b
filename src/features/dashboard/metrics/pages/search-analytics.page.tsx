@@ -21,11 +21,13 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SearchIcon, HashIcon } from "lucide-react";
+import { useIsFeatureEnabled } from "@/hooks/use-plan-features";
 
 export const SearchAnalyticsPage = () => {
   const { t } = useTranslation();
   const { shop } = useShopContext();
   const chartRef = useRef<HTMLDivElement>(null);
+  const isEnabled = useIsFeatureEnabled("analytics_search");
 
   const [dateRange, setDateRange] = useState({
     startDate: dayjs().subtract(30, "day").format("YYYY-MM-DD"),
@@ -37,7 +39,7 @@ export const SearchAnalyticsPage = () => {
     queryKey: ["metrics-search", shop._id, dateRange, groupBy],
     queryFn: () =>
       getSearchAnalyticsQueryFn(shop._id, { ...dateRange, groupBy }),
-    enabled: Boolean(shop._id),
+    enabled: Boolean(shop._id) && isEnabled,
   });
 
   const analytics = data?.data;

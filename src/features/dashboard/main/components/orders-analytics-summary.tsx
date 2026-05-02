@@ -3,16 +3,25 @@ import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
-import { ArrowRight, DollarSignIcon, ReceiptIcon, ShoppingCartIcon, TagIcon, TruckIcon } from "lucide-react";
+import {
+  ArrowRight,
+  DollarSignIcon,
+  ReceiptIcon,
+  ShoppingCartIcon,
+  TagIcon,
+  TruckIcon,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useShopContext } from "@/contexts";
 import { getOrdersDetailedAnalyticsQueryFn } from "@/api/queries/analytics.query";
 import { MetricsSummaryCard } from "@/features/dashboard/metrics/components/metrics-summary-card";
 import { MetricsDateFilter } from "@/features/dashboard/metrics/components/metrics-date-filter";
+import { useIsFeatureEnabled } from "@/hooks/use-plan-features";
 
 export const OrdersAnalyticsSummary = () => {
   const { t } = useTranslation();
   const { shop } = useShopContext();
+  const showOverview = useIsFeatureEnabled("analytics_orders");
 
   const [dateRange, setDateRange] = useState({
     startDate: dayjs().subtract(30, "day").format("YYYY-MM-DD"),
@@ -22,7 +31,7 @@ export const OrdersAnalyticsSummary = () => {
     queryKey: ["metrics-orders-detailed", shop._id, dateRange],
     queryFn: () =>
       getOrdersDetailedAnalyticsQueryFn(shop._id, { ...dateRange }),
-    enabled: Boolean(shop._id),
+    enabled: Boolean(shop._id) && showOverview,
   });
 
   const analytics = data?.data;
@@ -35,7 +44,12 @@ export const OrdersAnalyticsSummary = () => {
           onDateChange={setDateRange}
           showGroupBy={false}
         />
-        <Button variant="ghost" size="sm" asChild className="gap-1 text-xs h-8 self-start sm:self-auto shrink-0">
+        <Button
+          variant="ghost"
+          size="sm"
+          asChild
+          className="gap-1 text-xs h-8 self-start sm:self-auto shrink-0"
+        >
           <Link to="/dashboard/metrics/orders">
             {t("dashboard.main.view_all")}
             <ArrowRight className="h-3 w-3" />
@@ -46,7 +60,10 @@ export const OrdersAnalyticsSummary = () => {
       {isLoading ? (
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
           {Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="h-[100px] rounded-lg bg-muted animate-pulse" />
+            <div
+              key={i}
+              className="h-[100px] rounded-lg bg-muted animate-pulse"
+            />
           ))}
         </div>
       ) : (
