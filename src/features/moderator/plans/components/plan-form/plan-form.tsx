@@ -67,10 +67,14 @@ const FeatureRow = ({ featureKey, feature, control }: IFeatureRowProps) => {
                 checked={field.value}
                 onCheckedChange={field.onChange}
                 className="mt-0.5"
+                id={featureKey}
               />
             </FormControl>
             <div className="space-y-0.5">
-              <FormLabel className="font-normal cursor-pointer leading-none">
+              <FormLabel
+                htmlFor={featureKey}
+                className="font-normal cursor-pointer leading-none"
+              >
                 {feature.label}
               </FormLabel>
               <p className="text-xs text-muted-foreground">
@@ -120,6 +124,7 @@ export const PlanForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
     },
   });
 
+  console.log({ err: form.formState.errors });
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

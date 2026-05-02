@@ -2,7 +2,7 @@ import Joi from "joi";
 import { PlanStatus } from "./plan.enum";
 
 const featureValueSchema = Joi.object({
-  enabled: Joi.boolean().required(),
+  enabled: Joi.boolean().optional().default(false),
   limit: Joi.number().integer().min(-1).default(-1).messages({
     "number.min": "Limit -1 (cheksiz) yoki musbat son bo'lishi kerak",
     "number.base": "Limit son bo'lishi kerak",
@@ -31,7 +31,7 @@ const planBaseSchema = {
     "number.min": "Yillik narx 0 dan katta yoki teng bo'lishi kerak",
   }),
   features: Joi.object()
-    .pattern(Joi.string(), featureValueSchema)
+    .pattern(Joi.string().optional(), featureValueSchema)
     .required()
     .messages({ "object.base": "Xususiyatlar ob'ekt bo'lishi kerak" }),
   status: Joi.string()
@@ -47,9 +47,13 @@ const planBaseSchema = {
   }),
 };
 
-export const createPlanValidator = Joi.object(planBaseSchema).options({ stripUnknown: true });
+export const createPlanValidator = Joi.object(planBaseSchema).options({
+  stripUnknown: true,
+});
 
-export const updatePlanValidator = Joi.object(planBaseSchema).options({ stripUnknown: true });
+export const updatePlanValidator = Joi.object(planBaseSchema).options({
+  stripUnknown: true,
+});
 
 export const changePlanStatusValidator = Joi.object({
   status: planBaseSchema.status,

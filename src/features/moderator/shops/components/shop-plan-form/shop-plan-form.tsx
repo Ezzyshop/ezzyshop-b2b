@@ -42,8 +42,6 @@ export const ShopPlanForm = ({
     defaultValues: initialValue,
   });
 
-  console.log(form.formState.errors)
-
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
