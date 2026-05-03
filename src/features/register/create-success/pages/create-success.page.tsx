@@ -29,7 +29,7 @@ export const CreateSuccessPage = () => {
 
   const handleGoDashboard = async () => {
     await refetch();
-    navigate(getDefaultPage(user.shops[0].roles));
+    navigate(getDefaultPage(user.roles));
   };
 
   return (

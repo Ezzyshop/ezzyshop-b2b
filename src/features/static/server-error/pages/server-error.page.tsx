@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button/button";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getDefaultPage } from "@/lib/get-default-page";
-import { UserRoles } from "@/lib/enums";
 
 export default function ServerErrorPage() {
   const navigate = useNavigate();
@@ -18,7 +17,7 @@ export default function ServerErrorPage() {
         </div>
         <Button
           className="cursor-pointer"
-          onClick={() => navigate(getDefaultPage([UserRoles.Staff]))}
+          onClick={() => navigate(getDefaultPage([]))}
         >
           {t("common.back_to_site")}
         </Button>
