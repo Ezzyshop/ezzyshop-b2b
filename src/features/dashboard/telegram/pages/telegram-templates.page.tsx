@@ -6,15 +6,17 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { BotTemplateSettings } from "../components/bot-settings/bot-template-settings";
 import { Button } from "@/components/ui/button";
+import { useIsFeatureEnabled } from "@/hooks/use-plan-features";
 
 const TelegramTemplatesPage = () => {
   const { shop } = useShopContext();
   const { t } = useTranslation();
+  const isEnabled = useIsFeatureEnabled("telegram_templates");
 
   const { data, isLoading } = useQuery({
     queryKey: ["telegram", shop._id],
     queryFn: () => getTelegramQueryFn(shop._id),
-    enabled: Boolean(shop._id),
+    enabled: Boolean(shop._id) && isEnabled,
   });
 
   if (isLoading) {

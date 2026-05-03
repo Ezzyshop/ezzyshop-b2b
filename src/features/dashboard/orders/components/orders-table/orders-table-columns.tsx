@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 export const orderTableColumns = (
-  t: TFunction
+  t: TFunction,
 ): ColumnDef<IOrderResponse>[] => [
   {
     header: "table.columns.created_at",
@@ -132,11 +132,12 @@ export const orderTableColumns = (
   },
 
   {
+    id: "actions",
     header: "table.columns.actions",
     accessorKey: "actions",
     cell: ({ row }) => {
       return (
-        <Button variant="outline" size="sm">
+        <Button variant="default" size="sm">
           <Link to={`/dashboard/orders/${row.original._id}`}>
             {t("common.details")}
           </Link>

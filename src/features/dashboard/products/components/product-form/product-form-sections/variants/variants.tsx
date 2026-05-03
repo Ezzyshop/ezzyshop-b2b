@@ -51,21 +51,23 @@ export const ProductFormVariants = ({ form }: IProps) => {
   ) => {
     if (key.trim() && value.trim()) {
       const currentVariants = form.getValues("variants") || [];
-      const variant = currentVariants[variantIndex];
-      if (variant) {
-        variant.attributes[key.trim()] = value.trim();
-        form.setValue("variants", currentVariants);
-      }
+      const updatedVariants = currentVariants.map((v, i) =>
+        i === variantIndex
+          ? { ...v, attributes: { ...v.attributes, [key.trim()]: value.trim() } }
+          : v
+      );
+      form.setValue("variants", updatedVariants, { shouldDirty: true });
     }
   };
 
   const removeVariantAttribute = (variantIndex: number, key: string) => {
     const currentVariants = form.getValues("variants") || [];
-    const variant = currentVariants[variantIndex];
-    if (variant) {
-      delete variant.attributes[key];
-      form.setValue("variants", currentVariants);
-    }
+    const updatedVariants = currentVariants.map((v, i) => {
+      if (i !== variantIndex) return v;
+      const { [key]: _, ...rest } = v.attributes;
+      return { ...v, attributes: rest };
+    });
+    form.setValue("variants", updatedVariants, { shouldDirty: true });
   };
 
   const variants = form.watch("variants") || [];
@@ -193,6 +195,8 @@ export const ProductFormVariants = ({ form }: IProps) => {
                     <MultipleImageUpload
                       {...field}
                       onChange={(value) => field.onChange(value)}
+                      shopId={shop._id}
+                      type="product"
                     />
                   </FormControl>
                 </FormItem>

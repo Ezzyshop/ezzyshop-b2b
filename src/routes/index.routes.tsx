@@ -6,7 +6,6 @@ import { StaticRoutes } from "./static.routes";
 import { RegisterRoutes } from "./register.routes";
 import { YMaps } from "@pbe/react-yandex-maps";
 import { getDefaultPage } from "@/lib/get-default-page.ts";
-import { UserRoles } from "@/lib/enums/user.enum.ts";
 
 const LoginPage = lazy(() => import("@/features/auth/login/pages/login.page"));
 const LogoutPage = lazy(
@@ -32,7 +31,7 @@ export const IndexRoutes = () => {
       <Routes>
         <Route
           path="/"
-          element={<Navigate to={getDefaultPage([UserRoles.Staff])} />}
+          element={<Navigate to={getDefaultPage([])} />}
         />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/logout" element={<LogoutPage />} />

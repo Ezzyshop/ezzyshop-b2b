@@ -4,7 +4,10 @@ import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import { useShopContext } from "@/contexts";
 import { getOrdersDetailedAnalyticsQueryFn } from "@/api/queries";
-import { MetricsDateFilter, type GroupBy } from "../components/metrics-date-filter";
+import {
+  MetricsDateFilter,
+  type GroupBy,
+} from "../components/metrics-date-filter";
 import { MetricsSummaryCard } from "../components/metrics-summary-card";
 import { MetricsLineChart } from "../components/metrics-line-chart";
 import { MetricsBarChart } from "../components/metrics-bar-chart";
@@ -18,12 +21,20 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ShoppingCartIcon, DollarSignIcon, ReceiptIcon, TagIcon, TruckIcon } from "lucide-react";
+import {
+  ShoppingCartIcon,
+  DollarSignIcon,
+  ReceiptIcon,
+  TagIcon,
+  TruckIcon,
+} from "lucide-react";
+import { useIsFeatureEnabled } from "@/hooks/use-plan-features";
 
 export const OrdersAnalyticsPage = () => {
   const { t, i18n } = useTranslation();
   const { shop } = useShopContext();
   const chartRef = useRef<HTMLDivElement>(null);
+  const isEnabled = useIsFeatureEnabled("analytics_orders");
 
   const [dateRange, setDateRange] = useState({
     startDate: dayjs().subtract(30, "day").format("YYYY-MM-DD"),
@@ -35,7 +46,7 @@ export const OrdersAnalyticsPage = () => {
     queryKey: ["metrics-orders-detailed", shop._id, dateRange, groupBy],
     queryFn: () =>
       getOrdersDetailedAnalyticsQueryFn(shop._id, { ...dateRange, groupBy }),
-    enabled: Boolean(shop._id),
+    enabled: Boolean(shop._id) && isEnabled,
   });
 
   const analytics = data?.data;
@@ -48,7 +59,9 @@ export const OrdersAnalyticsPage = () => {
     delivery: t.delivery,
   }));
 
-  const getProductName = (name: { uz: string; ru?: string; en?: string } | undefined) => {
+  const getProductName = (
+    name: { uz: string; ru?: string; en?: string } | undefined,
+  ) => {
     if (!name) return "—";
     return name[lang] ?? name.uz ?? "—";
   };
@@ -145,17 +158,23 @@ export const OrdersAnalyticsPage = () => {
                   <TableHeader>
                     <TableRow>
                       <TableHead>{t("metrics.orders.status")}</TableHead>
-                      <TableHead className="text-right">{t("metrics.orders.count")}</TableHead>
+                      <TableHead className="text-right">
+                        {t("metrics.orders.count")}
+                      </TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {Object.entries(analytics?.status_breakdown ?? {}).map(
                       ([status, count]) => (
                         <TableRow key={status}>
-                          <TableCell className="capitalize">{status.replace(/_/g, " ")}</TableCell>
-                          <TableCell className="text-right">{(count as number).toLocaleString()}</TableCell>
+                          <TableCell className="capitalize">
+                            {status.replace(/_/g, " ")}
+                          </TableCell>
+                          <TableCell className="text-right">
+                            {(count as number).toLocaleString()}
+                          </TableCell>
                         </TableRow>
-                      )
+                      ),
                     )}
                   </TableBody>
                 </Table>
@@ -172,24 +191,39 @@ export const OrdersAnalyticsPage = () => {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>{t("metrics.orders.payment_method")}</TableHead>
-                      <TableHead className="text-right">{t("metrics.orders.count")}</TableHead>
-                      <TableHead className="text-right">{t("metrics.orders.revenue")}</TableHead>
+                      <TableHead>
+                        {t("metrics.orders.payment_method")}
+                      </TableHead>
+                      <TableHead className="text-right">
+                        {t("metrics.orders.count")}
+                      </TableHead>
+                      <TableHead className="text-right">
+                        {t("metrics.orders.revenue")}
+                      </TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {(analytics?.payment_breakdown ?? []).length === 0 ? (
                       <TableRow>
-                        <TableCell colSpan={3} className="text-center text-muted-foreground py-6">
+                        <TableCell
+                          colSpan={3}
+                          className="text-center text-muted-foreground py-6"
+                        >
                           {t("common.no_results_found")}
                         </TableCell>
                       </TableRow>
                     ) : (
                       analytics?.payment_breakdown.map((p) => (
                         <TableRow key={p.method}>
-                          <TableCell className="capitalize">{p.method}</TableCell>
-                          <TableCell className="text-right">{p.count.toLocaleString()}</TableCell>
-                          <TableCell className="text-right">{p.revenue.toLocaleString()}</TableCell>
+                          <TableCell className="capitalize">
+                            {p.method}
+                          </TableCell>
+                          <TableCell className="text-right">
+                            {p.count.toLocaleString()}
+                          </TableCell>
+                          <TableCell className="text-right">
+                            {p.revenue.toLocaleString()}
+                          </TableCell>
                         </TableRow>
                       ))
                     )}
@@ -211,26 +245,43 @@ export const OrdersAnalyticsPage = () => {
                   <TableRow>
                     <TableHead>#</TableHead>
                     <TableHead>{t("metrics.orders.product")}</TableHead>
-                    <TableHead className="text-right">{t("metrics.orders.quantity")}</TableHead>
-                    <TableHead className="text-right">{t("metrics.orders.orders")}</TableHead>
-                    <TableHead className="text-right">{t("metrics.orders.revenue")}</TableHead>
+                    <TableHead className="text-right">
+                      {t("metrics.orders.quantity")}
+                    </TableHead>
+                    <TableHead className="text-right">
+                      {t("metrics.orders.orders")}
+                    </TableHead>
+                    <TableHead className="text-right">
+                      {t("metrics.orders.revenue")}
+                    </TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {(analytics?.top_products ?? []).length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={5} className="text-center text-muted-foreground py-6">
+                      <TableCell
+                        colSpan={5}
+                        className="text-center text-muted-foreground py-6"
+                      >
                         {t("common.no_results_found")}
                       </TableCell>
                     </TableRow>
                   ) : (
                     analytics?.top_products.map((p, idx) => (
                       <TableRow key={String(p.product_id)}>
-                        <TableCell className="text-muted-foreground">{idx + 1}</TableCell>
+                        <TableCell className="text-muted-foreground">
+                          {idx + 1}
+                        </TableCell>
                         <TableCell>{getProductName(p.name)}</TableCell>
-                        <TableCell className="text-right">{p.total_quantity.toLocaleString()}</TableCell>
-                        <TableCell className="text-right">{p.order_count.toLocaleString()}</TableCell>
-                        <TableCell className="text-right">{p.total_revenue.toLocaleString()}</TableCell>
+                        <TableCell className="text-right">
+                          {p.total_quantity.toLocaleString()}
+                        </TableCell>
+                        <TableCell className="text-right">
+                          {p.order_count.toLocaleString()}
+                        </TableCell>
+                        <TableCell className="text-right">
+                          {p.total_revenue.toLocaleString()}
+                        </TableCell>
                       </TableRow>
                     ))
                   )}

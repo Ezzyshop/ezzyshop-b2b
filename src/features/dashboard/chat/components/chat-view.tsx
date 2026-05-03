@@ -3,7 +3,7 @@ import {
   resolveSupportSessionMutationFn,
   sendShopSupportMessageMutationFn,
 } from "@/api/queries";
-import { uploadImageMutationFn } from "@/api/mutations/upload.mutation";
+import { uploadShopImageMutationFn } from "@/api/mutations/upload.mutation";
 import { getSupportSocket } from "@/api/socket";
 import { useShopContext, useUserContext } from "@/contexts";
 import { Button } from "@/components/ui/button";
@@ -188,7 +188,7 @@ export const ChatView = ({ sessionId }: IProps) => {
     try {
       const formData = new FormData();
       formData.append("image", file);
-      const res = await uploadImageMutationFn(formData);
+      const res = await uploadShopImageMutationFn(shop._id, "product", formData);
       const url = res?.data?.url || res?.url;
       if (url) {
         setPendingImages((prev) => [...prev, { url, type: "image" }]);

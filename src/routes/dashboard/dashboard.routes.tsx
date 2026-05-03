@@ -1,6 +1,7 @@
 import { DashboardLayout } from "@/layouts/dashboard.layout";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { ProtectedRoute } from "@/layouts/protected-route.layout";
+import { PlanFeatureGuard } from "@/layouts/plan-feature-guard.layout";
 import { dashboardRoutes } from "./dashboard.routes";
 import { usePermissionContext } from "@/contexts/permission-context";
 import type { RouteAccess, PermissionResource, PermissionAction } from "@/lib/types/permission.types";
@@ -58,7 +59,13 @@ export const DashboardRoutes = () => {
                   path={child.path}
                   element={
                     <ProtectedRoute access={child.access}>
-                      {<child.element />}
+                      {child.planFeature ? (
+                        <PlanFeatureGuard featureKey={child.planFeature}>
+                          <child.element />
+                        </PlanFeatureGuard>
+                      ) : (
+                        <child.element />
+                      )}
                     </ProtectedRoute>
                   }
                 />
@@ -76,7 +83,13 @@ export const DashboardRoutes = () => {
               path={route.path}
               element={
                 <ProtectedRoute access={route.access}>
-                  {<El />}
+                  {route.planFeature ? (
+                    <PlanFeatureGuard featureKey={route.planFeature}>
+                      <El />
+                    </PlanFeatureGuard>
+                  ) : (
+                    <El />
+                  )}
                 </ProtectedRoute>
               }
             />

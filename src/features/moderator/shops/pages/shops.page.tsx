@@ -6,6 +6,8 @@ import { NavLink } from "react-router-dom";
 import { ShopTableFilters } from "../components/shop-table/shop-table-filters";
 import { useQueryParams } from "@/hooks";
 import { DataTable } from "@/components/data-table/data-table";
+import { YemakImportButton } from "../components/yemak-import-modal";
+import { YandexImportButton } from "../components/yandex-import-modal";
 
 export const ShopsPage = () => {
   const { getQueryParams, setQueryParams } = useQueryParams();
@@ -27,9 +29,13 @@ export const ShopsPage = () => {
     <div className="space-y-4">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Mijozlar</h1>
-        <Button asChild>
-          <NavLink to="/moderator/shops/create">Mijoz qo'shish</NavLink>
-        </Button>
+        <div className="flex items-center gap-2">
+          <YemakImportButton />
+          <YandexImportButton />
+          <Button asChild>
+            <NavLink to="/moderator/shops/create">Mijoz qo'shish</NavLink>
+          </Button>
+        </div>
       </div>
       <ShopTableFilters
         setQueryParams={setQueryParams}

@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ISupportUserListItem } from "../utils/support-session.interface";
+import { useIsFeatureEnabled } from "@/hooks/use-plan-features";
 
 interface IProps {
   selectedUserId: string | null;
@@ -14,11 +15,12 @@ interface IProps {
 export const ChatUsersList = ({ selectedUserId, onSelect }: IProps) => {
   const { shop } = useShopContext();
   const { t } = useTranslation();
+  const isEnabled = useIsFeatureEnabled("chat");
 
   const { data, isLoading } = useQuery({
     queryKey: ["support-users", shop._id],
     queryFn: () => listShopSupportUsersQueryFn(shop._id),
-    enabled: Boolean(shop._id),
+    enabled: Boolean(shop._id) && isEnabled,
     refetchInterval: 30000,
   });
 
@@ -47,7 +49,7 @@ export const ChatUsersList = ({ selectedUserId, onSelect }: IProps) => {
                 onClick={() => onSelect(u._id)}
                 className={cn(
                   "w-full text-left px-3 py-2 flex items-center gap-2 hover:bg-accent transition-colors border-b",
-                  selectedUserId === u._id && "bg-accent"
+                  selectedUserId === u._id && "bg-accent",
                 )}
               >
                 <Avatar className="w-9 h-9">

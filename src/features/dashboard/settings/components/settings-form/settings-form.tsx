@@ -17,11 +17,12 @@ import { WorkHoursSection } from "./setting-form-sections/work-hours";
 
 interface IProps {
   shop: IShopUpdateForm;
+  shopId: string;
   onSubmit: (data: IShopUpdateForm) => void;
   isLoading: boolean;
 }
 
-export const SettingsForm = ({ shop, onSubmit, isLoading }: IProps) => {
+export const SettingsForm = ({ shop, shopId, onSubmit, isLoading }: IProps) => {
   const { t } = useTranslation();
 
   const form = useForm<IShopUpdateForm>({
@@ -32,7 +33,7 @@ export const SettingsForm = ({ shop, onSubmit, isLoading }: IProps) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <SettingFormBasicInformation form={form} />
+        <SettingFormBasicInformation form={form} shopId={shopId} />
 
         <SettingFormSocialLinks form={form} />
 

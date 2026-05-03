@@ -10,7 +10,7 @@ export interface IUser {
   photo: string | null;
   roles: UserRoles[];
   shops: {
-    roles: UserRoles[];
+    isAdmin: boolean;
     shop: IUserShop;
     customRole: IRole | null;
   }[];

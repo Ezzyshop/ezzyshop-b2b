@@ -17,7 +17,6 @@ import { useState } from "react";
 import { EditIcon } from "lucide-react";
 import { IUser } from "@/lib";
 import { StaffForm } from "./staff-form";
-import { UserRoles } from "@/lib/enums";
 
 interface IProps {
   staff: IUser;
@@ -40,7 +39,7 @@ export const EditStaff = ({ staff }: IProps) => {
   });
 
   const shopEntry = staff.shops?.find((s) => s.shop._id === shop._id);
-  const isAdmin = shopEntry?.roles?.includes(UserRoles.Admin) ?? false;
+  const isAdmin = shopEntry?.isAdmin ?? false;
   const roleId = shopEntry?.customRole?._id ?? undefined;
 
   const initialValues: IStaffForm = {

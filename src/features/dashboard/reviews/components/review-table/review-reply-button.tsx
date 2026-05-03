@@ -50,12 +50,12 @@ export const ReviewReplyButton = ({ review, shopId }: IProps) => {
     <>
       <Button
         size="sm"
-        variant="outline"
+        variant={review.reply ? "secondary" : "outline"}
         onClick={() => setOpen(true)}
         className="flex items-center gap-1"
       >
         <MessageSquare className="w-4 h-4" />
-        {t("reviews.reply")}
+        {review.reply ? t("reviews.replied") : t("reviews.reply")}
       </Button>
 
       <Dialog open={open} onOpenChange={setOpen}>

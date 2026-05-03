@@ -54,7 +54,19 @@
     "km": "km",
     "upload_image": "Rasm yuklash",
     "upload_image_description": "Rasmni yuklash uchun shu yerga bosing",
-    "details": "Batafsil"
+    "uploading": "Yuklanmoqda...",
+    "ai_image_use_ai": "AI bilan tahrirlash",
+    "ai_image_prompt_placeholder": "Rasmni qanday o'zgartirmoqchiliginizni tasvirlab bering...",
+    "ai_image_generate": "AI bilan tahrirlash",
+    "ai_image_generating_button": "Tahrirlanmoqda...",
+    "ai_image_regenerate": "Qayta tahrirlash",
+    "ai_image_generating": "Rasm tahrirlanmoqda",
+    "ai_image_use": "Ushbu rasmni ishlatish",
+    "ai_image_error": "Rasmni tahrirlash muvaffaqiyatsiz. Qayta urinib ko'ring.",
+    "details": "Batafsil",
+    "tab_upload": "Yuklash",
+    "tab_my_files": "Mening fayllarim",
+    "my_files_empty": "AI rasmlar yo'q. Mahsulot yoki kategoriya formasida yarating."
   },
   "register": {
     "create_telegram": {
@@ -137,7 +149,9 @@
       "metrics_product_sales": "Mahsulot sotimlari",
       "metrics_orders": "Buyurtmalar statistikasi",
       "metrics_top_customers": "Top mijozlar",
-      "metrics_funnel": "Konversiya funnel"
+      "metrics_funnel": "Konversiya funnel",
+      "ai": "AI",
+      "ai_images": "AI Rasmlar"
     }
   },
   "chat": {
@@ -180,8 +194,34 @@
       "new_customers": "Yangi mijozlar soni",
       "total_sales": "Mahsulotlar sotuv",
       "from_last_month": "so'nggi oyga nisbatan",
+      "today_orders": "Bugungi buyurtmalar",
+      "today_vs_yesterday": "kechagi kunga nisbatan",
       "recent_sales": "So'ngi sotuvlar",
       "no_sales": "Sotuvlar mavjud emas",
+      "recent_orders": "So'nggi buyurtmalar",
+      "view_all": "Hammasini ko'rish",
+      "no_orders": "Buyurtmalar yo'q",
+      "low_stock": "Kam qoldiq",
+      "low_stock_description": "Tugab borayotgan mahsulotlar",
+      "no_low_stock": "Barcha mahsulotlar yetarli miqdorda",
+      "items_left": "dona qoldi",
+      "pending_reviews": "Javobsiz izohlar",
+      "pending_reviews_description": "Javob kutayotgan izohlar",
+      "no_pending_reviews": "Javobsiz izohlar yo'q",
+      "reply": "Javob berish",
+      "plan_usage": "Tarif iste'moli",
+      "plan_usage_description": "Joriy tarif chegaralari",
+      "products_limit": "Mahsulotlar",
+      "categories_limit": "Kategoriyalar",
+      "orders_limit": "Oylik buyurtmalar",
+      "unlimited": "Cheksiz",
+      "upgrade_plan": "Tarifni yangilash",
+      "coupons_summary": "Kuponlar",
+      "coupons_active": "Faol kuponlar",
+      "coupons_expiring": "7 kun ichida tugaydi",
+      "coupons_total_redemptions": "Jami foydalanishlar",
+      "no_coupons": "Kuponlar yo'q",
+      "create_coupon": "Kupon yaratish",
       "revenue": {
         "title": "Umumiy daromadlar",
         "description": "Ma'lum bir muddat oralig'idagi umumiy daromadni ko'rish uchun kerakli muddatni tanlang"
@@ -248,7 +288,10 @@
       "main_image": "Asosiy rasm",
       "main_image_description": "Mahsulot asosiy rasmini kiriting",
       "enter_main_image": "Mahsulot asosiy rasmini kiriting",
-      "format_main_image": "Mahsulot asosiy rasmi noto'g'ri formatda"
+      "format_main_image": "Mahsulot asosiy rasmi noto'g'ri formatda",
+      "upload_video": "Video yuklash",
+      "upload_video_description": "Mahsulot videosini yuklash uchun shu yerga bosing (max 10MB)",
+      "video_size_limit": "Video hajmi 10MB dan oshmasligi kerak"
     },
     "plans": {
       "title": "O'zingizga mos tarifni tanlang",
@@ -355,6 +398,8 @@
       "merchant_user_id_placeholder": "Merchant User ID ni kiriting",
       "secret_key": "Secret Key",
       "secret_key_placeholder": "Secret Key ni kiriting",
+      "telegram_provider_token": "Telegram Provider Token",
+      "telegram_provider_token_placeholder": "BotFather dan olingan Telegram Provider Tokenni kiriting",
       "merchant_id_required": "Merchant ID majburiy",
       "merchant_id_pattern": "Merchant ID 6 xonali raqam bo'lishi kerak",
       "service_id_required": "Service ID majburiy",
@@ -538,6 +583,11 @@
       "transaction_status": "To'lov holati",
       "status_history": {
         "title": "Holat tarixi"
+      },
+      "accept": {
+        "success": "Buyurtma muvaffaqiyatli qabul qilindi",
+        "already_accepted": "Bu buyurtma allaqachon qabul qilingan",
+        "error": "Buyurtmani qabul qilishda xatolik yuz berdi"
       }
     },
     "telegram": {
@@ -668,6 +718,31 @@
         "delete": "O'chirish",
         "full": "To'liq kirish"
       }
+    },
+    "ai_images": {
+      "title": "AI Rasmlar",
+      "description": "Do'koningiz uchun AI yordamida yaratilgan yoki tahrirlangan rasmlar.",
+      "edit_dialog_title": "Rasmni AI bilan tahrirlash",
+      "original": "Asl nusxa",
+      "result": "Natija",
+      "result_placeholder": "Tahrirlangan rasm shu yerda ko'rinadi",
+      "edit": "AI bilan tahrirlash",
+      "edit_again": "Qayta tahrirlash",
+      "type_product": "Mahsulot",
+      "type_category": "Kategoriya",
+      "filter_all": "Barchasi",
+      "empty_title": "AI rasmlar yo'q",
+      "empty_description": "Mahsulot yoki kategoriya uchun AI yordamida rasm yarating yoki tahrirlang.",
+      "generate_button": "AI bilan yaratish",
+      "generate_title": "AI bilan yaratish",
+      "generate_type_label": "Tur",
+      "generate_type_locked": "Tur yuklangandan keyin o'zgartirib bo'lmaydi",
+      "generate_source": "Manba rasm",
+      "generate_upload_title": "Rasmingizni yuklang",
+      "generate_upload_description": "Bosing yoki tortib tashlang — JPEG, PNG, WEBP",
+      "generate_button_modal": "Yaratish",
+      "generate_history": "Oldingi versiyalar",
+      "generate_history_note": "Barcha versiyalar AI Rasmlar kutubxonangizga saqlanadi."
     }
   },
   "table": {
@@ -757,6 +832,7 @@
     "message": "Sharh matni",
     "date": "Sana",
     "reply": "Javob berish",
+    "replied": "Javob berildi",
     "reply_placeholder": "Javob yozing...",
     "save_reply": "Saqlash",
     "delete": "O'chirish",

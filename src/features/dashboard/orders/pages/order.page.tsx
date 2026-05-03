@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useParams, useSearchParams } from "react-router-dom";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useShopContext } from "@/contexts";
 import { getOrderQueryFn } from "@/api/queries";
 import { Button } from "@/components/ui/button";
@@ -16,11 +16,18 @@ import { OrderCheques } from "../components/order-page/order-cheques/order-chequ
 import { useTranslation } from "react-i18next";
 import { OrderTransactionStatus } from "../components/order-page/order-transaction-status";
 import { OrderStatusHistory } from "../components/order-page/order-status-history";
+import { useEffect, useRef } from "react";
+import { acceptOrderMutationFn } from "@/api/mutations/orders.mutation";
+import { toast } from "sonner";
+import { OrderStatus } from "../utils/order.enum";
 
 export const OrderPage = () => {
   const { orderId } = useParams();
   const { shop } = useShopContext();
   const { t } = useTranslation();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const queryClient = useQueryClient();
+  const acceptTriggered = useRef(false);
 
   const { data, isLoading } = useQuery({
     queryKey: ["order", shop._id, orderId],
@@ -28,7 +35,46 @@ export const OrderPage = () => {
     enabled: Boolean(shop._id && orderId),
   });
 
+  const { mutate: acceptOrder } = useMutation({
+    mutationFn: () => acceptOrderMutationFn(shop._id, orderId as string),
+    onSuccess: (res) => {
+      const payload = res.data as { already_accepted?: boolean };
+      if (payload.already_accepted) {
+        toast.info(t("dashboard.orders.accept.already_accepted"));
+      } else {
+        toast.success(t("dashboard.orders.accept.success"));
+      }
+      queryClient.invalidateQueries({ queryKey: ["order", shop._id, orderId] });
+      setSearchParams((p) => { p.delete("accept"); return p; });
+    },
+    onError: () => {
+      toast.error(t("dashboard.orders.accept.error"));
+      setSearchParams((p) => { p.delete("accept"); return p; });
+    },
+  });
+
   const order = data?.data;
+
+  useEffect(() => {
+    if (
+      !acceptTriggered.current &&
+      searchParams.get("accept") === "true" &&
+      order &&
+      order.status === OrderStatus.New
+    ) {
+      acceptTriggered.current = true;
+      acceptOrder();
+    } else if (
+      !acceptTriggered.current &&
+      searchParams.get("accept") === "true" &&
+      order &&
+      order.status !== OrderStatus.New
+    ) {
+      acceptTriggered.current = true;
+      toast.info(t("dashboard.orders.accept.already_accepted"));
+      setSearchParams((p) => { p.delete("accept"); return p; });
+    }
+  }, [order, searchParams, acceptOrder, setSearchParams, t]);
 
   if (isLoading || !order) {
     return <div className="text-sm text-muted-foreground">Loading...</div>;
@@ -50,7 +96,11 @@ export const OrderPage = () => {
       </div>
 
       <div className="space-y-4 md:space-y-6 col-span-1 md:col-span-3 flex flex-col">
-        <OrderStatusProgress order={order} />
+        <OrderStatusProgress
+          order={order}
+          autoOpenCancel={searchParams.get("cancel") === "true"}
+          onDialogClose={() => setSearchParams((p) => { p.delete("cancel"); return p; })}
+        />
         <OrderItems order={order} />
         <OrderStatusHistory order={order} />
       </div>

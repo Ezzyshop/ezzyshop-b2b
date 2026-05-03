@@ -101,6 +101,9 @@ export const CategoryForm = ({
                   <ImageUploadSingle
                     value={field.value}
                     onChange={field.onChange}
+                    shopId={shop._id}
+                    type="category"
+                    enableAI
                   />
                 </FormControl>
                 {form.formState.errors.image && (

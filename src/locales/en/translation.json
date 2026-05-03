@@ -50,7 +50,19 @@
     "fixed": "Fixed",
     "dynamic": "Dynamic",
     "free": "Free",
-    "custom": "Custom"
+    "custom": "Custom",
+    "uploading": "Uploading...",
+    "ai_image_use_ai": "Edit with AI",
+    "ai_image_prompt_placeholder": "Describe how you want to edit the image...",
+    "ai_image_generate": "Edit with AI",
+    "ai_image_generating_button": "Editing...",
+    "ai_image_regenerate": "Edit again",
+    "ai_image_generating": "Editing image",
+    "ai_image_use": "Use this image",
+    "ai_image_error": "Failed to edit image. Please try again.",
+    "tab_upload": "Upload",
+    "tab_my_files": "My Files",
+    "my_files_empty": "No AI images yet. Generate one from a product or category form."
   },
   "register": {
     "create_telegram": {
@@ -133,7 +145,9 @@
       "metrics_product_sales": "Product Sales",
       "metrics_orders": "Orders Analytics",
       "metrics_top_customers": "Top Customers",
-      "metrics_funnel": "Conversion Funnel"
+      "metrics_funnel": "Conversion Funnel",
+      "ai": "AI",
+      "ai_images": "AI Images"
     }
   },
   "chat": {
@@ -211,7 +225,10 @@
       "enter_image": "Enter image",
       "attributes": "Attributes",
       "attribute_name": "Attribute name",
-      "attribute_value": "Attribute value"
+      "attribute_value": "Attribute value",
+      "upload_video": "Upload video",
+      "upload_video_description": "Click here to upload a product video (max 10MB)",
+      "video_size_limit": "Video size must not exceed 10MB"
     },
     "plans": {
       "title": "Choose the plan that suits you",
@@ -316,6 +333,8 @@
       "merchant_user_id_placeholder": "Enter Merchant User ID",
       "secret_key": "Secret Key",
       "secret_key_placeholder": "Enter Secret Key",
+      "telegram_provider_token": "Telegram Provider Token",
+      "telegram_provider_token_placeholder": "Enter Telegram Provider Token from BotFather",
       "empty_state": {
         "title": "No payment methods",
         "description": "No payment methods have been added yet. Press the button to add the first payment method."
@@ -533,6 +552,11 @@
       },
       "status_history": {
         "title": "Status history"
+      },
+      "accept": {
+        "success": "Order accepted successfully",
+        "already_accepted": "This order has already been accepted",
+        "error": "Failed to accept order"
       }
     },
     "telegram": {
@@ -564,6 +588,73 @@
       "broadcast-success": "Sent to {{sent}} of {{total}} users",
       "broadcast-history-title": "Broadcast History",
       "broadcast-history-description": "Previously sent broadcasts to your bot users"
+    },
+    "main": {
+      "total_revenue": "This month's revenue",
+      "new_customers": "New customers",
+      "total_sales": "Products sold",
+      "from_last_month": "vs last month",
+      "today_orders": "Today's orders",
+      "today_vs_yesterday": "vs yesterday",
+      "recent_sales": "Recent sales",
+      "no_sales": "No sales yet",
+      "recent_orders": "Recent orders",
+      "view_all": "View all",
+      "no_orders": "No orders yet",
+      "low_stock": "Low stock",
+      "low_stock_description": "Products running low",
+      "no_low_stock": "All products are well-stocked",
+      "items_left": "left",
+      "pending_reviews": "Pending reviews",
+      "pending_reviews_description": "Awaiting your reply",
+      "no_pending_reviews": "No pending reviews",
+      "reply": "Reply",
+      "plan_usage": "Plan usage",
+      "plan_usage_description": "Your current plan limits",
+      "products_limit": "Products",
+      "categories_limit": "Categories",
+      "orders_limit": "Monthly orders",
+      "unlimited": "Unlimited",
+      "upgrade_plan": "Upgrade plan",
+      "coupons_summary": "Coupons",
+      "coupons_active": "Active coupons",
+      "coupons_expiring": "Expiring in 7 days",
+      "coupons_total_redemptions": "Total redemptions",
+      "no_coupons": "No coupons yet",
+      "create_coupon": "Create coupon",
+      "revenue": {
+        "title": "Total revenue",
+        "description": "Select a date range to view revenue"
+      },
+      "sales": {
+        "title": "Sales",
+        "description": "Select a date range to view sales"
+      }
+    },
+    "ai_images": {
+      "title": "AI Images",
+      "description": "All images generated or edited with AI for your shop.",
+      "edit_dialog_title": "Edit image with AI",
+      "original": "Original",
+      "result": "Result",
+      "result_placeholder": "Edited image will appear here",
+      "edit": "Edit with AI",
+      "edit_again": "Edit again",
+      "type_product": "Product",
+      "type_category": "Category",
+      "filter_all": "All",
+      "empty_title": "No AI images yet",
+      "empty_description": "Generate or edit an image using AI on a product or category.",
+      "generate_button": "Generate with AI",
+      "generate_title": "Generate with AI",
+      "generate_type_label": "Type",
+      "generate_type_locked": "Type is locked after upload",
+      "generate_source": "Source image",
+      "generate_upload_title": "Upload your photo",
+      "generate_upload_description": "Click or drag & drop — JPEG, PNG, WEBP",
+      "generate_button_modal": "Generate",
+      "generate_history": "Previous versions",
+      "generate_history_note": "All versions are saved to your AI Images library."
     }
   },
   "table": {
@@ -650,6 +741,7 @@
     "message": "Review text",
     "date": "Date",
     "reply": "Reply",
+    "replied": "Replied",
     "reply_placeholder": "Write a reply...",
     "save_reply": "Save",
     "delete": "Delete",

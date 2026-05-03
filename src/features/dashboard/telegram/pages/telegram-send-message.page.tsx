@@ -6,15 +6,17 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { BroadcastForm } from "../components/bot-settings/broadcast-form";
 import { Button } from "@/components/ui/button";
+import { useIsFeatureEnabled } from "@/hooks/use-plan-features";
 
 const TelegramSendMessagePage = () => {
   const { shop } = useShopContext();
   const { t } = useTranslation();
+  const isEnabled = useIsFeatureEnabled("telegram_send_message");
 
   const { data, isLoading } = useQuery({
     queryKey: ["telegram", shop._id],
     queryFn: () => getTelegramQueryFn(shop._id),
-    enabled: Boolean(shop._id),
+    enabled: Boolean(shop._id) && isEnabled,
   });
 
   if (isLoading) {

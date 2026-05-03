@@ -1,12 +1,16 @@
-import { StatisticsCard } from "../components/statistics-card";
-import { SalesChart } from "../components/sales-chart";
-import { RecentSales } from "../components/recent-sales";
 import { useTranslation } from "react-i18next";
-import { RevenueChart } from "../components/revenue-chart";
 import { SetupChecklist } from "../components/setup-checklist";
+import { OrdersAnalyticsSummary } from "../components/orders-analytics-summary";
+import { LowStockAlerts } from "../components/low-stock-alerts";
+import { PendingReviews } from "../components/pending-reviews";
+import { PlanUsage } from "../components/plan-usage";
+import { CouponsSummary } from "../components/coupons-summary";
+import { useIsFeatureEnabled } from "@/hooks/use-plan-features";
 
 export const DashboardMainPage = () => {
   const { t } = useTranslation();
+  const showOverview = useIsFeatureEnabled("analytics_orders");
+
   return (
     <div className="space-y-4 md:space-y-6">
       <h2 className="text-xl md:text-2xl font-bold">
@@ -14,14 +18,17 @@ export const DashboardMainPage = () => {
       </h2>
       <div className="space-y-4 md:space-y-6">
         <SetupChecklist />
-        <StatisticsCard />
-        <RevenueChart />
 
-        <div className="grid grid-cols-1 md:grid-cols-7 gap-4 md:gap-6">
-          <div className="md:col-span-4">
-            <SalesChart />
-          </div>
-          <RecentSales />
+        {showOverview && <OrdersAnalyticsSummary />}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <PlanUsage />
+          <CouponsSummary />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <LowStockAlerts />
+          <PendingReviews />
         </div>
       </div>
     </div>

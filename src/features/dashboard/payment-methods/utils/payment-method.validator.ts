@@ -71,30 +71,7 @@ export const editPaymentMethodValidator = Joi.object({
 });
 
 export const editClickPaymentMethodConfigValidator = Joi.object({
-  merchant_id: Joi.string()
-    .required()
-    .pattern(/^\d{6}$/)
-    .messages({
-      "any.required": "dashboard.payment-methods.merchant_id_required",
-      "string.empty": "dashboard.payment-methods.merchant_id_required",
-      "string.pattern.base": "dashboard.payment-methods.merchant_id_pattern",
-    }),
-  service_id: Joi.string()
-    .required()
-    .pattern(/^\d{6}$/)
-    .messages({
-      "any.required": "dashboard.payment-methods.service_id_required",
-      "string.empty": "dashboard.payment-methods.service_id_required",
-      "string.pattern.base": "dashboard.payment-methods.service_id_pattern",
-    }),
-  merchant_user_id: Joi.string().required().messages({
-    "any.required": "dashboard.payment-methods.merchant_user_id_required",
-    "string.empty": "dashboard.payment-methods.merchant_user_id_required",
-  }),
-  secret_key: Joi.string().required().messages({
-    "any.required": "dashboard.payment-methods.secret_key_required",
-    "string.empty": "dashboard.payment-methods.secret_key_required",
-  }),
+  telegram_provider_token: Joi.string().optional().allow(null, ""),
 });
 
 export const updatePaymentMethodStatusValidator = Joi.object({

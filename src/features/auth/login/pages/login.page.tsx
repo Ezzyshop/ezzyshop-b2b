@@ -37,8 +37,6 @@ import {
 } from "@/components/ui/input-otp";
 import { Theme, useTheme } from "@/contexts";
 import { getLogo } from "@/lib/get-logo";
-import { getDefaultPage } from "@/lib/get-default-page";
-import { UserRoles } from "@/lib/enums";
 import { useTranslation } from "react-i18next";
 
 export default function LoginPage({
@@ -59,7 +57,7 @@ export default function LoginPage({
     onSuccess: (data) => {
       localStorage.setItem("at", data.data.token);
       toast.success("Tizimga muvaffaqiyatli kirildi");
-      navigate(getDefaultPage([UserRoles.Staff]));
+      navigate("/dashboard");
       window.location.reload();
     },
     onError: () => {
@@ -83,7 +81,7 @@ export default function LoginPage({
     <div
       className={cn(
         "flex flex-col items-center justify-center h-[60vh]",
-        className
+        className,
       )}
       {...props}
     >
@@ -92,7 +90,9 @@ export default function LoginPage({
         alt="logo"
         className="w-[320px]"
       />
-      <h2 className="text-3xl font-semibold mt-5 md:mt-8">{t("login.enter_code")}</h2>
+      <h2 className="text-3xl font-semibold mt-5 md:mt-8">
+        {t("login.enter_code")}
+      </h2>
       <p className="text-md text-foreground/80 mt-5 max-w-md text-center">
         <a
           href={`https://t.me/${import.meta.env.VITE_PUBLIC_TELEGRAM_BOT}`}

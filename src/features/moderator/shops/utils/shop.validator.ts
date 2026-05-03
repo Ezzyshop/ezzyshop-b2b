@@ -9,7 +9,7 @@ import { IShop, ILanguage } from "./shop.interface";
 import { PlansType } from "@/features/dashboard/plans/utils/plans.enum";
 
 export const shopFields: Record<
-  keyof Omit<IShop, "createdAt" | "updatedAt" | "_id">,
+  keyof Omit<IShop, "createdAt" | "updatedAt" | "_id" | "setup">,
   Joi.Schema
 > = {
   owner: Joi.string().optional().allow(null),

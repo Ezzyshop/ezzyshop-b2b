@@ -14,7 +14,7 @@ import { useState } from "react";
 import { useShopContext } from "@/contexts";
 import { useTranslation } from "react-i18next";
 import { LanguageSelectTab } from "@/components/form/language-select-tab";
-import { ImageUploadSingle } from "@/components/ui/image-upload";
+import { ImageUploadSingle, VideoUpload } from "@/components/ui/image-upload";
 
 interface IProps {
   onSubmit: (data: IProductForm) => void;
@@ -80,6 +80,15 @@ export const ProductForm = ({ onSubmit, isLoading, initialValues }: IProps) => {
           title={t("dashboard.products.main_image")}
           description={t("dashboard.products.main_image_description")}
           error={form.formState.errors.main_image?.message}
+          shopId={shop._id}
+          type="product"
+          enableAI
+        />
+
+        <VideoUpload
+          value={form.watch("video") ?? undefined}
+          onChange={(value) => form.setValue("video", value ?? undefined)}
+          shopId={shop._id}
         />
 
         <ProductFormCategories form={form} />

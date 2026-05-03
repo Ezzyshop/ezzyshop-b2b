@@ -21,10 +21,7 @@ export interface IPaymentMethod {
 }
 
 export interface IClickPaymentMethodConfig {
-  merchant_id: string;
-  service_id: string;
-  merchant_user_id: string;
-  secret_key: string;
+  telegram_provider_token?: string | null;
 }
 
 export type TPaymentMethodForm = Pick<
@@ -34,5 +31,5 @@ export type TPaymentMethodForm = Pick<
 
 export type TClickPaymentMethodConfigForm = Pick<
   IClickPaymentMethodConfig,
-  "merchant_id" | "service_id" | "merchant_user_id" | "secret_key"
+  "telegram_provider_token"
 >;

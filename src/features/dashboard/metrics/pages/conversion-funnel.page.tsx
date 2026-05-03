@@ -10,6 +10,7 @@ import { MetricsBarChart } from "../components/metrics-bar-chart";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowDownIcon } from "lucide-react";
 import { useMemo } from "react";
+import { useIsFeatureEnabled } from "@/hooks/use-plan-features";
 
 interface FunnelStepProps {
   label: string;
@@ -19,7 +20,13 @@ interface FunnelStepProps {
   color: string;
 }
 
-const FunnelStep = ({ label, count, percent, dropOff, color }: FunnelStepProps) => (
+const FunnelStep = ({
+  label,
+  count,
+  percent,
+  dropOff,
+  color,
+}: FunnelStepProps) => (
   <div className="flex flex-col items-center gap-1">
     <div
       className="w-full rounded-lg flex flex-col items-center justify-center py-4 px-2 text-white"
@@ -32,7 +39,9 @@ const FunnelStep = ({ label, count, percent, dropOff, color }: FunnelStepProps) 
     {dropOff !== undefined && (
       <div className="flex items-center gap-1 text-xs text-muted-foreground">
         <ArrowDownIcon className="w-3 h-3 text-red-400" />
-        <span className="text-red-400">-{dropOff}% {}</span>
+        <span className="text-red-400">
+          -{dropOff}% {}
+        </span>
       </div>
     )}
   </div>
@@ -42,6 +51,7 @@ export const ConversionFunnelPage = () => {
   const { t } = useTranslation();
   const { shop } = useShopContext();
   const chartRef = useRef<HTMLDivElement>(null);
+  const isEnabled = useIsFeatureEnabled("analytics_conversion");
 
   const [dateRange, setDateRange] = useState({
     startDate: dayjs().subtract(30, "day").format("YYYY-MM-DD"),
@@ -51,14 +61,15 @@ export const ConversionFunnelPage = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["metrics-funnel", shop._id, dateRange],
     queryFn: () => getConversionFunnelQueryFn(shop._id, dateRange),
-    enabled: Boolean(shop._id),
+    enabled: Boolean(shop._id) && isEnabled,
   });
 
   const analytics = data?.data;
 
   const steps = useMemo(() => {
     if (!analytics) return [];
-    const { add_to_cart, view_cart, begin_checkout, purchase } = analytics.funnel;
+    const { add_to_cart, view_cart, begin_checkout, purchase } =
+      analytics.funnel;
     const base = add_to_cart || 1;
     return [
       {
@@ -160,7 +171,9 @@ export const ConversionFunnelPage = () => {
 
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-base">{t("metrics.funnel.funnel_steps")}</CardTitle>
+              <CardTitle className="text-base">
+                {t("metrics.funnel.funnel_steps")}
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
@@ -183,9 +196,21 @@ export const ConversionFunnelPage = () => {
               title={t("metrics.funnel.daily_trend")}
               data={trendData}
               bars={[
-                { dataKey: "add_to_cart", label: t("metrics.funnel.add_to_cart"), color: "var(--chart-1)" },
-                { dataKey: "begin_checkout", label: t("metrics.funnel.begin_checkout"), color: "var(--chart-3)" },
-                { dataKey: "purchase", label: t("metrics.funnel.purchase"), color: "var(--chart-4)" },
+                {
+                  dataKey: "add_to_cart",
+                  label: t("metrics.funnel.add_to_cart"),
+                  color: "var(--chart-1)",
+                },
+                {
+                  dataKey: "begin_checkout",
+                  label: t("metrics.funnel.begin_checkout"),
+                  color: "var(--chart-3)",
+                },
+                {
+                  dataKey: "purchase",
+                  label: t("metrics.funnel.purchase"),
+                  color: "var(--chart-4)",
+                },
               ]}
             />
           </div>
