@@ -43,99 +43,26 @@ export const PaymentMethodConfigForm = ({
       >
         <FormField
           control={form.control}
-          name="merchant_id"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel isRequired>
-                {t("dashboard.payment-methods.merchant_id")}
-              </FormLabel>
-              <FormControl>
-                <Input
-                  placeholder={t(
-                    "dashboard.payment-methods.merchant_id_placeholder"
-                  )}
-                  {...field}
-                />
-              </FormControl>
-              {form.formState.errors.merchant_id && (
-                <p className="text-destructive text-sm">
-                  {t(form.formState.errors.merchant_id.message ?? "")}
-                </p>
-              )}
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="service_id"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel isRequired>
-                {t("dashboard.payment-methods.service_id")}
-              </FormLabel>
-              <FormControl>
-                <Input
-                  placeholder={t(
-                    "dashboard.payment-methods.service_id_placeholder"
-                  )}
-                  {...field}
-                />
-              </FormControl>
-              {form.formState.errors.service_id && (
-                <p className="text-destructive text-sm">
-                  {t(form.formState.errors.service_id.message ?? "")}
-                </p>
-              )}
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="merchant_user_id"
+          name="telegram_provider_token"
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                {t("dashboard.payment-methods.merchant_user_id")}
+                {t("dashboard.payment-methods.telegram_provider_token")}
               </FormLabel>
               <FormControl>
                 <Input
                   placeholder={t(
-                    "dashboard.payment-methods.merchant_user_id_placeholder"
+                    "dashboard.payment-methods.telegram_provider_token_placeholder"
                   )}
                   {...field}
-                  value={field.value ?? undefined}
+                  value={field.value ?? ""}
                 />
               </FormControl>
-              {form.formState.errors.merchant_user_id && (
+              {form.formState.errors.telegram_provider_token && (
                 <p className="text-destructive text-sm">
-                  {t(form.formState.errors.merchant_user_id.message ?? "")}
-                </p>
-              )}
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="secret_key"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel isRequired>
-                {t("dashboard.payment-methods.secret_key")}
-              </FormLabel>
-              <FormControl>
-                <Input
-                  placeholder={t(
-                    "dashboard.payment-methods.secret_key_placeholder"
+                  {t(
+                    form.formState.errors.telegram_provider_token.message ?? ""
                   )}
-                  {...field}
-                />
-              </FormControl>
-              {form.formState.errors.secret_key && (
-                <p className="text-destructive text-sm">
-                  {t(form.formState.errors.secret_key.message ?? "")}
                 </p>
               )}
             </FormItem>

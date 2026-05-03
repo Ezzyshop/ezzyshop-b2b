@@ -3,7 +3,6 @@ import { cn } from "@/lib";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getDefaultPage } from "@/lib/get-default-page";
-import { UserRoles } from "@/lib/enums";
 
 interface IProps {
   isDashboard?: boolean;
@@ -28,7 +27,7 @@ export default function NotFoundPage({ isDashboard = false }: IProps) {
         {!isDashboard && (
           <Button
             className="cursor-pointer"
-            onClick={() => navigate(getDefaultPage([UserRoles.Staff]))}
+            onClick={() => navigate(getDefaultPage([]))}
           >
             {t("common.back_to_site")}
           </Button>

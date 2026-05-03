@@ -1,7 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { useShopContext } from "@/contexts";
 import { IUser } from "@/lib";
-import { UserRoles } from "@/lib/enums";
 
 export const StaffRoleCell = ({ staff }: { staff: IUser }) => {
   const { shop } = useShopContext();
@@ -11,7 +10,7 @@ export const StaffRoleCell = ({ staff }: { staff: IUser }) => {
 
   if (!shopEntry) return <span className="text-muted-foreground">—</span>;
 
-  if (shopEntry.roles?.includes(UserRoles.Admin)) {
+  if (shopEntry.isAdmin) {
     return <Badge variant="default">Admin</Badge>;
   }
 

@@ -51,7 +51,18 @@
     "dynamic": "Dynamic",
     "free": "Free",
     "custom": "Custom",
-    "uploading": "Uploading..."
+    "uploading": "Uploading...",
+    "ai_image_use_ai": "Edit with AI",
+    "ai_image_prompt_placeholder": "Describe how you want to edit the image...",
+    "ai_image_generate": "Edit with AI",
+    "ai_image_generating_button": "Editing...",
+    "ai_image_regenerate": "Edit again",
+    "ai_image_generating": "Editing image",
+    "ai_image_use": "Use this image",
+    "ai_image_error": "Failed to edit image. Please try again.",
+    "tab_upload": "Upload",
+    "tab_my_files": "My Files",
+    "my_files_empty": "No AI images yet. Generate one from a product or category form."
   },
   "register": {
     "create_telegram": {
@@ -134,7 +145,9 @@
       "metrics_product_sales": "Product Sales",
       "metrics_orders": "Orders Analytics",
       "metrics_top_customers": "Top Customers",
-      "metrics_funnel": "Conversion Funnel"
+      "metrics_funnel": "Conversion Funnel",
+      "ai": "AI",
+      "ai_images": "AI Images"
     }
   },
   "chat": {
@@ -320,6 +333,8 @@
       "merchant_user_id_placeholder": "Enter Merchant User ID",
       "secret_key": "Secret Key",
       "secret_key_placeholder": "Enter Secret Key",
+      "telegram_provider_token": "Telegram Provider Token",
+      "telegram_provider_token_placeholder": "Enter Telegram Provider Token from BotFather",
       "empty_state": {
         "title": "No payment methods",
         "description": "No payment methods have been added yet. Press the button to add the first payment method."
@@ -615,6 +630,31 @@
         "title": "Sales",
         "description": "Select a date range to view sales"
       }
+    },
+    "ai_images": {
+      "title": "AI Images",
+      "description": "All images generated or edited with AI for your shop.",
+      "edit_dialog_title": "Edit image with AI",
+      "original": "Original",
+      "result": "Result",
+      "result_placeholder": "Edited image will appear here",
+      "edit": "Edit with AI",
+      "edit_again": "Edit again",
+      "type_product": "Product",
+      "type_category": "Category",
+      "filter_all": "All",
+      "empty_title": "No AI images yet",
+      "empty_description": "Generate or edit an image using AI on a product or category.",
+      "generate_button": "Generate with AI",
+      "generate_title": "Generate with AI",
+      "generate_type_label": "Type",
+      "generate_type_locked": "Type is locked after upload",
+      "generate_source": "Source image",
+      "generate_upload_title": "Upload your photo",
+      "generate_upload_description": "Click or drag & drop — JPEG, PNG, WEBP",
+      "generate_button_modal": "Generate",
+      "generate_history": "Previous versions",
+      "generate_history_note": "All versions are saved to your AI Images library."
     }
   },
   "table": {

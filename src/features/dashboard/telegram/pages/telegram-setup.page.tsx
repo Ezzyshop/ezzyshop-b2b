@@ -12,15 +12,17 @@ import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { TelegramForm } from "../components/telegram-form";
 import { useMemo } from "react";
+import { useIsFeatureEnabled } from "@/hooks/use-plan-features";
 
 const TelegramSetupPage = () => {
   const { shop } = useShopContext();
   const { t } = useTranslation();
+  const isEnabled = useIsFeatureEnabled("telegram_setup");
 
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["telegram", shop._id],
     queryFn: () => getTelegramQueryFn(shop._id),
-    enabled: Boolean(shop._id),
+    enabled: Boolean(shop._id) && isEnabled,
   });
 
   const initialValues = useMemo(() => {

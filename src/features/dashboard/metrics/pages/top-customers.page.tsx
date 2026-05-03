@@ -17,13 +17,20 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { TrophyIcon, UsersIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import {
+  TrophyIcon,
+  UsersIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "lucide-react";
+import { useIsFeatureEnabled } from "@/hooks/use-plan-features";
 
 const PAGE_SIZE = 20;
 
 export const TopCustomersPage = () => {
   const { t } = useTranslation();
   const { shop } = useShopContext();
+  const isEnabled = useIsFeatureEnabled("analytics_orders");
 
   const [dateRange, setDateRange] = useState({
     startDate: dayjs().subtract(30, "day").format("YYYY-MM-DD"),
@@ -39,7 +46,7 @@ export const TopCustomersPage = () => {
         page,
         limit: PAGE_SIZE,
       }),
-    enabled: Boolean(shop._id),
+    enabled: Boolean(shop._id) && isEnabled,
   });
 
   const analytics = data?.data;
@@ -56,16 +63,18 @@ export const TopCustomersPage = () => {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h2 className="text-2xl font-bold">{t("metrics.top_customers.title")}</h2>
-        <MetricsExportButton
-          data={tableData}
-          filename="top-customers"
-        />
+        <h2 className="text-2xl font-bold">
+          {t("metrics.top_customers.title")}
+        </h2>
+        <MetricsExportButton data={tableData} filename="top-customers" />
       </div>
 
       <MetricsDateFilter
         dateRange={dateRange}
-        onDateChange={(r) => { setDateRange(r); setPage(1); }}
+        onDateChange={(r) => {
+          setDateRange(r);
+          setPage(1);
+        }}
         showGroupBy={false}
       />
 
@@ -113,7 +122,10 @@ export const TopCustomersPage = () => {
                 <TableBody>
                   {analytics?.customers.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={6} className="text-center text-muted-foreground py-8">
+                      <TableCell
+                        colSpan={6}
+                        className="text-center text-muted-foreground py-8"
+                      >
                         {t("common.no_results_found")}
                       </TableCell>
                     </TableRow>
@@ -121,16 +133,24 @@ export const TopCustomersPage = () => {
                     analytics?.customers.map((c) => (
                       <TableRow key={c.user_id ?? c.rank}>
                         <TableCell>
-                          <span className={`font-bold ${c.rank <= 3 ? "text-yellow-500" : "text-muted-foreground"}`}>
+                          <span
+                            className={`font-bold ${c.rank <= 3 ? "text-yellow-500" : "text-muted-foreground"}`}
+                          >
                             #{c.rank}
                           </span>
                         </TableCell>
-                        <TableCell className="font-medium">{c.name ?? "-"}</TableCell>
-                        <TableCell className="text-muted-foreground">{c.phone ?? "-"}</TableCell>
+                        <TableCell className="font-medium">
+                          {c.name ?? "-"}
+                        </TableCell>
+                        <TableCell className="text-muted-foreground">
+                          {c.phone ?? "-"}
+                        </TableCell>
                         <TableCell className="text-right font-medium">
                           {c.total_spent.toLocaleString()}
                         </TableCell>
-                        <TableCell className="text-right">{c.order_count}</TableCell>
+                        <TableCell className="text-right">
+                          {c.order_count}
+                        </TableCell>
                         <TableCell className="text-right text-muted-foreground">
                           {dayjs(c.last_order).format("MMM D, YYYY")}
                         </TableCell>
@@ -149,7 +169,9 @@ export const TopCustomersPage = () => {
                 >
                   <ChevronLeftIcon className="w-4 h-4" />
                 </Button>
-                <span className="text-sm text-muted-foreground">{t("common.previous")} / {t("common.next")}</span>
+                <span className="text-sm text-muted-foreground">
+                  {t("common.previous")} / {t("common.next")}
+                </span>
                 <Button
                   variant="outline"
                   size="icon"

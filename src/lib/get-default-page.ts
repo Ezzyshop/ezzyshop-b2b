@@ -1,4 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const getDefaultPage = (_roles?: unknown) => {
+import { UserRoles } from "./enums";
+
+export const getDefaultPage = (roles: UserRoles[]): string => {
+  if (roles.includes(UserRoles.SuperAdmin)) return "/moderator";
   return "/dashboard";
 };

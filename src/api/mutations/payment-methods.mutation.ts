@@ -35,5 +35,5 @@ export const updateClickPaymentMethodConfigMutationFn = async (
   data: IClickPaymentMethodConfig
 ): Promise<IResponse<IPaymentMethod>> =>
   await api
-    .put(`/payment-methods/${shopId}/${paymentMethodId}/click-config`, data)
+    .put(`/payment-methods/${shopId}/${paymentMethodId}/click-config`, { click_config: data })
     .then((res) => res.data);

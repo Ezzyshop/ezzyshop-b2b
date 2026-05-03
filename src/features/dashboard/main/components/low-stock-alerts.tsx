@@ -8,15 +8,18 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { useShopContext } from "@/contexts";
 import { getLowStockQueryFn } from "@/api/queries/dashboard-stats.query";
+import { useIsFeatureEnabled } from "@/hooks/use-plan-features";
+import { PlanFeatureGuard } from "@/layouts/plan-feature-guard.layout";
 
 export const LowStockAlerts = () => {
   const { t } = useTranslation();
   const { shop } = useShopContext();
+  const showLowStock = useIsFeatureEnabled("stat_low_stock");
 
   const { data: lowStockProducts = [], isLoading } = useQuery({
     queryKey: ["dashboard-stats", shop._id, "low-stock"],
     queryFn: () => getLowStockQueryFn(shop._id),
-    enabled: !!shop?._id,
+    enabled: !!shop?._id && showLowStock,
   });
 
   const getBadgeColor = (qty: number) => {
@@ -46,54 +49,60 @@ export const LowStockAlerts = () => {
           </Link>
         </Button>
       </CardHeader>
+
       <CardContent className="p-0">
-        {isLoading ? (
-          <div className="space-y-0">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="flex items-center gap-3 px-6 py-3">
-                <Skeleton className="h-8 w-8 rounded" />
-                <Skeleton className="h-4 flex-1" />
-                <Skeleton className="h-5 w-16" />
-              </div>
-            ))}
-          </div>
-        ) : lowStockProducts.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-32 gap-2 text-sm text-muted-foreground">
-            <Package className="h-8 w-8 text-muted-foreground/40" />
-            {t("dashboard.main.no_low_stock")}
-          </div>
-        ) : (
-          <div className="divide-y">
-            {lowStockProducts.map((product) => {
-              const name = product.name.uz || product.name.ru || product.name.en || "";
-              return (
-                <Link
-                  key={product._id}
-                  to={`/dashboard/products`}
-                  className="flex items-center gap-3 px-6 py-3 hover:bg-muted/40 transition-colors"
-                >
-                  {product.main_image ? (
-                    <img
-                      src={product.main_image}
-                      alt={name}
-                      className="h-8 w-8 rounded object-cover shrink-0"
-                    />
-                  ) : (
-                    <div className="h-8 w-8 rounded bg-muted flex items-center justify-center shrink-0">
-                      <Package className="h-4 w-4 text-muted-foreground" />
-                    </div>
-                  )}
-                  <span className="text-sm flex-1 min-w-0 truncate font-medium">{name}</span>
-                  <span
-                    className={`text-xs font-semibold px-2 py-0.5 rounded-full border shrink-0 ${getBadgeColor(product.minQty)}`}
+        <PlanFeatureGuard featureKey="stat_low_stock">
+          {isLoading ? (
+            <div className="space-y-0">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="flex items-center gap-3 px-6 py-3">
+                  <Skeleton className="h-8 w-8 rounded" />
+                  <Skeleton className="h-4 flex-1" />
+                  <Skeleton className="h-5 w-16" />
+                </div>
+              ))}
+            </div>
+          ) : lowStockProducts.length === 0 ? (
+            <div className="flex flex-col items-center justify-center h-32 gap-2 text-sm text-muted-foreground">
+              <Package className="h-8 w-8 text-muted-foreground/40" />
+              {t("dashboard.main.no_low_stock")}
+            </div>
+          ) : (
+            <div className="divide-y">
+              {lowStockProducts.map((product) => {
+                const name =
+                  product.name.uz || product.name.ru || product.name.en || "";
+                return (
+                  <Link
+                    key={product._id}
+                    to={`/dashboard/products`}
+                    className="flex items-center gap-3 px-6 py-3 hover:bg-muted/40 transition-colors"
                   >
-                    {product.minQty} {t("dashboard.main.items_left")}
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
-        )}
+                    {product.main_image ? (
+                      <img
+                        src={product.main_image}
+                        alt={name}
+                        className="h-8 w-8 rounded object-cover shrink-0"
+                      />
+                    ) : (
+                      <div className="h-8 w-8 rounded bg-muted flex items-center justify-center shrink-0">
+                        <Package className="h-4 w-4 text-muted-foreground" />
+                      </div>
+                    )}
+                    <span className="text-sm flex-1 min-w-0 truncate font-medium">
+                      {name}
+                    </span>
+                    <span
+                      className={`text-xs font-semibold px-2 py-0.5 rounded-full border shrink-0 ${getBadgeColor(product.minQty)}`}
+                    >
+                      {product.minQty} {t("dashboard.main.items_left")}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+        </PlanFeatureGuard>
       </CardContent>
     </Card>
   );

@@ -24,6 +24,7 @@ export const PlanEditPage = () => {
     onSuccess: () => {
       toast.success("Tarif muvaffaqiyatli yanginaldi");
       queryClient.invalidateQueries({ queryKey: ["plan", id] });
+      queryClient.invalidateQueries({ queryKey: ["plans"] });
       navigate("/moderator/plans");
     },
   });
@@ -39,12 +40,10 @@ export const PlanEditPage = () => {
       name: data.data.name,
       description: data.data.description,
       price: data.data.price,
-      products: data.data.products,
-      categories: data.data.categories,
-      orders: data.data.orders,
-      status: data.data.status,
-      order: data.data.order,
       annual_price: data.data.annual_price,
+      order: data.data.order,
+      status: data.data.status,
+      features: data.data.features ?? {},
     };
   }, [data]);
 

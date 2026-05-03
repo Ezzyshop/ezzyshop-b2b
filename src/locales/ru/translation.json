@@ -51,7 +51,18 @@
     "dynamic": "Динамическая",
     "free": "Бесплатная",
     "custom": "Настраиваемая",
-    "uploading": "Загрузка..."
+    "uploading": "Загрузка...",
+    "ai_image_use_ai": "Редактировать с ИИ",
+    "ai_image_prompt_placeholder": "Опишите, как хотите изменить изображение...",
+    "ai_image_generate": "Редактировать с ИИ",
+    "ai_image_generating_button": "Редактирование...",
+    "ai_image_regenerate": "Редактировать снова",
+    "ai_image_generating": "Редактирование изображения",
+    "ai_image_use": "Использовать это изображение",
+    "ai_image_error": "Не удалось отредактировать изображение. Попробуйте снова.",
+    "tab_upload": "Загрузить",
+    "tab_my_files": "Мои файлы",
+    "my_files_empty": "Нет AI изображений. Создайте их в форме товара или категории."
   },
   "register": {
     "create_telegram": {
@@ -134,7 +145,9 @@
       "metrics_product_sales": "Продажи товаров",
       "metrics_orders": "Аналитика заказов",
       "metrics_top_customers": "Топ клиенты",
-      "metrics_funnel": "Воронка конверсий"
+      "metrics_funnel": "Воронка конверсий",
+      "ai": "ИИ",
+      "ai_images": "AI Изображения"
     }
   },
   "chat": {
@@ -320,6 +333,8 @@
       "merchant_user_id_placeholder": "Введите ID пользователя мерчанта",
       "secret_key": "Секретный ключ",
       "secret_key_placeholder": "Введите секретный ключ",
+      "telegram_provider_token": "Telegram Provider Token",
+      "telegram_provider_token_placeholder": "Введите Telegram Provider Token из BotFather",
       "empty_state": {
         "title": "Нет способов оплаты",
         "description": "Пока не добавлено ни одного способа оплаты. Нажмите кнопку, чтобы добавить первый способ оплаты."
@@ -615,6 +630,31 @@
         "title": "Продажи",
         "description": "Выберите нужный период"
       }
+    },
+    "ai_images": {
+      "title": "AI Изображения",
+      "description": "Все изображения, сгенерированные или отредактированные с помощью ИИ.",
+      "edit_dialog_title": "Редактировать изображение с ИИ",
+      "original": "Оригинал",
+      "result": "Результат",
+      "result_placeholder": "Отредактированное изображение появится здесь",
+      "edit": "Редактировать с ИИ",
+      "edit_again": "Редактировать снова",
+      "type_product": "Товар",
+      "type_category": "Категория",
+      "filter_all": "Все",
+      "empty_title": "Нет AI изображений",
+      "empty_description": "Сгенерируйте или отредактируйте изображение с помощью ИИ для товара или категории.",
+      "generate_button": "Сгенерировать с ИИ",
+      "generate_title": "Сгенерировать с ИИ",
+      "generate_type_label": "Тип",
+      "generate_type_locked": "Тип зафиксирован после загрузки",
+      "generate_source": "Исходное изображение",
+      "generate_upload_title": "Загрузите фото",
+      "generate_upload_description": "Нажмите или перетащите — JPEG, PNG, WEBP",
+      "generate_button_modal": "Сгенерировать",
+      "generate_history": "Предыдущие версии",
+      "generate_history_note": "Все версии сохраняются в библиотеке AI изображений."
     }
   },
   "table": {

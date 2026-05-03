@@ -36,7 +36,7 @@ export default function ChatPage() {
           onSelect={handleSelectSession}
         />
       </div>
-      <div className="flex-grow min-w-0">
+      <div className="flex-1 min-w-0">
         <ChatView sessionId={selectedSessionId} />
       </div>
     </div>

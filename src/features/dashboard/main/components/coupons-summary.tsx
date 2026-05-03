@@ -7,15 +7,18 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { useShopContext } from "@/contexts";
 import { getCouponsSummaryQueryFn } from "@/api/queries/dashboard-stats.query";
+import { useIsFeatureEnabled } from "@/hooks/use-plan-features";
+import { PlanFeatureGuard } from "@/layouts/plan-feature-guard.layout";
 
 export const CouponsSummary = () => {
   const { t } = useTranslation();
   const { shop } = useShopContext();
+  const showCoupons = useIsFeatureEnabled("stat_coupons");
 
   const { data, isLoading } = useQuery({
     queryKey: ["dashboard-stats", shop._id, "coupons-summary"],
     queryFn: () => getCouponsSummaryQueryFn(shop._id),
-    enabled: !!shop?._id,
+    enabled: !!shop?._id && showCoupons,
   });
 
   const stats = [
@@ -52,7 +55,12 @@ export const CouponsSummary = () => {
           </CardTitle>
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm" asChild className="gap-1 text-xs h-7">
+          <Button
+            variant="outline"
+            size="sm"
+            asChild
+            className="gap-1 text-xs h-7"
+          >
             <Link to="/dashboard/coupons">
               {t("dashboard.main.view_all")}
               <ArrowRight className="h-3 w-3" />
@@ -61,40 +69,53 @@ export const CouponsSummary = () => {
         </div>
       </CardHeader>
       <CardContent>
-        {isLoading ? (
-          <div className="grid grid-cols-3 gap-3">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="space-y-2 p-3 rounded-lg bg-muted/50">
-                <Skeleton className="h-6 w-6 rounded" />
-                <Skeleton className="h-6 w-10" />
-                <Skeleton className="h-3 w-20" />
-              </div>
-            ))}
-          </div>
-        ) : !data?.hasCoupons ? (
-          <div className="flex flex-col items-center justify-center gap-3 py-6">
-            <TicketPercent className="h-10 w-10 text-muted-foreground/30" />
-            <p className="text-sm text-muted-foreground">{t("dashboard.main.no_coupons")}</p>
-            <Button size="sm" variant="outline" asChild className="gap-1">
-              <Link to="/dashboard/coupons">
-                <Plus className="h-3.5 w-3.5" />
-                {t("dashboard.main.create_coupon")}
-              </Link>
-            </Button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-3 gap-3">
-            {stats.map(({ label, value, icon: Icon, color, bg }) => (
-              <div key={label} className={`flex flex-col gap-2 p-3 rounded-lg ${bg}`}>
-                <div className={`w-8 h-8 rounded-md flex items-center justify-center bg-white/70`}>
-                  <Icon className={`h-4 w-4 ${color}`} />
+        <PlanFeatureGuard featureKey="stat_coupons">
+          {isLoading ? (
+            <div className="grid grid-cols-3 gap-3">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <div key={i} className="space-y-2 p-3 rounded-lg bg-muted/50">
+                  <Skeleton className="h-6 w-6 rounded" />
+                  <Skeleton className="h-6 w-10" />
+                  <Skeleton className="h-3 w-20" />
                 </div>
-                <div className={`text-2xl font-bold tabular-nums ${color}`}>{value}</div>
-                <div className="text-xs text-muted-foreground leading-tight">{label}</div>
-              </div>
-            ))}
-          </div>
-        )}
+              ))}
+            </div>
+          ) : !data?.hasCoupons ? (
+            <div className="flex flex-col items-center justify-center gap-3 py-6">
+              <TicketPercent className="h-10 w-10 text-muted-foreground/30" />
+              <p className="text-sm text-muted-foreground">
+                {t("dashboard.main.no_coupons")}
+              </p>
+              <Button size="sm" variant="outline" asChild className="gap-1">
+                <Link to="/dashboard/coupons">
+                  <Plus className="h-3.5 w-3.5" />
+                  {t("dashboard.main.create_coupon")}
+                </Link>
+              </Button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-3 gap-3">
+              {stats.map(({ label, value, icon: Icon, color, bg }) => (
+                <div
+                  key={label}
+                  className={`flex flex-col gap-2 p-3 rounded-lg ${bg}`}
+                >
+                  <div
+                    className={`w-8 h-8 rounded-md flex items-center justify-center bg-white/70`}
+                  >
+                    <Icon className={`h-4 w-4 ${color}`} />
+                  </div>
+                  <div className={`text-2xl font-bold tabular-nums ${color}`}>
+                    {value}
+                  </div>
+                  <div className="text-xs text-muted-foreground leading-tight">
+                    {label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </PlanFeatureGuard>
       </CardContent>
     </Card>
   );

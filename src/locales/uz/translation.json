@@ -55,7 +55,18 @@
     "upload_image": "Rasm yuklash",
     "upload_image_description": "Rasmni yuklash uchun shu yerga bosing",
     "uploading": "Yuklanmoqda...",
-    "details": "Batafsil"
+    "ai_image_use_ai": "AI bilan tahrirlash",
+    "ai_image_prompt_placeholder": "Rasmni qanday o'zgartirmoqchiliginizni tasvirlab bering...",
+    "ai_image_generate": "AI bilan tahrirlash",
+    "ai_image_generating_button": "Tahrirlanmoqda...",
+    "ai_image_regenerate": "Qayta tahrirlash",
+    "ai_image_generating": "Rasm tahrirlanmoqda",
+    "ai_image_use": "Ushbu rasmni ishlatish",
+    "ai_image_error": "Rasmni tahrirlash muvaffaqiyatsiz. Qayta urinib ko'ring.",
+    "details": "Batafsil",
+    "tab_upload": "Yuklash",
+    "tab_my_files": "Mening fayllarim",
+    "my_files_empty": "AI rasmlar yo'q. Mahsulot yoki kategoriya formasida yarating."
   },
   "register": {
     "create_telegram": {
@@ -138,7 +149,9 @@
       "metrics_product_sales": "Mahsulot sotimlari",
       "metrics_orders": "Buyurtmalar statistikasi",
       "metrics_top_customers": "Top mijozlar",
-      "metrics_funnel": "Konversiya funnel"
+      "metrics_funnel": "Konversiya funnel",
+      "ai": "AI",
+      "ai_images": "AI Rasmlar"
     }
   },
   "chat": {
@@ -385,6 +398,8 @@
       "merchant_user_id_placeholder": "Merchant User ID ni kiriting",
       "secret_key": "Secret Key",
       "secret_key_placeholder": "Secret Key ni kiriting",
+      "telegram_provider_token": "Telegram Provider Token",
+      "telegram_provider_token_placeholder": "BotFather dan olingan Telegram Provider Tokenni kiriting",
       "merchant_id_required": "Merchant ID majburiy",
       "merchant_id_pattern": "Merchant ID 6 xonali raqam bo'lishi kerak",
       "service_id_required": "Service ID majburiy",
@@ -703,6 +718,31 @@
         "delete": "O'chirish",
         "full": "To'liq kirish"
       }
+    },
+    "ai_images": {
+      "title": "AI Rasmlar",
+      "description": "Do'koningiz uchun AI yordamida yaratilgan yoki tahrirlangan rasmlar.",
+      "edit_dialog_title": "Rasmni AI bilan tahrirlash",
+      "original": "Asl nusxa",
+      "result": "Natija",
+      "result_placeholder": "Tahrirlangan rasm shu yerda ko'rinadi",
+      "edit": "AI bilan tahrirlash",
+      "edit_again": "Qayta tahrirlash",
+      "type_product": "Mahsulot",
+      "type_category": "Kategoriya",
+      "filter_all": "Barchasi",
+      "empty_title": "AI rasmlar yo'q",
+      "empty_description": "Mahsulot yoki kategoriya uchun AI yordamida rasm yarating yoki tahrirlang.",
+      "generate_button": "AI bilan yaratish",
+      "generate_title": "AI bilan yaratish",
+      "generate_type_label": "Tur",
+      "generate_type_locked": "Tur yuklangandan keyin o'zgartirib bo'lmaydi",
+      "generate_source": "Manba rasm",
+      "generate_upload_title": "Rasmingizni yuklang",
+      "generate_upload_description": "Bosing yoki tortib tashlang — JPEG, PNG, WEBP",
+      "generate_button_modal": "Yaratish",
+      "generate_history": "Oldingi versiyalar",
+      "generate_history_note": "Barcha versiyalar AI Rasmlar kutubxonangizga saqlanadi."
     }
   },
   "table": {

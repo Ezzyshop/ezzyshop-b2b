@@ -4,7 +4,6 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { telegramOidcMutationFn } from "@/api/mutations";
 import { getDefaultPage } from "@/lib/get-default-page";
-import { UserRoles } from "@/lib/enums";
 
 export default function TelegramCallbackPage() {
   const [searchParams] = useSearchParams();
@@ -16,7 +15,7 @@ export default function TelegramCallbackPage() {
     onSuccess: (data) => {
       localStorage.setItem("at", data.data.token);
       toast.success("Tizimga muvaffaqiyatli kirildi");
-      navigate(getDefaultPage([UserRoles.Staff]));
+      navigate(getDefaultPage([]));
       window.location.reload();
     },
     onError: () => {

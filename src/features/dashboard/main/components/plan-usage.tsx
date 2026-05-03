@@ -8,36 +8,44 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { useShopContext } from "@/contexts";
 import { getPlanUsageQueryFn } from "@/api/queries/dashboard-stats.query";
+import { PLAN_FEATURE_MAP } from "@/lib/plan-features.const";
 
 interface UsageRowProps {
   label: string;
   used: number;
   max: number;
-  unlimited: string;
 }
 
-const UsageRow = ({ label, used, max, unlimited }: UsageRowProps) => {
-  const isUnlimited = max === -1 || max === 0;
+const UsageRow = ({ label, used, max }: UsageRowProps) => {
+  const isUnlimited = max === -1;
   const pct = isUnlimited ? 0 : Math.min((used / max) * 100, 100);
   const isNearLimit = !isUnlimited && pct >= 80;
   const isAtLimit = !isUnlimited && pct >= 100;
+
+  if (isUnlimited) return;
 
   return (
     <div className="space-y-1.5">
       <div className="flex items-center justify-between text-sm">
         <span className="text-muted-foreground">{label}</span>
-        <span className={`font-medium tabular-nums ${isAtLimit ? "text-red-600" : isNearLimit ? "text-orange-500" : ""}`}>
-          {isUnlimited ? (
-            <span className="text-xs text-muted-foreground">{unlimited}</span>
-          ) : (
-            `${used.toLocaleString()} / ${max.toLocaleString()}`
-          )}
+        <span
+          className={`font-medium tabular-nums ${
+            isAtLimit ? "text-red-600" : isNearLimit ? "text-orange-500" : ""
+          }`}
+        >
+          {used.toLocaleString()} / {max.toLocaleString()}
         </span>
       </div>
       {!isUnlimited && (
         <Progress
           value={pct}
-          className={`h-1.5 ${isAtLimit ? "[&>div]:bg-red-500" : isNearLimit ? "[&>div]:bg-orange-400" : ""}`}
+          className={`h-1.5 ${
+            isAtLimit
+              ? "[&>div]:bg-red-500"
+              : isNearLimit
+                ? "[&>div]:bg-orange-400"
+                : ""
+          }`}
         />
       )}
     </div>
@@ -55,6 +63,7 @@ export const PlanUsage = () => {
   });
 
   const planName = data?.planName ?? shop.plan?.name ?? "";
+  const features = data?.features ?? [];
 
   return (
     <Card className="shadow-none">
@@ -70,7 +79,12 @@ export const PlanUsage = () => {
             )}
           </div>
         </div>
-        <Button variant="outline" size="sm" asChild className="gap-1 text-xs h-7">
+        <Button
+          variant="outline"
+          size="sm"
+          asChild
+          className="gap-1 text-xs h-7"
+        >
           <Link to="/dashboard/plans">
             {t("dashboard.main.upgrade_plan")}
             <ArrowUpRight className="h-3 w-3" />
@@ -90,27 +104,19 @@ export const PlanUsage = () => {
               </div>
             ))}
           </div>
+        ) : features.length === 0 ? (
+          <p className="text-sm text-muted-foreground text-center py-2">
+            {t("dashboard.main.no_features")}
+          </p>
         ) : (
-          <>
+          features.map((feature) => (
             <UsageRow
-              label={t("dashboard.main.products_limit")}
-              used={data?.products.used ?? 0}
-              max={data?.products.max ?? 0}
-              unlimited={t("dashboard.main.unlimited")}
+              key={feature.key}
+              label={PLAN_FEATURE_MAP[feature.key]?.label ?? feature.key}
+              used={feature.used}
+              max={feature.max}
             />
-            <UsageRow
-              label={t("dashboard.main.categories_limit")}
-              used={data?.categories.used ?? 0}
-              max={data?.categories.max ?? 0}
-              unlimited={t("dashboard.main.unlimited")}
-            />
-            <UsageRow
-              label={t("dashboard.main.orders_limit")}
-              used={data?.orders.used ?? 0}
-              max={data?.orders.max ?? 0}
-              unlimited={t("dashboard.main.unlimited")}
-            />
-          </>
+          ))
         )}
       </CardContent>
     </Card>

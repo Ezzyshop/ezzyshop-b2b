@@ -71,7 +71,7 @@ export const ModeratorSidebarUser = () => {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem asChild>
-                <Link to={getDefaultPage(user.shops[0].roles)}>
+                <Link to={getDefaultPage(user.roles)}>
                   <BotIcon />
                   Dashboard
                 </Link>
