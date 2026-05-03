@@ -2,26 +2,31 @@ import { PropsWithChildren, useState } from "react";
 import { useUserContext } from "../user-context";
 import { Navigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { getByShopByIdQueryFn } from "@/api/queries";
+import { getByShopByIdQueryFn, getShopQueryFn } from "@/api/queries";
 import { LoaderWithOverlay } from "@/components/loaders/global-loader";
 import { ShopContext } from "./shop.context";
 import { IUserShop } from "@/lib/interfaces";
+import { UserRoles } from "@/lib/enums";
 
 export const ShopContextProvider = ({ children }: PropsWithChildren) => {
   const { user } = useUserContext();
 
+  const isSuperAdmin = user.roles.includes(UserRoles.SuperAdmin);
   const hasUserShop = user.shops.length;
   const [activeShop, setActiveShop] = useState<IUserShop | null>(
     user.shops[0]?.shop || null
   );
 
   const shop = useQuery({
-    queryKey: ["shop", activeShop?._id, activeShop?._id],
-    queryFn: () => getByShopByIdQueryFn(activeShop!._id),
+    queryKey: ["shop", activeShop?._id],
+    queryFn: () =>
+      isSuperAdmin
+        ? getShopQueryFn(activeShop!._id)
+        : getByShopByIdQueryFn(activeShop!._id),
     enabled: Boolean(activeShop?._id),
   });
 
-  if (!hasUserShop || !activeShop) {
+  if (!isSuperAdmin && (!hasUserShop || !activeShop)) {
     return <Navigate to="/register" />;
   }
 

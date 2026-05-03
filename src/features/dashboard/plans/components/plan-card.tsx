@@ -26,9 +26,9 @@ export const PlanCard = ({ plan, type }: IProps) => {
   const gapBetweenPricesInPercent =
     100 - (plan.annual_price / plan.price) * 100;
 
-  const isProductsLimitInfinity = plan.products.max === -1;
-  const isCategoriesLimitInfinity = plan.categories.max === -1;
-  const isOrdersLimitInfinity = plan.orders.max === -1;
+  const isProductsLimitInfinity = true;
+  const isCategoriesLimitInfinity = true;
+  const isOrdersLimitInfinity = true;
 
   return (
     <Card>
@@ -54,7 +54,7 @@ export const PlanCard = ({ plan, type }: IProps) => {
               isProductsLimitInfinity
                 ? t("dashboard.plans.advantages.product_count_infinity")
                 : t("dashboard.plans.advantages.product_count", {
-                    count: plan.products.max,
+                    count: 10,
                   })
             }
           />
@@ -63,7 +63,7 @@ export const PlanCard = ({ plan, type }: IProps) => {
               isCategoriesLimitInfinity
                 ? t("dashboard.plans.advantages.category_count_infinity")
                 : t("dashboard.plans.advantages.category_count", {
-                    count: plan.categories.max,
+                    count: 20,
                   })
             }
           />
@@ -72,7 +72,7 @@ export const PlanCard = ({ plan, type }: IProps) => {
               isOrdersLimitInfinity
                 ? t("dashboard.plans.advantages.order_count_infinity")
                 : t("dashboard.plans.advantages.order_count", {
-                    count: plan.orders.max,
+                    count: 30,
                   })
             }
           />
