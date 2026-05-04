@@ -1,6 +1,6 @@
 import { PropsWithChildren, useState } from "react";
 import { useUserContext } from "../user-context";
-import { Navigate } from "react-router-dom";
+import { Navigate, useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getByShopByIdQueryFn, getShopQueryFn } from "@/api/queries";
 import { LoaderWithOverlay } from "@/components/loaders/global-loader";
@@ -10,12 +10,18 @@ import { UserRoles } from "@/lib/enums";
 
 export const ShopContextProvider = ({ children }: PropsWithChildren) => {
   const { user } = useUserContext();
+  const [searchParams] = useSearchParams();
 
   const isSuperAdmin = user.roles.includes(UserRoles.SuperAdmin);
   const hasUserShop = user.shops.length;
-  const [activeShop, setActiveShop] = useState<IUserShop | null>(
-    user.shops[0]?.shop || null
-  );
+  const [activeShop, setActiveShop] = useState<IUserShop | null>(() => {
+    const shopId = searchParams.get("shopId");
+    if (shopId) {
+      const found = user.shops.find((s) => s.shop._id === shopId);
+      if (found) return found.shop;
+    }
+    return user.shops[0]?.shop || null;
+  });
 
   const shop = useQuery({
     queryKey: ["shop", activeShop?._id],
