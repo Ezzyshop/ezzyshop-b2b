@@ -24,28 +24,21 @@ export const UserForm = ({ initialValues, onSubmit, isLoading }: IProps) => {
 
   const form = useForm<IUserCreateForm>({
     defaultValues: initialValues
-      ? { ...initialValues, password: "", confirm_password: "" }
+      ? { ...initialValues }
       : {
           full_name: "",
           phone: "",
           photo: null,
           roles: [],
-          password: "",
-          confirm_password: "",
         },
     resolver: joiResolver(isEdit ? updateUserValidator : createUserValidator),
   });
 
   const handleSubmit = (data: IUserCreateForm) => {
-    if (isEdit) {
-      const { password: _password, confirm_password: _confirm, ...rest } = data;
-      void _password;
-      void _confirm;
-      onSubmit(rest);
-      return;
-    }
     onSubmit(data);
   };
+
+  console.log(form.formState.errors);
 
   return (
     <Form {...form}>
