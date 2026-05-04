@@ -41,7 +41,7 @@ export const ShopContextProvider = ({ children }: PropsWithChildren) => {
   return (
     <ShopContext.Provider
       value={{
-        activeShop,
+        activeShop: activeShop!,
         setActiveShop,
         shop: shop.data.data,
       }}

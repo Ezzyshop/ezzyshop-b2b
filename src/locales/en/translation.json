@@ -629,7 +629,8 @@
       "sales": {
         "title": "Sales",
         "description": "Select a date range to view sales"
-      }
+      },
+      "no_features": "No features available"
     },
     "ai_images": {
       "title": "AI Images",
@@ -850,6 +851,30 @@
       "view_cart": "View Cart",
       "begin_checkout": "Begin Checkout",
       "purchase": "Purchase"
+    },
+    "cache_admin": {
+      "title": "Cache Management",
+      "total_keys": "Total Keys",
+      "memory": "Memory",
+      "search_placeholder": "Pattern (e.g. products:* or user:123)",
+      "search": "Search",
+      "load": "Load",
+      "loading": "Loading...",
+      "load_more": "Load More",
+      "refresh": "Refresh",
+      "delete_by_pattern": "Delete by Pattern",
+      "key": "Key",
+      "ttl": "TTL (seconds)",
+      "actions": "Actions",
+      "no_expiry": "∞ no expiry",
+      "expired": "Expired",
+      "key_value": "Key Value",
+      "no_data": "No data found",
+      "delete_confirm": "Are you sure you want to delete this key?",
+      "delete_success": "Key deleted",
+      "pattern_delete_desc": "All keys matching the pattern will be deleted.",
+      "pattern_placeholder": "e.g. products:shopId:* or analytics:*",
+      "keys_shown": "Showing {{count}} keys"
     }
   }
 }
