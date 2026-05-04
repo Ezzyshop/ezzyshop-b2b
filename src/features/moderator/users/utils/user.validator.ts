@@ -9,7 +9,7 @@ export const userFields = {
   email: Joi.string()
     .email({ tlds: { allow: false } })
     .max(255)
-    .allow(null)
+    .allow(null, "")
     .messages({
       "string.email": "Invalid email address",
       "string.max": "Email must be at most 255 characters long",
@@ -18,21 +18,20 @@ export const userFields = {
     "string.base": "Phone must be a string",
     "string.max": "Phone must be at most 15 characters long",
   }),
-  password: Joi.string().allow("").min(8).max(32).messages({
+  password: Joi.string().min(8).max(32).messages({
     "any.required": "Password is required",
-    "string.pattern.base": "Password must be at least 8 characters long",
+    "string.empty": "Password is required",
     "string.min": "Password must be at least 8 characters long",
     "string.max": "Password must be at most 32 characters long",
   }),
   confirm_password: Joi.string()
-    .allow("")
     .min(8)
     .max(32)
     .valid(Joi.ref("password"))
     .messages({
       "any.required": "Confirm password is required",
+      "string.empty": "Confirm password is required",
       "any.only": "Passwords do not match",
-      "string.pattern.base": "Password must be at least 8 characters long",
       "string.min": "Password must be at least 8 characters long",
       "string.max": "Password must be at most 32 characters long",
     }),
@@ -47,20 +46,31 @@ export const userFields = {
     }),
 };
 
-export const updateUserValidator = Joi.object({
+export const createUserValidator = Joi.object({
   full_name: userFields.full_name,
-  email: userFields.email,
   phone: userFields.phone,
   photo: userFields.photo,
-  password: userFields.password,
-  confirm_password: userFields.confirm_password,
+  password: userFields.password.required(),
+  confirm_password: userFields.confirm_password.required(),
   roles: userFields.roles,
 });
 
+export const updateUserValidator = Joi.object({
+  full_name: userFields.full_name,
+  phone: userFields.phone,
+  photo: userFields.photo,
+  roles: userFields.roles,
+});
+
+export const changePasswordValidator = Joi.object({
+  password: userFields.password.required(),
+  confirm_password: userFields.confirm_password.required(),
+});
+
 export const updateMyPasswordValidator = Joi.object({
-  current_password: userFields.password,
-  password: userFields.password,
-  confirm_password: userFields.confirm_password,
+  current_password: userFields.password.required(),
+  password: userFields.password.required(),
+  confirm_password: userFields.confirm_password.required(),
 });
 
 export const updateMyProfileValidator = Joi.object({

@@ -19,6 +19,7 @@ import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
 import { DataTablePagination } from "./pagination";
 import { IPaginationInfo } from "@/api/utils/axios.interface";
+import { useEffect, useRef } from "react";
 
 interface IProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -26,6 +27,9 @@ interface IProps<TData, TValue> {
   isLoading?: boolean;
   paginationInfo?: IPaginationInfo;
   pinnedColumns?: { left?: string[]; right?: string[] };
+  hasNextPage?: boolean;
+  isFetchingNextPage?: boolean;
+  onLoadMore?: () => void;
 }
 
 export const DataTable = <TData, TValue>({
@@ -34,8 +38,12 @@ export const DataTable = <TData, TValue>({
   isLoading = false,
   paginationInfo,
   pinnedColumns,
+  hasNextPage,
+  isFetchingNextPage,
+  onLoadMore,
 }: IProps<TData, TValue>) => {
   const { t } = useTranslation();
+  const sentinelRef = useRef<HTMLDivElement>(null);
   const table = useReactTable({
     data,
     columns,
@@ -49,6 +57,26 @@ export const DataTable = <TData, TValue>({
       },
     },
   });
+
+  useEffect(() => {
+    if (!onLoadMore || !hasNextPage) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
+          onLoadMore();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const sentinel = sentinelRef.current;
+    if (sentinel) observer.observe(sentinel);
+
+    return () => {
+      if (sentinel) observer.unobserve(sentinel);
+    };
+  }, [hasNextPage, isFetchingNextPage, onLoadMore]);
 
   return (
     <>
@@ -141,6 +169,17 @@ export const DataTable = <TData, TValue>({
           )}
         </Table>
       </div>
+      {onLoadMore && (
+        <div
+          ref={sentinelRef}
+          className="py-2 text-center text-sm text-muted-foreground"
+        >
+          {isFetchingNextPage && <p>Yuklanmoqda...</p>}
+          {!hasNextPage && data.length > 0 && !isLoading && (
+            <p className="text-xs text-muted-foreground/60">Hammasi yuklandi</p>
+          )}
+        </div>
+      )}
       {paginationInfo && <DataTablePagination data={paginationInfo} />}
     </>
   );

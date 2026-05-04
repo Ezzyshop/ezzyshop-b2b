@@ -8,10 +8,10 @@ import {
 } from "@/components/ui/form/form";
 import { Input } from "@/components/ui/input";
 import { UseFormReturn } from "react-hook-form";
-import { IUserForm } from "@/lib/interfaces";
+import { IUserCreateForm } from "@/lib/interfaces";
 
 interface IProps {
-  form: UseFormReturn<IUserForm>;
+  form: UseFormReturn<IUserCreateForm>;
 }
 
 export const UserFormChangePassword = ({ form }: IProps) => {

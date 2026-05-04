@@ -2,7 +2,7 @@ import { updateUserMutationFn } from "@/api/mutations";
 import { getUserByIdQueryFn } from "@/api/queries";
 import { LayoutLoader } from "@/components/loaders/global-loader";
 import { IUserForm } from "@/lib/interfaces";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserForm } from "../components/user-form/user-form";
@@ -11,6 +11,7 @@ import { toast } from "sonner";
 export const UserEditPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const { data: user, isLoading } = useQuery({
     queryKey: ["user", id],
@@ -22,6 +23,8 @@ export const UserEditPage = () => {
     mutationFn: (data: IUserForm) => updateUserMutationFn(id as string, data),
     onSuccess: () => {
       toast.success("Foydalanuvchi tahrirlandi");
+      queryClient.invalidateQueries({ queryKey: ["users"] });
+      queryClient.invalidateQueries({ queryKey: ["user", id] });
       navigate("/moderator/users");
     },
   });
@@ -31,13 +34,9 @@ export const UserEditPage = () => {
 
     return {
       full_name: user.data.full_name,
-      email: user.data.email,
       phone: user.data.phone,
-      password: "",
-      confirm_password: "",
       photo: user.data.photo,
       roles: user.data.roles,
-      status: user.data.status,
     };
   }, [user]);
 

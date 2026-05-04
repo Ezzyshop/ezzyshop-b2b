@@ -1,7 +1,10 @@
-import { useForm } from "react-hook-form";
+import { useForm, UseFormReturn } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { updateUserValidator } from "../../utils/user.validator";
-import { IUserForm } from "@/lib/interfaces/user.interface";
+import {
+  createUserValidator,
+  updateUserValidator,
+} from "../../utils/user.validator";
+import { IUserCreateForm, IUserForm } from "@/lib/interfaces/user.interface";
 import { Form } from "@/components/ui/form/form";
 import { Button } from "@/components/ui/button/button";
 
@@ -12,42 +15,51 @@ import { UserFormChangePassword } from "./user-form-sections/passwords";
 
 interface IProps {
   initialValues?: IUserForm;
-  onSubmit: (data: IUserForm) => void;
+  onSubmit: (data: IUserForm | IUserCreateForm) => void;
   isLoading: boolean;
 }
 
 export const UserForm = ({ initialValues, onSubmit, isLoading }: IProps) => {
-  const form = useForm<IUserForm>({
-    defaultValues: initialValues || {
-      full_name: "",
-      email: "",
-      phone: "",
-      password: "",
-      confirm_password: "",
-      photo: null,
-      roles: [],
-    },
-    resolver: joiResolver(updateUserValidator),
+  const isEdit = Boolean(initialValues);
+
+  const form = useForm<IUserCreateForm>({
+    defaultValues: initialValues
+      ? { ...initialValues, password: "", confirm_password: "" }
+      : {
+          full_name: "",
+          phone: "",
+          photo: null,
+          roles: [],
+          password: "",
+          confirm_password: "",
+        },
+    resolver: joiResolver(isEdit ? updateUserValidator : createUserValidator),
   });
 
-  const handleSubmit = (data: IUserForm) => {
+  const handleSubmit = (data: IUserCreateForm) => {
+    if (isEdit) {
+      const { password: _password, confirm_password: _confirm, ...rest } = data;
+      void _password;
+      void _confirm;
+      onSubmit(rest);
+      return;
+    }
     onSubmit(data);
   };
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-        <UserFormBasicInformation form={form} />
+        <UserFormBasicInformation
+          form={form as unknown as UseFormReturn<IUserForm>}
+        />
 
-        <UserFormChangePassword form={form} />
+        {!isEdit && <UserFormChangePassword form={form} />}
 
         <div
-          className={cn(
-            "grid gap-4",
-            initialValues ? "grid-cols-2" : "grid-cols-1"
-          )}
+          className={cn("grid gap-4", isEdit ? "grid-cols-2" : "grid-cols-1")}
         >
-          {initialValues && (
+          {isEdit && (
             <Button
               type="button"
               variant="outline"
@@ -58,9 +70,7 @@ export const UserForm = ({ initialValues, onSubmit, isLoading }: IProps) => {
             </Button>
           )}
           <Button type="submit" disabled={isLoading}>
-            {initialValues
-              ? "Foydalanuvchini Yangilash"
-              : "Foydalanuvchi Yaratish"}
+            {isEdit ? "Foydalanuvchini Yangilash" : "Foydalanuvchi Yaratish"}
           </Button>
         </div>
       </form>

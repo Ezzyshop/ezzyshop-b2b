@@ -5,18 +5,13 @@ import { userRolesTranslations } from "@/lib/enums";
 import { Button } from "@/components/ui/button/button";
 import { EditIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { ChangeUserPasswordDialog } from "../change-password/change-password-dialog";
+import { DeleteUserDialog } from "../delete-user/delete-user-dialog";
 
 export const userColumns: ColumnDef<IUser>[] = [
   {
     header: "Ism",
     accessorKey: "full_name",
-  },
-  {
-    header: "Email",
-    accessorKey: "email",
-    cell: ({ row }) => {
-      return <div>{row.original.email ?? "---"}</div>;
-    },
   },
   {
     header: "Telefon raqam",
@@ -60,14 +55,23 @@ export const userColumns: ColumnDef<IUser>[] = [
   {
     header: "Amallar",
     accessorKey: "actions",
+    size: 180,
     cell: ({ row }) => {
       return (
-        <div>
-          <Button variant="outline" size="icon" asChild>
+        <div className="flex items-center gap-2">
+          <Button variant="outline" size="icon" asChild title="Tahrirlash">
             <NavLink to={`/moderator/users/${row.original._id}/edit`}>
               <EditIcon className="w-4 h-4" />
             </NavLink>
           </Button>
+          <ChangeUserPasswordDialog
+            userId={row.original._id}
+            userName={row.original.full_name}
+          />
+          <DeleteUserDialog
+            userId={row.original._id}
+            userName={row.original.full_name}
+          />
         </div>
       );
     },

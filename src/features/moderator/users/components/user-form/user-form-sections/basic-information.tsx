@@ -34,14 +34,9 @@ import { ImageUploadSingle } from "@/components/ui/image-upload";
 interface IProps {
   form: UseFormReturn<IUserForm>;
   hideRoles?: boolean;
-  hideEmail?: boolean;
 }
 
-export const UserFormBasicInformation = ({
-  form,
-  hideRoles,
-  hideEmail,
-}: IProps) => {
+export const UserFormBasicInformation = ({ form, hideRoles }: IProps) => {
   const [rolesOpen, setRolesOpen] = useState(false);
 
   const handleRoleToggle = (role: UserRoles) => {
@@ -68,27 +63,6 @@ export const UserFormBasicInformation = ({
           </FormItem>
         )}
       />
-
-      {!hideEmail && (
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input
-                  type="email"
-                  placeholder="Email manzilini kiriting"
-                  {...field}
-                  value={field.value || ""}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      )}
 
       <FormField
         control={form.control}

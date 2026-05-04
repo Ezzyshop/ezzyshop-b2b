@@ -22,8 +22,20 @@ export interface IUser {
 
 export type IUserForm = Omit<
   IUser,
-  "createdAt" | "updatedAt" | "_id" | "__v" | "shops"
-> & { confirm_password: string };
+  | "createdAt"
+  | "updatedAt"
+  | "_id"
+  | "__v"
+  | "shops"
+  | "email"
+  | "status"
+  | "password"
+>;
+
+export type IUserCreateForm = IUserForm & {
+  password: string;
+  confirm_password: string;
+};
 
 export interface IUserShop {
   _id: string;

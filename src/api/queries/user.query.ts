@@ -11,5 +11,15 @@ export const getUsersQueryFn = (
 ): Promise<IPaginatedResponse<IUser>> =>
   api.get("/users/all", { params: filter }).then((res) => res.data);
 
+export const getUsersInfiniteQueryFn = (
+  pageParam: number,
+  filters?: TObject
+): Promise<IPaginatedResponse<IUser>> =>
+  api
+    .get("/users/all", {
+      params: { ...filters, page: pageParam, limit: 30 },
+    })
+    .then((res) => res.data);
+
 export const getUserByIdQueryFn = (id: string): Promise<IResponse<IUser>> =>
   api.get(`/users/${id}`).then((res) => res.data);

@@ -18,17 +18,20 @@ import {
 } from "@/components/ui/select";
 import { useQuery } from "@tanstack/react-query";
 import { getRolesQueryFn } from "@/api/queries";
-import { useShopContext } from "@/contexts";
+import { useContext } from "react";
+import { ShopContext } from "@/contexts/shop-context/shop.context";
 
 interface IProps {
   initialValues?: IStaffForm;
   onSubmit: (data: IStaffForm) => void;
   isLoading: boolean;
+  shopId?: string;
 }
 
-export const StaffForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
+export const StaffForm = ({ onSubmit, initialValues, isLoading, shopId }: IProps) => {
   const { t } = useTranslation();
-  const { shop } = useShopContext();
+  const shopContext = useContext(ShopContext);
+  const resolvedShopId = shopId ?? shopContext?.shop._id;
 
   const form = useForm<IStaffForm>({
     defaultValues: { isAdmin: false, roleId: undefined, ...initialValues },
@@ -38,9 +41,9 @@ export const StaffForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
   const isAdmin = form.watch("isAdmin");
 
   const { data: rolesData } = useQuery({
-    queryKey: ["roles", shop._id],
-    queryFn: () => getRolesQueryFn(shop._id),
-    enabled: Boolean(shop._id) && !isAdmin,
+    queryKey: ["roles", resolvedShopId],
+    queryFn: () => getRolesQueryFn(resolvedShopId!),
+    enabled: Boolean(resolvedShopId) && !isAdmin,
   });
 
   const roles = rolesData?.data || [];
@@ -54,7 +57,6 @@ export const StaffForm = ({ onSubmit, initialValues, isLoading }: IProps) => {
         <UserFormBasicInformation
           form={form as unknown as UseFormReturn<IUserForm>}
           hideRoles
-          hideEmail
         />
 
         <FormField

@@ -50,6 +50,7 @@ export const AssignStaff = ({ shopId }: IProps) => {
         <StaffForm
           onSubmit={(data) => assignStaffMutation.mutate(data)}
           isLoading={assignStaffMutation.isPending}
+          shopId={shopId}
         />
       </DrawerContent>
     </Drawer>

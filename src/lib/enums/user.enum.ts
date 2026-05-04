@@ -9,4 +9,5 @@ export const userRolesTranslations = {
 export enum UserStatus {
   Active = "ACTIVE",
   Inactive = "INACTIVE",
+  Deleted = "DELETED",
 }

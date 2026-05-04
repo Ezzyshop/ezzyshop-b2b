@@ -47,6 +47,7 @@ export const ShopsPage = () => {
           data={data?.data ?? []}
           isLoading={isLoading}
           paginationInfo={data?.paginationInfo}
+          pinnedColumns={{ right: ["actions"] }}
         />
       </div>
     </div>

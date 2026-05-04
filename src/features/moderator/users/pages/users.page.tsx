@@ -1,32 +1,44 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useMemo } from "react";
 import { Button } from "@/components/ui/button/button";
 import { NavLink } from "react-router-dom";
 import { useQueryParams } from "@/hooks";
 import { DataTable } from "@/components/data-table/data-table";
-import { getUsersQueryFn } from "@/api/queries";
+import { getUsersInfiniteQueryFn } from "@/api/queries";
+import { IUser } from "@/lib/interfaces/user.interface";
 import { userColumns } from "../components/user-table/user-table-columns";
 import { UserTableFilters } from "../components/user-table/user-table-filters";
 
 export const UsersPage = () => {
   const { getQueryParams, setQueryParams } = useQueryParams();
+  const filters = getQueryParams();
 
-  const { page, limit } = getQueryParams();
-
-  const filter = {
-    page: page ?? 1,
-    limit: limit ?? 10,
-    ...getQueryParams(),
-  };
-
-  const { data, isLoading } = useQuery({
-    queryKey: ["users", filter],
-    queryFn: () => getUsersQueryFn(filter),
+  const {
+    data,
+    isLoading,
+    hasNextPage,
+    isFetchingNextPage,
+    fetchNextPage,
+  } = useInfiniteQuery({
+    queryKey: ["users", filters],
+    queryFn: ({ pageParam }) =>
+      getUsersInfiniteQueryFn(pageParam as number, filters),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) =>
+      lastPage.paginationInfo.hasNextPage
+        ? lastPage.paginationInfo.currentPage + 1
+        : undefined,
   });
+
+  const allUsers: IUser[] = useMemo(
+    () => data?.pages.flatMap((page) => page.data) ?? [],
+    [data]
+  );
 
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Foydalanuvchlar</h1>
+        <h1 className="text-2xl font-bold">Foydalanuvchilar</h1>
         <Button asChild>
           <NavLink to="/moderator/users/create">Foydalanuvchi qo'shish</NavLink>
         </Button>
@@ -38,9 +50,11 @@ export const UsersPage = () => {
       <div>
         <DataTable
           columns={userColumns}
-          data={data?.data ?? []}
+          data={allUsers}
           isLoading={isLoading}
-          paginationInfo={data?.paginationInfo}
+          hasNextPage={hasNextPage}
+          isFetchingNextPage={isFetchingNextPage}
+          onLoadMore={fetchNextPage}
         />
       </div>
     </div>
