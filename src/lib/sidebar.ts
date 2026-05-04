@@ -2,6 +2,7 @@ import {
   BotIcon,
   ChartBarIcon,
   CreditCardIcon,
+  DatabaseIcon,
   DollarSignIcon,
   UsersIcon,
 } from "lucide-react";
@@ -31,5 +32,10 @@ export const moderatorSidebarData = [
     title: "Valyutalar",
     url: "/moderator/currencies",
     icon: DollarSignIcon,
+  },
+  {
+    title: "Cache",
+    url: "/moderator/cache",
+    icon: DatabaseIcon,
   },
 ];

@@ -942,6 +942,30 @@
       "view_cart": "Savatni ko'rish",
       "begin_checkout": "To'lovni boshlash",
       "purchase": "Xarid"
+    },
+    "cache_admin": {
+      "title": "Cache boshqaruvi",
+      "total_keys": "Jami kalitlar",
+      "memory": "Xotira",
+      "search_placeholder": "Pattern (masalan: products:* yoki user:123)",
+      "search": "Qidirish",
+      "load": "Yuklash",
+      "loading": "Yuklanmoqda...",
+      "load_more": "Ko'proq yuklash",
+      "refresh": "Yangilash",
+      "delete_by_pattern": "Pattern bo'yicha o'chirish",
+      "key": "Kalit",
+      "ttl": "TTL (soniya)",
+      "actions": "Amallar",
+      "no_expiry": "∞ muddatsiz",
+      "expired": "Muddati o'tgan",
+      "key_value": "Kalit qiymati",
+      "no_data": "Ma'lumot topilmadi",
+      "delete_confirm": "Bu kalitni o'chirishni tasdiqlaysizmi?",
+      "delete_success": "Kalit o'chirildi",
+      "pattern_delete_desc": "Berilgan pattern mos keladigan barcha kalitlar o'chiriladi.",
+      "pattern_placeholder": "Masalan: products:shopId:* yoki analytics:*",
+      "keys_shown": "{{count}} ta kalit ko'rsatilmoqda"
     }
   }
 }

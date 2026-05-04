@@ -82,3 +82,18 @@ export const getConversionFunnelQueryFn = (
   params: { startDate: string; endDate: string }
 ): Promise<{ data: IConversionFunnelAnalytics }> =>
   api.get(`/analytics/${shopId}/cart-funnel`, { params }).then((res) => res.data);
+
+export interface IShopLinkClickItem {
+  shop_id: string;
+  shop_name: string;
+  owner_name: string;
+  total_clicks: number;
+}
+
+export interface ILinkClicksOverview {
+  total_clicks: number;
+  shops: IShopLinkClickItem[];
+}
+
+export const getLinkClicksOverviewQueryFn = (): Promise<{ data: ILinkClicksOverview }> =>
+  api.get('/analytics/link-clicks/overview').then((res) => res.data);

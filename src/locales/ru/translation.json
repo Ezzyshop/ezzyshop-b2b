@@ -851,6 +851,30 @@
       "view_cart": "Просмотр корзины",
       "begin_checkout": "Начало оформления",
       "purchase": "Покупка"
+    },
+    "cache_admin": {
+      "title": "Управление кешем",
+      "total_keys": "Всего ключей",
+      "memory": "Память",
+      "search_placeholder": "Паттерн (например: products:* или user:123)",
+      "search": "Поиск",
+      "load": "Загрузить",
+      "loading": "Загрузка...",
+      "load_more": "Загрузить ещё",
+      "refresh": "Обновить",
+      "delete_by_pattern": "Удалить по паттерну",
+      "key": "Ключ",
+      "ttl": "TTL (секунды)",
+      "actions": "Действия",
+      "no_expiry": "∞ бессрочно",
+      "expired": "Истёк",
+      "key_value": "Значение ключа",
+      "no_data": "Данные не найдены",
+      "delete_confirm": "Вы уверены, что хотите удалить этот ключ?",
+      "delete_success": "Ключ удалён",
+      "pattern_delete_desc": "Все ключи, совпадающие с паттерном, будут удалены.",
+      "pattern_placeholder": "Например: products:shopId:* или analytics:*",
+      "keys_shown": "Показано {{count}} ключей"
     }
   }
 }

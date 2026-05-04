@@ -68,6 +68,10 @@ const CurrencyEditPage = lazy(
   () => import("@/features/moderator/currencies/pages/currency-edit.page")
 );
 
+const CacheAdminPage = lazy(
+  () => import("@/features/moderator/cache-admin/pages/cache-admin.page")
+);
+
 export const ModeratorRoutes = () => {
   return (
     <ModeratorLayout>
@@ -96,6 +100,7 @@ export const ModeratorRoutes = () => {
             <Route path="create" element={<CurrencyCreatePage />} />
             <Route path=":id/edit" element={<CurrencyEditPage />} />
           </Route>
+          <Route path="/cache" element={<CacheAdminPage />} />
           <Route path="*" element={<Navigate to="/moderator/statistics" />} />
         </Routes>
       </SuperAdminGuard>
