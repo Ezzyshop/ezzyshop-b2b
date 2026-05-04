@@ -229,7 +229,8 @@
       "sales": {
         "title": "Sotuvlar",
         "description": "Kerakli muddatni tanlang"
-      }
+      },
+      "no_features": "Xususiyatlar mavjud emas"
     },
     "categories": {
       "create": "Kategoriya qo'shish",

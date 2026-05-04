@@ -629,7 +629,8 @@
       "sales": {
         "title": "Sales",
         "description": "Select a date range to view sales"
-      }
+      },
+      "no_features": "No features available"
     },
     "ai_images": {
       "title": "AI Images",
