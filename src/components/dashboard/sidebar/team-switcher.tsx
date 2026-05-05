@@ -127,18 +127,17 @@ export function TeamSwitcher() {
                     </DropdownMenuItem>
                   ))}
             <DropdownMenuSeparator />
-            {!isSuperAdmin && (
-              <DropdownMenuItem className="gap-2 p-2" asChild>
-                <Link to="/register/create-shop">
-                  <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
-                    <Plus className="size-4" />
-                  </div>
-                  <div className="text-muted-foreground font-medium">
-                    Do'kon qo'shish
-                  </div>
-                </Link>
-              </DropdownMenuItem>
-            )}
+
+            <DropdownMenuItem className="gap-2 p-2" asChild>
+              <Link to="/register/create-shop">
+                <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
+                  <Plus className="size-4" />
+                </div>
+                <div className="text-muted-foreground font-medium">
+                  Do'kon qo'shish
+                </div>
+              </Link>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
