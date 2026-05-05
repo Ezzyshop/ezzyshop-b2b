@@ -40,6 +40,7 @@ export const SettingsPage = () => {
       description: shop.description,
       languages: shop.languages,
       brand_color: shop.brand_color,
+      work_hours_indicator_color: shop.work_hours_indicator_color ?? "#F59E0B",
       telegram_group_id: shop.telegram_group_id,
       work_hours: shop.work_hours ?? {
         monday: { is_open: true, open: "09:00", close: "18:00" },

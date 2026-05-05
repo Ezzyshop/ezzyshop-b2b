@@ -53,6 +53,7 @@ export interface IShop {
   updatedAt: Date;
   languages: ILanguage[];
   brand_color?: string;
+  work_hours_indicator_color?: string;
   telegram_group_id?: string;
   work_hours?: IWorkHours;
   setup?: boolean;
@@ -124,6 +125,7 @@ export interface IShopUpdateForm {
   };
   languages: ILanguage[];
   brand_color?: string;
+  work_hours_indicator_color?: string;
   telegram_group_id?: string;
   work_hours?: IWorkHours;
 }

@@ -381,7 +381,9 @@
       },
       "work_hours": {
         "title": "Working hours",
-        "description": "Set working hours for your shop for each day"
+        "description": "Set working hours for your shop for each day",
+        "indicator_color": "Indicator color",
+        "indicator_color_description": "Banner color shown when the shop is closed"
       }
     },
     "branches": {

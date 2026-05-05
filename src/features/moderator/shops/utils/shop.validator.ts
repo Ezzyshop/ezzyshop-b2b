@@ -96,6 +96,13 @@ export const shopFields: Record<
       "languages.exactly_one_main": "Kamida bitta til asosiy bo'lishi kerak",
     }),
   brand_color: Joi.string().optional().allow(""),
+  work_hours_indicator_color: Joi.string()
+    .pattern(/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/)
+    .optional()
+    .allow("")
+    .messages({
+      "string.pattern.base": "Rang noto'g'ri formatda (HEX bo'lishi kerak)",
+    }),
   telegram_group_id: Joi.number().optional().allow(null),
   work_hours: Joi.object({
     monday: Joi.object({ is_open: Joi.boolean(), open: Joi.string(), close: Joi.string() }),
@@ -156,6 +163,7 @@ export const updateMyShopSchema = Joi.object({
   address: shopFields.address,
   languages: shopFields.languages,
   brand_color: shopFields.brand_color,
+  work_hours_indicator_color: shopFields.work_hours_indicator_color,
   telegram_group_id: shopFields.telegram_group_id,
   work_hours: shopFields.work_hours,
 });

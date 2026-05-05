@@ -1,5 +1,6 @@
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { GradientPicker } from "@/components/ui/color-picker";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { IShopUpdateForm, IWorkHours } from "@/features/moderator/shops/utils";
@@ -95,6 +96,28 @@ export const WorkHoursSection = ({ form }: IProps) => {
           <DayRow key={key} dayKey={key} label={label} form={form} />
         ))}
       </div>
+
+      <FormField
+        control={form.control}
+        name="work_hours_indicator_color"
+        render={({ field }) => (
+          <FormItem className="mt-6 pt-4 border-t">
+            <FormLabel>
+              {t("dashboard.settings.work_hours.indicator_color")}
+            </FormLabel>
+            <CardDescription className="mb-2">
+              {t("dashboard.settings.work_hours.indicator_color_description")}
+            </CardDescription>
+            <FormControl>
+              <GradientPicker
+                background={field.value || "#F59E0B"}
+                setBackground={field.onChange}
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
     </Card>
   );
 };

@@ -462,7 +462,9 @@
       },
       "work_hours": {
         "title": "Ish vaqti",
-        "description": "Do'koningizning har kuni uchun ish vaqtini belgilang"
+        "description": "Do'koningizning har kuni uchun ish vaqtini belgilang",
+        "indicator_color": "Indikator rangi",
+        "indicator_color_description": "Do'kon yopiq paytidagi banner rangi"
       }
     },
     "branches": {
