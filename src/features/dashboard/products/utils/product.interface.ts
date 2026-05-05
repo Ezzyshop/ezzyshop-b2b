@@ -42,9 +42,11 @@ export interface IProduct {
   video?: string;
   categories?: string[];
   variants?: {
+    _id: string;
     sku: string;
     attributes: Record<string, string>;
     price: number;
+    compare_at_price?: number;
     quantity: number;
     images: string[];
   }[];

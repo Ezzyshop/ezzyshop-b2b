@@ -151,7 +151,23 @@
       "metrics_top_customers": "Top mijozlar",
       "metrics_funnel": "Konversiya funnel",
       "ai": "AI",
-      "ai_images": "AI Rasmlar"
+      "ai_images": "AI Rasmlar",
+      "inventory": "Ombor"
+    }
+  },
+  "inventory": {
+    "columns": {
+      "sku": "SKU",
+      "compare_at_price": "Chegirmasiz narx",
+      "stock_status": "Qoldiq holati"
+    },
+    "status": {
+      "in": "Yetarli",
+      "low": "Kam qoldi",
+      "out": "Tugagan"
+    },
+    "filters": {
+      "stock": "Qoldiq"
     }
   },
   "chat": {

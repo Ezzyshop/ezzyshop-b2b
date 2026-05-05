@@ -28,3 +28,19 @@ export const reorderProductsMutationFn = (
   items: { id: string; order: number }[]
 ): Promise<void> =>
   api.put(`/products/${shopId}/reorder`, { items }).then((res) => res.data);
+
+export interface IVariantPatch {
+  price?: number;
+  compare_at_price?: number | null;
+  quantity?: number;
+}
+
+export const updateProductVariantMutationFn = (
+  shopId: string,
+  productId: string,
+  variantId: string,
+  patch: IVariantPatch
+): Promise<{ data: { product: IProduct; variant: NonNullable<IProduct["variants"]>[number] } }> =>
+  api
+    .patch(`/products/${shopId}/${productId}/variants/${variantId}`, patch)
+    .then((res) => res.data);

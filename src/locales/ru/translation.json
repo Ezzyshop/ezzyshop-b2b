@@ -147,7 +147,23 @@
       "metrics_top_customers": "Топ клиенты",
       "metrics_funnel": "Воронка конверсий",
       "ai": "ИИ",
-      "ai_images": "AI Изображения"
+      "ai_images": "AI Изображения",
+      "inventory": "Склад"
+    }
+  },
+  "inventory": {
+    "columns": {
+      "sku": "SKU",
+      "compare_at_price": "Цена без скидки",
+      "stock_status": "Статус остатка"
+    },
+    "status": {
+      "in": "В наличии",
+      "low": "Мало осталось",
+      "out": "Закончился"
+    },
+    "filters": {
+      "stock": "Остаток"
     }
   },
   "chat": {

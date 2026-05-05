@@ -3,6 +3,7 @@ import { RouteAccess } from "@/lib/types/permission.types";
 import {
   BarChart2Icon,
   BotIcon,
+  BoxesIcon,
   CreditCardIcon,
   EyeIcon,
   FunnelIcon,
@@ -70,13 +71,38 @@ export const dashboardRoutes: DashboardRoute[] = [
     title: "sidebar.dashboard.categories",
   },
   {
-    path: "/products",
-    element: lazy(
-      () => import("@/features/dashboard/products/pages/products.page"),
-    ),
-    access: { accessType: "permission", resource: "products", action: "read" },
+    path: "/products-management",
     icon: PackageIcon,
     title: "sidebar.dashboard.products",
+    access: { accessType: "permission", resource: "products", action: "read" },
+    children: [
+      {
+        path: "/products",
+        title: "sidebar.dashboard.products",
+        icon: PackageIcon,
+        access: {
+          accessType: "permission",
+          resource: "products",
+          action: "read",
+        },
+        element: lazy(
+          () => import("@/features/dashboard/products/pages/products.page"),
+        ),
+      },
+      {
+        path: "/inventory",
+        title: "sidebar.dashboard.inventory",
+        icon: BoxesIcon,
+        access: {
+          accessType: "permission",
+          resource: "products",
+          action: "read",
+        },
+        element: lazy(
+          () => import("@/features/dashboard/inventory/pages/inventory.page"),
+        ),
+      },
+    ] as ChildRoute[],
   },
   {
     path: "/order-management",

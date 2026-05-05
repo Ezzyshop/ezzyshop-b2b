@@ -147,7 +147,23 @@
       "metrics_top_customers": "Top Customers",
       "metrics_funnel": "Conversion Funnel",
       "ai": "AI",
-      "ai_images": "AI Images"
+      "ai_images": "AI Images",
+      "inventory": "Inventory"
+    }
+  },
+  "inventory": {
+    "columns": {
+      "sku": "SKU",
+      "compare_at_price": "Compare at price",
+      "stock_status": "Stock status"
+    },
+    "status": {
+      "in": "In stock",
+      "low": "Low stock",
+      "out": "Out of stock"
+    },
+    "filters": {
+      "stock": "Stock"
     }
   },
   "chat": {
