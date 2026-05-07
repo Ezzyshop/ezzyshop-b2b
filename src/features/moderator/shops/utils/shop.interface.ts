@@ -1,6 +1,7 @@
 import { PlansType } from "@/features/dashboard/plans/utils/plans.enum";
 import {
   BusinessType,
+  HomepageLayout,
   LanguageType,
   ShopPlatform,
   ShopStatus,
@@ -56,6 +57,8 @@ export interface IShop {
   work_hours_indicator_color?: string;
   telegram_group_id?: string;
   work_hours?: IWorkHours;
+  eta?: IShopEta;
+  homepage_layout?: HomepageLayout;
   setup?: boolean;
 }
 
@@ -78,6 +81,11 @@ export interface IWorkHours {
   friday: IWorkHourDay;
   saturday: IWorkHourDay;
   sunday: IWorkHourDay;
+}
+
+export interface IShopEta {
+  min: number;
+  max: number;
 }
 
 export interface IShopForm {
@@ -128,6 +136,8 @@ export interface IShopUpdateForm {
   work_hours_indicator_color?: string;
   telegram_group_id?: string;
   work_hours?: IWorkHours;
+  eta?: IShopEta;
+  homepage_layout?: HomepageLayout;
 }
 
 export interface IShopTelegramForm {

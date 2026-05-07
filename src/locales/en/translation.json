@@ -400,6 +400,19 @@
         "description": "Set working hours for your shop for each day",
         "indicator_color": "Indicator color",
         "indicator_color_description": "Banner color shown when the shop is closed"
+      },
+      "delivery_eta": {
+        "title": "Delivery time",
+        "description": "Estimated delivery time in minutes. Customers will see this on the home page.",
+        "min": "Min (minutes)",
+        "max": "Max (minutes)"
+      },
+      "homepage_layout": {
+        "title": "Homepage layout",
+        "description": "Which homepage style customers will see.",
+        "label": "Layout",
+        "classic": "Classic (legacy)",
+        "editorial": "Editorial (new)"
       }
     },
     "branches": {

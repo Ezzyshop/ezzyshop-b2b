@@ -1,6 +1,7 @@
 import Joi from "joi";
 import {
   BusinessType,
+  HomepageLayout,
   LanguageType,
   ShopPlatform,
   ShopStatus,
@@ -113,6 +114,25 @@ export const shopFields: Record<
     saturday: Joi.object({ is_open: Joi.boolean(), open: Joi.string(), close: Joi.string() }),
     sunday: Joi.object({ is_open: Joi.boolean(), open: Joi.string(), close: Joi.string() }),
   }).optional(),
+  eta: Joi.object({
+    min: Joi.number().integer().min(0).max(600).required().messages({
+      "number.base": "Minimal vaqt raqam bo'lishi kerak",
+      "number.min": "Minimal vaqt 0 daqiqadan kam bo'lmasligi kerak",
+      "number.max": "Minimal vaqt 600 daqiqadan oshmasligi kerak",
+      "any.required": "Minimal vaqt kiritilishi shart",
+    }),
+    max: Joi.number().integer().min(Joi.ref("min")).max(600).required().messages({
+      "number.base": "Maksimal vaqt raqam bo'lishi kerak",
+      "number.min": "Maksimal vaqt minimal vaqtdan kam bo'lmasligi kerak",
+      "number.max": "Maksimal vaqt 600 daqiqadan oshmasligi kerak",
+      "any.required": "Maksimal vaqt kiritilishi shart",
+    }),
+  })
+    .optional()
+    .allow(null),
+  homepage_layout: Joi.string()
+    .valid(...Object.values(HomepageLayout))
+    .optional(),
 };
 
 export const shopCreateSchema = Joi.object({
@@ -166,4 +186,6 @@ export const updateMyShopSchema = Joi.object({
   work_hours_indicator_color: shopFields.work_hours_indicator_color,
   telegram_group_id: shopFields.telegram_group_id,
   work_hours: shopFields.work_hours,
+  eta: shopFields.eta,
+  homepage_layout: shopFields.homepage_layout,
 });

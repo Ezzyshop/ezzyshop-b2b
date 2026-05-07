@@ -14,6 +14,8 @@ import { SettingFormSocialLinks } from "./setting-form-sections/social-links";
 import { SettingFormAddressSection } from "./setting-form-sections/address-section";
 import { NotificationSettingsForm } from "./setting-form-sections/notification-section";
 import { WorkHoursSection } from "./setting-form-sections/work-hours";
+import { SettingFormDeliveryEta } from "./setting-form-sections/delivery-eta";
+import { SettingFormHomepageLayout } from "./setting-form-sections/homepage-layout";
 
 interface IProps {
   shop: IShopUpdateForm;
@@ -35,11 +37,15 @@ export const SettingsForm = ({ shop, shopId, onSubmit, isLoading }: IProps) => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <SettingFormBasicInformation form={form} shopId={shopId} />
 
+        <SettingFormHomepageLayout form={form} />
+
         <SettingFormSocialLinks form={form} />
 
         <NotificationSettingsForm form={form} />
 
         <WorkHoursSection form={form} />
+
+        <SettingFormDeliveryEta form={form} />
 
         <SettingFormAddressSection form={form} />
 

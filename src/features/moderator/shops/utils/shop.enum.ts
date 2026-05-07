@@ -32,3 +32,8 @@ export const languageLabels = {
   [LanguageType.En]: "EN",
   [LanguageType.Ru]: "RU",
 };
+
+export enum HomepageLayout {
+  Classic = "CLASSIC",
+  Editorial = "EDITORIAL",
+}

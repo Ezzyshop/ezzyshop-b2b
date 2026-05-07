@@ -51,6 +51,8 @@ export const SettingsPage = () => {
         saturday: { is_open: true, open: "09:00", close: "18:00" },
         sunday: { is_open: true, open: "09:00", close: "18:00" },
       },
+      eta: shop.eta,
+      homepage_layout: shop.homepage_layout,
     };
   }, [shop]);
 

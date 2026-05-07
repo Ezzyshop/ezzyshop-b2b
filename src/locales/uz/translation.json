@@ -481,6 +481,19 @@
         "description": "Do'koningizning har kuni uchun ish vaqtini belgilang",
         "indicator_color": "Indikator rangi",
         "indicator_color_description": "Do'kon yopiq paytidagi banner rangi"
+      },
+      "delivery_eta": {
+        "title": "Yetkazib berish vaqti",
+        "description": "Buyurtmalar uchun taxminiy yetkazib berish vaqtini daqiqalarda kiriting. Mijozlar bu vaqtni bosh sahifada ko'radi.",
+        "min": "Minimal vaqt (daqiqa)",
+        "max": "Maksimal vaqt (daqiqa)"
+      },
+      "homepage_layout": {
+        "title": "Bosh sahifa ko'rinishi",
+        "description": "Mijozlar bosh sahifani qaysi ko'rinishda ko'radi.",
+        "label": "Ko'rinish",
+        "classic": "Klassik (eski)",
+        "editorial": "Editorial (yangi)"
       }
     },
     "branches": {
