@@ -22,7 +22,7 @@ import {
   ShoppingCartIcon,
   SparklesIcon,
   StarIcon,
-  SwitchCameraIcon,
+  // SwitchCameraIcon,
   TagIcon,
   TruckIcon,
   Trophy,
@@ -230,13 +230,13 @@ export const dashboardRoutes: DashboardRoute[] = [
     icon: KeyRoundIcon,
     title: "sidebar.dashboard.roles",
   },
-  {
-    path: "/plans",
-    element: lazy(() => import("@/features/dashboard/plans/pages/plans.page")),
-    access: { accessType: "permission", resource: "plans", action: "read" },
-    icon: SwitchCameraIcon,
-    title: "sidebar.dashboard.plans",
-  },
+  // {
+  //   path: "/plans",
+  //   element: lazy(() => import("@/features/dashboard/plans/pages/plans.page")),
+  //   access: { accessType: "permission", resource: "plans", action: "read" },
+  //   icon: SwitchCameraIcon,
+  //   title: "sidebar.dashboard.plans",
+  // },
   {
     path: "/telegram",
     element: lazy(
