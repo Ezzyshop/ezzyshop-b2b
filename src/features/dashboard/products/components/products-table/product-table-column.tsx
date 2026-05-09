@@ -122,7 +122,7 @@ export const productTableColumns = (
       cell: ({ row }) => (
         <StatusChangeSwitch
           status={row.original.status}
-          url={`/products/${row.original.shop._id}/${row.original._id}`}
+          url={`/products/${row.original.shop._id}/${row.original._id}/status`}
           invalidateQueryKey={["products"]}
         />
       ),
