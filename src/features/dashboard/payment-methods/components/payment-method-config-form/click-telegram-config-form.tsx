@@ -1,6 +1,4 @@
-import { useTranslation } from "react-i18next";
-import { useForm } from "react-hook-form";
-import { joiResolver } from "@hookform/resolvers/joi";
+import { Button } from "@/components/ui/button/button";
 import {
   Form,
   FormControl,
@@ -9,36 +7,36 @@ import {
   FormLabel,
 } from "@/components/ui/form/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button/button";
-import { TClickPaymentMethodConfigForm } from "../../utils/payment-methods.interface";
-import { editClickPaymentMethodConfigValidator } from "../../utils/payment-method.validator";
+import { joiResolver } from "@hookform/resolvers/joi";
+import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+import { editClickTelegramConfigValidator } from "../../utils/payment-method.validator";
+import { TClickTelegramConfigForm } from "../../utils/payment-methods.interface";
 
 interface IProps {
-  initialValues?: TClickPaymentMethodConfigForm;
-  onSubmit: (data: TClickPaymentMethodConfigForm) => void;
+  initialValues?: Partial<TClickTelegramConfigForm>;
+  onSubmit: (data: TClickTelegramConfigForm) => void;
   isLoading: boolean;
 }
 
-export const PaymentMethodConfigForm = ({
+export const ClickTelegramConfigForm = ({
+  initialValues,
   onSubmit,
   isLoading,
-  initialValues,
 }: IProps) => {
   const { t } = useTranslation();
 
-  const form = useForm<TClickPaymentMethodConfigForm>({
-    resolver: joiResolver(editClickPaymentMethodConfigValidator),
-    defaultValues: initialValues ?? {},
+  const form = useForm<TClickTelegramConfigForm>({
+    resolver: joiResolver(editClickTelegramConfigValidator),
+    defaultValues: {
+      telegram_provider_token: initialValues?.telegram_provider_token ?? "",
+    },
   });
-
-  const handleSubmit = (data: TClickPaymentMethodConfigForm) => {
-    onSubmit(data);
-  };
 
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(handleSubmit)}
+        onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6 p-6"
       >
         <FormField
@@ -46,7 +44,7 @@ export const PaymentMethodConfigForm = ({
           name="telegram_provider_token"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel isRequired>
                 {t("dashboard.payment-methods.telegram_provider_token")}
               </FormLabel>
               <FormControl>

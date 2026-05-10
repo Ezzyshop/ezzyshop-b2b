@@ -1,5 +1,7 @@
 import {
-  IClickPaymentMethodConfig,
+  IClickConfig,
+  IClickTelegramConfig,
+  IPaymeConfig,
   IPaymentMethod,
   TPaymentMethodForm,
 } from "@/features/dashboard/payment-methods/utils/payment-methods.interface";
@@ -29,11 +31,36 @@ export const deletePaymentMethodMutationFn = async (
     .delete(`/payment-methods/${shopId}/${paymentMethodId}`)
     .then((res) => res.data);
 
-export const updateClickPaymentMethodConfigMutationFn = async (
+export const updateClickConfigMutationFn = async (
   shopId: string,
   paymentMethodId: string,
-  data: IClickPaymentMethodConfig
+  data: IClickConfig
 ): Promise<IResponse<IPaymentMethod>> =>
   await api
-    .put(`/payment-methods/${shopId}/${paymentMethodId}/click-config`, { click_config: data })
+    .put(`/payment-methods/${shopId}/${paymentMethodId}/click-config`, {
+      click_config: data,
+    })
+    .then((res) => res.data);
+
+export const updateClickTelegramConfigMutationFn = async (
+  shopId: string,
+  paymentMethodId: string,
+  data: IClickTelegramConfig
+): Promise<IResponse<IPaymentMethod>> =>
+  await api
+    .put(
+      `/payment-methods/${shopId}/${paymentMethodId}/click-telegram-config`,
+      { click_telegram_config: data }
+    )
+    .then((res) => res.data);
+
+export const updatePaymeConfigMutationFn = async (
+  shopId: string,
+  paymentMethodId: string,
+  data: IPaymeConfig
+): Promise<IResponse<IPaymentMethod>> =>
+  await api
+    .put(`/payment-methods/${shopId}/${paymentMethodId}/payme-config`, {
+      payme_config: data,
+    })
     .then((res) => res.data);

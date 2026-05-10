@@ -3,12 +3,19 @@ import { IPaymentMethod } from "../utils/payment-methods.interface";
 import { StatusChangeSwitch } from "@/components/moderator/forms/change-status-switch";
 import {
   PaymentMethodStatus,
+  PaymentMethodType,
   paymentMethodTypeLabels,
 } from "../utils/payment-method.enum";
 import { Badge } from "@/components/ui/badge/badge";
 import { useTranslation } from "react-i18next";
-import { ClickConfiguration } from "./payment-method-config-form/click-configuration";
+import { PaymentMethodConfiguration } from "./payment-method-config-form/payment-method-configuration";
 import { EditPaymentMethod } from "./payment-method-form/edit-payment-method";
+
+const TYPES_REQUIRING_CONFIG: PaymentMethodType[] = [
+  PaymentMethodType.Click,
+  PaymentMethodType.ClickTelegram,
+  PaymentMethodType.Payme,
+];
 
 interface IProps {
   paymentMethod: IPaymentMethod;
@@ -16,27 +23,34 @@ interface IProps {
 
 export const PaymentMethodCard = ({ paymentMethod }: IProps) => {
   const { t, i18n } = useTranslation();
+  const requiresConfig = TYPES_REQUIRING_CONFIG.includes(paymentMethod.type);
+
   return (
     <Card>
       <CardHeader className="flex justify-between items-center">
         <CardTitle>{t(paymentMethodTypeLabels[paymentMethod.type])}</CardTitle>
         <div className="flex items-center gap-2">
-          {paymentMethod.status !== PaymentMethodStatus.Waiting ? (
-            <StatusChangeSwitch
-              status={
-                paymentMethod.status === PaymentMethodStatus.Active
-                  ? "ACTIVE"
-                  : "INACTIVE"
-              }
-              url={`/payment-methods/${paymentMethod.shop}/${paymentMethod._id}/status`}
-              invalidateQueryKey={["payment-methods"]}
-            />
-          ) : (
+          {paymentMethod.status === PaymentMethodStatus.Waiting ? (
             <>
               <Badge variant="destructive">
                 {t("dashboard.payment-methods.waiting")}
               </Badge>
-              <ClickConfiguration paymentMethod={paymentMethod} />
+              <PaymentMethodConfiguration paymentMethod={paymentMethod} />
+            </>
+          ) : (
+            <>
+              <StatusChangeSwitch
+                status={
+                  paymentMethod.status === PaymentMethodStatus.Active
+                    ? "ACTIVE"
+                    : "INACTIVE"
+                }
+                url={`/payment-methods/${paymentMethod.shop}/${paymentMethod._id}/status`}
+                invalidateQueryKey={["payment-methods"]}
+              />
+              {requiresConfig && (
+                <PaymentMethodConfiguration paymentMethod={paymentMethod} />
+              )}
             </>
           )}
           <EditPaymentMethod paymentMethod={paymentMethod} />

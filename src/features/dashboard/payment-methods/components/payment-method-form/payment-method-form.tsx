@@ -93,6 +93,12 @@ export const PaymentMethodForm = ({
                   <SelectItem value={PaymentMethodType.Click}>
                     {t("dashboard.payment-methods.type_click")}
                   </SelectItem>
+                  <SelectItem value={PaymentMethodType.Payme}>
+                    {t("dashboard.payment-methods.type_payme")}
+                  </SelectItem>
+                  <SelectItem value={PaymentMethodType.ClickTelegram}>
+                    {t("dashboard.payment-methods.type_click_telegram")}
+                  </SelectItem>
                   <SelectItem value={PaymentMethodType.CardTransfer}>
                     {t("dashboard.payment-methods.type_card_transfer")}
                   </SelectItem>

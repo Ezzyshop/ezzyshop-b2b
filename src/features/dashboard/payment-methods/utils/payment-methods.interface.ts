@@ -1,6 +1,8 @@
-import { PaymentMethodStatus } from "./payment-method.enum";
-
-import { PaymentMethodType } from "./payment-method.enum";
+import {
+  PaymentMethodStatus,
+  PaymentMethodType,
+  PaymentProviderMode,
+} from "./payment-method.enum";
 
 export interface IPaymentMethod {
   _id: string;
@@ -11,7 +13,9 @@ export interface IPaymentMethod {
     en: string;
   };
   type: PaymentMethodType;
-  click_config?: IClickPaymentMethodConfig;
+  click_config?: IClickConfig;
+  click_telegram_config?: IClickTelegramConfig;
+  payme_config?: IPaymeConfig;
   instructions: {
     uz: string | null;
     ru: string | null;
@@ -20,8 +24,23 @@ export interface IPaymentMethod {
   status: PaymentMethodStatus;
 }
 
-export interface IClickPaymentMethodConfig {
+export interface IClickConfig {
+  service_id: string;
+  merchant_id: string;
+  merchant_user_id: string;
+  secret_key: string;
+  mode: PaymentProviderMode;
+}
+
+export interface IClickTelegramConfig {
   telegram_provider_token?: string | null;
+}
+
+export interface IPaymeConfig {
+  merchant_id: string;
+  test_key: string;
+  prod_key: string;
+  mode: PaymentProviderMode;
 }
 
 export type TPaymentMethodForm = Pick<
@@ -29,7 +48,6 @@ export type TPaymentMethodForm = Pick<
   "name" | "type" | "instructions" | "status"
 >;
 
-export type TClickPaymentMethodConfigForm = Pick<
-  IClickPaymentMethodConfig,
-  "telegram_provider_token"
->;
+export type TClickConfigForm = IClickConfig;
+export type TClickTelegramConfigForm = IClickTelegramConfig;
+export type TPaymeConfigForm = IPaymeConfig;
