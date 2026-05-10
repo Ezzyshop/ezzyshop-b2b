@@ -30,6 +30,13 @@ export enum ErrorMessages {
   DeliveryMethodNotFound = "DELIVERY_METHOD_NOT_FOUND",
   PaymentMethodNotFound = "PAYMENT_METHOD_NOT_FOUND",
   PaymentMethodTypeNotClick = "PAYMENT_METHOD_TYPE_NOT_CLICK",
+  PaymentMethodTypeMismatch = "PAYMENT_METHOD_TYPE_MISMATCH",
+  PaymentMethodNotConfigured = "PAYMENT_METHOD_NOT_CONFIGURED",
+  PaymentSignatureInvalid = "PAYMENT_SIGNATURE_INVALID",
+  PaymentTransactionNotFound = "PAYMENT_TRANSACTION_NOT_FOUND",
+  PaymentTransactionAlreadyFinalized = "PAYMENT_TRANSACTION_ALREADY_FINALIZED",
+  PaymentAmountMismatch = "PAYMENT_AMOUNT_MISMATCH",
+  PaymentTransactionExpired = "PAYMENT_TRANSACTION_EXPIRED",
   TelegramBotNotFound = "TELEGRAM_BOT_NOT_FOUND",
   OrderNotFound = "ORDER_NOT_FOUND",
   YouHaveReachedTheLimitOfProducts = "YOU_HAVE_REACHED_THE_LIMIT_OF_PRODUCTS",
@@ -49,6 +56,8 @@ export enum ErrorMessages {
   CouponCodeAlreadyExists = "COUPON_CODE_ALREADY_EXISTS",
   DeliveryZoneNotFound = "DELIVERY_ZONE_NOT_FOUND",
   DeliveryZoneNotCovered = "DELIVERY_ZONE_NOT_COVERED",
+  ShopAddressNotConfigured = "SHOP_ADDRESS_NOT_CONFIGURED",
+  RoutingProviderUnavailable = "ROUTING_PROVIDER_UNAVAILABLE",
   ReviewNotFound = "REVIEW_NOT_FOUND",
   ReviewAlreadyExists = "REVIEW_ALREADY_EXISTS",
   RoleNotFound = "ROLE_NOT_FOUND",
@@ -101,6 +110,20 @@ export const errorMessagesMap: Record<ErrorMessages, string> = {
   [ErrorMessages.DeliveryMethodNotFound]: "Yetkazib berish usuli topilmadi",
   [ErrorMessages.PaymentMethodNotFound]: "To'lov usuli topilmadi",
   [ErrorMessages.PaymentMethodTypeNotClick]: "To'lov turi Click emas",
+  [ErrorMessages.PaymentMethodTypeMismatch]:
+    "To'lov usuli turi sozlamaga mos kelmadi",
+  [ErrorMessages.PaymentMethodNotConfigured]:
+    "To'lov usuli hali sozlanmagan",
+  [ErrorMessages.PaymentSignatureInvalid]:
+    "To'lov imzosi noto'g'ri yoki maxfiy kalit mos kelmadi",
+  [ErrorMessages.PaymentTransactionNotFound]:
+    "To'lov tranzaksiyasi topilmadi",
+  [ErrorMessages.PaymentTransactionAlreadyFinalized]:
+    "Bu tranzaksiya allaqachon yakunlangan",
+  [ErrorMessages.PaymentAmountMismatch]:
+    "To'lov summasi buyurtma summasiga mos kelmadi",
+  [ErrorMessages.PaymentTransactionExpired]:
+    "To'lov muddati tugagan, qaytadan urinib ko'ring",
   [ErrorMessages.TelegramBotNotFound]: "Telegram bot topilmadi",
   [ErrorMessages.OrderNotFound]: "Buyurtma topilmadi",
   [ErrorMessages.YouHaveReachedTheLimitOfProducts]:
@@ -127,6 +150,10 @@ export const errorMessagesMap: Record<ErrorMessages, string> = {
   [ErrorMessages.CouponCodeAlreadyExists]: "Kupon kodi allaqachon mavjud",
   [ErrorMessages.DeliveryZoneNotFound]: "Yetkazish hududi topilmadi",
   [ErrorMessages.DeliveryZoneNotCovered]: "Yetkazish hududi topilmadi",
+  [ErrorMessages.ShopAddressNotConfigured]:
+    "Do'kon manzili sozlanmagan, avval sozlamalardan kiriting",
+  [ErrorMessages.RoutingProviderUnavailable]:
+    "Yo'l hisoblash xizmati hozir ishlamayapti, biroz kutib qaytadan urinib ko'ring",
   [ErrorMessages.ReviewNotFound]: "Sharh topilmadi",
   [ErrorMessages.ReviewAlreadyExists]: "Allaqachon sharh qoldirgansiz",
   [ErrorMessages.RoleNotFound]: "Rol topilmadi",
