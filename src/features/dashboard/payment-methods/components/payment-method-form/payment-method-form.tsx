@@ -115,11 +115,11 @@ export const PaymentMethodForm = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired>
-                {t("dashboard.delivery-methods.name")}
+                {t("dashboard.payment-methods.name")}
               </FormLabel>
               <FormControl>
                 <Input
-                  placeholder={t("dashboard.delivery-methods.name_placeholder")}
+                  placeholder={t("dashboard.payment-methods.enter_name")}
                   {...field}
                 />
               </FormControl>

@@ -36,9 +36,9 @@ export const EditPaymentMethod = ({ paymentMethod }: IProps) => {
         data
       ),
     onSuccess: () => {
-      toast.success(t("dashboard.delivery-methods.updated"));
+      toast.success(t("dashboard.payment-methods.updated"));
       queryClient.invalidateQueries({
-        queryKey: ["delivery-methods", paymentMethod.shop],
+        queryKey: ["payment-methods", paymentMethod.shop],
       });
       setIsOpen(false);
     },
@@ -66,9 +66,9 @@ export const EditPaymentMethod = ({ paymentMethod }: IProps) => {
       </DrawerTrigger>
       <DrawerContent className="w-full md:max-w-lg">
         <DrawerHeader>
-          <DrawerTitle>{t("dashboard.delivery-methods.create")}</DrawerTitle>
+          <DrawerTitle>{t("dashboard.payment-methods.edit")}</DrawerTitle>
           <DrawerDescription>
-            {t("dashboard.delivery-methods.create_description")}
+            {t("dashboard.payment-methods.edit_description")}
           </DrawerDescription>
         </DrawerHeader>
         <PaymentMethodForm
