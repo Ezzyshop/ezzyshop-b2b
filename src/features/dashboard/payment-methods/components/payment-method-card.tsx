@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge/badge";
 import { useTranslation } from "react-i18next";
 import { PaymentMethodConfiguration } from "./payment-method-config-form/payment-method-configuration";
 import { EditPaymentMethod } from "./payment-method-form/edit-payment-method";
+import { DeletePaymentMethod } from "./payment-method-form/delete-payment-method";
 
 const TYPES_REQUIRING_CONFIG: PaymentMethodType[] = [
   PaymentMethodType.Click,
@@ -54,6 +55,7 @@ export const PaymentMethodCard = ({ paymentMethod }: IProps) => {
             </>
           )}
           <EditPaymentMethod paymentMethod={paymentMethod} />
+          <DeletePaymentMethod paymentMethod={paymentMethod} />
         </div>
       </CardHeader>
       <CardContent>
