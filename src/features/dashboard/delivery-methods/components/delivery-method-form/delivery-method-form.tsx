@@ -58,7 +58,7 @@ export const DeliveryMethodForm = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(handleSubmit)}
-        className="space-y-6 p-6"
+        className="flex-1 min-h-0 overflow-y-auto space-y-6 p-6"
       >
         <LanguageSelectTab
           activeLanguage={activeLanguage}
