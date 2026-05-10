@@ -18,6 +18,7 @@ import { useTranslation } from "react-i18next";
 import {
   DeliveryMethodDeliveryType,
   DeliveryMethodEstimatedDayPrefix,
+  DeliveryMethodPricingMode,
 } from "../../../utils/delivery-methods.enum";
 
 interface IProps {
@@ -28,6 +29,7 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
   const { t } = useTranslation();
 
   const deliveryType = form.watch("deliveryType");
+  const pricingMode = form.watch("dynamic_pricing_mode");
 
   return (
     <>
@@ -56,6 +58,9 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
                   </SelectItem>
                   <SelectItem value={DeliveryMethodDeliveryType.Fixed}>
                     {t("common.fixed")}
+                  </SelectItem>
+                  <SelectItem value={DeliveryMethodDeliveryType.Dynamic}>
+                    {t("common.dynamic")}
                   </SelectItem>
                 </SelectContent>
               </Select>
@@ -148,41 +153,86 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
 
       {deliveryType === DeliveryMethodDeliveryType.Dynamic && (
         <>
-          <div className="flex items-center gap-3">
-            <span>{t("dashboard.delivery-methods.initial_km_prefix")}</span>
+          <FormField
+            control={form.control}
+            name="dynamic_pricing_mode"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel isRequired>
+                  {t("dashboard.delivery-methods.pricing_mode")}
+                </FormLabel>
+                <FormControl>
+                  <Select
+                    onValueChange={(value) => field.onChange(value)}
+                    defaultValue={field.value || undefined}
+                    value={field.value || undefined}
+                  >
+                    <SelectTrigger>
+                      <SelectValue
+                        placeholder={t(
+                          "dashboard.delivery-methods.pricing_mode_placeholder"
+                        )}
+                      />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value={DeliveryMethodPricingMode.PerKm}>
+                        {t("dashboard.delivery-methods.pricing_mode_per_km")}
+                      </SelectItem>
+                      <SelectItem
+                        value={DeliveryMethodPricingMode.FlatAfterThreshold}
+                      >
+                        {t("dashboard.delivery-methods.pricing_mode_flat")}
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+              </FormItem>
+            )}
+          />
 
+          <div className="flex items-end gap-4">
             <FormField
               control={form.control}
               name="initial_km"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex-1">
+                  <FormLabel isRequired>
+                    {t("dashboard.delivery-methods.initial_km")}
+                  </FormLabel>
                   <FormControl>
                     <InputWithPrefix
                       prefix="km"
                       {...field}
-                      value={field.value}
-                      onChange={(e) => field.onChange(e.target.value)}
+                      value={field.value ?? ""}
+                      onChange={(e) =>
+                        field.onChange(
+                          e.target.value === "" ? undefined : Number(e.target.value)
+                        )
+                      }
                     />
                   </FormControl>
                 </FormItem>
               )}
             />
-
-            <span className="whitespace-nowrap">
-              {t("dashboard.delivery-methods.initial_km_price_prefix")}
-            </span>
 
             <FormField
               control={form.control}
               name="initial_km_price"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex-1">
+                  <FormLabel isRequired>
+                    {t("dashboard.delivery-methods.initial_km_price")}
+                  </FormLabel>
                   <FormControl>
                     <InputWithPrefix
                       prefix="UZS"
                       {...field}
-                      value={field.value}
-                      onChange={(e) => field.onChange(Number(e.target.value))}
+                      value={field.value ?? ""}
+                      onChange={(e) =>
+                        field.onChange(
+                          e.target.value === "" ? undefined : Number(e.target.value)
+                        )
+                      }
                     />
                   </FormControl>
                 </FormItem>
@@ -190,26 +240,31 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
             />
           </div>
 
-          <div className="flex items-center gap-3">
-            <span>{t("dashboard.delivery-methods.every_km_price_prefix")}</span>
-
-            <FormField
-              control={form.control}
-              name="every_km_price"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <InputWithPrefix
-                      prefix="UZS"
-                      {...field}
-                      value={field.value}
-                      onChange={(e) => field.onChange(Number(e.target.value))}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-          </div>
+          <FormField
+            control={form.control}
+            name="every_km_price"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel isRequired>
+                  {pricingMode === DeliveryMethodPricingMode.FlatAfterThreshold
+                    ? t("dashboard.delivery-methods.flat_over_price")
+                    : t("dashboard.delivery-methods.every_km_price")}
+                </FormLabel>
+                <FormControl>
+                  <InputWithPrefix
+                    prefix="UZS"
+                    {...field}
+                    value={field.value ?? ""}
+                    onChange={(e) =>
+                      field.onChange(
+                        e.target.value === "" ? undefined : Number(e.target.value)
+                      )
+                    }
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
         </>
       )}
     </>

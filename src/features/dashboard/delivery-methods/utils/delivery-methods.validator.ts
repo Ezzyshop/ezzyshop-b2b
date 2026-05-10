@@ -2,6 +2,7 @@ import Joi from "joi";
 import {
   DeliveryMethodDeliveryType,
   DeliveryMethodEstimatedDayPrefix,
+  DeliveryMethodPricingMode,
   DeliveryMethodStatus,
 } from "./delivery-methods.enum";
 import { IDeliveryMethod } from "./delivery-methods.interface";
@@ -58,6 +59,9 @@ export const deliveryMethodFields: Record<
     .optional()
     .min(0)
     .messages({ "number.min": "Min order price must be greater than 0" }),
+  dynamic_pricing_mode: Joi.string()
+    .optional()
+    .valid(...Object.values(DeliveryMethodPricingMode)),
   estimated_day_prefix: Joi.string()
     .required()
     .valid(...Object.values(DeliveryMethodEstimatedDayPrefix)),
@@ -74,16 +78,31 @@ export const createDeliveryMethodValidator = Joi.object({
   initial_km_price: deliveryMethodFields.initial_km_price,
   every_km_price: deliveryMethodFields.every_km_price,
   min_order_price: deliveryMethodFields.min_order_price,
-}).when(
-  Joi.object({
-    deliveryType: Joi.valid(DeliveryMethodDeliveryType.Fixed),
-  }).unknown(),
-  {
-    then: Joi.object({
-      price: deliveryMethodFields.price.required(),
-    }),
-  }
-);
+  dynamic_pricing_mode: deliveryMethodFields.dynamic_pricing_mode,
+})
+  .when(
+    Joi.object({
+      deliveryType: Joi.valid(DeliveryMethodDeliveryType.Fixed),
+    }).unknown(),
+    {
+      then: Joi.object({
+        price: deliveryMethodFields.price.required(),
+      }),
+    }
+  )
+  .when(
+    Joi.object({
+      deliveryType: Joi.valid(DeliveryMethodDeliveryType.Dynamic),
+    }).unknown(),
+    {
+      then: Joi.object({
+        dynamic_pricing_mode: deliveryMethodFields.dynamic_pricing_mode.required(),
+        initial_km: deliveryMethodFields.initial_km.required(),
+        initial_km_price: deliveryMethodFields.initial_km_price.required(),
+        every_km_price: deliveryMethodFields.every_km_price.required(),
+      }),
+    }
+  );
 
 export const updateDeliveryMethodValidator = Joi.object({
   name: deliveryMethodFields.name,
@@ -96,16 +115,31 @@ export const updateDeliveryMethodValidator = Joi.object({
   initial_km_price: deliveryMethodFields.initial_km_price,
   every_km_price: deliveryMethodFields.every_km_price,
   min_order_price: deliveryMethodFields.min_order_price,
-}).when(
-  Joi.object({
-    deliveryType: Joi.valid(DeliveryMethodDeliveryType.Fixed),
-  }).unknown(),
-  {
-    then: Joi.object({
-      price: deliveryMethodFields.price.required(),
-    }),
-  }
-);
+  dynamic_pricing_mode: deliveryMethodFields.dynamic_pricing_mode,
+})
+  .when(
+    Joi.object({
+      deliveryType: Joi.valid(DeliveryMethodDeliveryType.Fixed),
+    }).unknown(),
+    {
+      then: Joi.object({
+        price: deliveryMethodFields.price.required(),
+      }),
+    }
+  )
+  .when(
+    Joi.object({
+      deliveryType: Joi.valid(DeliveryMethodDeliveryType.Dynamic),
+    }).unknown(),
+    {
+      then: Joi.object({
+        dynamic_pricing_mode: deliveryMethodFields.dynamic_pricing_mode.required(),
+        initial_km: deliveryMethodFields.initial_km.required(),
+        initial_km_price: deliveryMethodFields.initial_km_price.required(),
+        every_km_price: deliveryMethodFields.every_km_price.required(),
+      }),
+    }
+  );
 
 export const changeDeliveryMethodStatusValidator = Joi.object({
   status: deliveryMethodFields.status,

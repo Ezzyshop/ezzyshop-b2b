@@ -33,3 +33,14 @@ export const deliveryMethodDeliveryTypeLabel = {
   [DeliveryMethodDeliveryType.Free]: "common.free",
   [DeliveryMethodDeliveryType.Custom]: "common.custom",
 };
+
+export enum DeliveryMethodPricingMode {
+  PerKm = "PER_KM",
+  FlatAfterThreshold = "FLAT_AFTER_THRESHOLD",
+}
+
+export const deliveryMethodPricingModeLabel = {
+  [DeliveryMethodPricingMode.PerKm]: "dashboard.delivery-methods.pricing_mode_per_km",
+  [DeliveryMethodPricingMode.FlatAfterThreshold]:
+    "dashboard.delivery-methods.pricing_mode_flat",
+};
