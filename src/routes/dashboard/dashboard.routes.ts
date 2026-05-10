@@ -205,15 +205,15 @@ export const dashboardRoutes: DashboardRoute[] = [
     icon: CreditCardIcon,
     title: "sidebar.dashboard.payment-methods",
   },
-  {
-    path: "/branches",
-    element: lazy(
-      () => import("@/features/dashboard/branches/pages/branches.page"),
-    ),
-    access: { accessType: "permission", resource: "branches", action: "read" },
-    icon: MapIcon,
-    title: "sidebar.dashboard.branches",
-  },
+  // {
+  //   path: "/branches",
+  //   element: lazy(
+  //     () => import("@/features/dashboard/branches/pages/branches.page"),
+  //   ),
+  //   access: { accessType: "permission", resource: "branches", action: "read" },
+  //   icon: MapIcon,
+  //   title: "sidebar.dashboard.branches",
+  // },
   {
     path: "/staffs",
     element: lazy(
