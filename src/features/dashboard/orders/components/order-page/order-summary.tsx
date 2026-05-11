@@ -26,7 +26,7 @@ export const OrderSummary = ({ order }: IProps) => {
         <div className="flex items-center justify-between text-sm">
           <span>{t("dashboard.orders.summary.payment_method")}</span>
           <span>
-            {t(paymentMethodTypeLabels[order.transaction.provider.type])}
+            {t(paymentMethodTypeLabels[order.transaction.provider?.type])}
           </span>
         </div>
         <div className="flex items-center justify-between text-sm">
