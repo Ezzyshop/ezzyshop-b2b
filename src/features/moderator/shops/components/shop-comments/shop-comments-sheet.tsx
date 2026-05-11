@@ -9,6 +9,8 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ShopPipelineHistoryView } from "./shop-pipeline-history";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -110,14 +112,22 @@ export const ShopCommentsSheet = ({ shop, onClose }: IProps) => {
     <Sheet open={!!shop} onOpenChange={(open) => !open && onClose()}>
       <SheetContent className="w-full sm:max-w-md flex flex-col p-0">
         <SheetHeader className="px-4 pt-4">
-          <SheetTitle>Izohlar</SheetTitle>
-          <SheetDescription>
-            {shop?.name ?? ""}
-          </SheetDescription>
+          <SheetTitle>{shop?.name ?? ""}</SheetTitle>
+          <SheetDescription>Mijozning izohlari va bosqich tarixi</SheetDescription>
         </SheetHeader>
 
-        <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3">
-          {isLoading ? (
+        <Tabs defaultValue="comments" className="flex-1 flex flex-col min-h-0">
+          <TabsList className="mx-4 mt-2 w-auto self-start">
+            <TabsTrigger value="comments">Izohlar</TabsTrigger>
+            <TabsTrigger value="history">Tarix</TabsTrigger>
+          </TabsList>
+
+          <TabsContent
+            value="comments"
+            className="flex-1 flex flex-col min-h-0 mt-2"
+          >
+            <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3">
+              {isLoading ? (
             <div className="space-y-2">
               <Skeleton className="h-16 w-full" />
               <Skeleton className="h-16 w-full" />
@@ -214,31 +224,40 @@ export const ShopCommentsSheet = ({ shop, onClose }: IProps) => {
               );
             })
           )}
-        </div>
+            </div>
 
-        <div className="border-t p-4 space-y-2 bg-background">
-          <Textarea
-            placeholder="Izoh yozish..."
-            value={draft}
-            onChange={(e) => setDraft(e.target.value)}
-            rows={3}
-            onKeyDown={(e) => {
-              if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
-                e.preventDefault();
-                handleSubmit();
-              }
-            }}
-          />
-          <div className="flex justify-end">
-            <Button
-              size="sm"
-              onClick={handleSubmit}
-              disabled={isAdding || !draft.trim()}
-            >
-              Yuborish
-            </Button>
-          </div>
-        </div>
+            <div className="border-t p-4 space-y-2 bg-background">
+              <Textarea
+                placeholder="Izoh yozish..."
+                value={draft}
+                onChange={(e) => setDraft(e.target.value)}
+                rows={3}
+                onKeyDown={(e) => {
+                  if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
+                    e.preventDefault();
+                    handleSubmit();
+                  }
+                }}
+              />
+              <div className="flex justify-end">
+                <Button
+                  size="sm"
+                  onClick={handleSubmit}
+                  disabled={isAdding || !draft.trim()}
+                >
+                  Yuborish
+                </Button>
+              </div>
+            </div>
+          </TabsContent>
+
+          <TabsContent
+            value="history"
+            className="flex-1 overflow-y-auto px-4 py-3 mt-2"
+          >
+            {shopId ? <ShopPipelineHistoryView shopId={shopId} /> : null}
+          </TabsContent>
+        </Tabs>
       </SheetContent>
     </Sheet>
   );

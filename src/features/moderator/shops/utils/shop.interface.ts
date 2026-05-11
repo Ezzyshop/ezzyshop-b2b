@@ -77,6 +77,20 @@ export interface IShopComment {
   updatedAt: string;
 }
 
+export interface IShopPipelineHistoryEntry {
+  _id: string;
+  shop: string;
+  from_stage: ShopPipelineStage | null;
+  to_stage: ShopPipelineStage;
+  changed_by: {
+    _id: string;
+    full_name: string;
+    photo?: string | null;
+  };
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface ILanguage {
   type: LanguageType;
   is_main: boolean;

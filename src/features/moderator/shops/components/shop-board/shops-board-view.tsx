@@ -65,9 +65,12 @@ export const ShopsBoardView = () => {
   const { mutate: moveShop } = useMutation({
     mutationFn: ({ id, stage }: { id: string; stage: ShopPipelineStage }) =>
       updateShopPipelineStageMutationFn(id, stage),
-    onSuccess: () => {
+    onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({ queryKey: ["shops-board"] });
       queryClient.invalidateQueries({ queryKey: ["shops"] });
+      queryClient.invalidateQueries({
+        queryKey: ["shop-pipeline-history", variables.id],
+      });
       toast.success("Bosqich yangilandi");
     },
     onError: () => {

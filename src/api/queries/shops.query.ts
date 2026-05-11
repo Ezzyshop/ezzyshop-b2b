@@ -1,5 +1,9 @@
 import { api } from "../axios";
-import { IShop, IShopComment } from "@/features/moderator/shops/utils";
+import {
+  IShop,
+  IShopComment,
+  IShopPipelineHistoryEntry,
+} from "@/features/moderator/shops/utils";
 import { IPaginatedResponse, IResponse } from "../utils/axios.interface";
 import { TObject } from "@/hooks";
 
@@ -23,3 +27,8 @@ export const getShopCommentsQueryFn = (
   shopId: string
 ): Promise<IResponse<IShopComment[]>> =>
   api.get(`/shops/${shopId}/comments`).then((res) => res.data);
+
+export const getShopPipelineHistoryQueryFn = (
+  shopId: string
+): Promise<IResponse<IShopPipelineHistoryEntry[]>> =>
+  api.get(`/shops/${shopId}/pipeline-history`).then((res) => res.data);
