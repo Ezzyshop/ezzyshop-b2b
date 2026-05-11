@@ -3,6 +3,7 @@ import {
   BusinessType,
   HomepageLayout,
   LanguageType,
+  ShopPipelineStage,
   ShopPlatform,
   ShopStatus,
 } from "./shop.enum";
@@ -132,6 +133,9 @@ export const shopFields: Record<
     .allow(null),
   homepage_layout: Joi.string()
     .valid(...Object.values(HomepageLayout))
+    .optional(),
+  pipeline_stage: Joi.string()
+    .valid(...Object.values(ShopPipelineStage))
     .optional(),
 };
 

@@ -1,5 +1,5 @@
 import { api } from "../axios";
-import { IShop } from "@/features/moderator/shops/utils";
+import { IShop, IShopComment } from "@/features/moderator/shops/utils";
 import { IPaginatedResponse, IResponse } from "../utils/axios.interface";
 import { TObject } from "@/hooks";
 
@@ -8,8 +8,18 @@ export const getAllShopsQueryFn = (
 ): Promise<IPaginatedResponse<IShop>> =>
   api.get("/shops", { params: filter }).then((res) => res.data);
 
+export const getBoardShopsQueryFn = (
+  filter?: TObject
+): Promise<IResponse<IShop[]>> =>
+  api.get("/shops/board", { params: filter }).then((res) => res.data);
+
 export const getShopQueryFn = (id: string): Promise<IResponse<IShop>> =>
   api.get(`/shops/${id}`).then((res) => res.data);
 
 export const getByShopByIdQueryFn = (id: string): Promise<IResponse<IShop>> =>
   api.get(`/shops/me/${id}`).then((res) => res.data);
+
+export const getShopCommentsQueryFn = (
+  shopId: string
+): Promise<IResponse<IShopComment[]>> =>
+  api.get(`/shops/${shopId}/comments`).then((res) => res.data);

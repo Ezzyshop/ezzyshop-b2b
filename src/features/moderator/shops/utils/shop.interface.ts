@@ -3,6 +3,7 @@ import {
   BusinessType,
   HomepageLayout,
   LanguageType,
+  ShopPipelineStage,
   ShopPlatform,
   ShopStatus,
 } from "./shop.enum";
@@ -60,6 +61,20 @@ export interface IShop {
   eta?: IShopEta;
   homepage_layout?: HomepageLayout;
   setup?: boolean;
+  pipeline_stage: ShopPipelineStage;
+}
+
+export interface IShopComment {
+  _id: string;
+  shop: string;
+  author: {
+    _id: string;
+    full_name: string;
+    photo?: string | null;
+  };
+  text: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface ILanguage {

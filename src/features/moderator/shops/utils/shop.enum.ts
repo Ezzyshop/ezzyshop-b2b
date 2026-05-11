@@ -37,3 +37,28 @@ export enum HomepageLayout {
   Classic = "CLASSIC",
   Editorial = "EDITORIAL",
 }
+
+export enum ShopPipelineStage {
+  Planning = "PLANNING",
+  FreeTrial = "FREE_TRIAL",
+  Paused = "PAUSED",
+  Using = "USING",
+  Cancelled = "CANCELLED",
+}
+
+export const shopPipelineStageTranslations: Record<ShopPipelineStage, string> =
+  {
+    [ShopPipelineStage.Planning]: "Rejalashtirilgan",
+    [ShopPipelineStage.FreeTrial]: "Sinov muddati",
+    [ShopPipelineStage.Paused]: "To'xtatilgan",
+    [ShopPipelineStage.Using]: "Foydalanmoqda",
+    [ShopPipelineStage.Cancelled]: "Bekor qilingan",
+  };
+
+export const SHOP_PIPELINE_STAGES: ShopPipelineStage[] = [
+  ShopPipelineStage.Planning,
+  ShopPipelineStage.FreeTrial,
+  ShopPipelineStage.Paused,
+  ShopPipelineStage.Using,
+  ShopPipelineStage.Cancelled,
+];
