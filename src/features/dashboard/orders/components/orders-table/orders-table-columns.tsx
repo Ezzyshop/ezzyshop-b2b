@@ -125,7 +125,7 @@ export const orderTableColumns = (
     cell: ({ row }) => {
       return (
         <div>
-          {t(paymentMethodTypeLabels[row.original.transaction.provider.type])}
+          {t(paymentMethodTypeLabels[row.original.transaction.provider?.type])}
         </div>
       );
     },
