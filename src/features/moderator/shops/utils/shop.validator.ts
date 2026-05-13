@@ -3,6 +3,7 @@ import {
   BusinessType,
   HomepageLayout,
   LanguageType,
+  SHOP_PRIORITIES,
   ShopPipelineStage,
   ShopPlatform,
   ShopStatus,
@@ -136,6 +137,9 @@ export const shopFields: Record<
     .optional(),
   pipeline_stage: Joi.string()
     .valid(...Object.values(ShopPipelineStage))
+    .optional(),
+  priority: Joi.number()
+    .valid(...SHOP_PRIORITIES)
     .optional(),
 };
 
