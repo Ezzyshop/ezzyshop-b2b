@@ -5,6 +5,7 @@ import {
   LanguageType,
   ShopPipelineStage,
   ShopPlatform,
+  ShopPriority,
   ShopStatus,
 } from "./shop.enum";
 import { TelegramBusinessType } from "@/features/dashboard/telegram/utils/telegram.enum";
@@ -62,6 +63,7 @@ export interface IShop {
   homepage_layout?: HomepageLayout;
   setup?: boolean;
   pipeline_stage: ShopPipelineStage;
+  priority: ShopPriority;
 }
 
 export interface IShopComment {

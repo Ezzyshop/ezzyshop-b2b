@@ -3,6 +3,7 @@ import {
   IShopComment,
   IShopForm,
   ShopPipelineStage,
+  ShopPriority,
 } from "@/features/moderator/shops/utils";
 import { api } from "../axios";
 import { IResponse } from "../utils/axios.interface";
@@ -28,6 +29,12 @@ export const updateShopPipelineStageMutationFn = (
   api
     .put(`/shops/${id}/pipeline-stage`, { pipeline_stage })
     .then((res) => res.data);
+
+export const updateShopPriorityMutationFn = (
+  id: string,
+  priority: ShopPriority
+): Promise<IResponse<IShop>> =>
+  api.put(`/shops/${id}/priority`, { priority }).then((res) => res.data);
 
 export const deleteShopMutationFn = (id: string) => {
   return api.delete(`/shops/${id}`);

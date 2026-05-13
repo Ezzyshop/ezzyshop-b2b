@@ -8,8 +8,16 @@ import { CreditCardIcon, EditIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { Badge } from "@/components/ui/badge/badge";
 import { AssignStaff } from "../assign-staff";
+import { ShopPriorityCell } from "../shop-priority/shop-priority-cell";
+import { ShopSortHeader } from "./shop-sort-header";
 
 export const shopColumns: ColumnDef<IShop>[] = [
+  {
+    accessorKey: "priority",
+    size: 140,
+    header: () => <ShopSortHeader field="priority" label="Muhimligi" />,
+    cell: ({ row }) => <ShopPriorityCell shop={row.original} />,
+  },
   {
     accessorKey: "owner.full_name",
     size: 120,

@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { IShop } from "../../utils";
 import { Badge } from "@/components/ui/badge/badge";
 import { Button } from "@/components/ui/button/button";
+import { ShopPriorityCell } from "../shop-priority/shop-priority-cell";
 
 interface IProps {
   shop: IShop;
@@ -48,6 +49,10 @@ export const ShopBoardCard = ({ shop, onOpenComments }: IProps) => {
         <div className="text-[11px] text-muted-foreground">
           {dayjs(shop.createdAt).format("DD.MM.YYYY")}
         </div>
+      </div>
+
+      <div className="pt-1">
+        <ShopPriorityCell shop={shop} size="sm" />
       </div>
 
       <div className="flex items-center justify-end gap-1 pt-1 border-t">

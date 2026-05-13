@@ -9,7 +9,13 @@ import {
 } from "@/components/ui/select";
 
 import { useQueries } from "@tanstack/react-query";
-import { BusinessType, ShopPlatform, shopTypesTranslations } from "../../utils";
+import {
+  BusinessType,
+  SHOP_PRIORITIES,
+  ShopPlatform,
+  shopPriorityTranslations,
+  shopTypesTranslations,
+} from "../../utils";
 import { TObject, useDebounce } from "@/hooks";
 import { useEffect, useState } from "react";
 
@@ -22,7 +28,7 @@ export const ShopTableFilters = ({
   setQueryParams,
   getQueryParams,
 }: IProps) => {
-  const { plan, currency, businessType, platform, status, search } =
+  const { plan, currency, businessType, platform, status, priority, search } =
     getQueryParams();
   const [value, setValue] = useState<string>(search as string);
   const debouncedSetQueryParams = useDebounce(value, 500);
@@ -48,7 +54,7 @@ export const ShopTableFilters = ({
   });
 
   return (
-    <div className="w-full grid grid-cols-6 gap-2 ">
+    <div className="w-full grid grid-cols-7 gap-2 ">
       <Input
         placeholder="Qidirish"
         className="max-w-[200px]"
@@ -155,6 +161,26 @@ export const ShopTableFilters = ({
         <SelectContent>
           <SelectItem value="ACTIVE">Aktiv</SelectItem>
           <SelectItem value="INACTIVE">Inaktiv</SelectItem>
+        </SelectContent>
+      </Select>
+      <Select
+        value={priority as string}
+        onValueChange={(value) =>
+          setQueryParams({ ...getQueryParams(), priority: value })
+        }
+      >
+        <SelectTrigger
+          value={priority as string}
+          onReset={() => setQueryParams({ ...getQueryParams(), priority: "" })}
+        >
+          <SelectValue placeholder="Muhimligi" />
+        </SelectTrigger>
+        <SelectContent>
+          {SHOP_PRIORITIES.map((p) => (
+            <SelectItem key={p} value={String(p)}>
+              {shopPriorityTranslations[p]}
+            </SelectItem>
+          ))}
         </SelectContent>
       </Select>
     </div>
