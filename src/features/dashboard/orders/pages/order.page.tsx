@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { OrderCustomer } from "../components/order-page/order-customer";
+import { OrderCourier } from "../components/order-page/order-courier";
 import { OrderSummary } from "../components/order-page/order-summary";
 import { OrderStatusProgress } from "../components/order-page/order-status/order-status-progress";
 import { OrderItems } from "../components/order-page/order-items";
@@ -110,6 +111,7 @@ export const OrderPage = () => {
         <OrderTransactionStatus order={order} />
         <OrderCheques order={order} />
         <OrderCustomer order={order} />
+        <OrderCourier order={order} />
         <OrderAddress order={order} />
       </div>
     </div>

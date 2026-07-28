@@ -649,6 +649,13 @@
         "reject_reason": "Причина отклонения",
         "reject_reason_placeholder": "Введите причину отклонения..."
       },
+      "courier_information": {
+        "title": "Информация о курьере",
+        "name": "Имя курьера",
+        "phone": "Телефон курьера",
+        "accepted_at": "Время принятия",
+        "not_accepted": "Заказ ещё не принят курьером"
+      },
       "status_history": {
         "title": "История статусов"
       },
@@ -746,6 +753,7 @@
       "product_count": "Количество товаров",
       "customer_name": "Клиент",
       "customer_phone": "Телефон",
+      "courier": "Курьер",
       "product_quantity": "Кол-во",
       "original_price": "Исходная цена",
       "coupon_discount": "Скидка купона",

@@ -619,6 +619,13 @@
         "reject_reason": "Rejection reason",
         "reject_reason_placeholder": "Enter rejection reason..."
       },
+      "courier_information": {
+        "title": "Courier information",
+        "name": "Courier name",
+        "phone": "Courier phone",
+        "accepted_at": "Accepted at",
+        "not_accepted": "Order not accepted by a courier yet"
+      },
       "status_history": {
         "title": "Status history"
       },
@@ -746,6 +753,7 @@
       "product_count": "Product count",
       "customer_name": "Customer",
       "customer_phone": "Phone",
+      "courier": "Courier",
       "product_quantity": "Qty",
       "original_price": "Original price",
       "coupon_discount": "Coupon discount",

@@ -95,6 +95,7 @@ export interface IOrderResponse {
   accepted_by?: { _id: string; full_name: string; email: string };
   accepted_at?: string;
   time_to_accept?: number;
+  courier?: { _id: string; full_name: string; phone: string };
 }
 
 export interface IOrderProduct {

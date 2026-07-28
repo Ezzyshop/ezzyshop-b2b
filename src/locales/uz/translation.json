@@ -649,6 +649,13 @@
         "name": "Mijoz ismi",
         "phone": "Mijoz telefon raqami"
       },
+      "courier_information": {
+        "title": "Kuryer ma'lumotlari",
+        "name": "Kuryer ismi",
+        "phone": "Kuryer telefon raqami",
+        "accepted_at": "Qabul qilingan vaqt",
+        "not_accepted": "Buyurtma hali kuryer tomonidan qabul qilinmagan"
+      },
       "status_information": "Buyurtma holati",
       "transaction_status": "To'lov holati",
       "status_history": {
@@ -844,6 +851,7 @@
       "delivery": "Yetkazib berish",
       "customer_name": "Mijoz ismi",
       "customer_phone": "Mijoz telefon raqami",
+      "courier": "Kuryer",
       "original_price": "Asl narxi",
       "coupon_discount": "Kupon chegirmasi",
       "used_count": "Ishlatilgan",

@@ -132,6 +132,22 @@ export const orderTableColumns = (
   },
 
   {
+    header: "table.columns.courier",
+    accessorKey: "courier",
+    cell: ({ row }) => {
+      const courier = row.original.courier;
+      if (!courier) return <div>—</div>;
+      return (
+        <div className="text-sm">
+          <p className="font-medium">{courier.full_name}</p>
+          {courier.phone && (
+            <p className="text-muted-foreground text-xs">{courier.phone}</p>
+          )}
+        </div>
+      );
+    },
+  },
+  {
     id: "actions",
     header: "table.columns.actions",
     accessorKey: "actions",

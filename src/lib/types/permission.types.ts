@@ -20,7 +20,8 @@ export type PermissionResource =
   | 'telegram_setup'
   | 'telegram_templates'
   | 'telegram_messages'
-  | 'analytics';
+  | 'analytics'
+  | 'courier';
 
 export type PermissionAction = 'read' | 'create' | 'update' | 'delete' | 'full';
 
@@ -80,4 +81,5 @@ export const PERMISSION_MATRIX: {
   { resource: 'telegram_templates', label: 'Telegram Templates', actions: ['read', 'create', 'update'] },
   { resource: 'telegram_messages', label: 'Telegram Messages', actions: ['read', 'create'] },
   { resource: 'analytics', label: 'Analytics & Metrics', actions: ['read'] },
+  { resource: 'courier', label: 'Courier', actions: ['read'] },
 ];
