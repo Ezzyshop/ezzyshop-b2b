@@ -27,6 +27,7 @@ import {
   TruckIcon,
   Trophy,
   UsersIcon,
+  WalletIcon,
 } from "lucide-react";
 import { lazy, type LazyExoticComponent, type ComponentType } from "react";
 
@@ -222,6 +223,15 @@ export const dashboardRoutes: DashboardRoute[] = [
     access: { accessType: "permission", resource: "staffs", action: "read" },
     icon: UsersIcon,
     title: "sidebar.dashboard.staffs",
+  },
+  {
+    path: "/debts",
+    element: lazy(
+      () => import("@/features/dashboard/debts/pages/debts.page"),
+    ),
+    access: { accessType: "permission", resource: "courier", action: "read" },
+    icon: WalletIcon,
+    title: "sidebar.dashboard.debts",
   },
   {
     path: "/roles",

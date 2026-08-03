@@ -150,7 +150,8 @@
       "metrics_funnel": "Воронка конверсий",
       "ai": "ИИ",
       "ai_images": "AI Изображения",
-      "inventory": "Склад"
+      "inventory": "Склад",
+      "debts": "Долги курьеров"
     }
   },
   "inventory": {
@@ -620,6 +621,14 @@
       "broadcast-history-description": "Ранее отправленные рассылки пользователям вашего бота"
     },
     "orders": {
+      "status": {
+        "new": "Новый",
+        "processing": "В процессе",
+        "courier_in_shop": "Курьер в ресторане",
+        "delivering": "Доставляется",
+        "completed": "Доставлен",
+        "cancelled": "Отменён"
+      },
       "summary": {
         "title": "Сводка заказа",
         "payment_method": "Способ оплаты",
@@ -732,6 +741,22 @@
       "generate_button_modal": "Сгенерировать",
       "generate_history": "Предыдущие версии",
       "generate_history_note": "Все версии сохраняются в библиотеке AI изображений."
+    },
+    "debts": {
+      "title": "Долги курьеров",
+      "courier": "Курьер",
+      "phone": "Телефон",
+      "balance": "Долг (сум)",
+      "total_accrued": "Всего начислено",
+      "total_paid": "Всего выплачено",
+      "pay_button": "Оплатить",
+      "empty": "Нет задолженностей",
+      "pay_title": "Записать оплату",
+      "pay_description": "Текущий долг для {{name}}: {{balance}} сум",
+      "amount": "Сумма оплаты",
+      "invalid_amount": "Сумма должна быть от 1 до {{max}}",
+      "confirm_pay": "Подтвердить оплату",
+      "paid_success": "Оплата успешно записана"
     }
   },
   "table": {

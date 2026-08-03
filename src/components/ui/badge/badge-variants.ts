@@ -23,6 +23,7 @@ export const badgeVariants = cva(
         REJECTED: "bg-red-400/90 text-black",
         NEW: "bg-blue-400/90 text-black",
         PROCESSING: "bg-yellow-400/90 text-black",
+        COURIER_IN_SHOP: "bg-orange-400/90 text-black",
         DELIVERING: "bg-green-400/90 text-black",
         COMPLETED: "bg-green-400/90 text-black",
       },

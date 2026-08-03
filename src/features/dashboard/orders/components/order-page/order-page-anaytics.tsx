@@ -4,12 +4,13 @@ import { useQuery } from "@tanstack/react-query";
 import { OrderStatus, orderStatusTranslations } from "../../utils/order.enum";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
-import { Check, Clock, Package, Truck, X } from "lucide-react";
+import { Check, Clock, Package, Store, Truck, X } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const orderStatusIcon: Record<OrderStatus, React.ReactNode> = {
   [OrderStatus.New]: <Package className="size-4" />,
   [OrderStatus.Processing]: <Clock className="size-4" />,
+  [OrderStatus.CourierInShop]: <Store className="size-4" />,
   [OrderStatus.Delivering]: <Truck className="size-4" />,
   [OrderStatus.Completed]: <Check className="size-4" />,
   [OrderStatus.Cancelled]: <X className="size-4" />,

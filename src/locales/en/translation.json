@@ -150,7 +150,8 @@
       "metrics_funnel": "Conversion Funnel",
       "ai": "AI",
       "ai_images": "AI Images",
-      "inventory": "Inventory"
+      "inventory": "Inventory",
+      "debts": "Courier Debts"
     }
   },
   "inventory": {
@@ -590,6 +591,14 @@
       "usage_date": "Date"
     },
     "orders": {
+      "status": {
+        "new": "New",
+        "processing": "Processing",
+        "courier_in_shop": "Courier at restaurant",
+        "delivering": "Delivering",
+        "completed": "Delivered",
+        "cancelled": "Cancelled"
+      },
       "summary": {
         "title": "Order summary",
         "payment_method": "Payment method",
@@ -732,6 +741,22 @@
       "generate_button_modal": "Generate",
       "generate_history": "Previous versions",
       "generate_history_note": "All versions are saved to your AI Images library."
+    },
+    "debts": {
+      "title": "Courier Debts",
+      "courier": "Courier",
+      "phone": "Phone",
+      "balance": "Balance (UZS)",
+      "total_accrued": "Total Accrued",
+      "total_paid": "Total Paid",
+      "pay_button": "Pay",
+      "empty": "No outstanding debts",
+      "pay_title": "Record Payment",
+      "pay_description": "Current debt for {{name}}: {{balance}} UZS",
+      "amount": "Payment Amount",
+      "invalid_amount": "Amount must be between 1 and {{max}}",
+      "confirm_pay": "Confirm Payment",
+      "paid_success": "Payment recorded successfully"
     }
   },
   "table": {

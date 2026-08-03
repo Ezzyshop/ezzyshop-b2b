@@ -154,7 +154,8 @@
       "metrics_funnel": "Konversiya funnel",
       "ai": "AI",
       "ai_images": "AI Rasmlar",
-      "inventory": "Ombor"
+      "inventory": "Ombor",
+      "debts": "Qarzlar"
     }
   },
   "inventory": {
@@ -604,6 +605,7 @@
       "status": {
         "new": "Yangi",
         "processing": "Jarayonda",
+        "courier_in_shop": "Kuryer restoranda",
         "delivering": "Yetkazib berilyapti",
         "completed": "Yetkazib berildi",
         "cancelled": "Bekor qilingan",
@@ -820,6 +822,22 @@
       "generate_button_modal": "Yaratish",
       "generate_history": "Oldingi versiyalar",
       "generate_history_note": "Barcha versiyalar AI Rasmlar kutubxonangizga saqlanadi."
+    },
+    "debts": {
+      "title": "Kuryer qarzlari",
+      "courier": "Kuryer",
+      "phone": "Telefon",
+      "balance": "Qarz (so'm)",
+      "total_accrued": "Jami hisoblangan",
+      "total_paid": "Jami to'langan",
+      "pay_button": "To'ladim",
+      "empty": "Hozircha qarzlar yo'q",
+      "pay_title": "To'lov amalga oshirish",
+      "pay_description": "{{name}} uchun joriy qarz: {{balance}} so'm",
+      "amount": "To'lov miqdori",
+      "invalid_amount": "Miqdor 1 dan {{max}} gacha bo'lishi kerak",
+      "confirm_pay": "To'lash",
+      "paid_success": "To'lov muvaffaqiyatli amalga oshirildi"
     }
   },
   "table": {
