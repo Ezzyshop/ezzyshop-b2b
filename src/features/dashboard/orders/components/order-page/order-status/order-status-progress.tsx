@@ -1,5 +1,5 @@
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { Check, Clock, Package, Store, Truck, X } from "lucide-react";
+import { Bike, Check, Clock, Package, Store, Truck, X } from "lucide-react";
 import {
   OrderStatus,
   orderStatusTranslations,
@@ -19,6 +19,7 @@ interface IProps {
 const orderStatusIcon: Record<OrderStatus, React.ReactNode> = {
   [OrderStatus.New]: <Package className="size-4" />,
   [OrderStatus.Processing]: <Clock className="size-4" />,
+  [OrderStatus.CourierAccepted]: <Bike className="size-4" />,
   [OrderStatus.CourierInShop]: <Store className="size-4" />,
   [OrderStatus.Delivering]: <Truck className="size-4" />,
   [OrderStatus.Completed]: <Check className="size-4" />,

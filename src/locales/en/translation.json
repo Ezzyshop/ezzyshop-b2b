@@ -594,6 +594,7 @@
       "status": {
         "new": "New",
         "processing": "Processing",
+        "courier_accepted": "Courier accepted",
         "courier_in_shop": "Courier at restaurant",
         "delivering": "Delivering",
         "completed": "Delivered",

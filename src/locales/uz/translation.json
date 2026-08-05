@@ -605,6 +605,7 @@
       "status": {
         "new": "Yangi",
         "processing": "Jarayonda",
+        "courier_accepted": "Kuryer qabul qildi",
         "courier_in_shop": "Kuryer restoranda",
         "delivering": "Yetkazib berilyapti",
         "completed": "Yetkazib berildi",

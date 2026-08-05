@@ -624,6 +624,7 @@
       "status": {
         "new": "Новый",
         "processing": "В процессе",
+        "courier_accepted": "Курьер принял",
         "courier_in_shop": "Курьер в ресторане",
         "delivering": "Доставляется",
         "completed": "Доставлен",
