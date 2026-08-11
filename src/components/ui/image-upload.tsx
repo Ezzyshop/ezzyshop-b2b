@@ -115,11 +115,6 @@ export const ImageUploadSingle = ({
     setUseAi(false);
   };
 
-  const handleOpenFilePicker = () => {
-    if (!inputRef.current) return;
-    inputRef.current.click();
-  };
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -130,6 +125,10 @@ export const ImageUploadSingle = ({
     uploadImageMutation.mutate(formData);
     e.target.value = "";
   };
+
+  // Yashirin input + dasturiy .click() mobil brauzerlarda ishonchsiz —
+  // input maydon ustiga ko'rinmas qilib yotqiziladi va bosish unga tushadi
+  const showInputOverlay = !value && !useAi && !uploadImageMutation.isPending;
 
   const { data: aiImagesData } = useQuery({
     queryKey: ["ai-images", shopId, type],
@@ -248,10 +247,7 @@ export const ImageUploadSingle = ({
   const renderUploadArea = useCallback(() => {
     if (!value || value.length === 0) {
       return (
-        <div
-          onClick={handleOpenFilePicker}
-          className="flex flex-col gap-2 items-center justify-center min-h-[160px] w-full"
-        >
+        <div className="flex flex-col gap-2 items-center justify-center min-h-[160px] w-full">
           <UploadIcon className={cn(error && "text-destructive")} />
           <div>
             <p
@@ -343,7 +339,6 @@ export const ImageUploadSingle = ({
                 !useAi && "cursor-pointer",
                 error && "border-destructive",
               )}
-              onClick={!useAi && !value ? handleOpenFilePicker : undefined}
             >
               {uploadImageMutation.isPending ? (
                 <div className="flex flex-col gap-2 items-center justify-center min-h-[160px]">
@@ -358,7 +353,11 @@ export const ImageUploadSingle = ({
               <input
                 ref={inputRef}
                 type="file"
-                className="hidden"
+                className={
+                  showInputOverlay
+                    ? "absolute inset-0 h-full w-full cursor-pointer opacity-0"
+                    : "hidden"
+                }
                 onChange={handleFileChange}
                 accept="image/jpeg, image/jpg, image/png, image/gif, image/webp, image/svg"
               />
@@ -382,7 +381,6 @@ export const ImageUploadSingle = ({
           "border border-dashed rounded-xl w-full min-h-[240px] flex p-4 justify-center items-center relative cursor-pointer",
           error && "border-destructive",
         )}
-        onClick={!value ? handleOpenFilePicker : undefined}
       >
         {uploadImageMutation.isPending ? (
           <div className="flex flex-col gap-2 items-center justify-center min-h-[160px]">
@@ -395,7 +393,11 @@ export const ImageUploadSingle = ({
         <input
           ref={inputRef}
           type="file"
-          className="hidden"
+          className={
+            showInputOverlay
+              ? "absolute inset-0 h-full w-full cursor-pointer opacity-0"
+              : "hidden"
+          }
           onChange={handleFileChange}
           accept="image/jpeg, image/jpg, image/png, image/gif, image/webp, image/svg"
         />
@@ -430,21 +432,19 @@ export const MultipleImageUpload = ({
     },
   });
 
-  const handleOpenFilePicker = () => {
-    if (!inputRef.current) return;
-    inputRef.current.click();
-  };
+  const handleFileChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+      const formData = new FormData();
+      formData.append("image", file);
 
-    const formData = new FormData();
-    formData.append("image", file);
-
-    uploadImageMutation.mutate(formData);
-    e.target.value = "";
-  };
+      uploadImageMutation.mutate(formData);
+      e.target.value = "";
+    },
+    [uploadImageMutation]
+  );
 
   const handleRemoveImage = useCallback(
     (index: number) => {
@@ -456,10 +456,7 @@ export const MultipleImageUpload = ({
   const renderImages = useCallback(() => {
     if (!value || value.length === 0) {
       return (
-        <div
-          onClick={handleOpenFilePicker}
-          className="flex flex-col gap-2 items-center justify-center min-h-[200px] w-full"
-        >
+        <div className="relative flex flex-col gap-2 items-center justify-center min-h-[200px] w-full">
           <UploadIcon />
           <div>
             <p className="text-sm text-center">{t("common.upload_image")}</p>
@@ -467,6 +464,12 @@ export const MultipleImageUpload = ({
               {t("common.upload_image_description")}
             </p>
           </div>
+          <input
+            ref={inputRef}
+            type="file"
+            className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+            onChange={handleFileChange}
+          />
         </div>
       );
     }
@@ -499,27 +502,24 @@ export const MultipleImageUpload = ({
             <Loader2 className="w-4 h-4 animate-spin " />
           </div>
         ) : (
-          <div
-            onClick={handleOpenFilePicker}
-            className="flex w-[96px] h-[96px] border border-dashed rounded items-center flex-col justify-center"
-          >
+          <div className="relative flex w-[96px] h-[96px] border border-dashed rounded items-center flex-col justify-center cursor-pointer">
             <PlusIcon className="w-4 h-4" />
             <p className="text-xs">{t("common.upload_image")}</p>
+            <input
+              ref={inputRef}
+              type="file"
+              className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+              onChange={handleFileChange}
+            />
           </div>
         )}
       </div>
     );
-  }, [value, handleRemoveImage, t, uploadImageMutation.isPending]);
+  }, [value, handleRemoveImage, handleFileChange, t, uploadImageMutation.isPending]);
 
   return (
     <CardContent className="border border-dashed p-4 rounded-xl w-full cursor-pointer min-h-[240px]">
       {renderImages()}
-      <input
-        ref={inputRef}
-        type="file"
-        className="hidden"
-        onChange={handleFileChange}
-      />
     </CardContent>
   );
 };
@@ -541,11 +541,6 @@ export const VideoUpload = ({ value, onChange, shopId, error }: IVideoUploadProp
       onChange(data.data.url);
     },
   });
-
-  const handleOpenFilePicker = () => {
-    if (!inputRef.current) return;
-    inputRef.current.click();
-  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -576,10 +571,7 @@ export const VideoUpload = ({ value, onChange, shopId, error }: IVideoUploadProp
 
     if (!value) {
       return (
-        <div
-          onClick={handleOpenFilePicker}
-          className="flex flex-col gap-2 items-center justify-center min-h-[200px] w-full"
-        >
+        <div className="flex flex-col gap-2 items-center justify-center min-h-[200px] w-full">
           <VideoIcon className={cn(error && "text-destructive")} />
           <div>
             <p className={cn("text-sm text-center", error && "text-destructive")}>
@@ -624,7 +616,11 @@ export const VideoUpload = ({ value, onChange, shopId, error }: IVideoUploadProp
       <input
         ref={inputRef}
         type="file"
-        className="hidden"
+        className={
+          !value && !uploadVideoMutation.isPending
+            ? "absolute inset-0 h-full w-full cursor-pointer opacity-0"
+            : "hidden"
+        }
         accept="video/mp4,video/webm,video/quicktime,video/x-msvideo,video/mpeg"
         onChange={handleFileChange}
       />
