@@ -1,11 +1,12 @@
 import { Card } from "@/components/ui/card";
 import { IProductForm } from "../../../utils/product.interface";
 import { UseFormReturn } from "react-hook-form";
-import { useQuery } from "@tanstack/react-query";
-import { getCategoriesQueryFn } from "@/api/queries";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { getCategoriesInfiniteQueryFn } from "@/api/queries/categories.query";
 import { useShopContext } from "@/contexts";
 import { MultiSelect } from "@/components/ui/multi-select";
 import { useTranslation } from "react-i18next";
+import { useMemo } from "react";
 
 interface IProps {
   form: UseFormReturn<IProductForm, unknown, IProductForm>;
@@ -15,24 +16,37 @@ export const ProductFormCategories = ({ form }: IProps) => {
   const { shop } = useShopContext();
   const { i18n, t } = useTranslation();
 
-  const { data, isLoading } = useQuery({
-    queryKey: ["categories", shop._id],
-    queryFn: () => getCategoriesQueryFn(shop._id, { limit: "all" }),
-    enabled: Boolean(shop._id),
-  });
+  const { data, isLoading, hasNextPage, isFetchingNextPage, fetchNextPage } =
+    useInfiniteQuery({
+      queryKey: ["categories", shop._id, "product-form"],
+      queryFn: ({ pageParam }) =>
+        getCategoriesInfiniteQueryFn(shop._id, pageParam as number, {
+          limit: 10,
+        }),
+      initialPageParam: 1,
+      getNextPageParam: (lastPage) =>
+        lastPage.paginationInfo.hasNextPage
+          ? lastPage.paginationInfo.currentPage + 1
+          : undefined,
+      enabled: Boolean(shop._id),
+    });
+
+  const categoriesOptions = useMemo(
+    () =>
+      (data?.pages.flatMap((page) => page.data) ?? []).map((category) => ({
+        label: category.name[i18n.language as keyof typeof category.name],
+        value: category._id,
+      })),
+    [data, i18n.language]
+  );
 
   const addCategory = (values: string[]) => {
     form.setValue("categories", values);
   };
 
-  if (isLoading || !data?.data) {
+  if (isLoading) {
     return null;
   }
-
-  const categoriesOptions = data?.data.map((category) => ({
-    label: category.name[i18n.language as keyof typeof category.name],
-    value: category._id,
-  }));
 
   const categories = form.watch("categories");
 
@@ -46,9 +60,12 @@ export const ProductFormCategories = ({ form }: IProps) => {
         <div className="flex gap-2">
           <MultiSelect
             placeholder={t("common.select_options")}
-            options={categoriesOptions ?? []}
+            options={categoriesOptions}
             onValueChange={addCategory}
             defaultValue={categories}
+            hasNextPage={hasNextPage}
+            isFetchingNextPage={isFetchingNextPage}
+            onLoadMore={() => fetchNextPage()}
           />
         </div>
       </div>

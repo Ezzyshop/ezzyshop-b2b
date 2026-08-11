@@ -8,6 +8,7 @@ import {
   ChevronDown,
   XIcon,
   WandSparkles,
+  Loader2,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -118,6 +119,18 @@ interface MultiSelectProps
    * Optional, can be used to add custom styles.
    */
   className?: string;
+
+  /**
+   * Called when the option list is scrolled near the bottom.
+   * Use together with hasNextPage/isFetchingNextPage for paginated options.
+   */
+  onLoadMore?: () => void;
+
+  /** Whether more options can be loaded via onLoadMore. */
+  hasNextPage?: boolean;
+
+  /** Shows a loading row at the end of the list while the next page loads. */
+  isFetchingNextPage?: boolean;
 }
 
 export const MultiSelect = React.forwardRef<
@@ -135,6 +148,9 @@ export const MultiSelect = React.forwardRef<
       maxCount = 3,
       modalPopover = false,
       className,
+      onLoadMore,
+      hasNextPage = false,
+      isFetchingNextPage = false,
       ...props
     },
     ref
@@ -179,6 +195,14 @@ export const MultiSelect = React.forwardRef<
       const newSelectedValues = selectedValues.slice(0, maxCount);
       setSelectedValues(newSelectedValues);
       onValueChange(newSelectedValues);
+    };
+
+    const handleListScroll = (event: React.UIEvent<HTMLDivElement>) => {
+      if (!onLoadMore || !hasNextPage || isFetchingNextPage) return;
+      const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
+      if (scrollHeight - scrollTop - clientHeight < 48) {
+        onLoadMore();
+      }
     };
 
     const toggleAll = () => {
@@ -291,7 +315,7 @@ export const MultiSelect = React.forwardRef<
               placeholder={t("common.search")}
               onKeyDown={handleInputKeyDown}
             />
-            <CommandList>
+            <CommandList onScroll={handleListScroll}>
               <CommandEmpty>{t("common.no_results_found")}</CommandEmpty>
               <CommandGroup>
                 <CommandItem
@@ -336,6 +360,11 @@ export const MultiSelect = React.forwardRef<
                     </CommandItem>
                   );
                 })}
+                {isFetchingNextPage && (
+                  <div className="flex justify-center py-2">
+                    <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+                  </div>
+                )}
               </CommandGroup>
               <CommandSeparator />
               <CommandGroup>

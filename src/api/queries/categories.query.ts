@@ -17,7 +17,7 @@ export const getCategoriesInfiniteQueryFn = async (
   filters?: TObject
 ): Promise<IPaginatedResponse<ICategory>> => {
   const response = await api.get(`/categories/${shopId}`, {
-    params: { ...filters, page: pageParam, limit: 30 },
+    params: { limit: 30, ...filters, page: pageParam },
   });
   return response.data;
 };
