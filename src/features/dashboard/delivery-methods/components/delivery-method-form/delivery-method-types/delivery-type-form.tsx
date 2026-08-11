@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import {
   FormField,
   FormItem,
   FormLabel,
   FormControl,
+  FormMessage,
 } from "@/components/ui/form/form";
 import { Input, InputWithPrefix } from "@/components/ui/input";
 import {
@@ -30,6 +32,18 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
 
   const deliveryType = form.watch("deliveryType");
   const pricingMode = form.watch("dynamic_pricing_mode");
+
+  // Dynamic turdan chiqilganda qoldiq qiymatlar (null) validatsiyani bloklamasligi uchun
+  useEffect(() => {
+    if (deliveryType !== DeliveryMethodDeliveryType.Dynamic) {
+      form.unregister([
+        "dynamic_pricing_mode",
+        "initial_km",
+        "initial_km_price",
+        "every_km_price",
+      ]);
+    }
+  }, [deliveryType, form]);
 
   return (
     <>
@@ -85,6 +99,7 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
                   onChange={(e) => field.onChange(e.target.value)}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -106,9 +121,15 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
                     "dashboard.delivery-methods.estimated_days_placeholder"
                   )}
                   {...field}
-                  onChange={(e) => field.onChange(Number(e.target.value))}
+                  value={field.value ?? ""}
+                  onChange={(e) =>
+                    field.onChange(
+                      e.target.value === "" ? null : Number(e.target.value)
+                    )
+                  }
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -206,11 +227,12 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
                       value={field.value ?? ""}
                       onChange={(e) =>
                         field.onChange(
-                          e.target.value === "" ? undefined : Number(e.target.value)
+                          e.target.value === "" ? null : Number(e.target.value)
                         )
                       }
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -230,11 +252,12 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
                       value={field.value ?? ""}
                       onChange={(e) =>
                         field.onChange(
-                          e.target.value === "" ? undefined : Number(e.target.value)
+                          e.target.value === "" ? null : Number(e.target.value)
                         )
                       }
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -257,11 +280,12 @@ export const DeliveryTypeForm = ({ form }: IProps) => {
                     value={field.value ?? ""}
                     onChange={(e) =>
                       field.onChange(
-                        e.target.value === "" ? undefined : Number(e.target.value)
+                        e.target.value === "" ? null : Number(e.target.value)
                       )
                     }
                   />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
