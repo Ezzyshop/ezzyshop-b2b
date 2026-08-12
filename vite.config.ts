@@ -9,8 +9,6 @@ export default defineConfig({
     allowedHosts: [
       "749c-2a05-45c2-51a4-cc01-fdae-8c82-5bbc-5cdf.ngrok-free.app",
     ],
-    // 4999: macOS AirPlay Receiver occupies port 5000, breaking adb reverse for the mobile app.
-    // 127.0.0.1: force IPv4 — adb reverse can't reach an IPv6-only ([::1]) listener.
     host: "127.0.0.1",
     port: 4999,
     proxy:
