@@ -4,13 +4,20 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { ShopContextProvider } from "@/contexts";
 import { PermissionContextProvider } from "@/contexts/permission-context";
 import { UserContextProvider } from "@/contexts/user-context/user.context-provider";
+import { useOrderEvents } from "@/hooks/use-order-events";
 import { PropsWithChildren } from "react";
+
+const OrderEventsListener = () => {
+  useOrderEvents();
+  return null;
+};
 
 export const DashboardLayout = ({ children }: PropsWithChildren) => {
   return (
     <UserContextProvider>
       <ShopContextProvider>
         <PermissionContextProvider>
+          <OrderEventsListener />
           <SidebarProvider>
             <DashboardSidebar />
             <SidebarInset className="min-w-0">

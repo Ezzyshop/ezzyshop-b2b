@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "sonner";
+import { postToNative } from "@/lib/native-bridge";
 import { ErrorMessages, errorMessagesMap } from "./utils/error-messages.enum";
 
 export const api = axios.create({
@@ -24,10 +25,12 @@ api.interceptors.response.use(
     toast.error(errorMessagesMap[message] ?? "Internal server error");
 
     if (message === ErrorMessages.UnauthorizedError) {
+      postToNative({ type: "logout" });
       window.location.href = "/login";
     }
 
     if (message === ErrorMessages.TokenExpired) {
+      postToNative({ type: "logout" });
       window.location.href = "/logout";
     }
 
